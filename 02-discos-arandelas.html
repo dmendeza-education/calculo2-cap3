@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Discos y arandelas · Cálculo II</title>
+
+  <!-- KaTeX: si hay internet, las fórmulas se ven como en LaTeX.
+     Si no carga, queda el HTML de respaldo y la página funciona igual. -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <link rel="stylesheet" href="assets/estilo.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="wrap">
+      <div class="titulos">
+        <div class="logo">
+          <img src="assets/logo.jpg" alt="Universidad del Cauca">
+        </div>
+        <div>
+          <h1>VOLÚMENES POR EL MÉTODO DE DISCOS Y ARANDELAS</h1>
+          <div class="sub">Capítulo III · Tema 3.2</div>
+        </div>
+      </div>
+      <div class="barra">
+        <div class="curso">
+          Facultad de Ingeniería Civil · Ingeniería Ambiental<br>
+          Cálculo II &nbsp;·&nbsp; Docente: Diana Méndez Astudillo</div>
+        <div class="toggle" id="btnDocente">
+          <span class="punto"></span><span id="txtDocente">Activar modo docente</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+
+    <div class="migas"><a href="index.html">Capítulo III</a> &nbsp;›&nbsp; 3.2 Discos y
+      arandelas</div>
+
+    <!-- ====================== 1. LA IDEA ====================== -->
+    <section>
+      <h2>1. La idea: rebanar el sólido</h2>
+
+      <div class="caja">
+        <p>Cuando una región plana gira alrededor de un eje, barre un <b>sólido de
+            revolución</b>. Para hallar su volumen se usa la estrategia de siempre:
+          <b>cortarlo en rebanadas delgadas, calcular el volumen de una, y sumarlas con una
+            integral</b>.</p>
+        <p>Si el corte es perpendicular al eje de giro, cada rebanada es un
+          <b>disco</b> (o una <b>arandela</b>, si el sólido tiene hueco).</p>
+        <div class="formula">
+          Volumen de un disco &nbsp;=&nbsp; (área del círculo) × (espesor)
+          <div class="tex-display" data-tex="dV=\pi\,[R(x)]^{2}\,dx" style="margin-top:10px">
+            <span class="mat">π</span>[<span class="mat">R(x)</span>]<sup>2</sup>
+            <span class="mat">dx</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="docente">
+        Empecemos con un objeto real: una zanahoria o un rollo de papel cortado en tajadas.
+        La pregunta que abre el tema es «¿cuánto vale el volumen de <em>una</em> tajada?».
+        Una vez que el grupo contesta <span class="mat">πR²·</span>espesor, la integral deja
+        de ser un salto conceptual: es solamente sumar.
+      </div>
+    </section>
+
+    <!-- ====================== 2. DISCOS ====================== -->
+    <section>
+      <h2>2. Método de discos</h2>
+
+      <div class="caja">
+        <p>Si la región está limitada por <span class="mat">y = f(x)</span>, el eje
+          <span class="mat">x</span> y las rectas <span class="mat">x = a</span>,
+          <span class="mat">x = b</span>, al girar alrededor del <b>eje x</b> cada rebanada
+          es un disco macizo de radio <span class="mat">R(x) = f(x)</span>.</p>
+        <div class="formula fucsia"
+          data-tex="V=\pi\int_{a}^{b}\left[f(x)\right]^{2}\,dx">
+          V = π∫<sub>a</sub><sup>b</sup>[f(x)]² dx
+        </div>
+        <p>Si en cambio la región gira alrededor del <b>eje y</b>, hay que despejar
+          <span class="mat">x = g(y)</span> y rebanar en horizontal:</p>
+        <div class="formula lila" data-tex="V=\pi\int_{c}^{d}\left[g(y)\right]^{2}\,dy">
+          V = π∫<sub>c</sub><sup>d</sup>[g(y)]² dy
+        </div>
+      </div>
+
+      <div class="porque">
+        <b>¿Por qué el radio es exactamente <span class="mat">f(x)</span>?</b> Porque el
+        disco se forma cuando el segmento que va del eje de giro hasta la curva da una
+        vuelta completa. Ese segmento <em>es</em> el radio. Si el eje de giro no es el eje
+        <span class="mat">x</span> sino la recta <span class="mat">y = k</span>, el radio
+        pasa a ser <span class="mat">|f(x) − k|</span>: siempre es la distancia de la curva
+        al eje.
+      </div>
+
+      <!-- LABORATORIO 1 -->
+      <div class="lab">
+        <h4>Ejemplo 1 · Seis funciones, una rebanada que se mueve</h4>
+        <p>Elija una función, deslice la rebanada y gire el sólido. El control de barrido
+          muestra el sólido a medio girar, que es la vista donde mejor se entiende de dónde
+          sale el volumen.</p>
+        <div id="labDiscos"></div>
+      </div>
+
+      <!-- EJERCICIO 1 -->
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 1</span>
+          <p>La región bajo <span class="mat">y = √x</span> entre
+            <span class="mat">x = 0</span> y <span class="mat">x = 4</span> gira alrededor
+            del eje <span class="mat">x</span>. Halle el volumen del sólido.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>Identifique el radio.</b> El giro es alrededor del eje
+                <span class="mat">x</span> y la región toca ese eje, así que la rebanada es
+                un disco macizo de radio <span class="mat">R(x) = √x</span>.</div>
+              <div class="paso"><b>Monte la integral.</b>
+                <span class="formula lila"
+                  data-tex="V=\pi\int_{0}^{4}\left(\sqrt{x}\right)^{2}dx=\pi\int_{0}^{4}x\,dx">
+                  V = π∫<sub>0</sub><sup>4</sup>(√x)² dx = π∫<sub>0</sub><sup>4</sup>x dx</span>
+              </div>
+              <div class="paso"><b>Observe lo que pasó.</b> El cuadrado eliminó la raíz. Esa
+                simplificación es la razón por la que discos suele ser el método más cómodo
+                cuando la función tiene radicales.</div>
+              <div class="paso"><b>Integre.</b>
+                <span class="formula lila"
+                  data-tex="V=\pi\left[\frac{x^{2}}{2}\right]_{0}^{4}=\pi\cdot 8">
+                  V = π[x²/2]<sub>0</sub><sup>4</sup> = 8π</span>
+              </div>
+            </div>
+            <div class="resultado"
+              data-tex="V=8\pi\approx 25.13\ \text{unidades cúbicas}">
+              V = 8π ≈ 25.13 unidades cúbicas
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- EJERCICIO 2 -->
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 2</span>
+          <p>La región bajo <span class="mat">y = sen x</span> entre
+            <span class="mat">x = 0</span> y <span class="mat">x = π</span> gira alrededor
+            del eje <span class="mat">x</span>. Halle el volumen.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>La integral.</b>
+                <span class="formula lila"
+                  data-tex="V=\pi\int_{0}^{\pi}\operatorname{sen}^{2}x\,dx">
+                  V = π∫<sub>0</sub><sup>π</sup>sen²x dx</span>
+              </div>
+              <div class="paso"><b>Use la identidad de ángulo doble.</b>
+                <span class="formula lila"
+                  data-tex="\operatorname{sen}^{2}x=\frac{1-\cos 2x}{2}">
+                  sen²x = (1 − cos 2x)/2</span>
+                Sin esta identidad la integral no sale: aquí es imprescindible.
+              </div>
+              <div class="paso"><b>Integre.</b>
+                <span class="formula lila"
+                  data-tex="V=\frac{\pi}{2}\left[x-\frac{\operatorname{sen}2x}{2}\right]_{0}^{\pi}=\frac{\pi}{2}\left(\pi-0\right)">
+                  V = (π/2)[x − (sen 2x)/2]<sub>0</sub><sup>π</sup> = (π/2)(π)</span>
+              </div>
+            </div>
+            <div class="resultado"
+              data-tex="V=\frac{\pi^{2}}{2}\approx 4.93\ \text{unidades cúbicas}">
+              V = π²/2 ≈ 4.93 unidades cúbicas
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- EJERCICIO 3 -->
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 3</span>
+          <p>La región del primer cuadrante limitada por <span class="mat">y = x²</span>,
+            <span class="mat">y = 4</span> y el eje <span class="mat">y</span> gira
+            alrededor del <b>eje y</b>. Halle el volumen.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>El eje de giro decide la variable.</b> Como el giro es
+                alrededor del eje <span class="mat">y</span>, las rebanadas son
+                horizontales y el radio se mide en dirección
+                <span class="mat">x</span>: hay que despejar.</div>
+              <div class="paso"><b>Despeje.</b> De <span class="mat">y = x²</span> con
+                <span class="mat">x ≥ 0</span> se obtiene
+                <span class="mat">x = √y</span>, así que
+                <span class="mat">R(y) = √y</span>. Los límites son
+                <span class="mat">y = 0</span> y <span class="mat">y = 4</span>.</div>
+              <div class="paso"><b>La integral.</b>
+                <span class="formula lila"
+                  data-tex="V=\pi\int_{0}^{4}\left(\sqrt{y}\right)^{2}dy=\pi\int_{0}^{4}y\,dy=\pi\left[\frac{y^{2}}{2}\right]_{0}^{4}">
+                  V = π∫<sub>0</sub><sup>4</sup>(√y)² dy = π∫<sub>0</sub><sup>4</sup>y dy =
+                  π[y²/2]<sub>0</sub><sup>4</sup></span>
+              </div>
+            </div>
+            <div class="resultado" data-tex="V=8\pi\approx 25.13\ \text{unidades cúbicas}">
+              V = 8π ≈ 25.13 unidades cúbicas
+            </div>
+            <div class="porque" style="margin-top:12px">
+              <b>Cuidado con la coincidencia.</b> Este volumen es igual al del ejemplo 1,
+              pero el sólido es completamente distinto: allá era una especie de trompeta
+              acostada, aquí es un paraboloide hueco al revés. Que dos números coincidan no
+              significa que los sólidos sean iguales.
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ====================== 3. ARANDELAS ====================== -->
+    <section>
+      <h2>3. Método de arandelas</h2>
+
+      <div class="caja">
+        <p>Si la región <b>no toca el eje de giro</b>, el sólido queda con un hueco por
+          dentro. Cada rebanada ya no es un disco sino una <b>arandela</b>: un círculo
+          grande al que se le quitó un círculo pequeño.</p>
+        <div class="formula fucsia"
+          data-tex="V=\pi\int_{a}^{b}\left(\left[R(x)\right]^{2}-\left[r(x)\right]^{2}\right)dx">
+          V = π∫<sub>a</sub><sup>b</sup>([R(x)]² − [r(x)]²) dx
+        </div>
+        <p>Donde <span class="mat">R</span> es la distancia del eje a la curva
+          <b>lejana</b> y <span class="mat">r</span> la distancia a la curva
+          <b>cercana</b>.</p>
+      </div>
+
+      <div class="porque">
+        <b>El error que cuesta más puntos.</b> No es lo mismo
+        <span class="mat">R² − r²</span> que <span class="mat">(R − r)²</span>. La arandela
+        es un círculo <em>menos</em> otro círculo, así que se restan las áreas, no los
+        radios. Un contraejemplo rápido: con <span class="mat">R = 3</span> y
+        <span class="mat">r = 1</span>, lo correcto es
+        <span class="mat">9 − 1 = 8</span>, mientras que
+        <span class="mat">(3 − 1)² = 4</span>. Son valores distintos.
+      </div>
+
+      <!-- LABORATORIO 2 -->
+      <div class="lab">
+        <h4>Ejemplo 2 · Cuatro pares de curvas: vea el hueco</h4>
+        <p>Cada pareja genera un sólido con hueco. Fíjese en el anillo resaltado del lado
+          derecho: ese es el pedazo que la integral está sumando.</p>
+        <div id="labArandelas"></div>
+      </div>
+
+      <!-- EJERCICIO 4 -->
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 4</span>
+          <p>La región limitada por <span class="mat">y = 2x</span> y
+            <span class="mat">y = x²</span> gira alrededor del eje
+            <span class="mat">x</span>. Halle el volumen.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>Límites.</b>
+                <span class="mat">2x = x² ⟹ x(x − 2) = 0</span>, luego
+                <span class="mat">x = 0</span> y <span class="mat">x = 2</span>.</div>
+              <div class="paso"><b>¿Quién está más lejos del eje?</b> En
+                <span class="mat">x = 1</span> la recta vale 2 y la parábola 1. La recta
+                está más lejos, así que <span class="mat">R = 2x</span> y
+                <span class="mat">r = x²</span>.</div>
+              <div class="paso"><b>La integral.</b>
+                <span class="formula lila"
+                  data-tex="V=\pi\int_{0}^{2}\left(4x^{2}-x^{4}\right)dx">
+                  V = π∫<sub>0</sub><sup>2</sup>(4x² − x⁴)dx</span>
+              </div>
+              <div class="paso"><b>Integre.</b>
+                <span class="formula lila"
+                  data-tex="V=\pi\left[\frac{4x^{3}}{3}-\frac{x^{5}}{5}\right]_{0}^{2}=\pi\left(\frac{32}{3}-\frac{32}{5}\right)=\pi\cdot\frac{64}{15}">
+                  V = π[4x³/3 − x⁵/5]<sub>0</sub><sup>2</sup> = π(32/3 − 32/5) = 64π/15</span>
+              </div>
+            </div>
+            <div class="resultado"
+              data-tex="V=\frac{64\pi}{15}\approx 13.40\ \text{unidades cúbicas}">
+              V = 64π/15 ≈ 13.40 unidades cúbicas
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- EJERCICIO 5 -->
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 5</span>
+          <p>La región limitada por <span class="mat">y = x + 2</span> y
+            <span class="mat">y = x²</span> gira alrededor del eje
+            <span class="mat">x</span>. Halle el volumen.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>Límites.</b> <span class="mat">x = −1</span> y
+                <span class="mat">x = 2</span>, como en el tema anterior.</div>
+              <div class="paso"><b>Radios.</b> La recta está más lejos del eje
+                <span class="mat">x</span>, así que
+                <span class="mat">R = x + 2</span> y <span class="mat">r = x²</span>.</div>
+              <div class="paso"><b>La integral.</b>
+                <span class="formula lila"
+                  data-tex="V=\pi\int_{-1}^{2}\left[(x+2)^{2}-x^{4}\right]dx=\pi\int_{-1}^{2}\left(x^{2}+4x+4-x^{4}\right)dx">
+                  V = π∫<sub>−1</sub><sup>2</sup>[(x + 2)² − x⁴]dx =
+                  π∫<sub>−1</sub><sup>2</sup>(x² + 4x + 4 − x⁴)dx</span>
+              </div>
+              <div class="paso"><b>Integre y evalúe.</b>
+                <span class="formula lila"
+                  data-tex="V=\pi\left[\frac{x^{3}}{3}+2x^{2}+4x-\frac{x^{5}}{5}\right]_{-1}^{2}">
+                  V = π[x³/3 + 2x² + 4x − x⁵/5]<sub>−1</sub><sup>2</sup></span>
+                Arriba: <span class="mat">8/3 + 8 + 8 − 32/5 = 182/15</span>. Abajo:
+                <span class="mat">−1/3 + 2 − 4 + 1/5 = −32/15</span>.
+              </div>
+            </div>
+            <div class="resultado"
+              data-tex="V=\frac{72\pi}{5}\approx 45.24\ \text{unidades cúbicas}">
+              V = 72π/5 ≈ 45.24 unidades cúbicas
+            </div>
+            <div class="porque" style="margin-top:12px">
+              <b>Un detalle fino.</b> Entre <span class="mat">x = −1</span> y
+              <span class="mat">x = 0</span> la recta <span class="mat">y = x + 2</span>
+              está arriba pero la parábola también es positiva, y en
+              <span class="mat">x = −1</span> las dos valen 1: ahí la arandela se cierra y
+              se vuelve un punto. La fórmula lo maneja sola, porque
+              <span class="mat">R² − r² = 0</span> en ese extremo.
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ====================== 4. APLICACIÓN ====================== -->
+    <section>
+      <h2>4. Aplicación: capacidad de un tanque</h2>
+
+      <div class="ambiental">
+        <b>Situación.</b> Una planta de tratamiento tiene un tanque de homogenización cuyo
+        cuerpo es un <b>paraboloide de revolución</b>: se obtiene girando la curva
+        <span class="mat">y = x²</span> alrededor del eje <span class="mat">y</span>, con
+        <span class="mat">x</span> e <span class="mat">y</span> en metros, hasta una altura
+        de 8 m.<br><br>
+        <b>Pregunta.</b> ¿Cuántos litros puede almacenar el tanque lleno?
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">APLICACIÓN RESUELTA</span>
+          <p>Calcule la capacidad del tanque en metros cúbicos y en litros.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>El giro es sobre el eje <span class="mat">y</span>.</b>
+                Las rebanadas son discos horizontales. A la altura
+                <span class="mat">y</span>, el radio del tanque es el
+                <span class="mat">x</span> correspondiente: de
+                <span class="mat">y = x²</span> sale
+                <span class="mat">R(y) = √y</span>.</div>
+              <div class="paso"><b>Monte la integral.</b>
+                <span class="formula lila"
+                  data-tex="V=\pi\int_{0}^{8}\left(\sqrt{y}\right)^{2}dy=\pi\int_{0}^{8}y\,dy">
+                  V = π∫<sub>0</sub><sup>8</sup>(√y)² dy =
+                  π∫<sub>0</sub><sup>8</sup>y dy</span>
+              </div>
+              <div class="paso"><b>Integre.</b>
+                <span class="formula lila"
+                  data-tex="V=\pi\left[\frac{y^{2}}{2}\right]_{0}^{8}=\pi\cdot 32">
+                  V = π[y²/2]<sub>0</sub><sup>8</sup> = 32π</span>
+              </div>
+              <div class="paso"><b>Convierta.</b> Un metro cúbico son mil litros.</div>
+            </div>
+            <div class="resultado"
+              data-tex="V=32\pi\approx 100.5\;\text{m}^{3}\approx 100\,500\;\text{L}">
+              V = 32π ≈ 100.5 m³ ≈ 100 500 L
+            </div>
+            <div class="ambiental" style="margin-top:12px">
+              <b>Lectura de ingeniería.</b> El radio superior del tanque es
+              <span class="mat">√8 ≈ 2.83</span> m, es decir unos 5.66 m de diámetro en la
+              boca. Compare con un cilindro del mismo diámetro y altura: tendría
+              <span class="mat">π(2.83)²(8) ≈ 201</span> m³. El paraboloide guarda
+              <b>exactamente la mitad</b>, porque se angosta hacia el fondo. Esa forma se
+              escoge cuando interesa que el fondo concentre los sólidos sedimentables en un
+              área pequeña, facilitando la purga.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="docente">
+        Pregunta buena para cerrar: <em>si el tanque se llena solo hasta la mitad de la
+          altura, ¿contiene la mitad del volumen?</em> La respuesta es no: hasta
+        <span class="mat">y = 4</span> el volumen es
+        <span class="mat">π(16/2) = 8π</span>, que es la <b>cuarta</b> parte. El volumen
+        crece con el cuadrado de la altura, no linealmente. Esta observación es la base
+        física de las curvas de calibración de nivel en tanques no cilíndricos, y
+        normalmente sorprende al grupo.
+      </div>
+    </section>
+
+    <!-- ====================== 5. ERRORES ====================== -->
+    <section>
+      <h2>5. Errores frecuentes</h2>
+
+      <div class="errores">
+        <ul>
+          <li><b>Restar los radios en vez de los cuadrados.</b>
+            <span class="mat">(R − r)² ≠ R² − r²</span>. Es el error más caro de esta
+            sección.</li>
+          <li><b>Olvidar el <span class="mat">π</span>.</b> El área de la rebanada es
+            <span class="mat">πR²</span>, no <span class="mat">R²</span>.</li>
+          <li><b>Confundir la variable con el eje de giro.</b> Giro alrededor del eje
+            <span class="mat">x</span> ⟹ rebanadas verticales, integrar
+            <span class="mat">dx</span>. Giro alrededor del eje
+            <span class="mat">y</span> ⟹ rebanadas horizontales, despejar
+            <span class="mat">x = g(y)</span> e integrar <span class="mat">dy</span>.</li>
+          <li><b>Usar discos cuando la región no toca el eje.</b> Si hay un espacio entre la
+            región y el eje de giro, el sólido tiene hueco: son arandelas.</li>
+          <li><b>Medir el radio desde el origen.</b> El radio se mide <em>desde el eje de
+              giro</em>. Si el eje es <span class="mat">y = 3</span>, el radio es
+            <span class="mat">|f(x) − 3|</span>, no <span class="mat">f(x)</span>.</li>
+          <li><b>Equivocar los límites al cambiar de variable.</b> Al girar sobre el eje
+            <span class="mat">y</span>, los límites son alturas, no abscisas.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ====================== 6. GRAFICADOR LIBRE ====================== -->
+    <section>
+      <h2>6. Graficador libre: su propia función</h2>
+
+      <div class="caja">
+        <p>Escriba cualquier función y vea el sólido que genera al girar alrededor del eje
+          <span class="mat">x</span>. Si deja el radio interior vacío, el sólido sale
+          macizo (discos); si escribe algo, sale hueco (arandelas). El volumen se calcula
+          numéricamente.</p>
+      </div>
+
+      <div class="lab">
+        <h4>Experimente</h4>
+        <div id="labLibre1"></div>
+      </div>
+
+      <div class="docente">
+        Tres experimentos que vale la pena proyectar:<br>
+        — <b>El cuerno de Gabriel</b> (<span class="mat">1/x</span> desde 1 hasta valores
+        grandes): el volumen tiende a <span class="mat">π</span> aunque el sólido sea
+        infinitamente largo. Es la puerta de entrada a integrales impropias.<br>
+        — <b>El semicírculo</b> (<span class="mat">√(4 − x²)</span> de −2 a 2): debe dar
+        <span class="mat">32π/3</span>, que es <span class="mat">(4/3)πr³</span> con
+        <span class="mat">r = 2</span>. Es la verificación de que el método reproduce la
+        fórmula clásica de la esfera.<br>
+        — <b>Un tubo</b> (<span class="mat">R = 3</span>, <span class="mat">r = 1</span>):
+        muestra que las constantes también son funciones y que el sólido resultante es un
+        cilindro hueco.
+      </div>
+    </section>
+
+    <!-- ====================== 7. TALLER ====================== -->
+    <section>
+      <h2>7. Para practicar</h2>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 1</span>
+          <p>La región bajo <span class="mat">y = x²</span> entre
+            <span class="mat">x = 0</span> y <span class="mat">x = 2</span> gira alrededor
+            del eje <span class="mat">x</span>.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <div class="resultado"
+              data-tex="V=\pi\int_{0}^{2}x^{4}dx=\pi\left[\frac{x^{5}}{5}\right]_{0}^{2}=\frac{32\pi}{5}\approx 20.11">
+              V = π∫<sub>0</sub><sup>2</sup>x⁴dx = 32π/5 ≈ 20.11
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 2</span>
+          <p>La región bajo <span class="mat">y = 2 − x/2</span> entre
+            <span class="mat">x = 0</span> y <span class="mat">x = 4</span> gira alrededor
+            del eje <span class="mat">x</span>. Verifique el resultado con la fórmula del
+            cono.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <div class="resultado"
+              data-tex="V=\pi\int_{0}^{4}\left(2-\frac{x}{2}\right)^{2}dx=\frac{16\pi}{3}\approx 16.76">
+              V = π∫<sub>0</sub><sup>4</sup>(2 − x/2)² dx = 16π/3 ≈ 16.76
+            </div>
+            <p>El sólido es un cono de radio 2 y altura 4. La fórmula clásica da
+              <span class="mat">(1/3)πr²h = (1/3)π(4)(4) = 16π/3</span>. Coincide.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 3</span>
+          <p>La región entre <span class="mat">y = √x</span> y
+            <span class="mat">y = x²</span> gira alrededor del eje
+            <span class="mat">x</span>.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <p>Cortes en 0 y 1. La raíz está más lejos del eje.</p>
+            <div class="resultado"
+              data-tex="V=\pi\int_{0}^{1}\left(x-x^{4}\right)dx=\pi\left(\frac{1}{2}-\frac{1}{5}\right)=\frac{3\pi}{10}\approx 0.942">
+              V = π∫<sub>0</sub><sup>1</sup>(x − x⁴)dx = 3π/10 ≈ 0.942
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 4</span>
+          <p>La región limitada por <span class="mat">y = x² + 1</span> y
+            <span class="mat">y = 3</span> gira alrededor del eje
+            <span class="mat">x</span>.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <p>Cortes: <span class="mat">x² + 1 = 3 ⟹ x = ±√2</span>. La recta
+              <span class="mat">y = 3</span> está más lejos del eje, luego
+              <span class="mat">R = 3</span> y <span class="mat">r = x² + 1</span>.</p>
+            <div class="resultado"
+              data-tex="V=\pi\int_{-\sqrt{2}}^{\sqrt{2}}\left[9-\left(x^{2}+1\right)^{2}\right]dx=\frac{176\sqrt{2}\,\pi}{15}\approx 52.1">
+              V = π∫<sub>−√2</sub><sup>√2</sup>[9 − (x² + 1)²]dx = 176√2π/15 ≈ 52.1
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 5</span>
+          <p>Una laguna de oxidación tiene forma de paraboloide invertido: se genera girando
+            <span class="mat">y = 0.5x²</span> alrededor del eje
+            <span class="mat">y</span>, con <span class="mat">x</span> e
+            <span class="mat">y</span> en metros, hasta una profundidad de 2 m. Halle el
+            volumen útil en litros.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <p>Despejando, <span class="mat">x = √(2y)</span>, así que
+              <span class="mat">R(y)² = 2y</span>.</p>
+            <div class="resultado"
+              data-tex="V=\pi\int_{0}^{2}2y\,dy=\pi\left[y^{2}\right]_{0}^{2}=4\pi\approx 12.57\ \mathrm{m^{3}}\approx 12\,570\ \mathrm{L}">
+              V = π∫<sub>0</sub><sup>2</sup>2y dy = 4π ≈ 12.57 m³ ≈ 12 570 L
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <div class="navtemas">
+      <a href="01-area-region-plana.html"><span>Tema anterior 3.1</span>← Área de una región
+        plana</a>
+      <a class="der" href="03-cascaras-cilindricas.html"><span>Tema siguiente 3.3</span>Cáscaras
+        cilíndricas →</a>
+    </div>
+
+    <div class="pie">
+      Universidad del Cauca · Facultad de Ingeniería Civil · Ingeniería Ambiental<br>
+      Cálculo II · Capítulo III · Material de clase elaborado por Diana Méndez Astudillo
+    </div>
+
+  </div>
+
+  <script src="assets/labs.js"></script>
+  <script>
+    labRevolucion('labDiscos', {
+      etiquetaEjemplos: 'Función',
+      cap2: 'Región plana y rebanada',
+      cap3: 'Sólido y disco representativo',
+      ejemplos: [
+        { nombre: '√x', R: x => Math.sqrt(x), r: null, a: 0, b: 4, ymax: 2.4, tR: '√x', exacto: '8π' },
+        { nombre: 'x²', R: x => x * x, r: null, a: 0, b: 2, ymax: 4.4, tR: 'x²', exacto: '32π/5' },
+        { nombre: '2 − x/2', R: x => 2 - x / 2, r: null, a: 0, b: 4, ymax: 2.4, tR: '2 − x/2', exacto: '16π/3' },
+        { nombre: '1/x', R: x => 1 / x, r: null, a: 0.5, b: 4, ymax: 2.4, tR: '1/x', exacto: '7π/4' },
+        { nombre: 'sen x', R: x => Math.sin(x), r: null, a: 0, b: Math.PI, ymax: 1.3, tR: 'sen x', exacto: 'π²/2' },
+        { nombre: 'e^(−x)', R: x => Math.exp(-x), r: null, a: 0, b: 2, ymax: 1.2, tR: 'e^(−x)', exacto: 'π(1 − e⁻⁴)/2' }
+      ]
+    });
+
+    labRevolucion('labArandelas', {
+      etiquetaEjemplos: 'Par de curvas',
+      cap2: 'Región entre las dos curvas',
+      cap3: 'Sólido y arandela representativa',
+      ejemplos: [
+        { nombre: '2x y x²', R: x => 2 * x, r: x => x * x, a: 0, b: 2, ymax: 4.5, tR: '2x', tr: 'x²', exacto: '64π/15' },
+        { nombre: '√x y x²', R: x => Math.sqrt(x), r: x => x * x, a: 0, b: 1, ymax: 1.25, tR: '√x', tr: 'x²', exacto: '3π/10' },
+        { nombre: 'x+2 y x²', R: x => x + 2, r: x => x * x, a: -1, b: 2, ymax: 4.5, tR: 'x + 2', tr: 'x²', exacto: '72π/5' },
+        { nombre: '3 y x²+1', R: x => 3, r: x => x * x + 1, a: -Math.SQRT2, b: Math.SQRT2, ymax: 3.6, tR: '3', tr: 'x² + 1', exacto: '176√2π/15' }
+      ]
+    });
+
+    labLibre('labLibre1', {
+      R: 'sqrt(x)', a: 0, b: 4,
+      sugerencias: [
+        { nombre: 'x² + 1', R: 'x^2+1', r: '', a: 0, b: 2 },
+        { nombre: 'cos x', R: 'cos(x)', r: '', a: 0, b: 1.5 },
+        { nombre: 'Cuerno de Gabriel', R: '1/x', r: '', a: 1, b: 6 },
+        { nombre: 'Semicírculo → esfera', R: 'sqrt(4-x^2)', r: '', a: -2, b: 2 },
+        { nombre: 'Tubo (R=3, r=1)', R: '3', r: '1', a: 0, b: 4 },
+        { nombre: 'x+1 y x²', R: 'x+1', r: 'x^2', a: 0, b: 1.6 }
+      ]
+    });
+  </script>
+</body>
+
+</html>

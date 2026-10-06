@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Capítulo III · Aplicaciones de la integral · Cálculo II</title>
+
+  <!-- KaTeX: si hay internet, las fórmulas se ven como en LaTeX.
+     Si no carga, queda el HTML de respaldo y la página funciona igual. -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <link rel="stylesheet" href="assets/estilo.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="wrap">
+      <div class="titulos">
+        <div class="logo">
+          <img src="assets/logo.jpg" alt="Universidad del Cauca">
+        </div>
+        <div>
+          <h1>APLICACIONES DE LA INTEGRAL</h1>
+          <div class="sub">Capítulo III · Cálculo II · Experiencia gráfica</div>
+        </div>
+      </div>
+      <div class="barra">
+        <div class="curso">
+          Facultad de Ingeniería Civil · Ingeniería Ambiental<br>
+          Cálculo II &nbsp;·&nbsp; Docente: Diana Méndez Astudillo</div>
+        <div class="toggle" id="btnDocente">
+          <span class="punto"></span><span id="txtDocente">Activar modo docente</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+
+    <section>
+      <h2>Una sola idea, seis aplicaciones</h2>
+
+      <div class="caja">
+        <p>Todo este capítulo sale de <b>un solo movimiento</b>: cortar algo en pedazos muy
+          delgados, calcular la medida de <em>un</em> pedazo, y sumar todos los pedazos con
+          una integral.</p>
+        <div class="formula">
+          <div class="tex-display"
+            data-tex="\text{medida total}=\int_{a}^{b}(\text{medida de un pedazo})">
+            medida total = <span class="int">∫</span><sub>a</sub><sup>b</sup> (medida de un
+            pedazo)
+          </div>
+        </div>
+        <p>Lo único que cambia de una sección a otra es <b>qué es el pedazo</b>: un
+          rectángulo flaquito, un disco, una arandela, una cáscara cilíndrica, un segmento
+          de recta o un anillo de superficie. Si usted identifica el pedazo, la integral se
+          escribe sola.</p>
+      </div>
+
+      <div class="porque">
+        <b>¿Por qué importa en Ingeniería Ambiental?</b> Un volumen de embalse, la capacidad
+        de un tanque de aireación, la longitud de una tubería que sigue un perfil de
+        terreno, el área de un espejo de agua, la superficie de un sedimentador que hay que
+        impermeabilizar: todas son integrales de este capítulo.
+      </div>
+
+      <div class="docente">
+        <b>Cómo usar esta página en clase.</b> Cada tema abre con la idea geométrica y un
+        laboratorio donde se puede mover la rebanada y cambiar la función. La recomendación
+        es proyectar el laboratorio <em>antes</em> de escribir la integral: primero que vean
+        el pedazo moverse, después la fórmula. Todos los ejercicios vienen con el enunciado
+        visible y el desarrollo plegado, para resolverlos en el tablero y solo entonces
+        abrir la solución. Los recuadros morados como este únicamente aparecen con el modo
+        docente activado.
+      </div>
+    </section>
+
+    <section>
+      <h2>Temas</h2>
+
+      <div class="temas">
+
+        <a class="tema" href="01-area-region-plana.html">
+          <span class="num">TEMA 3.1</span>
+          <div class="tit">Área de una región plana</div>
+          <div class="des">El rectángulo representativo, integrar en <span class="mat">x</span>
+            o en <span class="mat">y</span>, y qué hacer cuando las curvas se cruzan.</div>
+          <div class="fo">El pedazo es un rectángulo flaco</div>
+        </a>
+
+        <a class="tema" href="02-discos-arandelas.html">
+          <span class="num">TEMA 3.2</span>
+          <div class="tit">Volúmenes: rebanadas, discos y arandelas</div>
+          <div class="des">Girar una región alrededor de un eje y cortar perpendicular a
+            él. Discos cuando el sólido es macizo, arandelas cuando tiene hueco.</div>
+          <div class="fo">El pedazo es un disco o una arandela</div>
+        </a>
+
+        <a class="tema" href="03-cascaras-cilindricas.html">
+          <span class="num">TEMA 3.3</span>
+          <div class="tit">Cáscaras cilíndricas</div>
+          <div class="des">Cortar <em>paralelo</em> al eje de giro. El método que salva los
+            problemas donde despejar <span class="mat">x</span> es imposible.</div>
+          <div class="fo">El pedazo es un tubo delgado</div>
+        </a>
+
+        <a class="tema" href="04-secciones-transversales.html">
+          <span class="num">TEMA 3.4</span>
+          <div class="tit">Sólidos de secciones conocidas</div>
+          <div class="des">Sólidos que no son de revolución: se conoce la forma del corte
+            (cuadrado, triángulo, semicírculo) y se integra su área.</div>
+          <div class="fo">El pedazo es una lámina con forma</div>
+        </a>
+
+        <a class="tema" href="05-longitud-de-curva.html">
+          <span class="num">TEMA 3.5</span>
+          <div class="tit">Longitud de una curva</div>
+          <div class="des">De la poligonal al diferencial de arco. Incluye la catenaria de
+            un cable y el perfil de una conducción.</div>
+          <div class="fo">El pedazo es un segmento de recta</div>
+        </a>
+
+        <a class="tema" href="06-superficies-revolucion.html">
+          <span class="num">TEMA 3.6</span>
+          <div class="tit">Superficies de sólidos de revolución</div>
+          <div class="des">Área de la piel del sólido. La diferencia fina entre
+            <span class="mat">dx</span> y <span class="mat">ds</span>, que es donde se
+            equivoca casi todo el mundo.</div>
+          <div class="fo">El pedazo es un anillo de tronco de cono</div>
+        </a>
+
+      </div>
+    </section>
+
+    <section>
+      <h2>Tabla de los seis pedazos</h2>
+
+      <div class="caja">
+        <p>Esta tabla es el resumen de todo el capítulo. Vale la pena tenerla a mano
+          mientras se resuelven los talleres.</p>
+
+        <div class="pasos">
+          <div class="paso">
+            <b>Área entre curvas.</b> Pedazo: rectángulo de altura
+            <span class="mat">(sup − inf)</span> y ancho <span class="mat">dx</span>.
+            <span class="formula lila" data-tex="A=\int_{a}^{b}\bigl[f(x)-g(x)\bigr]\,dx">
+              A = ∫<sub>a</sub><sup>b</sup>[f(x) − g(x)] dx</span>
+          </div>
+          <div class="paso">
+            <b>Discos.</b> Pedazo: círculo de radio <span class="mat">R(x)</span> y espesor
+            <span class="mat">dx</span>.
+            <span class="formula lila" data-tex="V=\pi\int_{a}^{b}\left[R(x)\right]^{2}dx">
+              V = π∫<sub>a</sub><sup>b</sup>[R(x)]² dx</span>
+          </div>
+          <div class="paso">
+            <b>Arandelas.</b> Pedazo: corona circular, radio exterior menos interior.
+            <span class="formula lila"
+              data-tex="V=\pi\int_{a}^{b}\left(\left[R(x)\right]^{2}-\left[r(x)\right]^{2}\right)dx">
+              V = π∫<sub>a</sub><sup>b</sup>([R]² − [r]²) dx</span>
+          </div>
+          <div class="paso">
+            <b>Cáscaras.</b> Pedazo: tubo de radio <span class="mat">p(x)</span>, altura
+            <span class="mat">h(x)</span> y grosor <span class="mat">dx</span>.
+            <span class="formula lila" data-tex="V=2\pi\int_{a}^{b}p(x)\,h(x)\,dx">
+              V = 2π∫<sub>a</sub><sup>b</sup>p(x)h(x) dx</span>
+          </div>
+          <div class="paso">
+            <b>Secciones conocidas.</b> Pedazo: lámina de área
+            <span class="mat">A(x)</span> y espesor <span class="mat">dx</span>.
+            <span class="formula lila" data-tex="V=\int_{a}^{b}A(x)\,dx">
+              V = ∫<sub>a</sub><sup>b</sup>A(x) dx</span>
+          </div>
+          <div class="paso">
+            <b>Longitud y superficie.</b> Pedazo: segmento
+            <span class="mat">ds</span>, o anillo de radio <span class="mat">f(x)</span> y
+            generatriz <span class="mat">ds</span>.
+            <span class="formula lila"
+              data-tex="ds=\sqrt{1+\left[f'(x)\right]^{2}}\,dx,\qquad L=\int ds,\qquad S=2\pi\int f(x)\,ds">
+              ds = √(1 + [f′(x)]²) dx, &nbsp; L = ∫ds, &nbsp; S = 2π∫f(x) ds</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="docente">
+        <b>Ruta sugerida de cuatro sesiones.</b><br>
+        Sesión 1 — temas 3.1 y 3.2 (área y discos/arandelas): es el bloque que fija la
+        estrategia del pedazo.<br>
+        Sesión 2 — tema 3.3 (cáscaras): entra pidiendo un ejemplo donde discos no sirva,
+        por ejemplo <span class="mat">y = x·sen x</span> girando sobre el eje
+        <span class="mat">y</span>.<br>
+        Sesión 3 — temas 3.4 y 3.5 (secciones y longitud): la parte más visual, buena para
+        trabajo en grupo con el laboratorio proyectado.<br>
+        Sesión 4 — tema 3.6 y taller de cierre mezclando los seis pedazos sin decir cuál
+        toca: ese reconocimiento es la competencia real del capítulo.
+      </div>
+    </section>
+
+    <section>
+      <h2>Bibliografía</h2>
+      <div class="caja">
+        <p>Edwards, C. H. y Penney, D. E. <i>Cálculo con geometría analítica</i>. Capítulo
+          de aplicaciones de la integral.<br>
+          Stewart, J. <i>Cálculo de una variable: trascendentes tempranas</i>.<br>
+          Leithold, L. <i>El cálculo</i>.</p>
+      </div>
+    </section>
+
+    <div class="pie">
+      Universidad del Cauca · Facultad de Ingeniería Civil · Ingeniería Ambiental<br>
+      Cálculo II · Capítulo III · Material de clase elaborado por Diana Méndez Astudillo
+    </div>
+
+  </div>
+
+  <script src="assets/labs.js"></script>
+</body>
+
+</html>

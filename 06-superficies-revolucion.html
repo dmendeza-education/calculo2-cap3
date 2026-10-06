@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Superficies de revolución · Cálculo II</title>
+
+  <!-- KaTeX: si hay internet, las fórmulas se ven como en LaTeX.
+     Si no carga, queda el HTML de respaldo y la página funciona igual. -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <link rel="stylesheet" href="assets/estilo.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="wrap">
+      <div class="titulos">
+        <div class="logo">
+          <img src="assets/logo.jpg" alt="Universidad del Cauca">
+        </div>
+        <div>
+          <h1>ÁREA DE UNA SUPERFICIE DE REVOLUCIÓN</h1>
+          <div class="sub">Capítulo III · Tema 3.6</div>
+        </div>
+      </div>
+      <div class="barra">
+        <div class="curso">
+          Facultad de Ingeniería Civil · Ingeniería Ambiental<br>
+          Cálculo II &nbsp;·&nbsp; Docente: Diana Méndez Astudillo</div>
+        <div class="toggle" id="btnDocente">
+          <span class="punto"></span><span id="txtDocente">Activar modo docente</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+
+    <div class="migas"><a href="index.html">Capítulo III</a> &nbsp;›&nbsp; 3.6 Superficies
+      de revolución</div>
+
+    <!-- ====================== 1. LA IDEA ====================== -->
+    <section>
+      <h2>1. La idea: la piel del sólido</h2>
+
+      <div class="caja">
+        <p>Hasta ahora medíamos <b>cuánto cabe</b> dentro del sólido. Ahora vamos a medir
+          <b>cuánta lámina se necesita para forrarlo</b>: el área de su superficie.</p>
+        <p>El pedazo ya no es un disco sino un <b>anillo</b>, una banda delgada de tronco de
+          cono. Y su área es:</p>
+        <div class="formula">
+          Área de un anillo &nbsp;=&nbsp; (perímetro del círculo) × (ancho de la banda)
+          <div class="tex-display" data-tex="dS=2\pi\,f(x)\,ds" style="margin-top:10px">
+            dS = 2<span class="mat">π f(x) ds</span>
+          </div>
+        </div>
+        <p>Donde <span class="mat">f(x)</span> es el radio del anillo y
+          <span class="mat">ds</span> es el <b>diferencial de arco</b> del tema anterior, no
+          <span class="mat">dx</span>. Juntando las dos cosas:</p>
+        <div class="formula fucsia"
+          data-tex="S=2\pi\int_{a}^{b}f(x)\sqrt{1+\left[f'(x)\right]^{2}}\,dx">
+          S = 2π∫<sub>a</sub><sup>b</sup>f(x)√(1 + [f′(x)]²) dx
+        </div>
+        <p>Y si el giro es alrededor del eje <span class="mat">y</span>, el radio pasa a ser
+          <span class="mat">x</span>:</p>
+        <div class="formula lila"
+          data-tex="S=2\pi\int_{a}^{b}x\sqrt{1+\left[f'(x)\right]^{2}}\,dx">
+          S = 2π∫<sub>a</sub><sup>b</sup>x√(1 + [f′(x)]²) dx
+        </div>
+      </div>
+
+      <div class="porque">
+        <b>¿Por qué <span class="mat">ds</span> y no <span class="mat">dx</span>?</b> Esta es
+        <em>la</em> pregunta del tema. Imagine un cono muy inclinado: la lámina que lo forra
+        es más larga que la base sobre la que se apoya, porque sigue la <b>generatriz</b>, no
+        la horizontal. La banda de superficie tiene el ancho de la curva, no el de su
+        proyección. Por eso aparece el factor <span class="mat">√(1 + [f′]²)</span>: es el
+        estiramiento que sufre la lámina al inclinarse.<br><br>
+        Y hay una verificación contundente: <span class="mat">dS = 2πf(x)dx</span> daría, para
+        un cono de radio <span class="mat">r</span> y altura <span class="mat">h</span>, un
+        área de <span class="mat">πrh</span>; la fórmula correcta da
+        <span class="mat">πrg</span> con <span class="mat">g = √(r² + h²)</span> la
+        generatriz, que es la fórmula de bachillerato. La diferencia <em>es</em> el
+        <span class="mat">ds</span>.
+      </div>
+
+      <div class="docente">
+        La forma más convincente de mostrar esto es con un cono de papel. Recorte un sector
+        circular, pégelo en cono, y pregunte cuál era el radio del sector: era la
+        generatriz, no la altura. Después deje el cono sobre la mesa y compare con el
+        círculo que ocupa: el papel es más grande. Ese «más grande» es el factor
+        <span class="mat">√(1 + [f′]²)</span>, y una vez que lo vean con el papel en la mano
+        difícilmente lo olvidan.
+      </div>
+
+      <!-- LABORATORIO -->
+      <div class="lab">
+        <h4>Ejemplo 1 · La superficie como una cáscara abierta</h4>
+        <p>Use el control de barrido para abrir la superficie y ver que es una
+          <b>lámina</b>, no un sólido lleno. El anillo resaltado es la banda que la integral
+          va sumando; su radio es <span class="mat">f(x)</span> y su ancho es
+          <span class="mat">ds</span>.</p>
+        <div id="labSup1"></div>
+      </div>
+    </section>
+
+    <!-- ====================== 2. LAS DOS FÓRMULAS ====================== -->
+    <section>
+      <h2>2. Las dos fórmulas y cómo no confundirlas</h2>
+
+      <div class="caja">
+        <p>Todo el tema se reduce a identificar bien dos cosas: <b>el radio del
+            anillo</b> y <b>la variable de integración</b>.</p>
+
+        <div class="pasos">
+          <div class="paso"><b>Radio = distancia al eje de giro.</b> Giro sobre el eje
+            <span class="mat">x</span> ⟹ el radio es la ordenada,
+            <span class="mat">f(x)</span>. Giro sobre el eje
+            <span class="mat">y</span> ⟹ el radio es la abscisa,
+            <span class="mat">x</span>. Giro sobre <span class="mat">y = k</span> ⟹ el radio
+            es <span class="mat">|f(x) − k|</span>.</div>
+          <div class="paso"><b>El <span class="mat">ds</span> no cambia.</b> El factor
+            <span class="mat">√(1 + [f′]²)</span> es el mismo sin importar alrededor de qué
+            eje se gire, porque depende solo de la curva, no del eje. Lo único que cambia al
+            cambiar de eje es el radio.</div>
+          <div class="paso"><b>El integrando es el producto de las dos cosas.</b>
+            <span class="mat">(radio) × (ds)</span>, y por fuera el
+            <span class="mat">2π</span>. Nada más.</div>
+        </div>
+
+        <p>La consecuencia práctica es incómoda pero honesta: estas integrales son
+          <b>más difíciles</b> que las de volumen, porque el radio multiplica una raíz que
+          casi nunca se simplifica. Los ejercicios que salen exactos son pocos y están
+          escogidos.</p>
+      </div>
+
+      <div class="porque">
+        <b>Tabla comparativa de las tres fórmulas del mismo giro.</b> Para
+        <span class="mat">y = f(x)</span> girando sobre el eje
+        <span class="mat">x</span>:<br>
+        — <b>Volumen</b> (discos):
+        <span class="mat">π∫[f]²dx</span> — el cuadrado, con
+        <span class="mat">dx</span>.<br>
+        — <b>Superficie</b>:
+        <span class="mat">2π∫f·ds</span> — lineal, con
+        <span class="mat">ds</span>.<br>
+        — <b>Longitud de la curva generadora</b>:
+        <span class="mat">∫ds</span> — sin radio ni
+        <span class="mat">2π</span>.<br>
+        Tres fórmulas parecidas que miden cosas distintas. Confundirlas es el error
+        dominante del capítulo completo.
+      </div>
+    </section>
+
+    <!-- ====================== 3. EJEMPLOS ====================== -->
+    <section>
+      <h2>3. Ejemplos resueltos</h2>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 1</span>
+          <p>La curva <span class="mat">y = x/2</span> desde
+            <span class="mat">x = 0</span> hasta <span class="mat">x = 4</span> gira
+            alrededor del eje <span class="mat">x</span>. Halle el área de la superficie y
+            verifique con la fórmula del cono.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>Derive.</b>
+                <span class="mat">f′ = 1/2</span>, constante, así que
+                <span class="formula lila"
+                  data-tex="\sqrt{1+\left[f'\right]^{2}}=\sqrt{1+\frac{1}{4}}=\frac{\sqrt{5}}{2}">
+                  √(1 + [f′]²) = √(5/4) = √5/2</span>
+              </div>
+              <div class="paso"><b>Monte la integral.</b>
+                <span class="formula lila"
+                  data-tex="S=2\pi\int_{0}^{4}\frac{x}{2}\cdot\frac{\sqrt{5}}{2}\,dx=\frac{\pi\sqrt{5}}{2}\int_{0}^{4}x\,dx">
+                  S = 2π∫<sub>0</sub><sup>4</sup>(x/2)(√5/2)dx =
+                  (π√5/2)∫<sub>0</sub><sup>4</sup>x dx</span>
+              </div>
+              <div class="paso"><b>Integre.</b>
+                <span class="formula lila"
+                  data-tex="S=\frac{\pi\sqrt{5}}{2}\left[\frac{x^{2}}{2}\right]_{0}^{4}=\frac{\pi\sqrt{5}}{2}\cdot 8">
+                  S = (π√5/2)[x²/2]<sub>0</sub><sup>4</sup> = (π√5/2)(8)</span>
+              </div>
+            </div>
+            <div class="resultado"
+              data-tex="S=4\sqrt{5}\,\pi\approx 28.10\ \text{unidades cuadradas}">
+              S = 4√5π ≈ 28.10 unidades cuadradas
+            </div>
+            <div class="porque" style="margin-top:12px">
+              <b>Verificación con geometría.</b> El sólido es un cono de radio
+              <span class="mat">r = 2</span> (porque
+              <span class="mat">f(4) = 2</span>) y altura
+              <span class="mat">h = 4</span>. Su generatriz es
+              <span class="mat">g = √(4 + 16) = √20 = 2√5</span>, y la fórmula clásica del
+              área lateral da
+              <span class="mat">πrg = π(2)(2√5) = 4√5π</span>. Coincide exactamente.<br><br>
+              Ahora el contraste: si hubiéramos usado
+              <span class="mat">dx</span> en lugar de <span class="mat">ds</span>, el
+              resultado habría sido
+              <span class="mat">2π∫<sub>0</sub><sup>4</sup>(x/2)dx = 8π ≈ 25.13</span>, un
+              <b>11 % menos</b>. El factor <span class="mat">√5/2 ≈ 1.118</span> es
+              precisamente ese 11.8 % de estiramiento de la lámina.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 2</span>
+          <p>La curva <span class="mat">y = √x</span> desde
+            <span class="mat">x = 0</span> hasta <span class="mat">x = 1</span> gira
+            alrededor del eje <span class="mat">x</span>. Halle el área de la
+            superficie.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>Derive.</b>
+                <span class="formula lila"
+                  data-tex="f'(x)=\frac{1}{2\sqrt{x}}\quad\Longrightarrow\quad \left[f'\right]^{2}=\frac{1}{4x}">
+                  f′(x) = 1/(2√x) ⟹ [f′]² = 1/(4x)</span>
+              </div>
+              <div class="paso"><b>Arme el integrando y simplifique.</b> Aquí está el
+                truco del ejercicio:
+                <span class="formula lila"
+                  data-tex="f(x)\sqrt{1+\left[f'\right]^{2}}=\sqrt{x}\cdot\sqrt{1+\frac{1}{4x}}=\sqrt{x\left(1+\frac{1}{4x}\right)}=\sqrt{x+\frac{1}{4}}">
+                  √x · √(1 + 1/(4x)) = √(x(1 + 1/(4x))) = √(x + 1/4)</span>
+                El radio «se mete» dentro de la raíz y la limpia por completo. Sin esta
+                simplificación la integral no sale.
+              </div>
+              <div class="paso"><b>Integre.</b>
+                <span class="formula lila"
+                  data-tex="S=2\pi\int_{0}^{1}\sqrt{x+\frac{1}{4}}\,dx=2\pi\left[\frac{2}{3}\left(x+\frac{1}{4}\right)^{3/2}\right]_{0}^{1}">
+                  S = 2π∫<sub>0</sub><sup>1</sup>√(x + 1/4)dx =
+                  2π[(2/3)(x + 1/4)<sup>3/2</sup>]<sub>0</sub><sup>1</sup></span>
+              </div>
+              <div class="paso"><b>Evalúe.</b> Arriba:
+                <span class="mat">(2/3)(5/4)<sup>3/2</sup> = (2/3)(5√5/8) = 5√5/12</span>.
+                Abajo: <span class="mat">(2/3)(1/4)<sup>3/2</sup> = (2/3)(1/8) =
+                  1/12</span>.</div>
+              <div class="paso"><b>Reste y multiplique.</b>
+                <span class="formula lila"
+                  data-tex="S=2\pi\cdot\frac{5\sqrt{5}-1}{12}=\frac{\pi\left(5\sqrt{5}-1\right)}{6}">
+                  S = 2π(5√5 − 1)/12 = π(5√5 − 1)/6</span>
+              </div>
+            </div>
+            <div class="resultado"
+              data-tex="S=\frac{\pi\left(5\sqrt{5}-1\right)}{6}\approx 5.3304\ \text{unidades cuadradas}">
+              S = π(5√5 − 1)/6 ≈ 5.3304 unidades cuadradas
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 3</span>
+          <p>Demuestre que el área de una esfera de radio <span class="mat">r</span> es
+            <span class="mat">4πr²</span>, girando el semicírculo
+            <span class="mat">y = √(r² − x²)</span> alrededor del eje
+            <span class="mat">x</span>.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>Derive.</b>
+                <span class="formula lila"
+                  data-tex="f'(x)=\frac{-x}{\sqrt{r^{2}-x^{2}}}\quad\Longrightarrow\quad\left[f'\right]^{2}=\frac{x^{2}}{r^{2}-x^{2}}">
+                  f′(x) = −x/√(r² − x²) ⟹ [f′]² = x²/(r² − x²)</span>
+              </div>
+              <div class="paso"><b>Sume 1 con denominador común.</b>
+                <span class="formula lila"
+                  data-tex="1+\frac{x^{2}}{r^{2}-x^{2}}=\frac{r^{2}-x^{2}+x^{2}}{r^{2}-x^{2}}=\frac{r^{2}}{r^{2}-x^{2}}">
+                  1 + x²/(r² − x²) = r²/(r² − x²)</span>
+                La cancelación de <span class="mat">x²</span> es el centro de la
+                demostración.
+              </div>
+              <div class="paso"><b>Arme el integrando.</b>
+                <span class="formula lila"
+                  data-tex="f(x)\sqrt{1+\left[f'\right]^{2}}=\sqrt{r^{2}-x^{2}}\cdot\frac{r}{\sqrt{r^{2}-x^{2}}}=r">
+                  √(r² − x²) · r/√(r² − x²) = r</span>
+                El integrando es <b>constante</b>.
+              </div>
+              <div class="paso"><b>Integre.</b>
+                <span class="formula lila"
+                  data-tex="S=2\pi\int_{-r}^{r}r\,dx=2\pi r\left(2r\right)">
+                  S = 2π∫<sub>−r</sub><sup>r</sup>r dx = 2πr(2r)</span>
+              </div>
+            </div>
+            <div class="resultado" data-tex="S=4\pi r^{2}">
+              S = 4πr²
+            </div>
+            <div class="porque" style="margin-top:12px">
+              <b>El corolario de Arquímedes.</b> Como el integrando salió constante, el área
+              de una franja esférica depende <b>solo del ancho de la franja en
+                <span class="mat">x</span></b>, no de dónde esté. Es decir: la franja del
+              ecuador y la franja del polo, si tienen el mismo espesor horizontal, tienen
+              <em>exactamente</em> la misma área. En el polo el radio es pequeño pero la
+              superficie está muy inclinada; en el ecuador el radio es grande pero la
+              superficie es vertical. Los dos efectos se compensan perfectamente.<br><br>
+              Esta propiedad es la base de la <b>proyección cilíndrica de Lambert</b>, que
+              es la proyección cartográfica que conserva áreas, y por eso es la que se usa
+              para mapas de cobertura vegetal y de uso del suelo.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 4</span>
+          <p>La curva <span class="mat">y = x²</span> desde
+            <span class="mat">x = 0</span> hasta <span class="mat">x = 1</span> gira
+            alrededor del <b>eje y</b>. Halle el área de la superficie.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>El radio es <span class="mat">x</span>.</b> Porque el
+                giro es sobre el eje <span class="mat">y</span>.</div>
+              <div class="paso"><b>El <span class="mat">ds</span> es el de la parábola.</b>
+                <span class="mat">f′ = 2x</span>, luego
+                <span class="mat">ds = √(1 + 4x²)dx</span>.</div>
+              <div class="paso"><b>Monte la integral.</b>
+                <span class="formula lila"
+                  data-tex="S=2\pi\int_{0}^{1}x\sqrt{1+4x^{2}}\,dx">
+                  S = 2π∫<sub>0</sub><sup>1</sup>x√(1 + 4x²)dx</span>
+              </div>
+              <div class="paso"><b>Sustituya.</b> Con
+                <span class="mat">u = 1 + 4x²</span> se tiene
+                <span class="mat">du = 8x dx</span>, así que
+                <span class="mat">x dx = du/8</span>. Los límites pasan a
+                <span class="mat">u = 1</span> y <span class="mat">u = 5</span>:
+                <span class="formula lila"
+                  data-tex="S=2\pi\int_{1}^{5}\frac{\sqrt{u}}{8}\,du=\frac{\pi}{4}\left[\frac{2}{3}u^{3/2}\right]_{1}^{5}">
+                  S = 2π∫<sub>1</sub><sup>5</sup>(√u/8)du =
+                  (π/4)[(2/3)u<sup>3/2</sup>]<sub>1</sub><sup>5</sup></span>
+              </div>
+              <div class="paso"><b>Evalúe.</b>
+                <span class="mat">(π/6)(5<sup>3/2</sup> − 1) = (π/6)(5√5 − 1)</span>.</div>
+            </div>
+            <div class="resultado"
+              data-tex="S=\frac{\pi\left(5\sqrt{5}-1\right)}{6}\approx 5.3304\ \text{unidades cuadradas}">
+              S = π(5√5 − 1)/6 ≈ 5.3304 unidades cuadradas
+            </div>
+            <div class="porque" style="margin-top:12px">
+              <b>¿Por qué dio lo mismo que el ejemplo 2?</b> No es casualidad.
+              <span class="mat">y = x²</span> en <span class="mat">[0,1]</span> girando
+              sobre el eje <span class="mat">y</span>, y
+              <span class="mat">y = √x</span> en <span class="mat">[0,1]</span> girando sobre
+              el eje <span class="mat">x</span>, generan <b>la misma superficie</b>: las dos
+              curvas son inversas una de la otra, así que son la misma curva reflejada en la
+              recta <span class="mat">y = x</span>, y el giro se hace sobre el eje que
+              también se refleja. Reconocer esta simetría puede ahorrarle una integral
+              completa en un parcial.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 5</span>
+          <p>La curva <span class="mat">y = x²</span> desde
+            <span class="mat">x = 0</span> hasta <span class="mat">x = 1</span> gira
+            alrededor del <b>eje x</b>. Plantee y evalúe el área.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>Monte la integral.</b> Ahora el radio es
+                <span class="mat">f(x) = x²</span>:
+                <span class="formula lila"
+                  data-tex="S=2\pi\int_{0}^{1}x^{2}\sqrt{1+4x^{2}}\,dx">
+                  S = 2π∫<sub>0</sub><sup>1</sup>x²√(1 + 4x²)dx</span>
+              </div>
+              <div class="paso"><b>Observe la dificultad.</b> La sustitución
+                <span class="mat">u = 1 + 4x²</span> ya no funciona, porque
+                <span class="mat">x²</span> no es múltiplo de
+                <span class="mat">x dx</span>. Hay que usar sustitución hiperbólica
+                (<span class="mat">2x = senh θ</span>) o trigonométrica
+                (<span class="mat">2x = tan θ</span>), y después integrar
+                <span class="mat">sec³</span> o similares.</div>
+              <div class="paso"><b>El resultado exacto.</b>
+                <span class="formula lila"
+                  data-tex="S=\frac{\pi}{32}\left(18\sqrt{5}-\operatorname{arcsenh}2\right)=\frac{\pi}{32}\left(18\sqrt{5}-\ln\!\left(2+\sqrt{5}\right)\right)">
+                  S = (π/32)(18√5 − arcsenh 2) = (π/32)(18√5 − ln(2 + √5))</span>
+              </div>
+            </div>
+            <div class="resultado"
+              data-tex="S=\frac{\pi}{32}\left(18\sqrt{5}-\ln\!\left(2+\sqrt{5}\right)\right)\approx 3.8097\ \text{unidades cuadradas}">
+              S = (π/32)(18√5 − ln(2 + √5)) ≈ 3.8097 unidades cuadradas
+            </div>
+            <div class="porque" style="margin-top:12px">
+              <b>Un aviso que vale la pena leer.</b> Este ejercicio circula en varios
+              materiales con la respuesta <span class="mat">π/3 ≈ 1.047</span>, que es
+              <b>incorrecta</b>: viene de simplificar
+              <span class="mat">√(1 + 4x²)</span> como si fuera
+              <span class="mat">1 + 2x</span>, lo cual no es válido. Se detecta de
+              inmediato con una cota: el radio máximo de la superficie es
+              <span class="mat">f(1) = 1</span> y la longitud de la curva es
+              <span class="mat">≈ 1.479</span>, así que el área debe estar por debajo de
+              <span class="mat">2π(1)(1.479) ≈ 9.3</span> pero del orden de unas pocas
+              unidades: <span class="mat">3.81</span> es verosímil y
+              <span class="mat">1.047</span> es demasiado pequeño. <b>Acostúmbrese a acotar
+                antes de confiar en un resultado.</b>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ====================== 4. APLICACIÓN ====================== -->
+    <section>
+      <h2>4. Aplicación: impermeabilizar un sedimentador</h2>
+
+      <div class="ambiental">
+        <b>Situación.</b> Un sedimentador circular tiene paredes troncocónicas. En corte, la
+        pared sigue la recta <span class="mat">y = 1 + x/2</span> desde
+        <span class="mat">x = 0</span> hasta <span class="mat">x = 4</span>, con las medidas
+        en metros, y la superficie se genera girando esa recta alrededor del eje
+        <span class="mat">x</span> (el eje longitudinal del tanque).<br><br>
+        <b>Pregunta.</b> Si la geomembrana cuesta 48 000 pesos el metro cuadrado y se
+        considera un 8 % de desperdicio por traslapos, ¿cuánto cuesta impermeabilizar la
+        pared?
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">APLICACIÓN RESUELTA</span>
+          <p>Calcule el área de la pared y el costo de la geomembrana.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>Derive.</b>
+                <span class="mat">f′ = 1/2</span>, luego
+                <span class="mat">√(1 + 1/4) = √5/2 ≈ 1.1180</span>. Este número es el
+                <b>factor de estiramiento</b>: la lámina es 11.8 % más larga que la
+                proyección horizontal.</div>
+              <div class="paso"><b>Monte la integral.</b>
+                <span class="formula lila"
+                  data-tex="S=2\pi\int_{0}^{4}\left(1+\frac{x}{2}\right)\frac{\sqrt{5}}{2}\,dx=\pi\sqrt{5}\int_{0}^{4}\left(1+\frac{x}{2}\right)dx">
+                  S = 2π∫<sub>0</sub><sup>4</sup>(1 + x/2)(√5/2)dx =
+                  π√5∫<sub>0</sub><sup>4</sup>(1 + x/2)dx</span>
+              </div>
+              <div class="paso"><b>Integre.</b>
+                <span class="formula lila"
+                  data-tex="S=\pi\sqrt{5}\left[x+\frac{x^{2}}{4}\right]_{0}^{4}=\pi\sqrt{5}\left(4+4\right)=8\sqrt{5}\,\pi">
+                  S = π√5[x + x²/4]<sub>0</sub><sup>4</sup> = π√5(8) = 8√5π</span>
+              </div>
+              <div class="paso"><b>Numéricamente.</b>
+                <span class="mat">8√5π ≈ 56.20</span> m².</div>
+              <div class="paso"><b>Agregue el desperdicio y multiplique.</b>
+                <span class="mat">56.20 × 1.08 ≈ 60.69</span> m², y
+                <span class="mat">60.69 × 48 000 ≈ 2 913 000</span> pesos.</div>
+            </div>
+            <div class="resultado"
+              data-tex="S=8\sqrt{5}\,\pi\approx 56.20\ \mathrm{m^{2}}\;\Longrightarrow\;\text{costo}\approx \$2\,913\,000">
+              S = 8√5π ≈ 56.20 m² ⟹ costo ≈ $2 913 000
+            </div>
+            <div class="ambiental" style="margin-top:12px">
+              <b>Lectura de ingeniería.</b> Verifique con la fórmula del tronco de cono:
+              área lateral <span class="mat">= π(R + r)g</span>, con
+              <span class="mat">r = 1</span>, <span class="mat">R = 3</span> y generatriz
+              <span class="mat">g = √(4² + 2²) = 2√5</span>. Eso da
+              <span class="mat">π(4)(2√5) = 8√5π</span>. Coincide.<br><br>
+              Ahora el punto que importa: si alguien cotizara usando
+              <span class="mat">dx</span> en vez de
+              <span class="mat">ds</span>, obtendría
+              <span class="mat">2π∫(1 + x/2)dx = 16π ≈ 50.3</span> m², y faltarían unos
+              6 m² de geomembrana —cerca de <b>300 000 pesos</b> y, peor, una obra
+              detenida esperando material—. El factor
+              <span class="mat">√5/2</span> no es un detalle teórico.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="docente">
+        Buena pregunta para cerrar el capítulo completo: <em>para este mismo tanque, ¿qué
+          integral da el volumen y en qué se diferencia de la que acabamos de hacer?</em> La
+        respuesta es <span class="mat">π∫(1 + x/2)²dx</span> —cuadrado y
+        <span class="mat">dx</span>— frente a
+        <span class="mat">2π∫(1 + x/2)ds</span> —lineal y <span class="mat">ds</span>—. Que
+        el grupo pueda escribir las dos y explicar la diferencia es, en la práctica, el
+        objetivo de aprendizaje del capítulo III.
+      </div>
+    </section>
+
+    <!-- ====================== 5. ERRORES ====================== -->
+    <section>
+      <h2>5. Errores frecuentes</h2>
+
+      <div class="errores">
+        <ul>
+          <li><b>Usar <span class="mat">dx</span> en lugar de
+              <span class="mat">ds</span>.</b> Es el error estructural del tema. Siempre
+            subestima el área, y en un cono de 45° la subestima en un 29 %.</li>
+          <li><b>Elevar el radio al cuadrado.</b> La fórmula de superficie es
+            <b>lineal</b> en el radio:
+            <span class="mat">2π∫f·ds</span>, no
+            <span class="mat">π∫f²·ds</span>. El cuadrado pertenece al volumen.</li>
+          <li><b>Repartir la raíz.</b>
+            <span class="mat">√(1 + 4x²) ≠ 1 + 2x</span>. Este es el error que produce la
+            respuesta falsa <span class="mat">π/3</span> del ejemplo 5.</li>
+          <li><b>Confundir el radio al cambiar de eje.</b> Sobre el eje
+            <span class="mat">x</span> el radio es <span class="mat">f(x)</span>; sobre el
+            eje <span class="mat">y</span> es <span class="mat">x</span>. El
+            <span class="mat">ds</span> no cambia; el radio sí.</li>
+          <li><b>Olvidar que el <span class="mat">2π</span> va una sola vez.</b> Sale del
+            perímetro del anillo y no se multiplica por nada más.</li>
+          <li><b>No acotar el resultado.</b> El área está siempre entre
+            <span class="mat">2π·r<sub>mín</sub>·L</span> y
+            <span class="mat">2π·r<sub>máx</sub>·L</span>, con
+            <span class="mat">L</span> la longitud de la curva. Si su respuesta cae fuera de
+            esa horquilla, hay un error.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ====================== 6. TALLER ====================== -->
+    <section>
+      <h2>6. Para practicar</h2>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 1</span>
+          <p>La recta <span class="mat">y = x</span> desde
+            <span class="mat">x = 0</span> hasta <span class="mat">x = 2</span> gira
+            alrededor del eje <span class="mat">x</span>. Halle el área y verifique con la
+            fórmula del cono.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <div class="resultado"
+              data-tex="S=2\pi\sqrt{2}\int_{0}^{2}x\,dx=2\pi\sqrt{2}\left[\frac{x^{2}}{2}\right]_{0}^{2}=4\sqrt{2}\,\pi\approx 17.77">
+              S = 2π∫<sub>0</sub><sup>2</sup>x√2 dx = 4√2π ≈ 17.77
+            </div>
+            <p>Cono de radio 2 y altura 2: generatriz
+              <span class="mat">g = 2√2</span>, y
+              <span class="mat">πrg = π(2)(2√2) = 4√2π</span>. Coincide.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 2</span>
+          <p>La curva <span class="mat">y = x³</span> desde
+            <span class="mat">x = 0</span> hasta <span class="mat">x = 1</span> gira
+            alrededor del <b>eje y</b>.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <p>Radio <span class="mat">x</span> y
+              <span class="mat">ds = √(1 + 9x⁴)dx</span>. La sustitución
+              <span class="mat">u = 1 + 9x⁴</span> <b>no</b> sirve, porque faltaría
+              <span class="mat">x³</span>; pero <span class="mat">u = 3x²</span> sí:
+              entonces <span class="mat">du = 6x dx</span> y la integral se vuelve
+              <span class="mat">(π/3)∫<sub>0</sub><sup>3</sup>√(1 + u²)du</span>, que es la
+              integral estándar de sustitución hiperbólica.</p>
+            <div class="resultado"
+              data-tex="S=2\pi\int_{0}^{1}x\sqrt{1+9x^{4}}\,dx=\frac{\pi}{6}\left(3\sqrt{10}+\operatorname{arcsenh}3\right)\approx 5.9194">
+              S = 2π∫<sub>0</sub><sup>1</sup>x√(1 + 9x⁴)dx =
+              (π/6)(3√10 + arcsenh 3) ≈ 5.9194
+            </div>
+            <p>La lección es que la sustitución correcta no siempre es la obvia: hay que
+              mirar qué potencia de <span class="mat">x</span> acompaña al diferencial.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 3</span>
+          <p>La curva <span class="mat">y = x³</span> desde
+            <span class="mat">x = 0</span> hasta <span class="mat">x = 1</span> gira
+            alrededor del <b>eje x</b>.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <p>Radio <span class="mat">x³</span>. Con
+              <span class="mat">u = 1 + 9x⁴</span>,
+              <span class="mat">du = 36x³dx</span>: esta vez sí encaja.</p>
+            <div class="resultado"
+              data-tex="S=2\pi\int_{0}^{1}x^{3}\sqrt{1+9x^{4}}\,dx=\frac{\pi}{18}\left[\frac{2}{3}u^{3/2}\right]_{1}^{10}=\frac{\pi\left(10\sqrt{10}-1\right)}{27}\approx 3.5631">
+              S = 2π∫<sub>0</sub><sup>1</sup>x³√(1 + 9x⁴)dx = π(10√10 − 1)/27 ≈ 3.5631
+            </div>
+            <p>Compare con el ejercicio 2: la misma curva y el mismo
+              <span class="mat">ds</span>, pero distinto eje, y por tanto distinto radio y
+              distinta sustitución. Las áreas son diferentes
+              (<span class="mat">5.92</span> contra <span class="mat">3.56</span>), lo cual
+              tiene sentido: girando sobre el eje <span class="mat">y</span> la curva barre
+              radios más grandes.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 4</span>
+          <p>Halle el área de la franja esférica de una esfera de radio 2 comprendida entre
+            <span class="mat">x = 0</span> y <span class="mat">x = 1</span>. Interprete el
+            resultado.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <p>Por el ejemplo 3, el integrando es la constante
+              <span class="mat">r = 2</span>.</p>
+            <div class="resultado"
+              data-tex="S=2\pi\int_{0}^{1}2\,dx=4\pi\approx 12.57">
+              S = 2π∫<sub>0</sub><sup>1</sup>2 dx = 4π ≈ 12.57
+            </div>
+            <p>El área total de la esfera es
+              <span class="mat">4π(2²) = 16π</span>, y esta franja de 1 unidad de ancho mide
+              <span class="mat">4π</span>: exactamente <b>un cuarto</b> del total, igual que
+              la razón entre 1 y el diámetro 4. Eso es el corolario de Arquímedes en
+              acción.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 5</span>
+          <p>Un tanque elevado tiene cúpula semiesférica de 3 m de radio. Hay que pintarla
+            con dos capas, y el rendimiento de la pintura es de 6 m² por galón. ¿Cuántos
+            galones se necesitan?</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <p>Media esfera: <span class="mat">S = (1/2)(4πr²) = 2π(9) = 18π ≈ 56.55</span>
+              m².</p>
+            <div class="resultado"
+              data-tex="\text{galones}=\frac{2\times 56.55}{6}\approx 18.85\;\Longrightarrow\;19\ \text{galones}">
+              galones = 2(56.55)/6 ≈ 18.85 ⟹ 19 galones
+            </div>
+            <div class="ambiental" style="margin-top:12px">
+              En la práctica se compran 20 galones, porque la pintura viene en unidades
+              enteras y conviene margen. Pero el cálculo tiene que partir del área
+              <em>real</em> de la superficie curva, no del área del círculo de la base
+              (<span class="mat">9π ≈ 28.3</span> m²), que es la mitad.
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section>
+      <h2>7. Cierre del capítulo</h2>
+      <div class="caja">
+        <p>Con esto queda cerrado el capítulo III. Los seis temas eran
+          <b>un solo método</b> aplicado a seis pedazos distintos. Si al enfrentar un
+          problema nuevo usted logra contestar «¿cómo es el pedazo y cuánto mide?», la
+          integral se escribe sola.</p>
+        <p>La tabla de los seis pedazos está en el
+          <a href="index.html" style="color:var(--morado);font-weight:600">índice del
+            capítulo</a>, y vale la pena revisarla antes del parcial.</p>
+      </div>
+    </section>
+
+    <div class="navtemas">
+      <a href="05-longitud-de-curva.html"><span>Tema anterior 3.5</span>← Longitud de una
+        curva</a>
+      <a class="der" href="index.html"><span>Volver al</span>Índice del capítulo →</a>
+    </div>
+
+    <div class="pie">
+      Universidad del Cauca · Facultad de Ingeniería Civil · Ingeniería Ambiental<br>
+      Cálculo II · Capítulo III · Material de clase elaborado por Diana Méndez Astudillo
+    </div>
+
+  </div>
+
+  <script src="assets/labs.js"></script>
+  <script>
+    labRevolucion('labSup1', {
+      modo: 'superficie',
+      etiquetaEjemplos: 'Curva generadora',
+      cap2: 'Curva generadora en el plano',
+      cap3: 'Superficie generada (lámina)',
+      barrInicial: 300,
+      ejemplos: [
+        {
+          nombre: 'y = x/2 (cono)', R: x => x / 2, r: null,
+          a: 0, b: 4, ymax: 2.3, tR: 'x/2', exacto: '4√5π ≈ 28.10'
+        },
+        {
+          nombre: '√x', R: x => Math.sqrt(x), r: null,
+          a: 0, b: 1, ymax: 1.2, tR: '√x', exacto: 'π(5√5 − 1)/6 ≈ 5.3304'
+        },
+        {
+          nombre: 'Semicírculo (esfera)', R: x => Math.sqrt(4 - x * x), r: null,
+          a: -2, b: 2, ymax: 2.3, tR: '√(4 − x²)',
+          exacto: '16π ≈ 50.27 — aquí el cálculo numérico pierde algo de precisión porque la pendiente se vuelve infinita en los polos'
+        },
+        {
+          nombre: 'y = 1 + x/2 (tronco)', R: x => 1 + x / 2, r: null,
+          a: 0, b: 4, ymax: 3.3, tR: '1 + x/2', exacto: '8√5π ≈ 56.20'
+        },
+        {
+          nombre: 'x³', R: x => x * x * x, r: null,
+          a: 0, b: 1, ymax: 1.2, tR: 'x³', exacto: 'π(10√10 − 1)/27 ≈ 3.5631'
+        },
+        {
+          nombre: 'x²', R: x => x * x, r: null,
+          a: 0, b: 1, ymax: 1.2, tR: 'x²', exacto: '≈ 3.8097'
+        }
+      ]
+    });
+  </script>
+</body>
+
+</html>

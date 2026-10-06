@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Longitud de una curva · Cálculo II</title>
+
+  <!-- KaTeX: si hay internet, las fórmulas se ven como en LaTeX.
+     Si no carga, queda el HTML de respaldo y la página funciona igual. -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <link rel="stylesheet" href="assets/estilo.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="wrap">
+      <div class="titulos">
+        <div class="logo">
+          <img src="assets/logo.jpg" alt="Universidad del Cauca">
+        </div>
+        <div>
+          <h1>LONGITUD DE UNA CURVA</h1>
+          <div class="sub">Capítulo III · Tema 3.5</div>
+        </div>
+      </div>
+      <div class="barra">
+        <div class="curso">
+          Facultad de Ingeniería Civil · Ingeniería Ambiental<br>
+          Cálculo II &nbsp;·&nbsp; Docente: Diana Méndez Astudillo</div>
+        <div class="toggle" id="btnDocente">
+          <span class="punto"></span><span id="txtDocente">Activar modo docente</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+
+    <div class="migas"><a href="index.html">Capítulo III</a> &nbsp;›&nbsp; 3.5 Longitud de
+      una curva</div>
+
+    <!-- ====================== 1. LA IDEA ====================== -->
+    <section>
+      <h2>1. La idea: enderezar la curva a pedacitos</h2>
+
+      <div class="caja">
+        <p>Una curva no se puede medir con una regla, pero <b>un segmento de recta sí</b>.
+          Entonces: aproximamos la curva por una <b>poligonal</b> —una cadena de
+          segmentitos—, medimos cada segmento con Pitágoras, y sumamos.</p>
+        <p>Un segmento que avanza <span class="mat">Δx</span> en horizontal y
+          <span class="mat">Δy</span> en vertical mide:</p>
+        <div class="formula">
+          <div class="tex-display"
+            data-tex="\Delta s=\sqrt{\left(\Delta x\right)^{2}+\left(\Delta y\right)^{2}}">
+            Δs = √((Δx)² + (Δy)²)
+          </div>
+        </div>
+        <p>Factorizando <span class="mat">Δx</span> dentro de la raíz:</p>
+        <div class="formula">
+          <div class="tex-display"
+            data-tex="\Delta s=\sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^{2}}\;\Delta x">
+            Δs = √(1 + (Δy/Δx)²) Δx
+          </div>
+        </div>
+        <p>Y al hacer los segmentos infinitamente pequeños, el cociente
+          <span class="mat">Δy/Δx</span> se convierte en la derivada. Nace el
+          <b>diferencial de arco</b>:</p>
+        <div class="formula fucsia"
+          data-tex="ds=\sqrt{1+\left[f'(x)\right]^{2}}\,dx\qquad\Longrightarrow\qquad L=\int_{a}^{b}\sqrt{1+\left[f'(x)\right]^{2}}\,dx">
+          ds = √(1 + [f′(x)]²) dx &nbsp;⟹&nbsp;
+          L = ∫<sub>a</sub><sup>b</sup>√(1 + [f′(x)]²) dx
+        </div>
+        <p>Si la curva está dada como <span class="mat">x = g(y)</span>, la fórmula es la
+          misma rotada:</p>
+        <div class="formula lila"
+          data-tex="L=\int_{c}^{d}\sqrt{1+\left[g'(y)\right]^{2}}\,dy">
+          L = ∫<sub>c</sub><sup>d</sup>√(1 + [g′(y)]²) dy
+        </div>
+      </div>
+
+      <div class="porque">
+        <b>¿Por qué el <span class="mat">1</span> dentro de la raíz?</b> Porque el
+        <span class="mat">1</span> es el <span class="mat">(Δx)²</span> factorizado: siempre
+        se avanza algo en horizontal. Si la curva fuera plana
+        (<span class="mat">f′ = 0</span>), el integrando valdría exactamente 1 y la longitud
+        sería <span class="mat">b − a</span>, que es lo correcto para un segmento
+        horizontal. Ese caso es el chequeo de sensatez de la fórmula.
+      </div>
+
+      <div class="docente">
+        Vale la pena hacer la aproximación <em>a mano</em> antes de la fórmula: pida medir la
+        curva con dos segmentos, luego con cuatro, luego con ocho. El grupo verá que la
+        poligonal siempre se queda <b>por debajo</b> de la longitud real —la recta es el
+        camino más corto entre dos puntos— y que se acerca por abajo. Esa monotonía es
+        visible en el laboratorio de aquí abajo y convence más que cualquier demostración.
+      </div>
+
+      <!-- LABORATORIO -->
+      <div class="lab">
+        <h4>Ejemplo 1 · De la poligonal a la curva</h4>
+        <p>Suba el número de tramos y observe la última línea: la diferencia porcentual
+          entre la poligonal y la longitud exacta baja muy rápido. Con un solo tramo la
+          poligonal es la cuerda; con cuarenta ya es indistinguible de la curva.</p>
+        <div id="labArco1"></div>
+      </div>
+    </section>
+
+    <!-- ====================== 2. EL PROBLEMA PRÁCTICO ====================== -->
+    <section>
+      <h2>2. El problema práctico: esa raíz casi nunca se integra</h2>
+
+      <div class="caja">
+        <p>Aquí hay una honestidad que conviene decir desde el principio: la fórmula es
+          sencilla, pero <b>la integral resultante casi nunca tiene antiderivada
+            elemental</b>. Por ejemplo, la longitud de la parábola
+          <span class="mat">y = x²</span> exige
+          <span class="mat">∫√(1 + 4x²)dx</span>, que ya pide sustitución trigonométrica o
+          hiperbólica.</p>
+        <p>Por eso los ejercicios de esta sección están <b>diseñados</b>: las funciones se
+          escogen para que <span class="mat">1 + [f′]²</span> resulte un cuadrado perfecto.
+          Reconocer ese diseño es la mitad del trabajo.</p>
+
+        <div class="pasos">
+          <div class="paso"><b>Las dos familias que sí salen.</b><br>
+            — Funciones del tipo <span class="mat">f(x) = (2/3)x<sup>3/2</sup></span> y
+            parientes: la derivada es una raíz, y al elevarla al cuadrado queda un
+            polinomio.<br>
+            — Combinaciones como
+            <span class="mat">f(x) = x³/6 + 1/(2x)</span>: están construidas para que
+            <span class="mat">1 + [f′]²</span> sea el cuadrado de una suma.</div>
+          <div class="paso"><b>La familia hiperbólica.</b> Si
+            <span class="mat">f(x) = cosh x</span>, entonces
+            <span class="mat">f′ = senh x</span> y
+            <span class="mat">1 + senh²x = cosh²x</span> por identidad. La raíz desaparece
+            limpiamente. Esta es la razón matemática por la que los cables cuelgan en
+            catenaria y no en parábola.</div>
+          <div class="paso"><b>Lo demás se calcula numéricamente.</b> Y eso no es una
+            derrota: es lo que se hace en la práctica profesional. La integral queda
+            planteada y un método numérico la evalúa.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== 3. EJEMPLOS ====================== -->
+    <section>
+      <h2>3. Ejemplos resueltos</h2>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 1</span>
+          <p>Halle la longitud de la curva
+            <span class="mat">y = (2/3)x<sup>3/2</sup></span> desde
+            <span class="mat">x = 0</span> hasta <span class="mat">x = 3</span>.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>Derive.</b>
+                <span class="formula lila"
+                  data-tex="f'(x)=\frac{2}{3}\cdot\frac{3}{2}x^{1/2}=\sqrt{x}">
+                  f′(x) = (2/3)(3/2)x<sup>1/2</sup> = √x</span>
+              </div>
+              <div class="paso"><b>Arme el integrando.</b>
+                <span class="formula lila"
+                  data-tex="\sqrt{1+\left[f'(x)\right]^{2}}=\sqrt{1+x}">
+                  √(1 + [f′(x)]²) = √(1 + x)</span>
+                Aquí está el diseño: el cuadrado de la raíz eliminó el radical exterior.
+              </div>
+              <div class="paso"><b>Integre.</b>
+                <span class="formula lila"
+                  data-tex="L=\int_{0}^{3}\sqrt{1+x}\,dx=\left[\frac{2}{3}(1+x)^{3/2}\right]_{0}^{3}">
+                  L = ∫<sub>0</sub><sup>3</sup>√(1 + x)dx =
+                  [(2/3)(1 + x)<sup>3/2</sup>]<sub>0</sub><sup>3</sup></span>
+              </div>
+              <div class="paso"><b>Evalúe.</b> Arriba:
+                <span class="mat">(2/3)(4)<sup>3/2</sup> = (2/3)(8) = 16/3</span>. Abajo:
+                <span class="mat">(2/3)(1) = 2/3</span>.</div>
+            </div>
+            <div class="resultado"
+              data-tex="L=\frac{16}{3}-\frac{2}{3}=\frac{14}{3}\approx 4.667\ \text{unidades}">
+              L = 16/3 − 2/3 = 14/3 ≈ 4.667 unidades
+            </div>
+            <div class="porque" style="margin-top:12px">
+              <b>Chequeo.</b> La curva va del punto
+              <span class="mat">(0, 0)</span> al <span class="mat">(3, 2√3) ≈ (3,
+                3.46)</span>. La cuerda recta entre ellos mide
+              <span class="mat">√(9 + 12) = √21 ≈ 4.58</span>. La curva mide 4.667, un poco
+              más que la cuerda. Correcto: la curva nunca puede ser más corta que la recta.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 2</span>
+          <p>Halle la longitud de <span class="mat">y = x³/6 + 1/(2x)</span> desde
+            <span class="mat">x = 1</span> hasta <span class="mat">x = 2</span>.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>Derive.</b>
+                <span class="formula lila"
+                  data-tex="f'(x)=\frac{x^{2}}{2}-\frac{1}{2x^{2}}">
+                  f′(x) = x²/2 − 1/(2x²)</span>
+              </div>
+              <div class="paso"><b>Eleve al cuadrado y sume 1.</b>
+                <span class="formula lila"
+                  data-tex="\left[f'\right]^{2}=\frac{x^{4}}{4}-\frac{1}{2}+\frac{1}{4x^{4}}">
+                  [f′]² = x⁴/4 − 1/2 + 1/(4x⁴)</span>
+                El <span class="mat">−1/2</span> del término cruzado es lo que hace la
+                magia: al sumar 1 queda
+                <span class="mat">+1/2</span>.
+              </div>
+              <div class="paso"><b>Reconozca el cuadrado perfecto.</b>
+                <span class="formula lila"
+                  data-tex="1+\left[f'\right]^{2}=\frac{x^{4}}{4}+\frac{1}{2}+\frac{1}{4x^{4}}=\left(\frac{x^{2}}{2}+\frac{1}{2x^{2}}\right)^{2}">
+                  1 + [f′]² = x⁴/4 + 1/2 + 1/(4x⁴) = (x²/2 + 1/(2x²))²</span>
+                Es la misma expresión de la derivada pero con un <b>más</b> en lugar del
+                menos. Ese es el patrón de esta familia de ejercicios.
+              </div>
+              <div class="paso"><b>La raíz se va.</b>
+                <span class="formula lila"
+                  data-tex="L=\int_{1}^{2}\left(\frac{x^{2}}{2}+\frac{1}{2x^{2}}\right)dx=\left[\frac{x^{3}}{6}-\frac{1}{2x}\right]_{1}^{2}">
+                  L = ∫<sub>1</sub><sup>2</sup>(x²/2 + 1/(2x²))dx =
+                  [x³/6 − 1/(2x)]<sub>1</sub><sup>2</sup></span>
+              </div>
+              <div class="paso"><b>Evalúe.</b> Arriba:
+                <span class="mat">8/6 − 1/4 = 4/3 − 1/4 = 13/12</span>. Abajo:
+                <span class="mat">1/6 − 1/2 = −1/3</span>. Resta:
+                <span class="mat">13/12 + 4/12 = 17/12</span>.</div>
+            </div>
+            <div class="resultado"
+              data-tex="L=\frac{17}{12}\approx 1.4167\ \text{unidades}">
+              L = 17/12 ≈ 1.4167 unidades
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 3</span>
+          <p>Halle la longitud de <span class="mat">y = cosh x</span> desde
+            <span class="mat">x = 0</span> hasta <span class="mat">x = 1</span>.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>Recuerde las hiperbólicas.</b>
+                <span class="formula lila"
+                  data-tex="\cosh x=\frac{e^{x}+e^{-x}}{2},\qquad \operatorname{senh}x=\frac{e^{x}-e^{-x}}{2},\qquad \cosh^{2}x-\operatorname{senh}^{2}x=1">
+                  cosh x = (eˣ + e⁻ˣ)/2, &nbsp; senh x = (eˣ − e⁻ˣ)/2, &nbsp;
+                  cosh²x − senh²x = 1</span>
+              </div>
+              <div class="paso"><b>Derive y sustituya.</b>
+                <span class="mat">f′ = senh x</span>, y por la identidad
+                <span class="mat">1 + senh²x = cosh²x</span>, de donde
+                <span class="formula lila"
+                  data-tex="\sqrt{1+\operatorname{senh}^{2}x}=\cosh x">
+                  √(1 + senh²x) = cosh x</span>
+                (positivo, porque el coseno hiperbólico nunca es negativo).
+              </div>
+              <div class="paso"><b>Integre.</b>
+                <span class="formula lila"
+                  data-tex="L=\int_{0}^{1}\cosh x\,dx=\left[\operatorname{senh}x\right]_{0}^{1}=\operatorname{senh}1">
+                  L = ∫<sub>0</sub><sup>1</sup>cosh x dx =
+                  [senh x]<sub>0</sub><sup>1</sup> = senh 1</span>
+              </div>
+            </div>
+            <div class="resultado"
+              data-tex="L=\operatorname{senh}1=\frac{e-e^{-1}}{2}\approx 1.1752\ \text{unidades}">
+              L = senh 1 = (e − e⁻¹)/2 ≈ 1.1752 unidades
+            </div>
+            <div class="porque" style="margin-top:12px">
+              <b>Por qué esto es importante.</b> La catenaria es la <em>única</em> familia de
+              curvas cuya longitud de arco se integra exactamente sin trucos, porque la
+              identidad hiperbólica cancela la raíz de forma natural. Y resulta que es
+              también la forma que adopta un cable flexible colgando bajo su propio peso.
+              Esas dos cosas están relacionadas: la ecuación diferencial del cable produce
+              justamente el coseno hiperbólico.
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ====================== 4. APLICACIÓN ====================== -->
+    <section>
+      <h2>4. Aplicación: longitud de un cable en catenaria</h2>
+
+      <div class="ambiental">
+        <b>Situación.</b> Un cable de acero sostiene una línea de conducción que cruza una
+        quebrada. El cable cuelga entre dos torres separadas <b>180 m</b> y su forma es la
+        catenaria
+        <span class="mat">y = 120 cosh(x/120)</span>, con <span class="mat">x</span> medido
+        en metros desde el punto más bajo (es decir, <span class="mat">x</span> va de
+        <span class="mat">−90</span> a <span class="mat">90</span>).<br><br>
+        <b>Pregunta.</b> ¿Cuántos metros de cable hay que comprar?
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">APLICACIÓN RESUELTA</span>
+          <p>Calcule la longitud del cable y compárela con la distancia entre torres.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>Derive.</b>
+                <span class="formula lila"
+                  data-tex="y=120\cosh\!\left(\frac{x}{120}\right)\;\Longrightarrow\;y'=120\cdot\frac{1}{120}\operatorname{senh}\!\left(\frac{x}{120}\right)=\operatorname{senh}\!\left(\frac{x}{120}\right)">
+                  y = 120 cosh(x/120) ⟹ y′ = senh(x/120)</span>
+                La regla de la cadena cancela el 120: por eso la constante se escoge así.
+              </div>
+              <div class="paso"><b>Use la identidad.</b>
+                <span class="formula lila"
+                  data-tex="\sqrt{1+\operatorname{senh}^{2}\!\left(\frac{x}{120}\right)}=\cosh\!\left(\frac{x}{120}\right)">
+                  √(1 + senh²(x/120)) = cosh(x/120)</span>
+              </div>
+              <div class="paso"><b>Integre aprovechando la simetría.</b> El integrando es
+                par, así que se integra de 0 a 90 y se duplica:
+                <span class="formula lila"
+                  data-tex="L=2\int_{0}^{90}\cosh\!\left(\frac{x}{120}\right)dx=2\cdot 120\left[\operatorname{senh}\!\left(\frac{x}{120}\right)\right]_{0}^{90}">
+                  L = 2∫<sub>0</sub><sup>90</sup>cosh(x/120)dx =
+                  240[senh(x/120)]<sub>0</sub><sup>90</sup></span>
+              </div>
+              <div class="paso"><b>Evalúe.</b>
+                <span class="mat">90/120 = 0.75</span>, y
+                <span class="mat">senh(0.75) = (e<sup>0.75</sup> −
+                  e<sup>−0.75</sup>)/2 = 0.822317</span>.</div>
+            </div>
+            <div class="resultado"
+              data-tex="L=240\operatorname{senh}(0.75)\approx 197.36\ \mathrm{m}">
+              L = 240 senh(0.75) ≈ 197.36 m
+            </div>
+            <div class="ambiental" style="margin-top:12px">
+              <b>Lectura de ingeniería.</b> Los 180 m de separación entre torres se
+              convirtieron en 197.36 m de cable: un <b>9.6 % más</b>. Ese exceso se llama
+              <em>sobrelongitud por flecha</em> y es exactamente lo que hay que presupuestar
+              de más. La flecha, es decir cuánto baja el cable en el centro, es
+              <span class="mat">120 cosh(0.75) − 120 = 120(1.2947) − 120 ≈ 35.4</span> m. Si
+              se tensara más el cable, la flecha bajaría y la longitud se acercaría a 180 m,
+              pero la tensión en los anclajes subiría: ese es el compromiso de diseño de
+              toda línea aérea.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="docente">
+        <b>Una nota de precisión numérica.</b> El valor correcto es
+        <span class="mat">senh(0.75) = 0.8223167…</span>, que da
+        <span class="mat">L = 197.356</span> m. En varios textos y presentaciones circula el
+        valor <span class="mat">197.31</span> m, que viene de redondear
+        <span class="mat">senh(0.75)</span> a <span class="mat">0.82211</span> —un error en
+        la cuarta cifra decimal—. En este problema la diferencia es de apenas 5 cm y no
+        cambia nada; pero conviene usar el valor correcto en el material, porque el grupo
+        verifica con calculadora y la discrepancia genera desconfianza en el resto de los
+        números. Si usted tiene material anterior con 197.31, vale la pena corregirlo.
+      </div>
+    </section>
+
+    <!-- ====================== 5. ERRORES ====================== -->
+    <section>
+      <h2>5. Errores frecuentes</h2>
+
+      <div class="errores">
+        <ul>
+          <li><b>Olvidar el 1.</b>
+            <span class="mat">∫√([f′]²)dx = ∫|f′|dx</span> no es la longitud de arco: es la
+            variación total de la función. Sin el 1 la fórmula mide solo el ascenso
+            vertical.</li>
+          <li><b>Elevar al cuadrado la función en vez de la derivada.</b> En la raíz va
+            <span class="mat">[f′(x)]²</span>, no <span class="mat">[f(x)]²</span>. Este
+            error confunde la fórmula de longitud con la de discos.</li>
+          <li><b>Repartir la raíz sobre la suma.</b>
+            <span class="mat">√(1 + u²) ≠ 1 + u</span>. Es el error algebraico más frecuente
+            de toda la sección.</li>
+          <li><b>Sacar la raíz de un cuadrado sin pensar en el signo.</b>
+            <span class="mat">√(u²) = |u|</span>. En la mayoría de los ejercicios
+            <span class="mat">u > 0</span> en el intervalo y no pasa nada, pero hay que
+            verificarlo, no suponerlo.</li>
+          <li><b>Integrar una raíz que no se simplificó.</b> Si
+            <span class="mat">1 + [f′]²</span> no es un cuadrado perfecto, ningún truco
+            algebraico va a sacar la raíz. En ese punto toca sustitución trigonométrica o
+            método numérico.</li>
+          <li><b>Obtener una longitud menor que la cuerda.</b> Es imposible. Si pasa, hay un
+            error: la recta es siempre el camino más corto.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ====================== 6. TALLER ====================== -->
+    <section>
+      <h2>6. Para practicar</h2>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 1</span>
+          <p>Longitud de <span class="mat">y = 2x + 1</span> desde
+            <span class="mat">x = 0</span> hasta <span class="mat">x = 3</span>. Verifique
+            con Pitágoras.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <div class="resultado"
+              data-tex="L=\int_{0}^{3}\sqrt{1+4}\,dx=3\sqrt{5}\approx 6.708">
+              L = ∫<sub>0</sub><sup>3</sup>√5 dx = 3√5 ≈ 6.708
+            </div>
+            <p>El segmento va de <span class="mat">(0, 1)</span> a
+              <span class="mat">(3, 7)</span>: avanza 3 en horizontal y 6 en vertical, luego
+              mide <span class="mat">√(9 + 36) = √45 = 3√5</span>. Coincide, como debía:
+              para una recta la fórmula de longitud de arco <em>es</em> Pitágoras.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 2</span>
+          <p>Longitud de <span class="mat">y = (2/3)(x + 1)<sup>3/2</sup></span> desde
+            <span class="mat">x = 0</span> hasta <span class="mat">x = 3</span>.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <p><span class="mat">f′ = √(x + 1)</span>, luego
+              <span class="mat">√(1 + [f′]²) = √(x + 2)</span>.</p>
+            <div class="resultado"
+              data-tex="L=\int_{0}^{3}\sqrt{x+2}\,dx=\left[\frac{2}{3}(x+2)^{3/2}\right]_{0}^{3}=\frac{2}{3}\left(5\sqrt{5}-2\sqrt{2}\right)\approx 5.569">
+              L = ∫<sub>0</sub><sup>3</sup>√(x + 2)dx = (2/3)(5√5 − 2√2) ≈ 5.569
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 3</span>
+          <p>Longitud de <span class="mat">y = x⁴/8 + 1/(4x²)</span> desde
+            <span class="mat">x = 1</span> hasta <span class="mat">x = 2</span>.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <p><span class="mat">f′ = x³/2 − 1/(2x³)</span>, y
+              <span class="mat">1 + [f′]² = (x³/2 + 1/(2x³))²</span>: el mismo patrón del
+              ejemplo 2.</p>
+            <div class="resultado"
+              data-tex="L=\int_{1}^{2}\left(\frac{x^{3}}{2}+\frac{1}{2x^{3}}\right)dx=\left[\frac{x^{4}}{8}-\frac{1}{4x^{2}}\right]_{1}^{2}=\frac{33}{16}=2.0625">
+              L = ∫<sub>1</sub><sup>2</sup>(x³/2 + 1/(2x³))dx =
+              [x⁴/8 − 1/(4x²)]<sub>1</sub><sup>2</sup> = 33/16 = 2.0625
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 4</span>
+          <p>Plantee la integral que da la longitud de
+            <span class="mat">y = x²</span> entre <span class="mat">x = 0</span> y
+            <span class="mat">x = 1</span>. No la resuelva: solo plantéela y estime su valor
+            con la poligonal de cuatro tramos del laboratorio.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <div class="resultado"
+              data-tex="L=\int_{0}^{1}\sqrt{1+4x^{2}}\,dx=\frac{\sqrt{5}}{2}+\frac{1}{4}\ln\!\left(2+\sqrt{5}\right)\approx 1.4789">
+              L = ∫<sub>0</sub><sup>1</sup>√(1 + 4x²)dx =
+              √5/2 + (1/4)ln(2 + √5) ≈ 1.4789
+            </div>
+            <p>La forma cerrada requiere sustitución hiperbólica
+              (<span class="mat">2x = senh u</span>) o trigonométrica
+              (<span class="mat">2x = tan θ</span>). Con cuatro tramos la poligonal da
+              aproximadamente <span class="mat">1.4743</span>, un error de solo
+              <span class="mat">0.3 %</span>.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 5</span>
+          <p>Una tubería de conducción sigue el perfil del terreno dado por
+            <span class="mat">y = (2/3)x<sup>3/2</sup></span>, con
+            <span class="mat">x</span> e <span class="mat">y</span> en decámetros (1 dam =
+            10 m), desde <span class="mat">x = 0</span> hasta
+            <span class="mat">x = 8</span>. Si la tubería cuesta 95 000 pesos el metro,
+            ¿cuánto vale la conducción?</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <p>Mismo integrando del ejemplo 1:</p>
+            <div class="resultado"
+              data-tex="L=\int_{0}^{8}\sqrt{1+x}\,dx=\left[\frac{2}{3}(1+x)^{3/2}\right]_{0}^{8}=\frac{2}{3}\left(27-1\right)=\frac{52}{3}\ \mathrm{dam}">
+              L = ∫<sub>0</sub><sup>8</sup>√(1 + x)dx = (2/3)(27 − 1) = 52/3 dam
+            </div>
+            <p><span class="mat">52/3 dam ≈ 17.33 dam = 173.3 m</span>. El costo es
+              <span class="mat">173.3 × 95 000 ≈ 16 467 000</span> pesos.</p>
+            <div class="ambiental" style="margin-top:12px">
+              La distancia horizontal era de 80 m, pero la tubería mide 173.3 m: más del
+              doble. Presupuestar con la distancia en planta en lugar de la longitud real
+              sobre el terreno es un error clásico y caro en proyectos de conducción en
+              topografía quebrada, que es justamente la del Cauca.
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <div class="navtemas">
+      <a href="04-secciones-transversales.html"><span>Tema anterior 3.4</span>← Secciones
+        transversales</a>
+      <a class="der" href="06-superficies-revolucion.html"><span>Tema siguiente 3.6</span>Superficies
+        de revolución →</a>
+    </div>
+
+    <div class="pie">
+      Universidad del Cauca · Facultad de Ingeniería Civil · Ingeniería Ambiental<br>
+      Cálculo II · Capítulo III · Material de clase elaborado por Diana Méndez Astudillo
+    </div>
+
+  </div>
+
+  <script src="assets/labs.js"></script>
+  <script>
+    labArco('labArco1', {
+      ejemplos: [
+        {
+          nombre: '(2/3)x^(3/2)', f: x => 2 / 3 * Math.pow(x, 1.5),
+          a: 0, b: 3, ymin: 0, ymax: 4, tf: '(2/3)x^(3/2)', exacto: '14/3'
+        },
+        {
+          nombre: 'x³/6 + 1/(2x)', f: x => x * x * x / 6 + 1 / (2 * x),
+          a: 1, b: 2, ymin: 0, ymax: 1.8, tf: 'x³/6 + 1/(2x)', exacto: '17/12'
+        },
+        {
+          nombre: 'cosh x', f: x => Math.cosh(x),
+          a: 0, b: 1, ymin: 0, ymax: 1.8, tf: 'cosh x', exacto: 'senh 1 ≈ 1.1752'
+        },
+        {
+          nombre: 'Catenaria del cable', f: x => 120 * Math.cosh(x / 120),
+          a: -90, b: 90, ymin: 100, ymax: 165, tf: '120 cosh(x/120)',
+          exacto: '240 senh(0.75) ≈ 197.356'
+        },
+        {
+          nombre: 'x²', f: x => x * x,
+          a: 0, b: 1, ymin: 0, ymax: 1.2, tf: 'x²', exacto: '≈ 1.4789'
+        },
+        {
+          nombre: 'sen x', f: x => Math.sin(x),
+          a: 0, b: Math.PI, ymin: 0, ymax: 1.25, tf: 'sen x', exacto: '≈ 3.8202'
+        },
+        {
+          nombre: '2x + 1 (recta)', f: x => 2 * x + 1,
+          a: 0, b: 3, ymin: 0, ymax: 7.6, tf: '2x + 1', exacto: '3√5 ≈ 6.7082'
+        }
+      ]
+    });
+  </script>
+</body>
+
+</html>

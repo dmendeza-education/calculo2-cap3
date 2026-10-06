@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cáscaras cilíndricas · Cálculo II</title>
+
+  <!-- KaTeX: si hay internet, las fórmulas se ven como en LaTeX.
+     Si no carga, queda el HTML de respaldo y la página funciona igual. -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <link rel="stylesheet" href="assets/estilo.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="wrap">
+      <div class="titulos">
+        <div class="logo">
+          <img src="assets/logo.jpg" alt="Universidad del Cauca">
+        </div>
+        <div>
+          <h1>MÉTODO DE CÁSCARAS CILÍNDRICAS</h1>
+          <div class="sub">Capítulo III · Tema 3.3</div>
+        </div>
+      </div>
+      <div class="barra">
+        <div class="curso">
+          Facultad de Ingeniería Civil · Ingeniería Ambiental<br>
+          Cálculo II &nbsp;·&nbsp; Docente: Diana Méndez Astudillo</div>
+        <div class="toggle" id="btnDocente">
+          <span class="punto"></span><span id="txtDocente">Activar modo docente</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+
+    <div class="migas"><a href="index.html">Capítulo III</a> &nbsp;›&nbsp; 3.3 Cáscaras
+      cilíndricas</div>
+
+    <!-- ====================== 1. LA IDEA ====================== -->
+    <section>
+      <h2>1. La idea: cortar paralelo al eje</h2>
+
+      <div class="caja">
+        <p>En discos y arandelas cortábamos <b>perpendicular</b> al eje de giro. Ahora vamos
+          a cortar <b>paralelo</b> al eje. El pedazo que resulta ya no es una rebanada plana
+          sino un <b>tubo delgado</b>: una cáscara cilíndrica.</p>
+        <p>Piense en una cebolla, o en los anillos de un árbol. El sólido se arma como una
+          colección de tubos encajados uno dentro del otro.</p>
+        <div class="formula">
+          Volumen de una cáscara &nbsp;=&nbsp; (perímetro) × (altura) × (grosor)
+          <div class="tex-display" data-tex="dV=2\pi\,p(x)\,h(x)\,dx" style="margin-top:10px">
+            dV = 2<span class="mat">π p(x) h(x) dx</span>
+          </div>
+        </div>
+        <p>Donde <span class="mat">p(x)</span> es la <b>distancia de la cáscara al eje de
+            giro</b> (su radio) y <span class="mat">h(x)</span> es su <b>altura</b>.</p>
+        <div class="formula fucsia" data-tex="V=2\pi\int_{a}^{b}p(x)\,h(x)\,dx">
+          V = 2π∫<sub>a</sub><sup>b</sup>p(x) h(x) dx
+        </div>
+      </div>
+
+      <div class="porque">
+        <b>¿De dónde sale el <span class="mat">2π</span>?</b> Imagine que corta el tubo a lo
+        largo y lo desenrolla sobre la mesa. Queda una lámina rectangular: de largo el
+        perímetro del tubo, <span class="mat">2πp</span>; de alto, la altura
+        <span class="mat">h</span>; y de espesor, el grosor <span class="mat">dx</span>.
+        Multiplicando las tres medidas sale <span class="mat">2πph·dx</span>. El
+        <span class="mat">2π</span> es simplemente el perímetro de una circunferencia: no es
+        una constante misteriosa, es la longitud que el tubo tenía enrollada.
+      </div>
+
+      <div class="docente">
+        Vale mucho la pena traer una cebolla o un rollo de papel de cocina a la clase y
+        desenrollar un tramo. El <span class="mat">2π</span> deja de ser una fórmula que se
+        memoriza. También funciona enrollar una hoja de papel: el área de la hoja es el
+        producto de sus lados, y al enrollarla uno de esos lados pasa a ser el perímetro.
+      </div>
+
+      <!-- LABORATORIO -->
+      <div class="lab">
+        <h4>Ejemplo 1 · Cinco regiones, una cáscara que se mueve</h4>
+        <p>Deslice la cáscara y observe las dos lecturas: el radio <span class="mat">p</span>
+          (que se mide hasta el eje punteado) y la altura <span class="mat">h</span>. En la
+          vista de la derecha el tubo resaltado es el pedazo que la integral está sumando.
+        </p>
+        <div id="labCas1"></div>
+      </div>
+    </section>
+
+    <!-- ====================== 2. CUÁNDO USARLO ====================== -->
+    <section>
+      <h2>2. ¿Cuándo cáscaras y cuándo discos?</h2>
+
+      <div class="caja">
+        <p>Los dos métodos siempre dan el mismo volumen. La pregunta no es cuál es correcto
+          sino cuál es <b>más cómodo</b>, y eso lo decide una sola cosa: <b>si hay que
+            despejar o no</b>.</p>
+
+        <div class="pasos">
+          <div class="paso"><b>Giro sobre el eje <span class="mat">y</span>, función dada
+              como <span class="mat">y = f(x)</span>.</b> Con cáscaras se usa tal como está:
+            <span class="mat">p = x</span>, <span class="mat">h = f(x)</span>. Con discos
+            habría que despejar <span class="mat">x = g(y)</span>. <b>Gana
+              cáscaras.</b></div>
+          <div class="paso"><b>Giro sobre el eje <span class="mat">x</span>, función dada
+              como <span class="mat">y = f(x)</span>.</b> Con discos se usa tal como está.
+            <b>Gana discos.</b></div>
+          <div class="paso"><b>La función no se puede despejar.</b> Casos como
+            <span class="mat">y = x·sen x</span> o
+            <span class="mat">y = x³ + x</span> girando sobre el eje
+            <span class="mat">y</span>: despejar es imposible en términos elementales, así
+            que cáscaras no es la opción cómoda, es la <b>única</b>.</div>
+        </div>
+
+        <p>Regla de bolsillo: <b>la rebanada debe ser paralela al eje de giro para cáscaras,
+            y perpendicular para discos</b>. Elija la orientación que no obligue a
+          despejar.</p>
+      </div>
+
+      <div class="porque">
+        <b>Un caso donde la diferencia es brutal.</b> La región bajo
+        <span class="mat">y = x·sen x</span> en <span class="mat">[0, π]</span> girando
+        sobre el eje <span class="mat">y</span>. Con cáscaras:
+        <span class="mat">V = 2π∫<sub>0</sub><sup>π</sup>x·(x sen x)dx</span>, que sale con
+        integración por partes aplicada dos veces. Con discos habría que despejar
+        <span class="mat">x</span> de <span class="mat">y = x sen x</span>, y eso no tiene
+        solución en funciones elementales. El problema no es más difícil: es que el método
+        estaba mal elegido.
+      </div>
+    </section>
+
+    <!-- ====================== 3. EJEMPLOS ====================== -->
+    <section>
+      <h2>3. Ejemplos resueltos</h2>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 1</span>
+          <p>La región bajo <span class="mat">y = x²</span> entre
+            <span class="mat">x = 0</span> y <span class="mat">x = 2</span> gira alrededor
+            del <b>eje y</b>. Halle el volumen por cáscaras.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>Identifique el radio.</b> El eje de giro es el eje
+                <span class="mat">y</span>, es decir la recta
+                <span class="mat">x = 0</span>. La distancia de la cáscara al eje es
+                <span class="mat">p(x) = x</span>.</div>
+              <div class="paso"><b>Identifique la altura.</b> La cáscara va desde el eje
+                <span class="mat">x</span> hasta la curva, así que
+                <span class="mat">h(x) = x²</span>.</div>
+              <div class="paso"><b>Monte la integral.</b>
+                <span class="formula lila"
+                  data-tex="V=2\pi\int_{0}^{2}x\cdot x^{2}\,dx=2\pi\int_{0}^{2}x^{3}\,dx">
+                  V = 2π∫<sub>0</sub><sup>2</sup>x·x² dx =
+                  2π∫<sub>0</sub><sup>2</sup>x³ dx</span>
+              </div>
+              <div class="paso"><b>Integre.</b>
+                <span class="formula lila"
+                  data-tex="V=2\pi\left[\frac{x^{4}}{4}\right]_{0}^{2}=2\pi\cdot 4">
+                  V = 2π[x⁴/4]<sub>0</sub><sup>2</sup> = 2π(4)</span>
+              </div>
+            </div>
+            <div class="resultado" data-tex="V=8\pi\approx 25.13\ \text{unidades cúbicas}">
+              V = 8π ≈ 25.13 unidades cúbicas
+            </div>
+            <div class="porque" style="margin-top:12px">
+              <b>Verifíquelo con discos.</b> Despejando,
+              <span class="mat">x = √y</span> y el sólido va de
+              <span class="mat">y = 0</span> a <span class="mat">y = 4</span>. Pero
+              ¡atención!: la región bajo la parábola, al girar sobre el eje
+              <span class="mat">y</span>, genera un sólido con hueco visto en horizontal.
+              Hay que usar arandelas con
+              <span class="mat">R = 2</span> (la recta <span class="mat">x = 2</span>) y
+              <span class="mat">r = √y</span>:
+              <span class="mat">V = π∫<sub>0</sub><sup>4</sup>(4 − y)dy = π(16 − 8) =
+                8π</span>. Mismo resultado, dos integrales distintas. Con cáscaras no hubo
+              que pensar en el hueco.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 2</span>
+          <p>La región del primer cuadrante bajo
+            <span class="mat">y = 2x − x²</span> gira alrededor del <b>eje y</b>. Halle el
+            volumen.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>Límites.</b>
+                <span class="mat">2x − x² = 0 ⟹ x(2 − x) = 0</span>, luego la región va de
+                <span class="mat">x = 0</span> a <span class="mat">x = 2</span>.</div>
+              <div class="paso"><b>Radio y altura.</b>
+                <span class="mat">p = x</span>, <span class="mat">h = 2x − x²</span>.</div>
+              <div class="paso"><b>La integral.</b>
+                <span class="formula lila"
+                  data-tex="V=2\pi\int_{0}^{2}x\left(2x-x^{2}\right)dx=2\pi\int_{0}^{2}\left(2x^{2}-x^{3}\right)dx">
+                  V = 2π∫<sub>0</sub><sup>2</sup>x(2x − x²)dx =
+                  2π∫<sub>0</sub><sup>2</sup>(2x² − x³)dx</span>
+              </div>
+              <div class="paso"><b>Integre.</b>
+                <span class="formula lila"
+                  data-tex="V=2\pi\left[\frac{2x^{3}}{3}-\frac{x^{4}}{4}\right]_{0}^{2}=2\pi\left(\frac{16}{3}-4\right)=2\pi\cdot\frac{4}{3}">
+                  V = 2π[2x³/3 − x⁴/4]<sub>0</sub><sup>2</sup> = 2π(16/3 − 4) = 2π(4/3)</span>
+              </div>
+            </div>
+            <div class="resultado"
+              data-tex="V=\frac{8\pi}{3}\approx 8.38\ \text{unidades cúbicas}">
+              V = 8π/3 ≈ 8.38 unidades cúbicas
+            </div>
+            <div class="porque" style="margin-top:12px">
+              Aquí discos es claramente peor: habría que despejar
+              <span class="mat">x</span> de <span class="mat">y = 2x − x²</span>, lo que
+              obliga a resolver una cuadrática y a trabajar con dos ramas
+              (<span class="mat">x = 1 ± √(1 − y)</span>), que además forman arandelas.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 3</span>
+          <p>La región bajo <span class="mat">y = x²</span> en
+            <span class="mat">[0, 1]</span> gira alrededor de la recta
+            <span class="mat">x = 3</span>. Halle el volumen.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>El eje ya no es el eje <span class="mat">y</span>.</b>
+                Lo único que cambia es el radio: la distancia de la cáscara en
+                <span class="mat">x</span> hasta la recta
+                <span class="mat">x = 3</span> es
+                <span class="mat">p(x) = 3 − x</span>. Note que se resta en ese orden porque
+                la región está a la <em>izquierda</em> del eje, así que
+                <span class="mat">3 − x</span> es positivo.</div>
+              <div class="paso"><b>La altura no cambia.</b>
+                <span class="mat">h(x) = x²</span>.</div>
+              <div class="paso"><b>La integral.</b>
+                <span class="formula lila"
+                  data-tex="V=2\pi\int_{0}^{1}(3-x)\,x^{2}\,dx=2\pi\int_{0}^{1}\left(3x^{2}-x^{3}\right)dx">
+                  V = 2π∫<sub>0</sub><sup>1</sup>(3 − x)x² dx =
+                  2π∫<sub>0</sub><sup>1</sup>(3x² − x³)dx</span>
+              </div>
+              <div class="paso"><b>Integre.</b>
+                <span class="formula lila"
+                  data-tex="V=2\pi\left[x^{3}-\frac{x^{4}}{4}\right]_{0}^{1}=2\pi\left(1-\frac{1}{4}\right)=2\pi\cdot\frac{3}{4}">
+                  V = 2π[x³ − x⁴/4]<sub>0</sub><sup>1</sup> = 2π(1 − 1/4) = 2π(3/4)</span>
+              </div>
+            </div>
+            <div class="resultado"
+              data-tex="V=\frac{3\pi}{2}\approx 4.71\ \text{unidades cúbicas}">
+              V = 3π/2 ≈ 4.71 unidades cúbicas
+            </div>
+            <div class="porque" style="margin-top:12px">
+              <b>La verificación de signo que conviene hacer siempre.</b> Evalúe el radio en
+              los dos extremos: <span class="mat">p(0) = 3</span> y
+              <span class="mat">p(1) = 2</span>. Los dos positivos y decrecientes, lo que
+              tiene sentido porque la región se va acercando al eje. Si al evaluar le sale
+              un radio negativo, la resta está invertida.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 4</span>
+          <p>La región bajo <span class="mat">y = sen x</span> en
+            <span class="mat">[0, π]</span> gira alrededor del <b>eje y</b>.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>Monte la integral.</b>
+                <span class="formula lila"
+                  data-tex="V=2\pi\int_{0}^{\pi}x\operatorname{sen}x\,dx">
+                  V = 2π∫<sub>0</sub><sup>π</sup>x sen x dx</span>
+              </div>
+              <div class="paso"><b>Integre por partes.</b> Con
+                <span class="mat">u = x</span>, <span class="mat">dv = sen x dx</span>:
+                <span class="formula lila"
+                  data-tex="\int x\operatorname{sen}x\,dx=-x\cos x+\operatorname{sen}x">
+                  ∫x sen x dx = −x cos x + sen x</span>
+              </div>
+              <div class="paso"><b>Evalúe.</b> En <span class="mat">x = π</span>:
+                <span class="mat">−π(−1) + 0 = π</span>. En
+                <span class="mat">x = 0</span>: <span class="mat">0</span>.</div>
+            </div>
+            <div class="resultado"
+              data-tex="V=2\pi\cdot\pi=2\pi^{2}\approx 19.74\ \text{unidades cúbicas}">
+              V = 2π·π = 2π² ≈ 19.74 unidades cúbicas
+            </div>
+            <div class="porque" style="margin-top:12px">
+              Este es el ejemplo que justifica el método entero: con discos habría que
+              despejar <span class="mat">x</span> de
+              <span class="mat">y = sen x</span>, lo que da
+              <span class="mat">x = arcsen y</span> en la primera mitad y
+              <span class="mat">x = π − arcsen y</span> en la segunda. Dos ramas, arandelas,
+              y una integral de <span class="mat">arcsen²</span>. Con cáscaras fue una
+              integración por partes.
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ====================== 4. APLICACIÓN ====================== -->
+    <section>
+      <h2>4. Aplicación: volumen de un dique anular</h2>
+
+      <div class="ambiental">
+        <b>Situación.</b> Se construye un terraplén anular alrededor de una laguna de
+        almacenamiento. Visto en corte, el perfil del terraplén es la región bajo la
+        parábola <span class="mat">y = 1 − (x − 11)²</span> entre
+        <span class="mat">x = 10</span> y <span class="mat">x = 12</span> metros, medidos
+        desde el eje central de la laguna. El terraplén es un anillo completo alrededor de
+        ese eje.<br><br>
+        <b>Pregunta.</b> ¿Cuántos metros cúbicos de material se necesitan?
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">APLICACIÓN RESUELTA</span>
+          <p>Calcule el volumen de material del terraplén.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>¿Por qué cáscaras?</b> El sólido se genera girando el
+                perfil alrededor del eje vertical central. Cada cáscara es un anillo de
+                terraplén a distancia <span class="mat">x</span> del centro: es exactamente
+                la forma en que se construiría por capas.</div>
+              <div class="paso"><b>Radio y altura.</b>
+                <span class="mat">p(x) = x</span> (distancia al eje central) y
+                <span class="mat">h(x) = 1 − (x − 11)²</span>.</div>
+              <div class="paso"><b>Sustituya para simplificar.</b> Sea
+                <span class="mat">u = x − 11</span>, de modo que
+                <span class="mat">x = u + 11</span> y <span class="mat">u</span> va de
+                <span class="mat">−1</span> a <span class="mat">1</span>:
+                <span class="formula lila"
+                  data-tex="V=2\pi\int_{-1}^{1}(u+11)\left(1-u^{2}\right)du">
+                  V = 2π∫<sub>−1</sub><sup>1</sup>(u + 11)(1 − u²)du</span>
+              </div>
+              <div class="paso"><b>Aproveche la paridad.</b> El término
+                <span class="mat">u(1 − u²)</span> es <b>impar</b>, así que su integral sobre
+                <span class="mat">[−1, 1]</span> es cero. Solo sobrevive la parte par:
+                <span class="formula lila"
+                  data-tex="V=2\pi\cdot 11\int_{-1}^{1}\left(1-u^{2}\right)du=22\pi\left[u-\frac{u^{3}}{3}\right]_{-1}^{1}=22\pi\cdot\frac{4}{3}">
+                  V = 2π(11)∫<sub>−1</sub><sup>1</sup>(1 − u²)du =
+                  22π[u − u³/3]<sub>−1</sub><sup>1</sup> = 22π(4/3)</span>
+              </div>
+            </div>
+            <div class="resultado"
+              data-tex="V=\frac{88\pi}{3}\approx 92.2\ \mathrm{m^{3}}">
+              V = 88π/3 ≈ 92.2 m³
+            </div>
+            <div class="ambiental" style="margin-top:12px">
+              <b>Lectura de ingeniería.</b> El área del perfil en corte es
+              <span class="mat">∫<sub>−1</sub><sup>1</sup>(1 − u²)du = 4/3</span> m², y el
+              radio del centroide del perfil es <span class="mat">11</span> m por simetría.
+              El volumen es entonces <span class="mat">(2π·11)(4/3)</span>: el área del
+              perfil por la longitud que recorre su centroide. Esa coincidencia no es
+              casualidad, es el <b>teorema de Pappus</b>, y la integral de cáscaras la
+              demuestra en este caso particular. En obra se usa justamente así: área de la
+              sección típica por la longitud del eje del terraplén.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="docente">
+        Este ejemplo abre la puerta al teorema de Pappus sin tener que enunciarlo
+        formalmente. Si el grupo responde bien, vale la pena mostrar que la fórmula
+        <span class="mat">V = 2π·x̄·A</span> funciona cada vez que el eje no corta la región
+        —y que falla si la corta, porque entonces parte del sólido se superpone. Es un buen
+        puente hacia el tema de centroides, que es el 3.9 que este semestre no vemos.
+      </div>
+    </section>
+
+    <!-- ====================== 5. ERRORES ====================== -->
+    <section>
+      <h2>5. Errores frecuentes</h2>
+
+      <div class="errores">
+        <ul>
+          <li><b>Olvidar el <span class="mat">2π</span>.</b> Es el perímetro: sin él el
+            resultado es un área, no un volumen, y queda unas seis veces más pequeño.</li>
+          <li><b>Confundir radio con altura.</b> El radio <span class="mat">p</span> se mide
+            <b>hacia el eje de giro</b>; la altura <span class="mat">h</span> se mide
+            <b>a lo largo</b> de la cáscara, paralela al eje. Si las intercambia, el
+            resultado cambia.</li>
+          <li><b>Escribir <span class="mat">p = x</span> cuando el eje no es
+              <span class="mat">x = 0</span>.</b> Si el eje es
+            <span class="mat">x = c</span>, el radio es
+            <span class="mat">|x − c|</span>. Evalúelo en un extremo para chequear el
+            signo.</li>
+          <li><b>Elevar al cuadrado por costumbre.</b> En cáscaras <b>no</b> hay cuadrados:
+            la fórmula es lineal en <span class="mat">p</span> y en
+            <span class="mat">h</span>. El cuadrado es de discos.</li>
+          <li><b>Usar los límites equivocados.</b> En cáscaras los límites son los valores
+            que recorre el <em>radio</em>, no la altura. Giro sobre el eje
+            <span class="mat">y</span> ⟹ límites en <span class="mat">x</span>.</li>
+          <li><b>Mezclar los dos métodos en la misma integral.</b>
+            <span class="mat">2π∫x[f(x)]²dx</span> no es ninguna de las dos fórmulas.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ====================== 6. TALLER ====================== -->
+    <section>
+      <h2>6. Para practicar</h2>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 1</span>
+          <p>La región bajo <span class="mat">y = √x</span> en
+            <span class="mat">[0, 4]</span> gira alrededor del eje
+            <span class="mat">y</span>. Use cáscaras.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <div class="resultado"
+              data-tex="V=2\pi\int_{0}^{4}x\sqrt{x}\,dx=2\pi\left[\frac{2}{5}x^{5/2}\right]_{0}^{4}=\frac{128\pi}{5}\approx 80.4">
+              V = 2π∫<sub>0</sub><sup>4</sup>x√x dx = 128π/5 ≈ 80.4
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 2</span>
+          <p>La región limitada por <span class="mat">y = x</span>,
+            <span class="mat">y = 0</span> y <span class="mat">x = 3</span> gira alrededor
+            del eje <span class="mat">y</span>. Verifique con la fórmula del cono.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <div class="resultado"
+              data-tex="V=2\pi\int_{0}^{3}x\cdot x\,dx=2\pi\left[\frac{x^{3}}{3}\right]_{0}^{3}=18\pi\approx 56.5">
+              V = 2π∫<sub>0</sub><sup>3</sup>x·x dx = 18π ≈ 56.5
+            </div>
+            <p>El sólido es un cono invertido de radio 3 y altura 3 dentro del cilindro, y
+              su volumen es el del cilindro menos el cono:
+              <span class="mat">π(9)(3) − (1/3)π(9)(3) = 27π − 9π = 18π</span>.
+              Coincide.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 3</span>
+          <p>La región entre <span class="mat">y = x</span> y
+            <span class="mat">y = x²</span> gira alrededor del eje
+            <span class="mat">y</span>.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <p>La altura de la cáscara es la distancia entre las dos curvas:
+              <span class="mat">h = x − x²</span>, con
+              <span class="mat">x</span> de 0 a 1.</p>
+            <div class="resultado"
+              data-tex="V=2\pi\int_{0}^{1}x\left(x-x^{2}\right)dx=2\pi\left(\frac{1}{3}-\frac{1}{4}\right)=\frac{\pi}{6}\approx 0.524">
+              V = 2π∫<sub>0</sub><sup>1</sup>x(x − x²)dx = 2π(1/3 − 1/4) = π/6 ≈ 0.524
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 4</span>
+          <p>La región bajo <span class="mat">y = x²</span> en
+            <span class="mat">[0, 2]</span> gira alrededor de la recta
+            <span class="mat">x = −1</span>.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <p>El radio ahora es <span class="mat">p = x − (−1) = x + 1</span>, positivo en
+              todo el intervalo.</p>
+            <div class="resultado"
+              data-tex="V=2\pi\int_{0}^{2}(x+1)x^{2}dx=2\pi\left[\frac{x^{4}}{4}+\frac{x^{3}}{3}\right]_{0}^{2}=2\pi\left(4+\frac{8}{3}\right)=\frac{40\pi}{3}\approx 41.9">
+              V = 2π∫<sub>0</sub><sup>2</sup>(x + 1)x² dx = 2π(4 + 8/3) = 40π/3 ≈ 41.9
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 5</span>
+          <p>Un sedimentador circular tiene fondo cónico. Visto en corte, el agua ocupa la
+            región bajo la recta <span class="mat">y = 4 − x</span> entre
+            <span class="mat">x = 0</span> y <span class="mat">x = 4</span> metros, y el
+            sólido se genera girando esa región alrededor del eje vertical central. Halle el
+            volumen de agua en litros.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <div class="resultado"
+              data-tex="V=2\pi\int_{0}^{4}x(4-x)\,dx=2\pi\left[2x^{2}-\frac{x^{3}}{3}\right]_{0}^{4}=2\pi\cdot\frac{32}{3}=\frac{64\pi}{3}\approx 67.0\ \mathrm{m^{3}}\approx 67\,000\ \mathrm{L}">
+              V = 2π∫<sub>0</sub><sup>4</sup>x(4 − x)dx = 64π/3 ≈ 67.0 m³ ≈ 67 000 L
+            </div>
+            <p>El sólido es un cono de radio 4 y altura 4:
+              <span class="mat">(1/3)π(16)(4) = 64π/3</span>. Coincide con la fórmula
+              clásica.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <div class="navtemas">
+      <a href="02-discos-arandelas.html"><span>Tema anterior 3.2</span>← Discos y
+        arandelas</a>
+      <a class="der" href="04-secciones-transversales.html"><span>Tema siguiente 3.4</span>Secciones
+        transversales conocidas →</a>
+    </div>
+
+    <div class="pie">
+      Universidad del Cauca · Facultad de Ingeniería Civil · Ingeniería Ambiental<br>
+      Cálculo II · Capítulo III · Material de clase elaborado por Diana Méndez Astudillo
+    </div>
+
+  </div>
+
+  <script src="assets/labs.js"></script>
+  <script>
+    labCascaras('labCas1', {
+      ejemplos: [
+        {
+          nombre: 'x², eje y', h: x => x * x, a: 0, b: 2, ymax: 4.3, eje: 0,
+          th: 'x²', exacto: '8π'
+        },
+        {
+          nombre: '2x − x², eje y', h: x => 2 * x - x * x, a: 0, b: 2, ymax: 1.25, eje: 0,
+          th: '2x − x²', exacto: '8π/3'
+        },
+        {
+          nombre: 'x², eje x = 3', h: x => x * x, a: 0, b: 1, ymax: 1.2, eje: 3,
+          th: 'x²', exacto: '3π/2'
+        },
+        {
+          nombre: 'sen x, eje y', h: x => Math.sin(x), a: 0, b: Math.PI, ymax: 1.2, eje: 0,
+          th: 'sen x', exacto: '2π²'
+        },
+        {
+          nombre: '√x, eje y', h: x => Math.sqrt(x), a: 0, b: 4, ymax: 2.3, eje: 0,
+          th: '√x', exacto: '128π/5'
+        },
+        {
+          nombre: 'x², eje x = −1', h: x => x * x, a: 0, b: 2, ymax: 4.3, eje: -1,
+          th: 'x²', exacto: '40π/3'
+        }
+      ]
+    });
+  </script>
+</body>
+
+</html>

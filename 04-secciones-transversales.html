@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sólidos de secciones conocidas · Cálculo II</title>
+
+  <!-- KaTeX: si hay internet, las fórmulas se ven como en LaTeX.
+     Si no carga, queda el HTML de respaldo y la página funciona igual. -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <link rel="stylesheet" href="assets/estilo.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="wrap">
+      <div class="titulos">
+        <div class="logo">
+          <img src="assets/logo.jpg" alt="Universidad del Cauca">
+        </div>
+        <div>
+          <h1>SÓLIDOS DE SECCIONES TRANSVERSALES CONOCIDAS</h1>
+          <div class="sub">Capítulo III · Tema 3.4</div>
+        </div>
+      </div>
+      <div class="barra">
+        <div class="curso">
+          Facultad de Ingeniería Civil · Ingeniería Ambiental<br>
+          Cálculo II &nbsp;·&nbsp; Docente: Diana Méndez Astudillo</div>
+        <div class="toggle" id="btnDocente">
+          <span class="punto"></span><span id="txtDocente">Activar modo docente</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+
+    <div class="migas"><a href="index.html">Capítulo III</a> &nbsp;›&nbsp; 3.4 Secciones
+      transversales conocidas</div>
+
+    <!-- ====================== 1. LA IDEA ====================== -->
+    <section>
+      <h2>1. La idea: el método más general de todos</h2>
+
+      <div class="caja">
+        <p>Hasta aquí todos los sólidos venían de girar algo. Pero la estrategia de rebanar
+          no necesita giro: funciona con <b>cualquier</b> sólido del que se conozca el área
+          de sus cortes.</p>
+        <p>Si <span class="mat">A(x)</span> es el área de la sección del sólido en la
+          posición <span class="mat">x</span>, entonces la rebanada de espesor
+          <span class="mat">dx</span> tiene volumen <span class="mat">A(x)dx</span>, y:</p>
+        <div class="formula fucsia" data-tex="V=\int_{a}^{b}A(x)\,dx">
+          V = ∫<sub>a</sub><sup>b</sup>A(x) dx
+        </div>
+        <p>Esta es, de hecho, la fórmula madre del capítulo. Discos y arandelas son el caso
+          particular en que la sección es un círculo o una corona:</p>
+        <div class="formula">
+          <div class="tex-display"
+            data-tex="A(x)=\pi\left[R(x)\right]^{2}\;\Longrightarrow\;\text{discos};\qquad A(x)=\pi\left(\left[R\right]^{2}-\left[r\right]^{2}\right)\;\Longrightarrow\;\text{arandelas}">
+            A(x) = π[R(x)]² ⟹ discos; &nbsp; A(x) = π([R]² − [r]²) ⟹ arandelas
+          </div>
+        </div>
+      </div>
+
+      <div class="porque">
+        <b>¿Y si las secciones no son todas iguales?</b> No importa: la fórmula no exige que
+        las secciones sean congruentes, solo que se conozca su <em>área</em> en cada
+        posición. Lo que sí se exige es que los cortes sean <b>paralelos entre sí</b> y
+        perpendiculares al eje sobre el que se integra. Esa es la única hipótesis
+        geométrica.
+      </div>
+
+      <div class="docente">
+        Este tema suele parecer el más difícil y es en realidad el más fácil, porque no hay
+        que deducir nada: el enunciado <em>regala</em> la forma del corte. Lo único que hay
+        que hacer es escribir el lado del corte en función de <span class="mat">x</span> y
+        recordar el área de una figura de bachillerato. Conviene decirlo así explícitamente
+        al abrir la sesión, porque baja la ansiedad del grupo.
+      </div>
+
+      <!-- LABORATORIO -->
+      <div class="lab">
+        <h4>Ejemplo 1 · La misma base, distintas secciones</h4>
+        <p>Observe la figura de la izquierda: esa es la <b>base</b> del sólido, dibujada en
+          el plano. El segmento resaltado es el lado <span class="mat">L</span> de la
+          sección en esa posición. A la derecha ese segmento se levanta y toma la forma
+          escogida. Suba el número de secciones para ver el sólido completo.</p>
+        <div id="labSec1"></div>
+      </div>
+    </section>
+
+    <!-- ====================== 2. LAS TRES ÁREAS ====================== -->
+    <section>
+      <h2>2. Las tres áreas que hay que tener a mano</h2>
+
+      <div class="caja">
+        <p>Casi todos los ejercicios de esta sección usan una de estas tres figuras. Lo
+          importante es expresar el área <b>en función del lado</b>
+          <span class="mat">L</span>, porque <span class="mat">L</span> es lo que sale del
+          dibujo de la base.</p>
+
+        <div class="pasos">
+          <div class="paso"><b>Cuadrado de lado <span class="mat">L</span>.</b>
+            <span class="formula lila" data-tex="A=L^{2}">A = L²</span>
+          </div>
+          <div class="paso"><b>Triángulo equilátero de lado
+              <span class="mat">L</span>.</b> Su altura es
+            <span class="mat">L√3/2</span>, así que
+            <span class="formula lila" data-tex="A=\frac{\sqrt{3}}{4}L^{2}">
+              A = (√3/4)L²</span>
+          </div>
+          <div class="paso"><b>Semicírculo de <em>diámetro</em>
+              <span class="mat">L</span>.</b> Su radio es
+            <span class="mat">L/2</span>, luego
+            <span class="formula lila"
+              data-tex="A=\frac{1}{2}\pi\left(\frac{L}{2}\right)^{2}=\frac{\pi L^{2}}{8}">
+              A = (1/2)π(L/2)² = πL²/8</span>
+          </div>
+        </div>
+
+        <p>Fíjese en el patrón: las tres son <b>un número por
+            <span class="mat">L²</span></b>. Ese número solo depende de la forma, nunca del
+          problema. Si la sección es un semicírculo de <em>radio</em>
+          <span class="mat">L</span> en lugar de diámetro, el número es
+          <span class="mat">π/2</span>: hay que leer el enunciado con cuidado.</p>
+      </div>
+
+      <div class="porque">
+        <b>Radio o diámetro: el error que decide la nota.</b> Cuando el enunciado dice
+        «secciones semicirculares cuyos diámetros están en la base», el diámetro es el
+        segmento <span class="mat">L</span> que se lee del dibujo y el área es
+        <span class="mat">πL²/8</span>. Si uno usa <span class="mat">πL²/2</span> está
+        suponiendo que <span class="mat">L</span> era el radio, y el resultado queda cuatro
+        veces más grande. Vale la pena subrayar la palabra «diámetro» en el enunciado antes
+        de empezar.
+      </div>
+    </section>
+
+    <!-- ====================== 3. EJEMPLOS ====================== -->
+    <section>
+      <h2>3. Ejemplos resueltos</h2>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 1</span>
+          <p>Un sólido tiene como base el círculo
+            <span class="mat">x² + y² = 4</span>. Las secciones perpendiculares al eje
+            <span class="mat">x</span> son <b>cuadrados</b>. Halle el volumen.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>Dibuje la base y mida el lado.</b> A la altura
+                <span class="mat">x</span>, la circunferencia va desde
+                <span class="mat">y = −√(4 − x²)</span> hasta
+                <span class="mat">y = +√(4 − x²)</span>. Esa cuerda vertical <b>es</b> el
+                lado del cuadrado:
+                <span class="formula lila" data-tex="L(x)=2\sqrt{4-x^{2}}">
+                  L(x) = 2√(4 − x²)</span>
+              </div>
+              <div class="paso"><b>Escriba el área.</b>
+                <span class="formula lila"
+                  data-tex="A(x)=L^{2}=4\left(4-x^{2}\right)">
+                  A(x) = L² = 4(4 − x²)</span>
+                Note que la raíz desapareció al elevar al cuadrado: eso pasa casi siempre y
+                es la razón por la que estas integrales son fáciles.
+              </div>
+              <div class="paso"><b>Integre de extremo a extremo de la base.</b>
+                <span class="formula lila"
+                  data-tex="V=\int_{-2}^{2}4\left(4-x^{2}\right)dx=4\left[4x-\frac{x^{3}}{3}\right]_{-2}^{2}">
+                  V = ∫<sub>−2</sub><sup>2</sup>4(4 − x²)dx =
+                  4[4x − x³/3]<sub>−2</sub><sup>2</sup></span>
+              </div>
+              <div class="paso"><b>Evalúe.</b> Arriba
+                <span class="mat">8 − 8/3 = 16/3</span>; abajo
+                <span class="mat">−16/3</span>. La resta da
+                <span class="mat">32/3</span>, por cuatro.</div>
+            </div>
+            <div class="resultado"
+              data-tex="V=\frac{128}{3}\approx 42.67\ \text{unidades cúbicas}">
+              V = 128/3 ≈ 42.67 unidades cúbicas
+            </div>
+            <div class="porque" style="margin-top:12px">
+              <b>Un chequeo de orden de magnitud.</b> El sólido cabe dentro de una caja de
+              <span class="mat">4 × 4 × 4 = 64</span> unidades cúbicas, y ocupa
+              <span class="mat">128/3 ≈ 42.7</span>, es decir unos dos tercios de la caja.
+              Es razonable: los cuadrados de los extremos son diminutos y el del centro
+              llena la cara completa. Si le hubiera salido más de 64, habría un error
+              seguro.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 2</span>
+          <p>Misma base circular de radio 2, pero ahora las secciones son <b>triángulos
+              equiláteros</b>. Halle el volumen.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>El lado no cambió.</b>
+                <span class="mat">L(x) = 2√(4 − x²)</span>, porque la base es la misma. Lo
+                único que cambia es la <em>forma</em> que se levanta.</div>
+              <div class="paso"><b>El área sí cambió.</b>
+                <span class="formula lila"
+                  data-tex="A(x)=\frac{\sqrt{3}}{4}L^{2}=\frac{\sqrt{3}}{4}\cdot 4\left(4-x^{2}\right)=\sqrt{3}\left(4-x^{2}\right)">
+                  A(x) = (√3/4)L² = √3(4 − x²)</span>
+              </div>
+              <div class="paso"><b>Integre.</b> La integral
+                <span class="mat">∫<sub>−2</sub><sup>2</sup>(4 − x²)dx = 32/3</span> es la
+                misma de antes, solo con otra constante al frente.</div>
+            </div>
+            <div class="resultado"
+              data-tex="V=\frac{32\sqrt{3}}{3}\approx 18.48\ \text{unidades cúbicas}">
+              V = 32√3/3 ≈ 18.48 unidades cúbicas
+            </div>
+            <div class="porque" style="margin-top:12px">
+              <b>Compare con el ejemplo 1.</b> El cociente de los dos volúmenes es
+              <span class="mat">√3/4 ≈ 0.433</span>: exactamente el cociente de las áreas de
+              un triángulo equilátero y un cuadrado del mismo lado. Al cambiar la forma de
+              la sección, el volumen se escala por un factor constante. Es una propiedad
+              general y muy útil para verificar resultados.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 3</span>
+          <p>Misma base circular de radio 2, con secciones <b>semicirculares</b> cuyos
+            diámetros descansan sobre la base. Halle el volumen.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>El diámetro es <span class="mat">L</span>.</b> Entonces
+                el radio del semicírculo es <span class="mat">L/2 = √(4 − x²)</span>.</div>
+              <div class="paso"><b>El área.</b>
+                <span class="formula lila"
+                  data-tex="A(x)=\frac{\pi L^{2}}{8}=\frac{\pi}{8}\cdot 4\left(4-x^{2}\right)=\frac{\pi}{2}\left(4-x^{2}\right)">
+                  A(x) = πL²/8 = (π/2)(4 − x²)</span>
+              </div>
+              <div class="paso"><b>Integre.</b>
+                <span class="formula lila"
+                  data-tex="V=\frac{\pi}{2}\int_{-2}^{2}\left(4-x^{2}\right)dx=\frac{\pi}{2}\cdot\frac{32}{3}">
+                  V = (π/2)∫<sub>−2</sub><sup>2</sup>(4 − x²)dx = (π/2)(32/3)</span>
+              </div>
+            </div>
+            <div class="resultado"
+              data-tex="V=\frac{16\pi}{3}\approx 16.76\ \text{unidades cúbicas}">
+              V = 16π/3 ≈ 16.76 unidades cúbicas
+            </div>
+            <div class="porque" style="margin-top:12px">
+              <b>Un reconocimiento bonito.</b> Este sólido es exactamente <b>media
+                esfera</b> de radio 2: cada semicírculo levantado es media sección de la
+              esfera. Y en efecto,
+              <span class="mat">(1/2)(4/3)π(2³) = 16π/3</span>. Es la mejor verificación
+              posible, porque el resultado se obtuvo por integración y se confirmó con
+              geometría elemental.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 4</span>
+          <p>Un sólido tiene como base la región del primer cuadrante limitada por
+            <span class="mat">y = √x</span> y <span class="mat">y = x²</span>. Las secciones
+            perpendiculares al eje <span class="mat">x</span> son cuadrados. Halle el
+            volumen.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>Límites de la base.</b> Las curvas se cortan en
+                <span class="mat">x = 0</span> y <span class="mat">x = 1</span>.</div>
+              <div class="paso"><b>El lado.</b> Es la distancia vertical entre las dos
+                curvas, es decir la altura de la región:
+                <span class="formula lila" data-tex="L(x)=\sqrt{x}-x^{2}">
+                  L(x) = √x − x²</span>
+              </div>
+              <div class="paso"><b>El área.</b>
+                <span class="formula lila"
+                  data-tex="A(x)=\left(\sqrt{x}-x^{2}\right)^{2}=x-2x^{5/2}+x^{4}">
+                  A(x) = (√x − x²)² = x − 2x<sup>5/2</sup> + x⁴</span>
+                Hay que <b>desarrollar el binomio</b>: el cuadrado de una resta no es la
+                resta de los cuadrados.
+              </div>
+              <div class="paso"><b>Integre término a término.</b>
+                <span class="formula lila"
+                  data-tex="V=\int_{0}^{1}\left(x-2x^{5/2}+x^{4}\right)dx=\left[\frac{x^{2}}{2}-\frac{4}{7}x^{7/2}+\frac{x^{5}}{5}\right]_{0}^{1}">
+                  V = ∫<sub>0</sub><sup>1</sup>(x − 2x<sup>5/2</sup> + x⁴)dx =
+                  [x²/2 − (4/7)x<sup>7/2</sup> + x⁵/5]<sub>0</sub><sup>1</sup></span>
+              </div>
+              <div class="paso"><b>Sume las fracciones.</b>
+                <span class="mat">1/2 − 4/7 + 1/5</span>. Con denominador común 70:
+                <span class="mat">35/70 − 40/70 + 14/70 = 9/70</span>.</div>
+            </div>
+            <div class="resultado"
+              data-tex="V=\frac{9}{70}\approx 0.1286\ \text{unidades cúbicas}">
+              V = 9/70 ≈ 0.1286 unidades cúbicas
+            </div>
+            <div class="porque" style="margin-top:12px">
+              <b>¿Por qué sale tan pequeño?</b> Porque la región entre las dos curvas es
+              delgada (su área es solo <span class="mat">1/3</span>) y los lados de los
+              cuadrados son menores que 1, de modo que al elevarlos al cuadrado se vuelven
+              todavía más pequeños. El máximo de <span class="mat">L</span> es alrededor de
+              <span class="mat">0.47</span>, así que ningún cuadrado tiene área mayor que
+              <span class="mat">0.22</span>.
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ====================== 4. APLICACIÓN ====================== -->
+    <section>
+      <h2>4. Aplicación: volumen de excavación de un canal</h2>
+
+      <div class="ambiental">
+        <b>Situación.</b> Se excava un canal de drenaje de 100 m de longitud. La sección
+        transversal es <b>trapezoidal</b>: 2 m de ancho en el fondo, taludes de pendiente
+        1:1 y profundidad variable. La profundidad disminuye linealmente desde
+        <span class="mat">1.5</span> m en el inicio hasta
+        <span class="mat">0.5</span> m al final, para dar la pendiente del canal.<br><br>
+        <b>Pregunta.</b> ¿Cuánto material hay que excavar?
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">APLICACIÓN RESUELTA</span>
+          <p>Calcule el volumen de excavación en metros cúbicos.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>La profundidad en función de la abscisa.</b> Con
+                <span class="mat">s</span> medido en metros a lo largo del canal:
+                <span class="formula lila" data-tex="d(s)=1.5-0.01\,s,\qquad 0\le s\le 100">
+                  d(s) = 1.5 − 0.01s, &nbsp; 0 ≤ s ≤ 100</span>
+                En <span class="mat">s = 0</span> da 1.5 m y en
+                <span class="mat">s = 100</span> da 0.5 m, como pide el enunciado.
+              </div>
+              <div class="paso"><b>El área del trapecio.</b> Con fondo
+                <span class="mat">b = 2</span> m y taludes 1:1, a profundidad
+                <span class="mat">d</span> el ancho superior es
+                <span class="mat">2 + 2d</span>. El área del trapecio es la semisuma de las
+                bases por la altura:
+                <span class="formula lila"
+                  data-tex="A(s)=\frac{2+(2+2d)}{2}\,d=\left(2+d\right)d=2d+d^{2}">
+                  A(s) = [2 + (2 + 2d)]/2 · d = (2 + d)d = 2d + d²</span>
+              </div>
+              <div class="paso"><b>Sustituya.</b> Es más limpio integrar en
+                <span class="mat">d</span>. De
+                <span class="mat">d = 1.5 − 0.01s</span> sale
+                <span class="mat">ds = −100\,dd</span>, y cuando
+                <span class="mat">s</span> va de 0 a 100,
+                <span class="mat">d</span> va de 1.5 a 0.5:
+                <span class="formula lila"
+                  data-tex="V=\int_{0}^{100}\left(2d+d^{2}\right)ds=100\int_{0.5}^{1.5}\left(2d+d^{2}\right)dd">
+                  V = ∫<sub>0</sub><sup>100</sup>(2d + d²)ds =
+                  100∫<sub>0.5</sub><sup>1.5</sup>(2d + d²)dd</span>
+              </div>
+              <div class="paso"><b>Integre.</b>
+                <span class="formula lila"
+                  data-tex="V=100\left[d^{2}+\frac{d^{3}}{3}\right]_{0.5}^{1.5}=100\left[\left(2.25+1.125\right)-\left(0.25+0.041\overline{6}\right)\right]">
+                  V = 100[d² + d³/3]<sub>0.5</sub><sup>1.5</sup> =
+                  100[(2.25 + 1.125) − (0.25 + 0.04167)]</span>
+              </div>
+            </div>
+            <div class="resultado"
+              data-tex="V=100\,(3.375-0.291\overline{6})=308.3\overline{3}\ \mathrm{m^{3}}">
+              V = 100(3.375 − 0.29167) ≈ 308.3 m³
+            </div>
+            <div class="ambiental" style="margin-top:12px">
+              <b>Lectura de ingeniería.</b> En obra esto se calcula por el <b>método de
+                áreas medias</b>: se promedia el área de la sección inicial
+              (<span class="mat">A = 5.25</span> m²) con la final
+              (<span class="mat">A = 1.25</span> m²) y se multiplica por la longitud:
+              <span class="mat">(5.25 + 1.25)/2 × 100 = 325</span> m³. El valor exacto por
+              integración es 308.3 m³, así que el método de áreas medias
+              <b>sobrestima en un 5.4 %</b>. La razón es que el área crece como un polinomio
+              de grado 2 en la profundidad, no linealmente, y promediar extremos solo es
+              exacto para variaciones lineales. En movimientos de tierra grandes esa
+              diferencia es dinero.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="docente">
+        Este ejemplo es el que mejor conecta el capítulo con la práctica profesional, porque
+        el método de áreas medias es lo que los estudiantes van a encontrar en los pliegos
+        de obra. Vale la pena dejarles la pregunta abierta: <em>¿cuándo es exacto promediar
+          los extremos?</em> La respuesta —solo si <span class="mat">A(s)</span> es lineal,
+        o usando la regla de Simpson si es cuadrática— les muestra que los métodos
+        aproximados de la ingeniería son casos particulares de lo que están aprendiendo, no
+        recetas sueltas.
+      </div>
+    </section>
+
+    <!-- ====================== 5. ERRORES ====================== -->
+    <section>
+      <h2>5. Errores frecuentes</h2>
+
+      <div class="errores">
+        <ul>
+          <li><b>Usar el semiancho como lado.</b> Si la base es un círculo y la sección es
+            un cuadrado, el lado es la <b>cuerda completa</b>
+            <span class="mat">2√(r² − x²)</span>, no
+            <span class="mat">√(r² − x²)</span>. Este error divide el volumen por cuatro.</li>
+          <li><b>Confundir radio con diámetro en el semicírculo.</b>
+            <span class="mat">πL²/8</span> si <span class="mat">L</span> es el diámetro;
+            <span class="mat">πL²/2</span> si es el radio.</li>
+          <li><b>No desarrollar el binomio.</b>
+            <span class="mat">(√x − x²)² ≠ x − x⁴</span>. Falta el término cruzado
+            <span class="mat">−2x<sup>5/2</sup></span>.</li>
+          <li><b>Meter un <span class="mat">π</span> que no va.</b> Si la sección es un
+            cuadrado o un triángulo, no hay <span class="mat">π</span> en ninguna parte. El
+            <span class="mat">π</span> solo aparece cuando la figura es circular.</li>
+          <li><b>Integrar sobre el eje equivocado.</b> Si las secciones son perpendiculares
+            al eje <span class="mat">y</span>, hay que escribir
+            <span class="mat">A(y)</span> e integrar <span class="mat">dy</span>.</li>
+          <li><b>Equivocar los límites.</b> Los límites son los extremos de la
+            <b>base</b> del sólido, que se leen del dibujo de la región, no del enunciado de
+            la figura.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ====================== 6. TALLER ====================== -->
+    <section>
+      <h2>6. Para practicar</h2>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 1</span>
+          <p>Base: la región triangular limitada por
+            <span class="mat">y = 1 − x</span> y los dos ejes. Secciones perpendiculares al
+            eje <span class="mat">x</span>: cuadrados.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <p><span class="mat">L(x) = 1 − x</span> con
+              <span class="mat">x</span> de 0 a 1.</p>
+            <div class="resultado"
+              data-tex="V=\int_{0}^{1}(1-x)^{2}dx=\left[-\frac{(1-x)^{3}}{3}\right]_{0}^{1}=\frac{1}{3}">
+              V = ∫<sub>0</sub><sup>1</sup>(1 − x)² dx = 1/3
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 2</span>
+          <p>Misma base triangular, pero secciones <b>semicirculares</b> con el diámetro en
+            la base.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <div class="resultado"
+              data-tex="V=\frac{\pi}{8}\int_{0}^{1}(1-x)^{2}dx=\frac{\pi}{8}\cdot\frac{1}{3}=\frac{\pi}{24}\approx 0.1309">
+              V = (π/8)∫<sub>0</sub><sup>1</sup>(1 − x)² dx = π/24 ≈ 0.1309
+            </div>
+            <p>Note que es el resultado del ejercicio 1 multiplicado por
+              <span class="mat">π/8</span>: solo cambió la forma.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 3</span>
+          <p>Base: el círculo de radio 3 centrado en el origen. Secciones perpendiculares al
+            eje <span class="mat">x</span>: triángulos rectángulos isósceles con la
+            hipotenusa en la base.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <p>Un triángulo rectángulo isósceles de hipotenusa
+              <span class="mat">L</span> tiene altura
+              <span class="mat">L/2</span>, así que
+              <span class="mat">A = (1/2)L(L/2) = L²/4</span>. Con
+              <span class="mat">L = 2√(9 − x²)</span> queda
+              <span class="mat">A = 9 − x²</span>.</p>
+            <div class="resultado"
+              data-tex="V=\int_{-3}^{3}\left(9-x^{2}\right)dx=\left[9x-\frac{x^{3}}{3}\right]_{-3}^{3}=36">
+              V = ∫<sub>−3</sub><sup>3</sup>(9 − x²)dx = 36
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 4</span>
+          <p>Base: la región limitada por <span class="mat">y = x²</span>,
+            <span class="mat">y = 0</span> y <span class="mat">x = 2</span>. Secciones
+            perpendiculares al eje <span class="mat">x</span>: cuadrados.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <div class="resultado"
+              data-tex="V=\int_{0}^{2}\left(x^{2}\right)^{2}dx=\int_{0}^{2}x^{4}dx=\frac{32}{5}=6.4">
+              V = ∫<sub>0</sub><sup>2</sup>x⁴ dx = 32/5 = 6.4
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 5</span>
+          <p>Una pila de material de préstamo tiene 20 m de largo. Su sección transversal es
+            un triángulo isósceles de base <span class="mat">6</span> m, y su altura varía
+            según <span class="mat">h(s) = 3 − 0.05s</span> metros, con
+            <span class="mat">s</span> en metros a lo largo de la pila. Halle el volumen.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <p>El área de la sección es
+              <span class="mat">A(s) = (1/2)(6)h(s) = 3h(s) = 3(3 − 0.05s) = 9 −
+                0.15s</span>.</p>
+            <div class="resultado"
+              data-tex="V=\int_{0}^{20}\left(9-0.15s\right)ds=\left[9s-0.075s^{2}\right]_{0}^{20}=180-30=150\ \mathrm{m^{3}}">
+              V = ∫<sub>0</sub><sup>20</sup>(9 − 0.15s)ds = 180 − 30 = 150 m³
+            </div>
+            <div class="ambiental" style="margin-top:12px">
+              Aquí sí el método de áreas medias es exacto, porque
+              <span class="mat">A(s)</span> es lineal:
+              <span class="mat">(9 + 6)/2 × 20 = 150</span> m³. Compare con el canal
+              trapezoidal de la sección 4, donde no lo era.
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <div class="navtemas">
+      <a href="03-cascaras-cilindricas.html"><span>Tema anterior 3.3</span>← Cáscaras
+        cilíndricas</a>
+      <a class="der" href="05-longitud-de-curva.html"><span>Tema siguiente 3.5</span>Longitud
+        de una curva →</a>
+    </div>
+
+    <div class="pie">
+      Universidad del Cauca · Facultad de Ingeniería Civil · Ingeniería Ambiental<br>
+      Cálculo II · Capítulo III · Material de clase elaborado por Diana Méndez Astudillo
+    </div>
+
+  </div>
+
+  <script src="assets/labs.js"></script>
+  <script>
+    var cuad = L => L * L;
+    var trian = L => Math.sqrt(3) / 4 * L * L;
+    var semic = L => Math.PI / 8 * L * L;
+
+    labSecciones('labSec1', {
+      ejemplos: [
+        {
+          nombre: 'Cuadrados sobre un disco',
+          sup: x => Math.sqrt(4 - x * x), inf: x => -Math.sqrt(4 - x * x),
+          a: -2, b: 2, ymax: 2.2, forma: 'cuadrado', area: cuad, exacto: '128/3'
+        },
+        {
+          nombre: 'Triángulos sobre un disco',
+          sup: x => Math.sqrt(4 - x * x), inf: x => -Math.sqrt(4 - x * x),
+          a: -2, b: 2, ymax: 2.2, forma: 'triangulo', area: trian, exacto: '32√3/3'
+        },
+        {
+          nombre: 'Semicírculos sobre un disco',
+          sup: x => Math.sqrt(4 - x * x), inf: x => -Math.sqrt(4 - x * x),
+          a: -2, b: 2, ymax: 2.2, forma: 'semicirculo', area: semic, exacto: '16π/3 (media esfera)'
+        },
+        {
+          nombre: 'Cuadrados sobre √x y x²',
+          sup: x => Math.sqrt(x), inf: x => x * x,
+          a: 0, b: 1, ymax: 1.1, forma: 'cuadrado', area: cuad, exacto: '9/70'
+        },
+        {
+          nombre: 'Cuadrados sobre un triángulo',
+          sup: x => 1 - x, inf: x => 0,
+          a: 0, b: 1, ymax: 1.1, forma: 'cuadrado', area: cuad, exacto: '1/3'
+        },
+        {
+          nombre: 'Triángulos sobre y = x²',
+          sup: x => x * x, inf: x => 0,
+          a: 0, b: 2, ymax: 4.2, forma: 'triangulo', area: trian, exacto: '8√3/5'
+        }
+      ]
+    });
+  </script>
+</body>
+
+</html>

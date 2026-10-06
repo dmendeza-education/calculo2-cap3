@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Área de una región plana · Cálculo II</title>
+
+  <!-- KaTeX: si hay internet, las fórmulas se ven como en LaTeX.
+     Si no carga, queda el HTML de respaldo y la página funciona igual. -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <link rel="stylesheet" href="assets/estilo.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="wrap">
+      <div class="titulos">
+        <div class="logo">
+          <img src="assets/logo.jpg" alt="Universidad del Cauca">
+        </div>
+        <div>
+          <h1>ÁREA DE UNA REGIÓN PLANA</h1>
+          <div class="sub">Capítulo III · Tema 3.1</div>
+        </div>
+      </div>
+      <div class="barra">
+        <div class="curso">
+          Facultad de Ingeniería Civil · Ingeniería Ambiental<br>
+          Cálculo II &nbsp;·&nbsp; Docente: Diana Méndez Astudillo</div>
+        <div class="toggle" id="btnDocente">
+          <span class="punto"></span><span id="txtDocente">Activar modo docente</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+
+    <div class="migas"><a href="index.html">Capítulo III</a> &nbsp;›&nbsp; 3.1 Área de una
+      región plana</div>
+
+    <!-- ====================== 1. LA IDEA ====================== -->
+    <section>
+      <h2>1. La idea: un rectángulo que recorre la región</h2>
+
+      <div class="caja">
+        <p>Ya sabemos que <span class="mat">∫<sub>a</sub><sup>b</sup>f(x)dx</span> mide el
+          área entre la curva y el eje <span class="mat">x</span>. Lo que viene ahora es la
+          misma idea, pero con <b>dos curvas</b> en lugar de una curva y un eje.</p>
+        <p>Imagine un rectángulo muy delgado, vertical, que se para en un punto
+          <span class="mat">x</span> de la región. Su <b>ancho</b> es
+          <span class="mat">dx</span> y su <b>altura</b> es la distancia vertical entre la
+          curva de arriba y la de abajo. El área de ese rectángulo es:</p>
+        <div class="formula">
+          <div class="tex-display" data-tex="dA=\bigl[f(x)-g(x)\bigr]\,dx">
+            dA = [f(x) − g(x)] dx
+          </div>
+        </div>
+        <p>Sumar todos los rectángulos del <span class="mat">a</span> al
+          <span class="mat">b</span> es exactamente integrar:</p>
+        <div class="formula fucsia" data-tex="A=\int_{a}^{b}\bigl[f(x)-g(x)\bigr]\,dx">
+          A = ∫<sub>a</sub><sup>b</sup>[f(x) − g(x)] dx
+        </div>
+      </div>
+
+      <div class="porque">
+        <b>¿Por qué no hay que preocuparse por el signo?</b> Si restamos siempre
+        <b>superior menos inferior</b>, la altura <span class="mat">f(x) − g(x)</span> es
+        positiva aunque las dos curvas estén bajo el eje <span class="mat">x</span>. Por eso
+        esta fórmula no necesita valor absoluto ni casos: la resta ya se encargó del signo.
+        Lo único que hay que vigilar es <em>cuál es la de arriba</em>.
+      </div>
+
+      <div class="docente">
+        Antes de la fórmula, dibuje en el tablero una región con dos curvas y pídale al
+        grupo que mida «el alto de la región» en tres valores distintos de
+        <span class="mat">x</span>. Van a decir solos «es la de arriba menos la de abajo».
+        Ahí la fórmula ya está construida y usted solamente la escribe.
+      </div>
+
+      <!-- LABORATORIO 1 -->
+      <div class="lab">
+        <h4>Ejemplo 1 · Seis regiones, un rectángulo que se mueve</h4>
+        <p>Elija una pareja de curvas, deslice el rectángulo representativo y vea cómo
+          cambia su altura. El último control pinta la <b>suma de Riemann</b>: suba el
+          número de rectángulos y observe cómo se acerca al área exacta.</p>
+        <div id="labArea1"></div>
+      </div>
+    </section>
+
+    <!-- ====================== 2. INTEGRAR EN X ====================== -->
+    <section>
+      <h2>2. Integrar en <span class="mat">x</span>: el procedimiento</h2>
+
+      <div class="caja">
+        <div class="pasos">
+          <div class="paso"><b>Dibuje la región.</b> Sin dibujo no se sabe cuál curva está
+            arriba. Este paso no es opcional.</div>
+          <div class="paso"><b>Halle los límites.</b> Si no los dan, son los puntos de
+            corte: resuelva <span class="mat">f(x) = g(x)</span>.</div>
+          <div class="paso"><b>Identifique arriba y abajo.</b> Evalúe las dos funciones en
+            un punto cualquiera entre los límites; la que dé mayor es la superior.</div>
+          <div class="paso"><b>Integre la resta.</b>
+            <span class="mat">A = ∫(superior − inferior)dx</span>.</div>
+          <div class="paso"><b>Revise el signo.</b> Un área negativa significa que invirtió
+            el orden de la resta.</div>
+        </div>
+      </div>
+
+      <!-- EJERCICIO 1 -->
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 1</span>
+          <p>Halle el área de la región limitada por
+            <span class="mat">y = 2x</span> y <span class="mat">y = x²</span>.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>Cortes.</b>
+                <span class="mat">2x = x² ⟹ x² − 2x = 0 ⟹ x(x − 2) = 0</span>, de donde
+                <span class="mat">x = 0</span> y <span class="mat">x = 2</span>.</div>
+              <div class="paso"><b>¿Cuál arriba?</b> En <span class="mat">x = 1</span>:
+                <span class="mat">2(1) = 2</span> y <span class="mat">1² = 1</span>. La
+                recta va arriba.</div>
+              <div class="paso"><b>La integral.</b>
+                <span class="formula lila" data-tex="A=\int_{0}^{2}\left(2x-x^{2}\right)dx">
+                  A = ∫<sub>0</sub><sup>2</sup>(2x − x²)dx</span>
+              </div>
+              <div class="paso"><b>Antiderivada y evaluación.</b>
+                <span class="formula lila"
+                  data-tex="A=\left[x^{2}-\frac{x^{3}}{3}\right]_{0}^{2}=4-\frac{8}{3}">
+                  A = [x² − x³/3]<sub>0</sub><sup>2</sup> = 4 − 8/3</span>
+              </div>
+            </div>
+            <div class="resultado" data-tex="A=\frac{4}{3}\ \text{unidades cuadradas}">
+              A = 4/3 unidades cuadradas
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- EJERCICIO 2 -->
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 2</span>
+          <p>Halle el área de la región limitada por
+            <span class="mat">y = x + 2</span> y <span class="mat">y = x²</span>.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>Cortes.</b>
+                <span class="mat">x + 2 = x² ⟹ x² − x − 2 = 0 ⟹ (x − 2)(x + 1) = 0</span>,
+                luego <span class="mat">x = −1</span> y <span class="mat">x = 2</span>.
+                Observe que uno de los límites es negativo: si no se dibuja, es fácil
+                perderlo.</div>
+              <div class="paso"><b>¿Cuál arriba?</b> En <span class="mat">x = 0</span>:
+                la recta da <span class="mat">2</span> y la parábola da
+                <span class="mat">0</span>. La recta va arriba en todo el intervalo.</div>
+              <div class="paso"><b>La integral.</b>
+                <span class="formula lila"
+                  data-tex="A=\int_{-1}^{2}\left(x+2-x^{2}\right)dx=\left[\frac{x^{2}}{2}+2x-\frac{x^{3}}{3}\right]_{-1}^{2}">
+                  A = ∫<sub>−1</sub><sup>2</sup>(x + 2 − x²)dx =
+                  [x²/2 + 2x − x³/3]<sub>−1</sub><sup>2</sup></span>
+              </div>
+              <div class="paso"><b>Evaluación.</b> Arriba:
+                <span class="mat">2 + 4 − 8/3 = 10/3</span>. Abajo:
+                <span class="mat">1/2 − 2 + 1/3 = −7/6</span>. Resta:
+                <span class="mat">10/3 + 7/6 = 27/6</span>.</div>
+            </div>
+            <div class="resultado" data-tex="A=\frac{9}{2}\ \text{unidades cuadradas}">
+              A = 9/2 unidades cuadradas
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- EJERCICIO 3 -->
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 3</span>
+          <p>Halle el área de la región limitada por <span class="mat">y = cos x</span>,
+            <span class="mat">y = sen x</span>, <span class="mat">x = 0</span> y
+            <span class="mat">x = π/4</span>.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>¿Cuál arriba?</b> En
+                <span class="mat">[0, π/4)</span> se cumple
+                <span class="mat">cos x > sen x</span>; en <span class="mat">x = π/4</span>
+                son iguales. Así que el coseno va arriba.</div>
+              <div class="paso"><b>La integral.</b>
+                <span class="formula lila"
+                  data-tex="A=\int_{0}^{\pi/4}\left(\cos x-\operatorname{sen}x\right)dx=\left[\operatorname{sen}x+\cos x\right]_{0}^{\pi/4}">
+                  A = ∫<sub>0</sub><sup>π/4</sup>(cos x − sen x)dx =
+                  [sen x + cos x]<sub>0</sub><sup>π/4</sup></span>
+              </div>
+              <div class="paso"><b>Evaluación.</b> Arriba:
+                <span class="mat">√2/2 + √2/2 = √2</span>. Abajo:
+                <span class="mat">0 + 1 = 1</span>.</div>
+            </div>
+            <div class="resultado"
+              data-tex="A=\sqrt{2}-1\approx 0.4142\ \text{unidades cuadradas}">
+              A = √2 − 1 ≈ 0.4142 unidades cuadradas
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ====================== 3. CURVAS QUE SE CRUZAN ====================== -->
+    <section>
+      <h2>3. Cuando las curvas se cruzan por dentro</h2>
+
+      <div class="caja">
+        <p>Si dentro del intervalo las curvas <b>se cruzan</b>, la que está arriba cambia.
+          En ese caso <b>no se puede</b> escribir una sola integral: hay que partir el
+          intervalo en los puntos de cruce y en cada trozo volver a decidir quién va
+          arriba.</p>
+        <div class="formula">
+          <div class="tex-display"
+            data-tex="A=\int_{a}^{c}\bigl[f-g\bigr]dx+\int_{c}^{b}\bigl[g-f\bigr]dx">
+            A = ∫<sub>a</sub><sup>c</sup>[f − g]dx + ∫<sub>c</sub><sup>b</sup>[g − f]dx
+          </div>
+        </div>
+        <p>Equivalentemente, <span class="mat">A = ∫<sub>a</sub><sup>b</sup>|f − g|dx</span>,
+          pero ese valor absoluto solo se puede integrar partiéndolo. La barra no es un
+          atajo: es un recordatorio.</p>
+      </div>
+
+      <!-- EJERCICIO 4 -->
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 4</span>
+          <p>Halle el área de la región limitada por <span class="mat">y = x</span> y
+            <span class="mat">y = x³</span> en el intervalo
+            <span class="mat">[−1, 1]</span>.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>Cortes.</b>
+                <span class="mat">x = x³ ⟹ x(x² − 1) = 0</span>, de donde
+                <span class="mat">x = −1, 0, 1</span>. Hay un cruce <em>dentro</em> del
+                intervalo, en <span class="mat">x = 0</span>.</div>
+              <div class="paso"><b>Quién va arriba en cada trozo.</b> En
+                <span class="mat">x = −1/2</span>: <span class="mat">x = −0.5</span> y
+                <span class="mat">x³ = −0.125</span>, así que <b>la cúbica va arriba</b>.
+                En <span class="mat">x = 1/2</span>: <span class="mat">x = 0.5</span> y
+                <span class="mat">x³ = 0.125</span>, así que <b>la recta va arriba</b>.
+              </div>
+              <div class="paso"><b>Dos integrales.</b>
+                <span class="formula lila"
+                  data-tex="A=\int_{-1}^{0}\left(x^{3}-x\right)dx+\int_{0}^{1}\left(x-x^{3}\right)dx">
+                  A = ∫<sub>−1</sub><sup>0</sup>(x³ − x)dx +
+                  ∫<sub>0</sub><sup>1</sup>(x − x³)dx</span>
+              </div>
+              <div class="paso"><b>Evaluación.</b> Cada integral vale
+                <span class="mat">1/4</span>, por la simetría de la región.</div>
+            </div>
+            <div class="resultado" data-tex="A=\frac{1}{4}+\frac{1}{4}=\frac{1}{2}\ \text{unidades cuadradas}">
+              A = 1/4 + 1/4 = 1/2 unidades cuadradas
+            </div>
+            <div class="porque" style="margin-top:12px">
+              <b>El error típico.</b> Quien integra de corrido
+              <span class="mat">∫<sub>−1</sub><sup>1</sup>(x − x³)dx</span> obtiene
+              <b>0</b>, porque el integrando es una función impar. Un área nunca es cero
+              para una región con interior: ese cero está avisando que hubo un cruce que no
+              se partió.
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ====================== 4. INTEGRAR EN Y ====================== -->
+    <section>
+      <h2>4. Integrar en <span class="mat">y</span>: rectángulos horizontales</h2>
+
+      <div class="caja">
+        <p>A veces la región es incómoda en <span class="mat">x</span> (habría que partirla
+          en dos o tres trozos) pero es <b>un solo trozo</b> si se mira en
+          <span class="mat">y</span>. Entonces se usa un rectángulo
+          <b>horizontal</b>: su altura es <span class="mat">dy</span> y su ancho es la
+          distancia horizontal entre la curva de la <b>derecha</b> y la de la
+          <b>izquierda</b>.</p>
+        <div class="formula fucsia"
+          data-tex="A=\int_{c}^{d}\bigl[x_{\text{der}}(y)-x_{\text{izq}}(y)\bigr]\,dy">
+          A = ∫<sub>c</sub><sup>d</sup>[x<sub>der</sub>(y) − x<sub>izq</sub>(y)] dy
+        </div>
+        <p>Es la misma idea rotada 90°: ahora las funciones deben estar despejadas como
+          <span class="mat">x</span> en términos de <span class="mat">y</span>, y los
+          límites son valores de <span class="mat">y</span>.</p>
+      </div>
+
+      <div class="docente">
+        La pregunta que decide el método es: <em>¿el rectángulo entra y sale por la misma
+          pareja de curvas en todo el recorrido?</em> Si barriendo en vertical la frontera
+        de abajo cambia a medio camino, pero barriendo en horizontal no cambia nada,
+        entonces integrar en <span class="mat">y</span> ahorra una integral completa. Vale
+        la pena resolver el ejemplo siguiente por los dos caminos para que la ventaja se
+        vea sola.
+      </div>
+
+      <!-- EJERCICIO 5 -->
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJEMPLO RESUELTO 5</span>
+          <p>Halle el área de la región limitada por <span class="mat">x = y²</span> y
+            <span class="mat">x = y + 2</span>.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>Cortes en <span class="mat">y</span>.</b>
+                <span class="mat">y² = y + 2 ⟹ y² − y − 2 = 0 ⟹ (y − 2)(y + 1) = 0</span>,
+                de donde <span class="mat">y = −1</span> y <span class="mat">y = 2</span>.
+              </div>
+              <div class="paso"><b>¿Cuál a la derecha?</b> En <span class="mat">y = 0</span>:
+                la recta da <span class="mat">x = 2</span> y la parábola da
+                <span class="mat">x = 0</span>. La recta está a la derecha.</div>
+              <div class="paso"><b>La integral.</b>
+                <span class="formula lila"
+                  data-tex="A=\int_{-1}^{2}\left(y+2-y^{2}\right)dy=\left[\frac{y^{2}}{2}+2y-\frac{y^{3}}{3}\right]_{-1}^{2}">
+                  A = ∫<sub>−1</sub><sup>2</sup>(y + 2 − y²)dy =
+                  [y²/2 + 2y − y³/3]<sub>−1</sub><sup>2</sup></span>
+              </div>
+              <div class="paso"><b>Evaluación.</b> Arriba
+                <span class="mat">10/3</span>, abajo <span class="mat">−7/6</span>.</div>
+            </div>
+            <div class="resultado" data-tex="A=\frac{9}{2}\ \text{unidades cuadradas}">
+              A = 9/2 unidades cuadradas
+            </div>
+            <div class="porque" style="margin-top:12px">
+              <b>Compare con el camino en <span class="mat">x</span>.</b> Despejando,
+              la parábola da <span class="mat">y = ±√x</span>: dos ramas. Entre
+              <span class="mat">x = 0</span> y <span class="mat">x = 1</span> la región va
+              de <span class="mat">−√x</span> a <span class="mat">√x</span>; entre
+              <span class="mat">x = 1</span> y <span class="mat">x = 4</span> va de
+              <span class="mat">x − 2</span> a <span class="mat">√x</span>. Son <b>dos</b>
+              integrales con radicales en lugar de <b>una</b> con un polinomio. Esa es
+              exactamente la ganancia de integrar en <span class="mat">y</span>.
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ====================== 5. APLICACIÓN ====================== -->
+    <section>
+      <h2>5. Aplicación: volumen almacenado en un embalse</h2>
+
+      <div class="ambiental">
+        <b>Situación.</b> Una pequeña represa de regulación recibe un caudal de entrada y
+        libera un caudal de salida. Durante una creciente, medidos en metros cúbicos por
+        segundo y con el tiempo <span class="mat">t</span> en horas, los dos caudales se
+        ajustaron a
+        <span class="mat">Q<sub>ent</sub>(t) = 12t − t²</span> y
+        <span class="mat">Q<sub>sal</sub>(t) = 2t</span>, válidos durante las primeras diez
+        horas.<br><br>
+        <b>Pregunta.</b> ¿Cuánta agua se acumula en el embalse mientras la entrada supera a
+        la salida?
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">APLICACIÓN RESUELTA</span>
+          <p>Calcule el volumen acumulado y explique qué significa geométricamente.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
+          <div class="solucion">
+            <div class="pasos">
+              <div class="paso"><b>Qué representa el área.</b> Un caudal es volumen por
+                unidad de tiempo. Entonces
+                <span class="mat">(Q<sub>ent</sub> − Q<sub>sal</sub>)dt</span> es el volumen
+                neto que entró en el instante <span class="mat">dt</span>: el área entre las
+                dos curvas <b>es</b> el volumen acumulado.</div>
+              <div class="paso"><b>Cuándo entra más de lo que sale.</b>
+                <span class="mat">12t − t² = 2t ⟹ 10t − t² = 0 ⟹ t(10 − t) = 0</span>, de
+                donde <span class="mat">t = 0</span> y <span class="mat">t = 10</span>
+                horas. Entre esas dos horas la entrada va arriba.</div>
+              <div class="paso"><b>La integral.</b>
+                <span class="formula lila"
+                  data-tex="V=\int_{0}^{10}\left(10t-t^{2}\right)dt=\left[5t^{2}-\frac{t^{3}}{3}\right]_{0}^{10}=500-\frac{1000}{3}">
+                  V = ∫<sub>0</sub><sup>10</sup>(10t − t²)dt =
+                  [5t² − t³/3]<sub>0</sub><sup>10</sup> = 500 − 1000/3</span>
+              </div>
+              <div class="paso"><b>Unidades.</b> El resultado está en
+                <span class="mat">m³/s × h</span>. Para pasarlo a metros cúbicos hay que
+                multiplicar por 3600 s/h.</div>
+            </div>
+            <div class="resultado"
+              data-tex="V=\frac{500}{3}\ \mathrm{m^{3}/s\cdot h}=\frac{500}{3}\times 3600\approx 600\,000\ \mathrm{m^{3}}">
+              V = 500/3 m³/s·h = (500/3)(3600) ≈ 600 000 m³
+            </div>
+            <div class="ambiental" style="margin-top:12px">
+              <b>Lectura de ingeniería.</b> Seiscientos mil metros cúbicos es el volumen que
+              el vaso debe poder recibir sin verter por el aliviadero. Si la capacidad útil
+              fuera menor, la represa desbordaría en algún momento entre
+              <span class="mat">t = 0</span> y <span class="mat">t = 10</span> h, y el
+              diseño tendría que revisarse. El cálculo del <em>instante</em> en que eso
+              pasaría es el mismo área, pero con límite superior variable.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="docente">
+        Este ejemplo sirve para separar dos ideas que los estudiantes mezclan: el área es un
+        <b>número</b>, pero su <b>significado físico</b> lo dan las unidades de los ejes.
+        Aquí el eje vertical es caudal y el horizontal es tiempo, así que el área es
+        volumen. Pregunte qué pasaría si el eje vertical fuera concentración en mg/L: el
+        área sería entonces una carga másica por unidad de caudal. Es la misma integral y un
+        significado distinto.
+      </div>
+    </section>
+
+    <!-- ====================== 6. ERRORES ====================== -->
+    <section>
+      <h2>6. Errores frecuentes</h2>
+
+      <div class="errores">
+        <ul>
+          <li><b>No dibujar.</b> Sin dibujo es imposible saber cuál curva va arriba, y la
+            resta queda al revés. Dibujar no es adorno: es parte del método.</li>
+          <li><b>Integrar sin partir cuando hay cruce.</b> Si las curvas se cruzan dentro
+            del intervalo, una sola integral da la <em>diferencia</em> de áreas, no el
+            área. La señal de alarma es un resultado cero o sospechosamente pequeño.</li>
+          <li><b>Confundir «área entre curvas» con «integral definida».</b>
+            <span class="mat">∫<sub>−1</sub><sup>1</sup>x³dx = 0</span>, pero el área
+            encerrada no es cero. La integral mide área <em>con signo</em>.</li>
+          <li><b>Olvidar que los límites cambian de variable.</b> Si se integra en
+            <span class="mat">y</span>, los límites deben ser valores de
+            <span class="mat">y</span>, no de <span class="mat">x</span>. Es el error más
+            común en la sección 4.</li>
+          <li><b>Despejar mal al pasar a <span class="mat">y</span>.</b>
+            <span class="mat">y = x²</span> con <span class="mat">y ≥ 0</span> da
+            <span class="mat">x = ±√y</span>: hay <b>dos</b> ramas y hay que decidir cuál
+            corresponde a la región.</li>
+          <li><b>Dejar el resultado sin unidades.</b> En los problemas aplicados, el número
+            solo no es la respuesta. Un área de 500 no dice nada; 500 m³ sí.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ====================== 7. TALLER ====================== -->
+    <section>
+      <h2>7. Para practicar</h2>
+
+      <div class="caja">
+        <p>Los enunciados están a la vista y la respuesta queda plegada. La idea es
+          resolverlos primero en el cuaderno y abrir el desplegable solamente para
+          confirmar.</p>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 1</span>
+          <p>Área de la región limitada por <span class="mat">y = 4 − x²</span> y el eje
+            <span class="mat">x</span>.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <p>Cortes: <span class="mat">x = ±2</span>. La parábola está arriba del eje.</p>
+            <div class="resultado"
+              data-tex="A=\int_{-2}^{2}\left(4-x^{2}\right)dx=\frac{32}{3}">
+              A = ∫<sub>−2</sub><sup>2</sup>(4 − x²)dx = 32/3
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 2</span>
+          <p>Área de la región limitada por <span class="mat">y = x</span> y
+            <span class="mat">y = x³</span> en el primer cuadrante.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <p>En <span class="mat">[0, 1]</span> la recta va arriba.</p>
+            <div class="resultado"
+              data-tex="A=\int_{0}^{1}\left(x-x^{3}\right)dx=\frac{1}{2}-\frac{1}{4}=\frac{1}{4}">
+              A = ∫<sub>0</sub><sup>1</sup>(x − x³)dx = 1/2 − 1/4 = 1/4
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 3</span>
+          <p>Área de la región limitada por <span class="mat">y = √x</span> y
+            <span class="mat">y = x²</span>.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <p>Cortes en <span class="mat">x = 0</span> y <span class="mat">x = 1</span>;
+              la raíz va arriba.</p>
+            <div class="resultado"
+              data-tex="A=\int_{0}^{1}\left(\sqrt{x}-x^{2}\right)dx=\frac{2}{3}-\frac{1}{3}=\frac{1}{3}">
+              A = ∫<sub>0</sub><sup>1</sup>(√x − x²)dx = 2/3 − 1/3 = 1/3
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 4</span>
+          <p>Área de la región limitada por <span class="mat">x = y² − 2</span> y
+            <span class="mat">x = y</span>. Resuélvalo integrando en
+            <span class="mat">y</span>.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <p>Cortes: <span class="mat">y² − 2 = y ⟹ (y − 2)(y + 1) = 0</span>, es decir
+              <span class="mat">y = −1, 2</span>. La recta está a la derecha.</p>
+            <div class="resultado"
+              data-tex="A=\int_{-1}^{2}\left(y-y^{2}+2\right)dy=\frac{9}{2}">
+              A = ∫<sub>−1</sub><sup>2</sup>(y − y² + 2)dy = 9/2
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">EJERCICIO 5</span>
+          <p>Un canal trapezoidal transporta agua. La lámina de agua tiene como frontera
+            superior la recta <span class="mat">y = 1.2</span> m y como fondo la parábola
+            <span class="mat">y = 0.3x²</span>, con <span class="mat">x</span> en metros.
+            Halle el área de la sección mojada.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver la respuesta</summary>
+          <div class="solucion">
+            <p>Cortes: <span class="mat">0.3x² = 1.2 ⟹ x² = 4 ⟹ x = ±2</span> m. La recta
+              está arriba.</p>
+            <div class="resultado"
+              data-tex="A=\int_{-2}^{2}\left(1.2-0.3x^{2}\right)dx=\left[1.2x-0.1x^{3}\right]_{-2}^{2}=3.2\ \mathrm{m^{2}}">
+              A = ∫<sub>−2</sub><sup>2</sup>(1.2 − 0.3x²)dx =
+              [1.2x − 0.1x³]<sub>−2</sub><sup>2</sup> = 3.2 m²
+            </div>
+            <div class="ambiental" style="margin-top:12px">
+              Con esta área y la velocidad media del flujo, la ecuación de continuidad
+              <span class="mat">Q = A·v</span> da el caudal del canal. Es el cálculo que
+              abre el diseño hidráulico.
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <div class="navtemas">
+      <a href="index.html"><span>Volver al</span>Índice del capítulo</a>
+      <a class="der" href="02-discos-arandelas.html"><span>Tema siguiente 3.2</span>Volúmenes:
+        discos y arandelas →</a>
+    </div>
+
+    <div class="pie">
+      Universidad del Cauca · Facultad de Ingeniería Civil · Ingeniería Ambiental<br>
+      Cálculo II · Capítulo III · Material de clase elaborado por Diana Méndez Astudillo
+    </div>
+
+  </div>
+
+  <script src="assets/labs.js"></script>
+  <script>
+    labArea('labArea1', {
+      ejemplos: [
+        {
+          nombre: '2x y x²', sup: x => 2 * x, inf: x => x * x,
+          a: 0, b: 2, ymax: 4.4, tsup: '2x', tinf: 'x²', exacto: '4/3'
+        },
+        {
+          nombre: 'x+2 y x²', sup: x => x + 2, inf: x => x * x,
+          a: -1, b: 2, ymax: 4.4, tsup: 'x + 2', tinf: 'x²', exacto: '9/2'
+        },
+        {
+          nombre: '√x y x²', sup: x => Math.sqrt(x), inf: x => x * x,
+          a: 0, b: 1, ymax: 1.2, tsup: '√x', tinf: 'x²', exacto: '1/3'
+        },
+        {
+          nombre: 'cos x y sen x', sup: x => Math.cos(x), inf: x => Math.sin(x),
+          a: 0, b: Math.PI / 4, ymax: 1.15, tsup: 'cos x', tinf: 'sen x',
+          exacto: '√2 − 1 ≈ 0.4142'
+        },
+        {
+          nombre: '4 − x² y el eje x', sup: x => 4 - x * x, inf: x => 0,
+          a: -2, b: 2, ymax: 4.4, tsup: '4 − x²', tinf: '0', exacto: '32/3'
+        },
+        {
+          nombre: 'x y x³ en [0,1]', sup: x => x, inf: x => x * x * x,
+          a: 0, b: 1, ymax: 1.15, tsup: 'x', tinf: 'x³', exacto: '1/4'
+        }
+      ]
+    });
+  </script>
+</body>
+
+</html>

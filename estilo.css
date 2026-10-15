@@ -1,0 +1,357 @@
+/* ===========================================================
+   Cálculo II · Capítulo III — hoja de estilos común
+   Universidad del Cauca · Ingeniería Ambiental
+   Docente: Diana Méndez Astudillo
+   =========================================================== */
+
+:root {
+  --morado: #5a2d8c;
+  --morado-osc: #3d1e63;
+  --morado-sua: #ede4f7;
+  --lila: #8b5fbf;
+  --lila-sua: #f4eefb;
+  --fucsia: #a4348c;
+  --fucsia-sua: #fbeaf5;
+  --violeta: #6a4c93;
+  --malva: #b79bd4;
+  --gris: #f5f2fa;
+  --borde: #ddd2ec;
+  --texto: #2b2238;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0 }
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--texto);
+  background: #faf8fd;
+  line-height: 1.55;
+  padding: 0 0 60px;
+}
+
+.wrap { max-width: 1060px; margin: 0 auto; padding: 0 18px }
+
+/* ---------------- encabezado ---------------- */
+header {
+  background: linear-gradient(135deg, #3d1e63, #7b4bb8 65%, #a4348c);
+  color: #fff;
+  padding: 24px 0 20px;
+  margin-bottom: 22px;
+  box-shadow: 0 2px 14px rgba(90, 45, 140, .28);
+}
+
+header h1 { font-size: 1.7rem; font-weight: 700; letter-spacing: .3px }
+header .sub { font-size: .98rem; opacity: .94; margin-top: 4px }
+header .curso { font-size: .8rem; opacity: .82; margin-top: 8px }
+
+.barra {
+  display: flex; flex-wrap: wrap; gap: 12px;
+  align-items: center; justify-content: space-between; margin-top: 14px;
+}
+
+.titulos { display: flex; align-items: center; gap: 16px }
+
+/* El logo es la espiral áurea, dibujada en SVG dentro del propio HTML.
+   No lleva fondo: se dibuja en blanco directamente sobre el degradado.
+   stroke="currentColor" hace que tome el color del texto, así que para
+   cambiarle el color basta con cambiar  .logo { color: ... }            */
+.logo { width: 68px; flex-shrink: 0; color: #fff }
+.logo .espiral { width: 100%; display: block }
+.logo img { width: 100%; display: block }   /* por si vuelve a usar una imagen */
+
+/* migas de pan */
+.migas { font-size: .8rem; margin-bottom: 14px; color: #6d5a85 }
+.migas a { color: var(--morado); text-decoration: none; font-weight: 600 }
+.migas a:hover { text-decoration: underline }
+
+/* ---------------- botón modo docente ---------------- */
+.toggle {
+  display: inline-flex; align-items: center; gap: 9px; cursor: pointer;
+  background: rgba(255, 255, 255, .16);
+  border: 1px solid rgba(255, 255, 255, .45);
+  color: #fff; padding: 7px 15px; border-radius: 999px;
+  font-size: .86rem; font-weight: 600; transition: .18s; user-select: none;
+}
+.toggle:hover { background: rgba(255, 255, 255, .28) }
+.toggle.on { background: #fff; color: var(--fucsia); border-color: #fff }
+.punto { width: 9px; height: 9px; border-radius: 50%; background: #f3c6e6; transition: .18s }
+.toggle.on .punto { background: var(--fucsia) }
+
+/* ---------------- secciones ---------------- */
+section { margin-bottom: 26px }
+
+h2 {
+  font-size: 1.16rem; color: var(--morado); font-weight: 700;
+  padding: 9px 16px; background: var(--morado-sua);
+  border-left: 5px solid var(--morado); border-radius: 5px; margin-bottom: 14px;
+}
+h3 { font-size: 1rem; color: var(--morado); font-weight: 650; margin: 16px 0 7px }
+p { margin-bottom: 9px }
+
+.caja {
+  background: #fff; border: 1px solid var(--borde); border-radius: 9px;
+  padding: 16px 18px; box-shadow: 0 1px 5px rgba(90, 45, 140, .07);
+}
+.caja + .caja { margin-top: 12px }
+
+.formula {
+  background: var(--gris); border: 1px solid var(--morado); border-radius: 7px;
+  padding: 14px 16px; margin: 12px 0; text-align: center;
+  font-size: 1.1rem; overflow-x: auto;
+}
+.formula.lila { background: var(--lila-sua); border-color: var(--lila) }
+.formula.fucsia { background: var(--fucsia-sua); border-color: var(--fucsia) }
+
+/* ---------------- cajas temáticas ---------------- */
+.porque, .ambiental {
+  background: #fff; border-radius: 8px; margin: 14px 0; overflow: hidden;
+}
+.porque { border: 1px solid var(--lila) }
+.ambiental { border: 1px solid var(--fucsia) }
+.porque .tit, .ambiental .tit {
+  color: #fff; padding: 6px 14px; font-weight: 650; font-size: .87rem;
+}
+.porque .tit { background: var(--lila) }
+.ambiental .tit { background: var(--fucsia) }
+.porque .cuerpo, .ambiental .cuerpo { padding: 12px 15px; font-size: .94rem }
+
+/* ---------------- nota del docente ---------------- */
+.docente {
+  display: none; background: var(--fucsia-sua);
+  border-left: 4px solid var(--fucsia); border-radius: 0 7px 7px 0;
+  padding: 11px 15px; margin: 12px 0; font-size: .89rem; color: #6e1f5c;
+}
+.docente::before {
+  content: "NOTA PARA EL DOCENTE"; display: block; font-size: .67rem;
+  letter-spacing: 1.1px; font-weight: 700; color: var(--fucsia); margin-bottom: 4px;
+}
+body.modo-docente .docente { display: block }
+
+/* ----------------------------------------------------------------------
+   MODO DOCENTE DESACTIVADO
+   El botón del encabezado está oculto y las notas no se muestran, aunque
+   siguen escritas en el HTML.
+   Para volver a activarlo: borre las tres reglas de este bloque.
+   ---------------------------------------------------------------------- */
+#btnDocente { display: none }
+.docente,
+body.modo-docente .docente { display: none }
+
+/* ---------------- ejercicio desplegable ---------------- */
+.ejercicio {
+  background: #fff; border: 1.5px solid var(--morado); border-radius: 10px;
+  margin: 14px 0; overflow: hidden; box-shadow: 0 1px 6px rgba(90, 45, 140, .09);
+}
+.ejercicio > .enunciado { padding: 15px 18px }
+.ejercicio > .enunciado .eti {
+  display: inline-block; background: var(--morado); color: #fff;
+  font-size: .71rem; letter-spacing: .9px; font-weight: 700;
+  padding: 3px 11px; border-radius: 999px; margin-bottom: 9px;
+}
+details { border-top: 1px solid var(--borde) }
+details > summary {
+  list-style: none; cursor: pointer; user-select: none;
+  padding: 11px 18px; background: var(--lila-sua);
+  color: var(--morado); font-weight: 650; font-size: .91rem;
+  display: flex; align-items: center; gap: 9px; transition: .15s;
+}
+details > summary::-webkit-details-marker { display: none }
+details > summary:hover { background: var(--morado-sua) }
+details > summary .flecha { display: inline-block; transition: transform .2s; font-size: .8rem }
+details[open] > summary .flecha { transform: rotate(90deg) }
+details[open] > summary { background: var(--morado-sua) }
+.solucion { padding: 14px 18px 18px }
+
+/* ----------------------------------------------------------------------
+   FIGURA DE CADA EJEMPLO
+   Dibujo fijo (no interactivo) que acompaña al resultado: región
+   sombreada, curvas y puntos de corte. El SVG va escrito dentro del
+   propio HTML, así que no depende de internet ni de JavaScript.
+   ---------------------------------------------------------------------- */
+.figura-caja {
+  background: #fff; border: 1px solid var(--borde); border-radius: 9px;
+  padding: 10px 12px 8px; margin: 14px 0 4px;
+}
+.figura-ej { width: 100%; height: auto; display: block }
+.figura-cap {
+  font-size: .82rem; color: #5c4b70; text-align: center;
+  margin-top: 6px; line-height: 1.35;
+}
+
+/* ---------------- pasos numerados ---------------- */
+.pasos { counter-reset: p }
+.paso {
+  position: relative; background: var(--gris); border: 1px solid var(--borde);
+  border-radius: 8px; padding: 13px 16px 13px 50px; margin-bottom: 10px;
+}
+.paso::before {
+  counter-increment: p; content: counter(p);
+  position: absolute; left: 13px; top: 13px; width: 25px; height: 25px;
+  border-radius: 50%; background: var(--lila); color: #fff;
+  font-size: .81rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.paso .et {
+  font-weight: 650; color: var(--morado); display: block;
+  margin-bottom: 5px; font-size: .94rem;
+}
+
+.resultado {
+  background: var(--morado-sua); border: 2px solid var(--morado);
+  border-radius: 8px; padding: 13px 16px; margin-top: 12px;
+  text-align: center; font-size: 1.08rem; color: var(--morado-osc); font-weight: 600;
+}
+
+/* ---------------- laboratorios ---------------- */
+.lab {
+  background: #fff; border: 1px solid var(--borde); border-radius: 10px;
+  padding: 16px; margin: 14px 0; box-shadow: 0 1px 6px rgba(90, 45, 140, .08);
+}
+.lab h4 { font-size: .94rem; color: var(--morado); margin-bottom: 10px; font-weight: 650 }
+.lienzos { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center }
+.lienzo-caja { flex: 1 1 310px; min-width: 285px }
+.lienzo-caja .cap { font-size: .77rem; color: #6d5a85; text-align: center; margin-top: 5px }
+canvas {
+  width: 100%; height: auto; display: block; background: #fdfcfe;
+  border: 1px solid var(--borde); border-radius: 7px;
+}
+
+.controles { margin-top: 14px; display: flex; flex-direction: column; gap: 11px }
+.ctrl { display: flex; align-items: center; gap: 11px; flex-wrap: wrap }
+.ctrl label { font-size: .85rem; min-width: 134px; font-weight: 600; color: #4a3a5c }
+.ctrl input[type=range] { flex: 1; min-width: 130px; accent-color: var(--morado) }
+.valor {
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: .85rem; background: var(--morado-sua); padding: 3px 9px;
+  border-radius: 5px; min-width: 80px; text-align: center;
+  color: var(--morado); font-weight: 600;
+}
+.chips { display: flex; gap: 7px; flex-wrap: wrap }
+.chip {
+  background: var(--gris); border: 1px solid var(--borde); border-radius: 999px;
+  padding: 5px 13px; font-size: .81rem; cursor: pointer; font-weight: 600;
+  color: #4a3a5c; transition: .15s; user-select: none;
+}
+.chip:hover { border-color: var(--lila); background: var(--lila-sua) }
+.chip.sel { background: var(--morado); color: #fff; border-color: var(--morado) }
+
+.lectura {
+  background: var(--lila-sua); border-radius: 7px; padding: 11px 14px;
+  margin-top: 12px; font-size: .89rem; border-left: 3px solid var(--lila);
+}
+.lectura b { color: var(--morado) }
+
+/* ---------------- graficador libre ---------------- */
+.entrada { display: flex; align-items: center; gap: 9px; flex-wrap: wrap }
+.entrada label { font-size: .85rem; min-width: 134px; font-weight: 600; color: #4a3a5c }
+.entrada input[type=text], .entrada input[type=number] {
+  font-family: ui-monospace, Consolas, monospace; font-size: .94rem;
+  padding: 7px 11px; border: 1.5px solid var(--borde); border-radius: 6px;
+  background: #fff; color: var(--morado); font-weight: 600;
+}
+.entrada input[type=text] { flex: 1; min-width: 170px }
+.entrada input[type=number] { width: 92px }
+.entrada input:focus { outline: none; border-color: var(--morado) }
+
+.btn {
+  background: var(--morado); color: #fff; border: none; border-radius: 7px;
+  padding: 9px 20px; font-size: .89rem; font-weight: 650; cursor: pointer;
+  transition: .15s; font-family: inherit;
+}
+.btn:hover { background: var(--morado-osc) }
+
+.aviso {
+  background: var(--fucsia-sua); border-left: 4px solid var(--fucsia);
+  border-radius: 0 7px 7px 0; padding: 10px 14px; margin-top: 11px;
+  font-size: .88rem; color: #6e1f5c; display: none;
+}
+.aviso.ver { display: block }
+
+.ayuda-sint {
+  font-size: .81rem; color: #6d5a85; background: var(--gris);
+  border-radius: 7px; padding: 10px 13px; margin-top: 11px;
+}
+.ayuda-sint code {
+  background: #fff; border: 1px solid var(--borde); border-radius: 4px;
+  padding: 1px 6px; font-size: .88em; color: var(--morado);
+}
+.sugerencias { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 9px }
+
+/* ---------------- errores frecuentes ---------------- */
+.errores { background: #fff; border: 1px solid var(--fucsia); border-radius: 8px; overflow: hidden }
+.errores .tit { background: var(--fucsia); color: #fff; padding: 6px 14px; font-weight: 650; font-size: .87rem }
+.errores ul { padding: 12px 15px 12px 32px; font-size: .92rem }
+.errores li { margin-bottom: 6px }
+
+/* ---------------- tablas ---------------- */
+table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: .91rem }
+th { background: var(--morado); color: #fff; padding: 8px 11px; text-align: left; font-weight: 600 }
+td { padding: 8px 11px; border-bottom: 1px solid var(--borde) }
+tr:nth-child(even) td { background: var(--lila-sua) }
+
+/* ---------------- portada: tarjetas de tema ---------------- */
+.temas { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 15px }
+.tema {
+  background: #fff; border: 1px solid var(--borde); border-left: 5px solid var(--lila);
+  border-radius: 9px; padding: 16px 18px; text-decoration: none; color: inherit;
+  transition: .18s; display: block; box-shadow: 0 1px 5px rgba(90, 45, 140, .07);
+}
+.tema:hover {
+  border-left-color: var(--fucsia); transform: translateY(-2px);
+  box-shadow: 0 5px 16px rgba(90, 45, 140, .17);
+}
+.tema .num {
+  font-size: .72rem; letter-spacing: 1px; font-weight: 700;
+  color: var(--fucsia); display: block; margin-bottom: 5px;
+}
+.tema .tit { font-size: 1.04rem; font-weight: 700; color: var(--morado); margin-bottom: 6px }
+.tema .des { font-size: .87rem; color: #5c4b70 }
+.tema .fo {
+  margin-top: 10px; font-size: .84rem; color: var(--lila);
+  background: var(--lila-sua); border-radius: 6px; padding: 6px 10px; text-align: center;
+}
+
+/* ---------------- navegación entre temas ---------------- */
+.navtemas {
+  display: flex; justify-content: space-between; gap: 12px;
+  margin-top: 30px; flex-wrap: wrap;
+}
+.navtemas a {
+  flex: 1 1 210px; background: #fff; border: 1px solid var(--borde);
+  border-radius: 8px; padding: 11px 15px; text-decoration: none;
+  color: var(--morado); font-weight: 600; font-size: .88rem; transition: .15s;
+}
+.navtemas a:hover { background: var(--morado-sua); border-color: var(--lila) }
+.navtemas a.der { text-align: right }
+.navtemas span { display: block; font-size: .72rem; color: #8273a0; font-weight: 500 }
+
+.pie {
+  text-align: center; font-size: .79rem; color: #8273a0;
+  margin-top: 34px; padding-top: 16px; border-top: 1px solid var(--borde);
+}
+
+/* ---------------- matemática de respaldo ---------------- */
+.mat { font-style: italic; font-family: "Cambria Math", Cambria, Georgia, serif }
+.frac {
+  display: inline-block; vertical-align: middle; text-align: center;
+  font-size: .85em; line-height: 1.15;
+}
+.frac .num { display: block; border-bottom: 1.4px solid currentColor; padding: 0 4px }
+.frac .den { display: block; padding: 0 4px }
+.int { font-size: 1.5em; vertical-align: -.28em; font-family: Cambria, Georgia, serif }
+
+/* ---------------- impresión ---------------- */
+@media print {
+  .toggle, .navtemas, .controles { display: none }
+  header {
+    background: #3d1e63 !important;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .lab, .ejercicio { break-inside: avoid }
+}
+
+@media (max-width: 640px) {
+  header h1 { font-size: 1.26rem }
+  .lienzo-caja { min-width: 100% }
+  .ctrl label, .entrada label { min-width: 100% }
+}

@@ -19,17 +19,24 @@
     <div class="wrap">
       <div class="titulos">
         <div class="logo">
-          <img src="assets/logo.jpg" alt="Universidad del Cauca">
+          <svg class="espiral" viewBox="0 0 100 61.803" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Espiral áurea">
+            <title>Espiral áurea</title>
+            <g fill="none" stroke="currentColor" stroke-linejoin="round">
+              <path opacity=".55" stroke-width="1.5" d="M0 0 H100 V61.803 H0 Z"/>
+              <path stroke-width="4.0" stroke-linecap="round" d="M0.00 61.80 A61.80 61.80 0 0 1 61.80 0.00 A38.20 38.20 0 0 1 100.00 38.20 A23.61 23.61 0 0 1 76.39 61.80 A14.59 14.59 0 0 1 61.80 47.21 A9.02 9.02 0 0 1 70.82 38.20 A5.57 5.57 0 0 1 76.39 43.77 A3.44 3.44 0 0 1 72.95 47.21"/>
+            </g>
+          </svg>
         </div>
         <div>
           <h1>APLICACIONES DE LA INTEGRAL</h1>
-          <div class="sub">Capítulo III · Cálculo II · Experiencia gráfica</div>
+          <div class="sub">Capítulo III · Cálculo II</div>
         </div>
       </div>
       <div class="barra">
         <div class="curso">
-          Facultad de Ingeniería Civil · Ingeniería Ambiental<br>
-          Cálculo II &nbsp;·&nbsp; Docente: Diana Méndez Astudillo</div>
+          Departamento de Matemáticas<br>
+          Cálculo II &nbsp;·&nbsp; Diana Méndez Astudillo
+        </div>
         <div class="toggle" id="btnDocente">
           <span class="punto"></span><span id="txtDocente">Activar modo docente</span>
         </div>
@@ -40,23 +47,49 @@
   <div class="wrap">
 
     <section>
-      <h2>Una sola idea, seis aplicaciones</h2>
+      <h2>Aplicaciones de la integral</h2>
 
       <div class="caja">
-        <p>Todo este capítulo sale de <b>un solo movimiento</b>: cortar algo en pedazos muy
-          delgados, calcular la medida de <em>un</em> pedazo, y sumar todos los pedazos con
-          una integral.</p>
-        <div class="formula">
-          <div class="tex-display"
-            data-tex="\text{medida total}=\int_{a}^{b}(\text{medida de un pedazo})">
-            medida total = <span class="int">∫</span><sub>a</sub><sup>b</sup> (medida de un
-            pedazo)
+        <p>Todo este capítulo sale de <b>una sola construcción</b>, la misma que define la
+          integral: la <b>suma de Riemann</b>.</p>
+
+        <div class="pasos">
+          <div class="paso"><b>Dividir.</b> Se parte el intervalo
+            <span class="mat" data-tex="[a,b]">[a, b]</span> en
+            <span class="mat" data-tex="n">n</span> subintervalos de igual longitud
+            <span class="mat" data-tex="\Delta x=\dfrac{b-a}{n}">Δx = (b − a)/n</span>.
+          </div>
+          <div class="paso"><b>Aproximar.</b> En el
+            <span class="mat" data-tex="i">i</span>-ésimo subintervalo
+            <span class="mat" data-tex="[x_{i-1},x_{i}]">[x<sub>i−1</sub>, x<sub>i</sub>]</span>
+            se elige un punto <span class="mat" data-tex="x_{i}^{*}">x<sub>i</sub>*</span> y
+            se calcula la medida aproximada de la porción correspondiente.
+          </div>
+          <div class="paso"><b>Sumar.</b> Se suman las
+            <span class="mat" data-tex="n">n</span> aproximaciones. Eso es una suma de
+            Riemann.
+          </div>
+          <div class="paso"><b>Pasar al límite.</b> Cuando
+            <span class="mat" data-tex="\Delta x\to 0">Δx → 0</span>, la suma converge al
+            valor exacto, que es la integral.
           </div>
         </div>
-        <p>Lo único que cambia de una sección a otra es <b>qué es el pedazo</b>: un
-          rectángulo flaquito, un disco, una arandela, una cáscara cilíndrica, un segmento
-          de recta o un anillo de superficie. Si usted identifica el pedazo, la integral se
-          escribe sola.</p>
+
+        <div class="formula">
+          <div class="tex-display"
+            data-tex="\int_{a}^{b}f(x)\,dx=\lim_{\Delta x\to 0}\sum_{i=1}^{n}f(x_{i}^{*})\,\Delta x">
+            ∫<sub>a</sub><sup>b</sup> f(x) dx =
+            lim<sub>Δx→0</sub> Σ<sub>i=1</sub><sup>n</sup> f(x<sub>i</sub>*) Δx
+          </div>
+        </div>
+
+        <p>Lo único que cambia de una sección a otra es <b>qué mide el término</b>
+          <span class="mat" data-tex="f(x_{i}^{*})\,\Delta x">f(x<sub>i</sub>*) Δx</span>
+          <b>de la suma</b>: el área de un rectángulo, el volumen de un disco, el de una
+          arandela, el de una cáscara cilíndrica, la longitud de un segmento o el área de un
+          anillo de superficie. A esa porción típica se la llama el <b>elemento
+            representativo</b>. Si usted identifica el elemento, la integral se escribe
+          sola.</p>
       </div>
 
       <div class="porque">
@@ -70,7 +103,7 @@
         <b>Cómo usar esta página en clase.</b> Cada tema abre con la idea geométrica y un
         laboratorio donde se puede mover la rebanada y cambiar la función. La recomendación
         es proyectar el laboratorio <em>antes</em> de escribir la integral: primero que vean
-        el pedazo moverse, después la fórmula. Todos los ejercicios vienen con el enunciado
+        el elemento representativo moverse, después la fórmula. Todos los ejercicios vienen con el enunciado
         visible y el desarrollo plegado, para resolverlos en el tablero y solo entonces
         abrir la solución. Los recuadros morados como este únicamente aparecen con el modo
         docente activado.
@@ -85,9 +118,9 @@
         <a class="tema" href="01-area-region-plana.html">
           <span class="num">TEMA 3.1</span>
           <div class="tit">Área de una región plana</div>
-          <div class="des">El rectángulo representativo, integrar en <span class="mat">x</span>
-            o en <span class="mat">y</span>, y qué hacer cuando las curvas se cruzan.</div>
-          <div class="fo">El pedazo es un rectángulo flaco</div>
+          <div class="des">El rectángulo representativo, integrar en <span class="mat" data-tex="x">x</span>
+            o en <span class="mat" data-tex="y">y</span>, y qué hacer cuando las curvas se cruzan.</div>
+          <div class="fo">El elemento es un rectángulo de ancho Δx</div>
         </a>
 
         <a class="tema" href="02-discos-arandelas.html">
@@ -95,15 +128,15 @@
           <div class="tit">Volúmenes: rebanadas, discos y arandelas</div>
           <div class="des">Girar una región alrededor de un eje y cortar perpendicular a
             él. Discos cuando el sólido es macizo, arandelas cuando tiene hueco.</div>
-          <div class="fo">El pedazo es un disco o una arandela</div>
+          <div class="fo">El elemento es un disco o una arandela</div>
         </a>
 
         <a class="tema" href="03-cascaras-cilindricas.html">
           <span class="num">TEMA 3.3</span>
-          <div class="tit">Cáscaras cilíndricas</div>
+          <div class="tit">Capas cilíndricas</div>
           <div class="des">Cortar <em>paralelo</em> al eje de giro. El método que salva los
-            problemas donde despejar <span class="mat">x</span> es imposible.</div>
-          <div class="fo">El pedazo es un tubo delgado</div>
+            problemas donde despejar <span class="mat" data-tex="x">x</span> es imposible.</div>
+          <div class="fo">El elemento es una cáscara cilíndrica</div>
         </a>
 
         <a class="tema" href="04-secciones-transversales.html">
@@ -111,7 +144,7 @@
           <div class="tit">Sólidos de secciones conocidas</div>
           <div class="des">Sólidos que no son de revolución: se conoce la forma del corte
             (cuadrado, triángulo, semicírculo) y se integra su área.</div>
-          <div class="fo">El pedazo es una lámina con forma</div>
+          <div class="fo">El elemento es una lámina de área A(x)</div>
         </a>
 
         <a class="tema" href="05-longitud-de-curva.html">
@@ -119,23 +152,23 @@
           <div class="tit">Longitud de una curva</div>
           <div class="des">De la poligonal al diferencial de arco. Incluye la catenaria de
             un cable y el perfil de una conducción.</div>
-          <div class="fo">El pedazo es un segmento de recta</div>
+          <div class="fo">El elemento es un segmento de longitud Δs</div>
         </a>
 
         <a class="tema" href="06-superficies-revolucion.html">
           <span class="num">TEMA 3.6</span>
           <div class="tit">Superficies de sólidos de revolución</div>
           <div class="des">Área de la piel del sólido. La diferencia fina entre
-            <span class="mat">dx</span> y <span class="mat">ds</span>, que es donde se
+            <span class="mat" data-tex="dx">dx</span> y <span class="mat" data-tex="ds">ds</span>, que es donde se
             equivoca casi todo el mundo.</div>
-          <div class="fo">El pedazo es un anillo de tronco de cono</div>
+          <div class="fo">El elemento es un anillo de superficie</div>
         </a>
 
       </div>
     </section>
 
     <section>
-      <h2>Tabla de los seis pedazos</h2>
+      <h2>Tabla de los seis elementos representativos</h2>
 
       <div class="caja">
         <p>Esta tabla es el resumen de todo el capítulo. Vale la pena tenerla a mano
@@ -143,42 +176,42 @@
 
         <div class="pasos">
           <div class="paso">
-            <b>Área entre curvas.</b> Pedazo: rectángulo de altura
-            <span class="mat">(sup − inf)</span> y ancho <span class="mat">dx</span>.
-            <span class="formula lila" data-tex="A=\int_{a}^{b}\bigl[f(x)-g(x)\bigr]\,dx">
-              A = ∫<sub>a</sub><sup>b</sup>[f(x) − g(x)] dx</span>
+            <b>Área entre curvas.</b> Elemento: rectángulo de altura
+            <span class="mat" data-tex="(\text{sup} - \text{inf})">(sup − inf)</span> y ancho <span class="mat" data-tex="dx">dx</span>.
+            <div class="formula lila" data-tex="A=\int_{a}^{b}\bigl[f(x)-g(x)\bigr]\,dx">
+              A = ∫<sub>a</sub><sup>b</sup>[f(x) − g(x)] dx</div>
           </div>
           <div class="paso">
-            <b>Discos.</b> Pedazo: círculo de radio <span class="mat">R(x)</span> y espesor
-            <span class="mat">dx</span>.
-            <span class="formula lila" data-tex="V=\pi\int_{a}^{b}\left[R(x)\right]^{2}dx">
-              V = π∫<sub>a</sub><sup>b</sup>[R(x)]² dx</span>
+            <b>Discos.</b> Elemento: círculo de radio <span class="mat" data-tex="R(x)">R(x)</span> y espesor
+            <span class="mat" data-tex="dx">dx</span>.
+            <div class="formula lila" data-tex="V=\pi\int_{a}^{b}\left[R(x)\right]^{2}dx">
+              V = π∫<sub>a</sub><sup>b</sup>[R(x)]² dx</div>
           </div>
           <div class="paso">
-            <b>Arandelas.</b> Pedazo: corona circular, radio exterior menos interior.
-            <span class="formula lila"
+            <b>Arandelas.</b> Elemento: corona circular, radio exterior menos interior.
+            <div class="formula lila"
               data-tex="V=\pi\int_{a}^{b}\left(\left[R(x)\right]^{2}-\left[r(x)\right]^{2}\right)dx">
-              V = π∫<sub>a</sub><sup>b</sup>([R]² − [r]²) dx</span>
+              V = π∫<sub>a</sub><sup>b</sup>([R]² − [r]²) dx</div>
           </div>
           <div class="paso">
-            <b>Cáscaras.</b> Pedazo: tubo de radio <span class="mat">p(x)</span>, altura
-            <span class="mat">h(x)</span> y grosor <span class="mat">dx</span>.
-            <span class="formula lila" data-tex="V=2\pi\int_{a}^{b}p(x)\,h(x)\,dx">
-              V = 2π∫<sub>a</sub><sup>b</sup>p(x)h(x) dx</span>
+            <b>Cáscaras.</b> Elemento: cáscara cilíndrica de radio <span class="mat" data-tex="p(x)">p(x)</span>, altura
+            <span class="mat" data-tex="h(x)">h(x)</span> y grosor <span class="mat" data-tex="dx">dx</span>.
+            <div class="formula lila" data-tex="V=2\pi\int_{a}^{b}p(x)\,h(x)\,dx">
+              V = 2π∫<sub>a</sub><sup>b</sup>p(x)h(x) dx</div>
           </div>
           <div class="paso">
-            <b>Secciones conocidas.</b> Pedazo: lámina de área
-            <span class="mat">A(x)</span> y espesor <span class="mat">dx</span>.
-            <span class="formula lila" data-tex="V=\int_{a}^{b}A(x)\,dx">
-              V = ∫<sub>a</sub><sup>b</sup>A(x) dx</span>
+            <b>Secciones conocidas.</b> Elemento: lámina de área
+            <span class="mat" data-tex="A(x)">A(x)</span> y espesor <span class="mat" data-tex="dx">dx</span>.
+            <div class="formula lila" data-tex="V=\int_{a}^{b}A(x)\,dx">
+              V = ∫<sub>a</sub><sup>b</sup>A(x) dx</div>
           </div>
           <div class="paso">
-            <b>Longitud y superficie.</b> Pedazo: segmento
-            <span class="mat">ds</span>, o anillo de radio <span class="mat">f(x)</span> y
-            generatriz <span class="mat">ds</span>.
-            <span class="formula lila"
+            <b>Longitud y superficie.</b> Elemento: segmento
+            <span class="mat" data-tex="ds">ds</span>, o anillo de radio <span class="mat" data-tex="f(x)">f(x)</span> y
+            generatriz <span class="mat" data-tex="ds">ds</span>.
+            <div class="formula lila"
               data-tex="ds=\sqrt{1+\left[f'(x)\right]^{2}}\,dx,\qquad L=\int ds,\qquad S=2\pi\int f(x)\,ds">
-              ds = √(1 + [f′(x)]²) dx, &nbsp; L = ∫ds, &nbsp; S = 2π∫f(x) ds</span>
+              ds = √(1 + [f′(x)]²) dx, &nbsp; L = ∫ds, &nbsp; S = 2π∫f(x) ds</div>
           </div>
         </div>
       </div>
@@ -186,14 +219,116 @@
       <div class="docente">
         <b>Ruta sugerida de cuatro sesiones.</b><br>
         Sesión 1 — temas 3.1 y 3.2 (área y discos/arandelas): es el bloque que fija la
-        estrategia del pedazo.<br>
+        estrategia del elemento representativo.<br>
         Sesión 2 — tema 3.3 (cáscaras): entra pidiendo un ejemplo donde discos no sirva,
-        por ejemplo <span class="mat">y = x·sen x</span> girando sobre el eje
-        <span class="mat">y</span>.<br>
+        por ejemplo <span class="mat" data-tex="y = x\cdot \operatorname{sen} x">y = x·sen x</span> girando sobre el eje
+        <span class="mat" data-tex="y">y</span>.<br>
         Sesión 3 — temas 3.4 y 3.5 (secciones y longitud): la parte más visual, buena para
         trabajo en grupo con el laboratorio proyectado.<br>
-        Sesión 4 — tema 3.6 y taller de cierre mezclando los seis pedazos sin decir cuál
+        Sesión 4 — tema 3.6 y taller de cierre mezclando los seis elementos sin decir cuál
         toca: ese reconocimiento es la competencia real del capítulo.
+      </div>
+    </section>
+
+    <!-- ============ REGLA DE SIMPSON (desplegable) ============ -->
+    <section>
+      <h2>Cuando la integral no se puede resolver a mano</h2>
+
+      <div class="caja">
+        <p>Las seis fórmulas de la tabla llevan a una integral. Pero hay dos situaciones,
+          muy frecuentes en ingeniería, en las que esa integral no se puede evaluar con el
+          teorema fundamental:</p>
+        <ul>
+          <li>La antiderivada <b>no es elemental</b>. Por ejemplo
+            <span class="mat" data-tex="e^{-x^{2}}">e<sup>−x²</sup></span>, central en
+            estadística ambiental, o la longitud de arco de casi cualquier curva.</li>
+          <li>La función <b>ni siquiera se conoce</b>: solo hay datos de campo en una
+            tabla, como en el aforo de un canal.</li>
+        </ul>
+        <p>En los dos casos se aproxima numéricamente. Esto es del capítulo II, pero aquí
+          es donde se usa.</p>
+      </div>
+
+      <div class="ejercicio">
+        <div class="enunciado">
+          <span class="eti">REPASO DEL CAPÍTULO II</span>
+          <p><b>Regla del trapecio y regla de Simpson.</b> Despliegue para ver las dos
+            fórmulas y compararlas en el laboratorio.</p>
+        </div>
+        <details>
+          <summary><span class="flecha">▶</span> Ver las reglas y el laboratorio</summary>
+          <div class="solucion">
+
+            <p>Las dos parten de lo mismo: dividir
+              <span class="mat" data-tex="[a,b]">[a, b]</span> en
+              <span class="mat" data-tex="n">n</span> subintervalos de ancho
+              <span class="mat" data-tex="h=\dfrac{b-a}{n}">h = (b − a)/n</span> y evaluar
+              <span class="mat" data-tex="y_{k}=f(x_{k})">y<sub>k</sub> = f(x<sub>k</sub>)</span>
+              en los extremos. Lo que cambia es con qué se unen esos puntos.</p>
+
+            <div class="formula lila"
+              data-tex="\text{Trapecio:}\quad \int_{a}^{b}f(x)\,dx\approx\frac{h}{2}\Bigl[y_{0}+2y_{1}+2y_{2}+\cdots+2y_{n-1}+y_{n}\Bigr]">
+              Trapecio: ∫<sub>a</sub><sup>b</sup>f(x)dx ≈ (h/2)[y₀ + 2y₁ + 2y₂ + ⋯ +
+              2y<sub>n−1</sub> + y<sub>n</sub>]
+            </div>
+
+            <div class="formula fucsia"
+              data-tex="\text{Simpson:}\quad \int_{a}^{b}f(x)\,dx\approx\frac{h}{3}\Bigl[y_{0}+4y_{1}+2y_{2}+4y_{3}+\cdots+4y_{n-1}+y_{n}\Bigr]">
+              Simpson: ∫<sub>a</sub><sup>b</sup>f(x)dx ≈ (h/3)[y₀ + 4y₁ + 2y₂ + 4y₃ + ⋯ +
+              4y<sub>n−1</sub> + y<sub>n</sub>]
+            </div>
+
+            <div class="porque">
+              <b>¿Por qué Simpson es tanto mejor?</b> El trapecio une los puntos con
+              <em>segmentos de recta</em>. Simpson los une de tres en tres con
+              <em>parábolas</em>, que se ajustan mucho mejor a una curva. Por eso el error
+              del trapecio depende de
+              <span class="mat" data-tex="h^{2}">h²</span> y el de Simpson de
+              <span class="mat" data-tex="h^{4}">h⁴</span>: al reducir
+              <span class="mat" data-tex="h">h</span> a la mitad, el error del trapecio se
+              divide por <b>4</b> y el de Simpson por <b>16</b>.
+              <div class="formula"
+                data-tex="|E_{T}|\le\frac{(b-a)h^{2}}{12}\max\left|f''\right|,
+                          \qquad
+                          |E_{S}|\le\frac{(b-a)h^{4}}{180}\max\left|f^{(4)}\right|">
+                |E<sub>T</sub>| ≤ (b−a)h²/12 · máx|f″|, &nbsp;&nbsp;
+                |E<sub>S</sub>| ≤ (b−a)h⁴/180 · máx|f⁽⁴⁾|
+              </div>
+            </div>
+
+            <div class="errores">
+              <ul>
+                <li><b>Simpson exige <span class="mat" data-tex="n">n</span> par.</b> Con
+                  <span class="mat" data-tex="n">n</span> impar no se pueden agrupar los
+                  puntos de tres en tres y la fórmula no aplica.</li>
+                <li><b>El patrón de coeficientes.</b> Es
+                  <span class="mat" data-tex="1,4,2,4,2,\dots,4,1">1, 4, 2, 4, 2, …, 4, 1</span>:
+                  los extremos llevan 1, los índices impares llevan 4 y los pares
+                  interiores llevan 2. Es lo que más se equivoca.</li>
+                <li><b>El divisor cambia.</b> Trapecio va sobre
+                  <span class="mat" data-tex="2">2</span>; Simpson sobre
+                  <span class="mat" data-tex="3">3</span>.</li>
+              </ul>
+            </div>
+
+            <div class="lab">
+              <h4>Laboratorio · Compare las dos reglas</h4>
+              <p>Elija una función y mueva el número de subintervalos. A la izquierda la
+                aproximación con rectas, a la derecha con parábolas. Abajo aparece el error
+                de cada una y el patrón de coeficientes.</p>
+              <div id="labSimp"></div>
+            </div>
+
+            <div class="ambiental">
+              <b>Dónde se usa esto en el capítulo III.</b> La longitud de arco de
+              <span class="mat" data-tex="y=x^{2}">y = x²</span>, el área de la superficie
+              de casi cualquier sólido de revolución, y el aforo de un canal a partir de
+              velocidades medidas en campo: en los tres casos la integral existe pero no
+              tiene antiderivada elemental, y Simpson da la respuesta.
+            </div>
+
+          </div>
+        </details>
       </div>
     </section>
 
@@ -208,13 +343,40 @@
     </section>
 
     <div class="pie">
-      Universidad del Cauca · Facultad de Ingeniería Civil · Ingeniería Ambiental<br>
+      Universidad del Cauca · Departamento de Matemáticas<br>
       Cálculo II · Capítulo III · Material de clase elaborado por Diana Méndez Astudillo
     </div>
 
   </div>
 
   <script src="assets/labs.js"></script>
+  <script>
+    labSimpson('labSimp', {
+      ejemplos: [
+        {
+          nombre: '1/x en [1,2]', f: x => 1 / x, a: 1, b: 2,
+          exacta: Math.log(2), tf: '1/x', ymax: 1.15
+        },
+        {
+          nombre: '√(1+4x²) en [0,1]', f: x => Math.sqrt(1 + 4 * x * x), a: 0, b: 1,
+          exacta: Math.sqrt(5) / 2 + Math.log(2 + Math.sqrt(5)) / 4,
+          tf: '√(1 + 4x²)', ymax: 2.6
+        },
+        {
+          nombre: 'e^(−x²) en [0,2]', f: x => Math.exp(-x * x), a: 0, b: 2,
+          exacta: 0.8820813907624215, tf: 'e^(−x²)', ymax: 1.15
+        },
+        {
+          nombre: 'sen x en [0,π]', f: x => Math.sin(x), a: 0, b: Math.PI,
+          exacta: 2, tf: 'sen x', ymax: 1.15
+        },
+        {
+          nombre: 'x³ en [0,2]', f: x => x * x * x, a: 0, b: 2,
+          exacta: 4, tf: 'x³', ymax: 8.6
+        }
+      ]
+    });
+  </script>
 </body>
 
 </html>

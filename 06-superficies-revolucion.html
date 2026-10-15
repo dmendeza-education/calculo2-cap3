@@ -19,7 +19,13 @@
     <div class="wrap">
       <div class="titulos">
         <div class="logo">
-          <img src="assets/logo.jpg" alt="Universidad del Cauca">
+          <svg class="espiral" viewBox="0 0 100 61.803" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Espiral áurea">
+            <title>Espiral áurea</title>
+            <g fill="none" stroke="currentColor" stroke-linejoin="round">
+              <path opacity=".55" stroke-width="1.5" d="M0 0 H100 V61.803 H0 Z"/>
+              <path stroke-width="4.0" stroke-linecap="round" d="M0.00 61.80 A61.80 61.80 0 0 1 61.80 0.00 A38.20 38.20 0 0 1 100.00 38.20 A23.61 23.61 0 0 1 76.39 61.80 A14.59 14.59 0 0 1 61.80 47.21 A9.02 9.02 0 0 1 70.82 38.20 A5.57 5.57 0 0 1 76.39 43.77 A3.44 3.44 0 0 1 72.95 47.21"/>
+            </g>
+          </svg>
         </div>
         <div>
           <h1>ÁREA DE UNA SUPERFICIE DE REVOLUCIÓN</h1>
@@ -28,8 +34,9 @@
       </div>
       <div class="barra">
         <div class="curso">
-          Facultad de Ingeniería Civil · Ingeniería Ambiental<br>
-          Cálculo II &nbsp;·&nbsp; Docente: Diana Méndez Astudillo</div>
+          Departamento de Matemáticas<br>
+          Cálculo II &nbsp;·&nbsp; Diana Méndez Astudillo
+        </div>
         <div class="toggle" id="btnDocente">
           <span class="punto"></span><span id="txtDocente">Activar modo docente</span>
         </div>
@@ -49,23 +56,23 @@
       <div class="caja">
         <p>Hasta ahora medíamos <b>cuánto cabe</b> dentro del sólido. Ahora vamos a medir
           <b>cuánta lámina se necesita para forrarlo</b>: el área de su superficie.</p>
-        <p>El pedazo ya no es un disco sino un <b>anillo</b>, una banda delgada de tronco de
+        <p>El elemento representativo ya no es un disco sino un <b>anillo</b>, una banda delgada de tronco de
           cono. Y su área es:</p>
         <div class="formula">
           Área de un anillo &nbsp;=&nbsp; (perímetro del círculo) × (ancho de la banda)
           <div class="tex-display" data-tex="dS=2\pi\,f(x)\,ds" style="margin-top:10px">
-            dS = 2<span class="mat">π f(x) ds</span>
+            dS = 2<span class="mat" data-tex="\pi f(x) ds">π f(x) ds</span>
           </div>
         </div>
-        <p>Donde <span class="mat">f(x)</span> es el radio del anillo y
-          <span class="mat">ds</span> es el <b>diferencial de arco</b> del tema anterior, no
-          <span class="mat">dx</span>. Juntando las dos cosas:</p>
+        <p>Donde <span class="mat" data-tex="f(x)">f(x)</span> es el radio del anillo y
+          <span class="mat" data-tex="ds">ds</span> es el <b>diferencial de arco</b> del tema anterior, no
+          <span class="mat" data-tex="dx">dx</span>. Juntando las dos cosas:</p>
         <div class="formula fucsia"
           data-tex="S=2\pi\int_{a}^{b}f(x)\sqrt{1+\left[f'(x)\right]^{2}}\,dx">
           S = 2π∫<sub>a</sub><sup>b</sup>f(x)√(1 + [f′(x)]²) dx
         </div>
-        <p>Y si el giro es alrededor del eje <span class="mat">y</span>, el radio pasa a ser
-          <span class="mat">x</span>:</p>
+        <p>Y si el giro es alrededor del eje <span class="mat" data-tex="y">y</span>, el radio pasa a ser
+          <span class="mat" data-tex="x">x</span>:</p>
         <div class="formula lila"
           data-tex="S=2\pi\int_{a}^{b}x\sqrt{1+\left[f'(x)\right]^{2}}\,dx">
           S = 2π∫<sub>a</sub><sup>b</sup>x√(1 + [f′(x)]²) dx
@@ -73,18 +80,18 @@
       </div>
 
       <div class="porque">
-        <b>¿Por qué <span class="mat">ds</span> y no <span class="mat">dx</span>?</b> Esta es
+        <b>¿Por qué <span class="mat" data-tex="ds">ds</span> y no <span class="mat" data-tex="dx">dx</span>?</b> Esta es
         <em>la</em> pregunta del tema. Imagine un cono muy inclinado: la lámina que lo forra
         es más larga que la base sobre la que se apoya, porque sigue la <b>generatriz</b>, no
         la horizontal. La banda de superficie tiene el ancho de la curva, no el de su
-        proyección. Por eso aparece el factor <span class="mat">√(1 + [f′]²)</span>: es el
+        proyección. Por eso aparece el factor <span class="mat" data-tex="\sqrt{1 + [f']^{2}}">√(1 + [f′]²)</span>: es el
         estiramiento que sufre la lámina al inclinarse.<br><br>
-        Y hay una verificación contundente: <span class="mat">dS = 2πf(x)dx</span> daría, para
-        un cono de radio <span class="mat">r</span> y altura <span class="mat">h</span>, un
-        área de <span class="mat">πrh</span>; la fórmula correcta da
-        <span class="mat">πrg</span> con <span class="mat">g = √(r² + h²)</span> la
+        Y hay una verificación contundente: <span class="mat" data-tex="dS = 2\pi f(x)dx">dS = 2πf(x)dx</span> daría, para
+        un cono de radio <span class="mat" data-tex="r">r</span> y altura <span class="mat" data-tex="h">h</span>, un
+        área de <span class="mat" data-tex="\pi rh">πrh</span>; la fórmula correcta da
+        <span class="mat" data-tex="\pi rg">πrg</span> con <span class="mat" data-tex="g = \sqrt{r^{2} + h^{2}}">g = √(r² + h²)</span> la
         generatriz, que es la fórmula de bachillerato. La diferencia <em>es</em> el
-        <span class="mat">ds</span>.
+        <span class="mat" data-tex="ds">ds</span>.
       </div>
 
       <div class="docente">
@@ -92,7 +99,7 @@
         circular, pégelo en cono, y pregunte cuál era el radio del sector: era la
         generatriz, no la altura. Después deje el cono sobre la mesa y compare con el
         círculo que ocupa: el papel es más grande. Ese «más grande» es el factor
-        <span class="mat">√(1 + [f′]²)</span>, y una vez que lo vean con el papel en la mano
+        <span class="mat" data-tex="\sqrt{1 + [f']^{2}}">√(1 + [f′]²)</span>, y una vez que lo vean con el papel en la mano
         difícilmente lo olvidan.
       </div>
 
@@ -101,8 +108,8 @@
         <h4>Ejemplo 1 · La superficie como una cáscara abierta</h4>
         <p>Use el control de barrido para abrir la superficie y ver que es una
           <b>lámina</b>, no un sólido lleno. El anillo resaltado es la banda que la integral
-          va sumando; su radio es <span class="mat">f(x)</span> y su ancho es
-          <span class="mat">ds</span>.</p>
+          va sumando; su radio es <span class="mat" data-tex="f(x)">f(x)</span> y su ancho es
+          <span class="mat" data-tex="ds">ds</span>.</p>
         <div id="labSup1"></div>
       </div>
     </section>
@@ -117,18 +124,18 @@
 
         <div class="pasos">
           <div class="paso"><b>Radio = distancia al eje de giro.</b> Giro sobre el eje
-            <span class="mat">x</span> ⟹ el radio es la ordenada,
-            <span class="mat">f(x)</span>. Giro sobre el eje
-            <span class="mat">y</span> ⟹ el radio es la abscisa,
-            <span class="mat">x</span>. Giro sobre <span class="mat">y = k</span> ⟹ el radio
-            es <span class="mat">|f(x) − k|</span>.</div>
-          <div class="paso"><b>El <span class="mat">ds</span> no cambia.</b> El factor
-            <span class="mat">√(1 + [f′]²)</span> es el mismo sin importar alrededor de qué
+            <span class="mat" data-tex="x">x</span> ⟹ el radio es la ordenada,
+            <span class="mat" data-tex="f(x)">f(x)</span>. Giro sobre el eje
+            <span class="mat" data-tex="y">y</span> ⟹ el radio es la abscisa,
+            <span class="mat" data-tex="x">x</span>. Giro sobre <span class="mat" data-tex="y = k">y = k</span> ⟹ el radio
+            es <span class="mat" data-tex="|f(x) - k|">|f(x) − k|</span>.</div>
+          <div class="paso"><b>El <span class="mat" data-tex="ds">ds</span> no cambia.</b> El factor
+            <span class="mat" data-tex="\sqrt{1 + [f']^{2}}">√(1 + [f′]²)</span> es el mismo sin importar alrededor de qué
             eje se gire, porque depende solo de la curva, no del eje. Lo único que cambia al
             cambiar de eje es el radio.</div>
           <div class="paso"><b>El integrando es el producto de las dos cosas.</b>
-            <span class="mat">(radio) × (ds)</span>, y por fuera el
-            <span class="mat">2π</span>. Nada más.</div>
+            <span class="mat" data-tex="(\text{radio}) \times(ds)">(radio) × (ds)</span>, y por fuera el
+            <span class="mat" data-tex="2\pi">2π</span>. Nada más.</div>
         </div>
 
         <p>La consecuencia práctica es incómoda pero honesta: estas integrales son
@@ -139,17 +146,17 @@
 
       <div class="porque">
         <b>Tabla comparativa de las tres fórmulas del mismo giro.</b> Para
-        <span class="mat">y = f(x)</span> girando sobre el eje
-        <span class="mat">x</span>:<br>
+        <span class="mat" data-tex="y = f(x)">y = f(x)</span> girando sobre el eje
+        <span class="mat" data-tex="x">x</span>:<br>
         — <b>Volumen</b> (discos):
-        <span class="mat">π∫[f]²dx</span> — el cuadrado, con
-        <span class="mat">dx</span>.<br>
+        <span class="mat" data-tex="\pi \int [f]^{2}dx">π∫[f]²dx</span> — el cuadrado, con
+        <span class="mat" data-tex="dx">dx</span>.<br>
         — <b>Superficie</b>:
-        <span class="mat">2π∫f·ds</span> — lineal, con
-        <span class="mat">ds</span>.<br>
+        <span class="mat" data-tex="2\pi \int f\cdot ds">2π∫f·ds</span> — lineal, con
+        <span class="mat" data-tex="ds">ds</span>.<br>
         — <b>Longitud de la curva generadora</b>:
-        <span class="mat">∫ds</span> — sin radio ni
-        <span class="mat">2π</span>.<br>
+        <span class="mat" data-tex="\int ds">∫ds</span> — sin radio ni
+        <span class="mat" data-tex="2\pi">2π</span>.<br>
         Tres fórmulas parecidas que miden cosas distintas. Confundirlas es el error
         dominante del capítulo completo.
       </div>
@@ -162,9 +169,9 @@
       <div class="ejercicio">
         <div class="enunciado">
           <span class="eti">EJEMPLO RESUELTO 1</span>
-          <p>La curva <span class="mat">y = x/2</span> desde
-            <span class="mat">x = 0</span> hasta <span class="mat">x = 4</span> gira
-            alrededor del eje <span class="mat">x</span>. Halle el área de la superficie y
+          <p>La curva <span class="mat" data-tex="y = x/2">y = x/2</span> desde
+            <span class="mat" data-tex="x = 0">x = 0</span> hasta <span class="mat" data-tex="x = 4">x = 4</span> gira
+            alrededor del eje <span class="mat" data-tex="x">x</span>. Halle el área de la superficie y
             verifique con la fórmula del cono.</p>
         </div>
         <details>
@@ -172,40 +179,75 @@
           <div class="solucion">
             <div class="pasos">
               <div class="paso"><b>Derive.</b>
-                <span class="mat">f′ = 1/2</span>, constante, así que
-                <span class="formula lila"
+                <span class="mat" data-tex="f' = 1/2">f′ = 1/2</span>, constante, así que
+                <div class="formula lila"
                   data-tex="\sqrt{1+\left[f'\right]^{2}}=\sqrt{1+\frac{1}{4}}=\frac{\sqrt{5}}{2}">
-                  √(1 + [f′]²) = √(5/4) = √5/2</span>
+                  √(1 + [f′]²) = √(5/4) = √5/2</div>
               </div>
               <div class="paso"><b>Monte la integral.</b>
-                <span class="formula lila"
+                <div class="formula lila"
                   data-tex="S=2\pi\int_{0}^{4}\frac{x}{2}\cdot\frac{\sqrt{5}}{2}\,dx=\frac{\pi\sqrt{5}}{2}\int_{0}^{4}x\,dx">
                   S = 2π∫<sub>0</sub><sup>4</sup>(x/2)(√5/2)dx =
-                  (π√5/2)∫<sub>0</sub><sup>4</sup>x dx</span>
+                  (π√5/2)∫<sub>0</sub><sup>4</sup>x dx</div>
               </div>
               <div class="paso"><b>Integre.</b>
-                <span class="formula lila"
+                <div class="formula lila"
                   data-tex="S=\frac{\pi\sqrt{5}}{2}\left[\frac{x^{2}}{2}\right]_{0}^{4}=\frac{\pi\sqrt{5}}{2}\cdot 8">
-                  S = (π√5/2)[x²/2]<sub>0</sub><sup>4</sup> = (π√5/2)(8)</span>
+                  S = (π√5/2)[x²/2]<sub>0</sub><sup>4</sup> = (π√5/2)(8)</div>
               </div>
             </div>
             <div class="resultado"
               data-tex="S=4\sqrt{5}\,\pi\approx 28.10\ \text{unidades cuadradas}">
               S = 4√5π ≈ 28.10 unidades cuadradas
             </div>
+            <div class="figura-caja">
+            <svg class="figura-ej" viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfica del ejemplo">
+            <polygon points="87.33,232.77 89.21,231.89 91.09,231.01 92.97,230.13 94.85,229.26 96.73,228.38 98.61,227.50 100.48,226.62 102.36,225.74 104.24,224.86 106.12,223.98 108.00,223.10 109.88,222.22 111.76,221.34 113.64,220.46 115.52,219.58 117.39,218.70 119.27,217.82 121.15,216.94 123.03,216.06 124.91,215.18 126.79,214.30 128.67,213.42 130.55,212.54 132.42,211.66 134.30,210.78 136.18,209.90 138.06,209.02 139.94,208.14 141.82,207.26 143.70,206.38 145.58,205.50 147.45,204.62 149.33,203.74 151.21,202.86 153.09,201.98 154.97,201.10 156.85,200.22 158.73,199.34 160.61,198.46 162.48,197.58 164.36,196.70 166.24,195.82 168.12,194.94 170.00,194.06 171.88,193.18 173.76,192.30 175.64,191.43 177.52,190.55 179.39,189.67 181.27,188.79 183.15,187.91 185.03,187.03 186.91,186.15 188.79,185.27 190.67,184.39 192.55,183.51 194.42,182.63 196.30,181.75 198.18,180.87 200.06,179.99 201.94,179.11 203.82,178.23 205.70,177.35 207.58,176.47 209.45,175.59 211.33,174.71 213.21,173.83 215.09,172.95 216.97,172.07 218.85,171.19 220.73,170.31 222.61,169.43 224.48,168.55 226.36,167.67 228.24,166.79 230.12,165.91 232.00,165.03 233.88,164.15 235.76,163.27 237.64,162.39 239.52,161.51 241.39,160.63 243.27,159.75 245.15,158.87 247.03,157.99 248.91,157.11 250.79,156.23 252.67,155.35 254.55,154.48 256.42,153.60 258.30,152.72 260.18,151.84 262.06,150.96 263.94,150.08 265.82,149.20 267.70,148.32 269.58,147.44 271.45,146.56 273.33,145.68 275.21,144.80 277.09,143.92 278.97,143.04 280.85,142.16 282.73,141.28 284.61,140.40 286.48,139.52 288.36,138.64 290.24,137.76 292.12,136.88 294.00,136.00 295.88,135.12 297.76,134.24 299.64,133.36 301.52,132.48 303.39,131.60 305.27,130.72 307.15,129.84 309.03,128.96 310.91,128.08 312.79,127.20 314.67,126.32 316.55,125.44 318.42,124.56 320.30,123.68 322.18,122.80 324.06,121.92 325.94,121.04 327.82,120.16 329.70,119.28 331.58,118.40 333.45,117.52 335.33,116.65 337.21,115.77 339.09,114.89 340.97,114.01 342.85,113.13 344.73,112.25 346.61,111.37 348.48,110.49 350.36,109.61 352.24,108.73 354.12,107.85 356.00,106.97 357.88,106.09 359.76,105.21 361.64,104.33 363.52,103.45 365.39,102.57 367.27,101.69 369.15,100.81 371.03,99.93 372.91,99.05 374.79,98.17 376.67,97.29 378.55,96.41 380.42,95.53 382.30,94.65 384.18,93.77 386.06,92.89 387.94,92.01 389.82,91.13 391.70,90.25 393.58,89.37 395.45,88.49 397.33,87.61 399.21,86.73 401.09,85.85 402.97,84.97 404.85,84.09 406.73,83.21 408.61,82.33 410.48,81.45 412.36,80.57 414.24,79.70 416.12,78.82 418.00,77.94 419.88,77.06 421.76,76.18 423.64,75.30 425.52,74.42 427.39,73.54 429.27,72.66 431.15,71.78 433.03,70.90 434.91,70.02 436.79,69.14 438.67,68.26 440.55,67.38 442.42,66.50 444.30,65.62 446.18,64.74 448.06,63.86 449.94,62.98 451.82,62.10 453.70,61.22 455.58,60.34 457.45,59.46 459.33,58.58 461.21,57.70 463.09,56.82 464.97,55.94 466.85,55.06 468.73,54.18 470.61,53.30 472.48,52.42 474.36,51.54 476.24,50.66 478.12,49.78 480.00,48.90 481.88,48.02 483.76,47.14 485.64,46.26 487.52,45.38 489.39,44.50 491.27,43.62 493.15,42.74 495.03,41.87 496.91,40.99 498.79,40.11 500.67,39.23 500.67,232.77 498.79,232.77 496.91,232.77 495.03,232.77 493.15,232.77 491.27,232.77 489.39,232.77 487.52,232.77 485.64,232.77 483.76,232.77 481.88,232.77 480.00,232.77 478.12,232.77 476.24,232.77 474.36,232.77 472.48,232.77 470.61,232.77 468.73,232.77 466.85,232.77 464.97,232.77 463.09,232.77 461.21,232.77 459.33,232.77 457.45,232.77 455.58,232.77 453.70,232.77 451.82,232.77 449.94,232.77 448.06,232.77 446.18,232.77 444.30,232.77 442.42,232.77 440.55,232.77 438.67,232.77 436.79,232.77 434.91,232.77 433.03,232.77 431.15,232.77 429.27,232.77 427.39,232.77 425.52,232.77 423.64,232.77 421.76,232.77 419.88,232.77 418.00,232.77 416.12,232.77 414.24,232.77 412.36,232.77 410.48,232.77 408.61,232.77 406.73,232.77 404.85,232.77 402.97,232.77 401.09,232.77 399.21,232.77 397.33,232.77 395.45,232.77 393.58,232.77 391.70,232.77 389.82,232.77 387.94,232.77 386.06,232.77 384.18,232.77 382.30,232.77 380.42,232.77 378.55,232.77 376.67,232.77 374.79,232.77 372.91,232.77 371.03,232.77 369.15,232.77 367.27,232.77 365.39,232.77 363.52,232.77 361.64,232.77 359.76,232.77 357.88,232.77 356.00,232.77 354.12,232.77 352.24,232.77 350.36,232.77 348.48,232.77 346.61,232.77 344.73,232.77 342.85,232.77 340.97,232.77 339.09,232.77 337.21,232.77 335.33,232.77 333.45,232.77 331.58,232.77 329.70,232.77 327.82,232.77 325.94,232.77 324.06,232.77 322.18,232.77 320.30,232.77 318.42,232.77 316.55,232.77 314.67,232.77 312.79,232.77 310.91,232.77 309.03,232.77 307.15,232.77 305.27,232.77 303.39,232.77 301.52,232.77 299.64,232.77 297.76,232.77 295.88,232.77 294.00,232.77 292.12,232.77 290.24,232.77 288.36,232.77 286.48,232.77 284.61,232.77 282.73,232.77 280.85,232.77 278.97,232.77 277.09,232.77 275.21,232.77 273.33,232.77 271.45,232.77 269.58,232.77 267.70,232.77 265.82,232.77 263.94,232.77 262.06,232.77 260.18,232.77 258.30,232.77 256.42,232.77 254.55,232.77 252.67,232.77 250.79,232.77 248.91,232.77 247.03,232.77 245.15,232.77 243.27,232.77 241.39,232.77 239.52,232.77 237.64,232.77 235.76,232.77 233.88,232.77 232.00,232.77 230.12,232.77 228.24,232.77 226.36,232.77 224.48,232.77 222.61,232.77 220.73,232.77 218.85,232.77 216.97,232.77 215.09,232.77 213.21,232.77 211.33,232.77 209.45,232.77 207.58,232.77 205.70,232.77 203.82,232.77 201.94,232.77 200.06,232.77 198.18,232.77 196.30,232.77 194.42,232.77 192.55,232.77 190.67,232.77 188.79,232.77 186.91,232.77 185.03,232.77 183.15,232.77 181.27,232.77 179.39,232.77 177.52,232.77 175.64,232.77 173.76,232.77 171.88,232.77 170.00,232.77 168.12,232.77 166.24,232.77 164.36,232.77 162.48,232.77 160.61,232.77 158.73,232.77 156.85,232.77 154.97,232.77 153.09,232.77 151.21,232.77 149.33,232.77 147.45,232.77 145.58,232.77 143.70,232.77 141.82,232.77 139.94,232.77 138.06,232.77 136.18,232.77 134.30,232.77 132.42,232.77 130.55,232.77 128.67,232.77 126.79,232.77 124.91,232.77 123.03,232.77 121.15,232.77 119.27,232.77 117.39,232.77 115.52,232.77 113.64,232.77 111.76,232.77 109.88,232.77 108.00,232.77 106.12,232.77 104.24,232.77 102.36,232.77 100.48,232.77 98.61,232.77 96.73,232.77 94.85,232.77 92.97,232.77 91.09,232.77 89.21,232.77 87.33,232.77" fill="#e3d7f2" stroke="none"/>
+            <line x1="38.0" y1="232.8" x2="554.0" y2="232.8" stroke="#6d5a85" stroke-width="1.2"/>
+            <line x1="87.3" y1="8.0" x2="87.3" y2="264.0" stroke="#6d5a85" stroke-width="1.2"/>
+            <text x="546.0" y="247.8" font-size="13" font-style="italic" fill="#6d5a85">x</text>
+            <text x="73.3" y="12.0" font-size="13" font-style="italic" fill="#6d5a85">y</text>
+            <line x1="190.7" y1="229.3" x2="190.7" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="190.7" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">1</text>
+            <line x1="294.0" y1="229.3" x2="294.0" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="294.0" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">2</text>
+            <line x1="397.3" y1="229.3" x2="397.3" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="397.3" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">3</text>
+            <line x1="500.7" y1="229.3" x2="500.7" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="500.7" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">4</text>
+            <line x1="83.8" y1="184.4" x2="90.8" y2="184.4" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="187.9" font-size="10.5" text-anchor="end" fill="#6d5a85">0.5</text>
+            <line x1="83.8" y1="136.0" x2="90.8" y2="136.0" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="139.5" font-size="10.5" text-anchor="end" fill="#6d5a85">1</text>
+            <line x1="83.8" y1="87.6" x2="90.8" y2="87.6" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="91.1" font-size="10.5" text-anchor="end" fill="#6d5a85">1.5</text>
+            <line x1="83.8" y1="39.2" x2="90.8" y2="39.2" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="42.7" font-size="10.5" text-anchor="end" fill="#6d5a85">2</text>
+            <polyline points="87.33,232.77 89.21,231.89 91.09,231.01 92.97,230.13 94.85,229.26 96.73,228.38 98.61,227.50 100.48,226.62 102.36,225.74 104.24,224.86 106.12,223.98 108.00,223.10 109.88,222.22 111.76,221.34 113.64,220.46 115.52,219.58 117.39,218.70 119.27,217.82 121.15,216.94 123.03,216.06 124.91,215.18 126.79,214.30 128.67,213.42 130.55,212.54 132.42,211.66 134.30,210.78 136.18,209.90 138.06,209.02 139.94,208.14 141.82,207.26 143.70,206.38 145.58,205.50 147.45,204.62 149.33,203.74 151.21,202.86 153.09,201.98 154.97,201.10 156.85,200.22 158.73,199.34 160.61,198.46 162.48,197.58 164.36,196.70 166.24,195.82 168.12,194.94 170.00,194.06 171.88,193.18 173.76,192.30 175.64,191.43 177.52,190.55 179.39,189.67 181.27,188.79 183.15,187.91 185.03,187.03 186.91,186.15 188.79,185.27 190.67,184.39 192.55,183.51 194.42,182.63 196.30,181.75 198.18,180.87 200.06,179.99 201.94,179.11 203.82,178.23 205.70,177.35 207.58,176.47 209.45,175.59 211.33,174.71 213.21,173.83 215.09,172.95 216.97,172.07 218.85,171.19 220.73,170.31 222.61,169.43 224.48,168.55 226.36,167.67 228.24,166.79 230.12,165.91 232.00,165.03 233.88,164.15 235.76,163.27 237.64,162.39 239.52,161.51 241.39,160.63 243.27,159.75 245.15,158.87 247.03,157.99 248.91,157.11 250.79,156.23 252.67,155.35 254.55,154.48 256.42,153.60 258.30,152.72 260.18,151.84 262.06,150.96 263.94,150.08 265.82,149.20 267.70,148.32 269.58,147.44 271.45,146.56 273.33,145.68 275.21,144.80 277.09,143.92 278.97,143.04 280.85,142.16 282.73,141.28 284.61,140.40 286.48,139.52 288.36,138.64 290.24,137.76 292.12,136.88 294.00,136.00 295.88,135.12 297.76,134.24 299.64,133.36 301.52,132.48 303.39,131.60 305.27,130.72 307.15,129.84 309.03,128.96 310.91,128.08 312.79,127.20 314.67,126.32 316.55,125.44 318.42,124.56 320.30,123.68 322.18,122.80 324.06,121.92 325.94,121.04 327.82,120.16 329.70,119.28 331.58,118.40 333.45,117.52 335.33,116.65 337.21,115.77 339.09,114.89 340.97,114.01 342.85,113.13 344.73,112.25 346.61,111.37 348.48,110.49 350.36,109.61 352.24,108.73 354.12,107.85 356.00,106.97 357.88,106.09 359.76,105.21 361.64,104.33 363.52,103.45 365.39,102.57 367.27,101.69 369.15,100.81 371.03,99.93 372.91,99.05 374.79,98.17 376.67,97.29 378.55,96.41 380.42,95.53 382.30,94.65 384.18,93.77 386.06,92.89 387.94,92.01 389.82,91.13 391.70,90.25 393.58,89.37 395.45,88.49 397.33,87.61 399.21,86.73 401.09,85.85 402.97,84.97 404.85,84.09 406.73,83.21 408.61,82.33 410.48,81.45 412.36,80.57 414.24,79.70 416.12,78.82 418.00,77.94 419.88,77.06 421.76,76.18 423.64,75.30 425.52,74.42 427.39,73.54 429.27,72.66 431.15,71.78 433.03,70.90 434.91,70.02 436.79,69.14 438.67,68.26 440.55,67.38 442.42,66.50 444.30,65.62 446.18,64.74 448.06,63.86 449.94,62.98 451.82,62.10 453.70,61.22 455.58,60.34 457.45,59.46 459.33,58.58 461.21,57.70 463.09,56.82 464.97,55.94 466.85,55.06 468.73,54.18 470.61,53.30 472.48,52.42 474.36,51.54 476.24,50.66 478.12,49.78 480.00,48.90 481.88,48.02 483.76,47.14 485.64,46.26 487.52,45.38 489.39,44.50 491.27,43.62 493.15,42.74 495.03,41.87 496.91,40.99 498.79,40.11 500.67,39.23" fill="none" stroke="#a4348c" stroke-width="3.0"/>
+            <circle cx="87.33" cy="232.77" r="4" fill="#5a2d8c"/>
+            <circle cx="87.33" cy="232.77" r="4" fill="none" stroke="#fff" stroke-width="1.2"/>
+            <text x="79.33" y="249.77" font-size="11" font-weight="600" text-anchor="end" fill="#5a2d8c">(0, 0)</text>
+            <circle cx="500.67" cy="39.23" r="4" fill="#5a2d8c"/>
+            <circle cx="500.67" cy="39.23" r="4" fill="none" stroke="#fff" stroke-width="1.2"/>
+            <text x="508.67" y="30.23" font-size="11" font-weight="600" text-anchor="start" fill="#5a2d8c">(4, 2)</text>
+            <text x="390.9" y="86.4" font-size="12" font-style="italic" fill="#a4348c">y = x/2</text>
+            </svg>
+            <div class="figura-cap">Gira sobre el eje x y genera un cono. S = 4√5π ≈ 28.10</div>
+            </div>
+
             <div class="porque" style="margin-top:12px">
               <b>Verificación con geometría.</b> El sólido es un cono de radio
-              <span class="mat">r = 2</span> (porque
-              <span class="mat">f(4) = 2</span>) y altura
-              <span class="mat">h = 4</span>. Su generatriz es
-              <span class="mat">g = √(4 + 16) = √20 = 2√5</span>, y la fórmula clásica del
+              <span class="mat" data-tex="r = 2">r = 2</span> (porque
+              <span class="mat" data-tex="f(4) = 2">f(4) = 2</span>) y altura
+              <span class="mat" data-tex="h = 4">h = 4</span>. Su generatriz es
+              <span class="mat" data-tex="g = \sqrt{4 + 16} = \sqrt{20} = 2\sqrt{5}">g = √(4 + 16) = √20 = 2√5</span>, y la fórmula clásica del
               área lateral da
-              <span class="mat">πrg = π(2)(2√5) = 4√5π</span>. Coincide exactamente.<br><br>
+              <span class="mat" data-tex="\pi rg = \pi(2)(2\sqrt{5}) = 4\sqrt{5}\pi">πrg = π(2)(2√5) = 4√5π</span>. Coincide exactamente.<br><br>
               Ahora el contraste: si hubiéramos usado
-              <span class="mat">dx</span> en lugar de <span class="mat">ds</span>, el
+              <span class="mat" data-tex="dx">dx</span> en lugar de <span class="mat" data-tex="ds">ds</span>, el
               resultado habría sido
-              <span class="mat">2π∫<sub>0</sub><sup>4</sup>(x/2)dx = 8π ≈ 25.13</span>, un
-              <b>11 % menos</b>. El factor <span class="mat">√5/2 ≈ 1.118</span> es
+              <span class="mat" data-tex="2\pi \int_{0}^{4}(x/2)dx = 8\pi \approx 25.13">2π∫<sub>0</sub><sup>4</sup>(x/2)dx = 8π ≈ 25.13</span>, un
+              <b>11 % menos</b>. El factor <span class="mat" data-tex="\sqrt{5}/2 \approx 1.118">√5/2 ≈ 1.118</span> es
               precisamente ese 11.8 % de estiramiento de la lámina.
             </div>
           </div>
@@ -215,9 +257,9 @@
       <div class="ejercicio">
         <div class="enunciado">
           <span class="eti">EJEMPLO RESUELTO 2</span>
-          <p>La curva <span class="mat">y = √x</span> desde
-            <span class="mat">x = 0</span> hasta <span class="mat">x = 1</span> gira
-            alrededor del eje <span class="mat">x</span>. Halle el área de la
+          <p>La curva <span class="mat" data-tex="y = \sqrt{x}">y = √x</span> desde
+            <span class="mat" data-tex="x = 0">x = 0</span> hasta <span class="mat" data-tex="x = 1">x = 1</span> gira
+            alrededor del eje <span class="mat" data-tex="x">x</span>. Halle el área de la
             superficie.</p>
         </div>
         <details>
@@ -225,38 +267,77 @@
           <div class="solucion">
             <div class="pasos">
               <div class="paso"><b>Derive.</b>
-                <span class="formula lila"
+                <div class="formula lila"
                   data-tex="f'(x)=\frac{1}{2\sqrt{x}}\quad\Longrightarrow\quad \left[f'\right]^{2}=\frac{1}{4x}">
-                  f′(x) = 1/(2√x) ⟹ [f′]² = 1/(4x)</span>
+                  f′(x) = 1/(2√x) ⟹ [f′]² = 1/(4x)</div>
               </div>
               <div class="paso"><b>Arme el integrando y simplifique.</b> Aquí está el
                 truco del ejercicio:
-                <span class="formula lila"
+                <div class="formula lila"
                   data-tex="f(x)\sqrt{1+\left[f'\right]^{2}}=\sqrt{x}\cdot\sqrt{1+\frac{1}{4x}}=\sqrt{x\left(1+\frac{1}{4x}\right)}=\sqrt{x+\frac{1}{4}}">
-                  √x · √(1 + 1/(4x)) = √(x(1 + 1/(4x))) = √(x + 1/4)</span>
+                  √x · √(1 + 1/(4x)) = √(x(1 + 1/(4x))) = √(x + 1/4)</div>
                 El radio «se mete» dentro de la raíz y la limpia por completo. Sin esta
                 simplificación la integral no sale.
               </div>
               <div class="paso"><b>Integre.</b>
-                <span class="formula lila"
+                <div class="formula lila"
                   data-tex="S=2\pi\int_{0}^{1}\sqrt{x+\frac{1}{4}}\,dx=2\pi\left[\frac{2}{3}\left(x+\frac{1}{4}\right)^{3/2}\right]_{0}^{1}">
                   S = 2π∫<sub>0</sub><sup>1</sup>√(x + 1/4)dx =
-                  2π[(2/3)(x + 1/4)<sup>3/2</sup>]<sub>0</sub><sup>1</sup></span>
+                  2π[(2/3)(x + 1/4)<sup>3/2</sup>]<sub>0</sub><sup>1</sup></div>
               </div>
               <div class="paso"><b>Evalúe.</b> Arriba:
-                <span class="mat">(2/3)(5/4)<sup>3/2</sup> = (2/3)(5√5/8) = 5√5/12</span>.
-                Abajo: <span class="mat">(2/3)(1/4)<sup>3/2</sup> = (2/3)(1/8) =
+                <span class="mat" data-tex="(2/3)(5/4)^{3/2} = (2/3)(5\sqrt{5}/8) = 5\sqrt{5}/12">(2/3)(5/4)<sup>3/2</sup> = (2/3)(5√5/8) = 5√5/12</span>.
+                Abajo: <span class="mat" data-tex="(2/3)(1/4)^{3/2} = (2/3)(1/8) = 1/12">(2/3)(1/4)<sup>3/2</sup> = (2/3)(1/8) =
                   1/12</span>.</div>
               <div class="paso"><b>Reste y multiplique.</b>
-                <span class="formula lila"
+                <div class="formula lila"
                   data-tex="S=2\pi\cdot\frac{5\sqrt{5}-1}{12}=\frac{\pi\left(5\sqrt{5}-1\right)}{6}">
-                  S = 2π(5√5 − 1)/12 = π(5√5 − 1)/6</span>
+                  S = 2π(5√5 − 1)/12 = π(5√5 − 1)/6</div>
               </div>
             </div>
             <div class="resultado"
               data-tex="S=\frac{\pi\left(5\sqrt{5}-1\right)}{6}\approx 5.3304\ \text{unidades cuadradas}">
               S = π(5√5 − 1)/6 ≈ 5.3304 unidades cuadradas
             </div>
+            <div class="figura-caja">
+            <svg class="figura-ej" viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfica del ejemplo">
+            <polygon points="87.33,232.77 89.21,219.73 91.09,214.32 92.97,210.17 94.85,206.68 96.73,203.60 98.61,200.81 100.48,198.25 102.36,195.87 104.24,193.63 106.12,191.51 108.00,189.50 109.88,187.57 111.76,185.73 113.64,183.95 115.52,182.24 117.39,180.58 119.27,178.97 121.15,177.41 123.03,175.89 124.91,174.42 126.79,172.98 128.67,171.57 130.55,170.19 132.42,168.85 134.30,167.53 136.18,166.24 138.06,164.97 139.94,163.73 141.82,162.50 143.70,161.30 145.58,160.12 147.45,158.96 149.33,157.81 151.21,156.69 153.09,155.58 154.97,154.48 156.85,153.40 158.73,152.33 160.61,151.28 162.48,150.24 164.36,149.22 166.24,148.21 168.12,147.21 170.00,146.22 171.88,145.24 173.76,144.27 175.64,143.31 177.52,142.37 179.39,141.43 181.27,140.50 183.15,139.59 185.03,138.68 186.91,137.78 188.79,136.88 190.67,136.00 192.55,135.12 194.42,134.26 196.30,133.40 198.18,132.54 200.06,131.70 201.94,130.86 203.82,130.03 205.70,129.20 207.58,128.38 209.45,127.57 211.33,126.76 213.21,125.96 215.09,125.17 216.97,124.38 218.85,123.60 220.73,122.82 222.61,122.05 224.48,121.28 226.36,120.52 228.24,119.77 230.12,119.02 232.00,118.27 233.88,117.53 235.76,116.79 237.64,116.06 239.52,115.33 241.39,114.61 243.27,113.89 245.15,113.18 247.03,112.47 248.91,111.76 250.79,111.06 252.67,110.36 254.55,109.67 256.42,108.98 258.30,108.29 260.18,107.61 262.06,106.93 263.94,106.26 265.82,105.59 267.70,104.92 269.58,104.26 271.45,103.60 273.33,102.94 275.21,102.28 277.09,101.63 278.97,100.99 280.85,100.34 282.73,99.70 284.61,99.06 286.48,98.43 288.36,97.79 290.24,97.16 292.12,96.54 294.00,95.91 295.88,95.29 297.76,94.68 299.64,94.06 301.52,93.45 303.39,92.84 305.27,92.23 307.15,91.63 309.03,91.03 310.91,90.43 312.79,89.83 314.67,89.23 316.55,88.64 318.42,88.05 320.30,87.47 322.18,86.88 324.06,86.30 325.94,85.72 327.82,85.14 329.70,84.57 331.58,83.99 333.45,83.42 335.33,82.85 337.21,82.29 339.09,81.72 340.97,81.16 342.85,80.60 344.73,80.04 346.61,79.48 348.48,78.93 350.36,78.38 352.24,77.83 354.12,77.28 356.00,76.73 357.88,76.19 359.76,75.64 361.64,75.10 363.52,74.56 365.39,74.03 367.27,73.49 369.15,72.96 371.03,72.43 372.91,71.89 374.79,71.37 376.67,70.84 378.55,70.32 380.42,69.79 382.30,69.27 384.18,68.75 386.06,68.23 387.94,67.72 389.82,67.20 391.70,66.69 393.58,66.18 395.45,65.67 397.33,65.16 399.21,64.65 401.09,64.14 402.97,63.64 404.85,63.14 406.73,62.64 408.61,62.14 410.48,61.64 412.36,61.14 414.24,60.65 416.12,60.15 418.00,59.66 419.88,59.17 421.76,58.68 423.64,58.19 425.52,57.70 427.39,57.22 429.27,56.73 431.15,56.25 433.03,55.77 434.91,55.29 436.79,54.81 438.67,54.33 440.55,53.85 442.42,53.38 444.30,52.91 446.18,52.43 448.06,51.96 449.94,51.49 451.82,51.02 453.70,50.55 455.58,50.09 457.45,49.62 459.33,49.16 461.21,48.69 463.09,48.23 464.97,47.77 466.85,47.31 468.73,46.85 470.61,46.40 472.48,45.94 474.36,45.49 476.24,45.03 478.12,44.58 480.00,44.13 481.88,43.68 483.76,43.23 485.64,42.78 487.52,42.33 489.39,41.88 491.27,41.44 493.15,40.99 495.03,40.55 496.91,40.11 498.79,39.67 500.67,39.23 500.67,232.77 498.79,232.77 496.91,232.77 495.03,232.77 493.15,232.77 491.27,232.77 489.39,232.77 487.52,232.77 485.64,232.77 483.76,232.77 481.88,232.77 480.00,232.77 478.12,232.77 476.24,232.77 474.36,232.77 472.48,232.77 470.61,232.77 468.73,232.77 466.85,232.77 464.97,232.77 463.09,232.77 461.21,232.77 459.33,232.77 457.45,232.77 455.58,232.77 453.70,232.77 451.82,232.77 449.94,232.77 448.06,232.77 446.18,232.77 444.30,232.77 442.42,232.77 440.55,232.77 438.67,232.77 436.79,232.77 434.91,232.77 433.03,232.77 431.15,232.77 429.27,232.77 427.39,232.77 425.52,232.77 423.64,232.77 421.76,232.77 419.88,232.77 418.00,232.77 416.12,232.77 414.24,232.77 412.36,232.77 410.48,232.77 408.61,232.77 406.73,232.77 404.85,232.77 402.97,232.77 401.09,232.77 399.21,232.77 397.33,232.77 395.45,232.77 393.58,232.77 391.70,232.77 389.82,232.77 387.94,232.77 386.06,232.77 384.18,232.77 382.30,232.77 380.42,232.77 378.55,232.77 376.67,232.77 374.79,232.77 372.91,232.77 371.03,232.77 369.15,232.77 367.27,232.77 365.39,232.77 363.52,232.77 361.64,232.77 359.76,232.77 357.88,232.77 356.00,232.77 354.12,232.77 352.24,232.77 350.36,232.77 348.48,232.77 346.61,232.77 344.73,232.77 342.85,232.77 340.97,232.77 339.09,232.77 337.21,232.77 335.33,232.77 333.45,232.77 331.58,232.77 329.70,232.77 327.82,232.77 325.94,232.77 324.06,232.77 322.18,232.77 320.30,232.77 318.42,232.77 316.55,232.77 314.67,232.77 312.79,232.77 310.91,232.77 309.03,232.77 307.15,232.77 305.27,232.77 303.39,232.77 301.52,232.77 299.64,232.77 297.76,232.77 295.88,232.77 294.00,232.77 292.12,232.77 290.24,232.77 288.36,232.77 286.48,232.77 284.61,232.77 282.73,232.77 280.85,232.77 278.97,232.77 277.09,232.77 275.21,232.77 273.33,232.77 271.45,232.77 269.58,232.77 267.70,232.77 265.82,232.77 263.94,232.77 262.06,232.77 260.18,232.77 258.30,232.77 256.42,232.77 254.55,232.77 252.67,232.77 250.79,232.77 248.91,232.77 247.03,232.77 245.15,232.77 243.27,232.77 241.39,232.77 239.52,232.77 237.64,232.77 235.76,232.77 233.88,232.77 232.00,232.77 230.12,232.77 228.24,232.77 226.36,232.77 224.48,232.77 222.61,232.77 220.73,232.77 218.85,232.77 216.97,232.77 215.09,232.77 213.21,232.77 211.33,232.77 209.45,232.77 207.58,232.77 205.70,232.77 203.82,232.77 201.94,232.77 200.06,232.77 198.18,232.77 196.30,232.77 194.42,232.77 192.55,232.77 190.67,232.77 188.79,232.77 186.91,232.77 185.03,232.77 183.15,232.77 181.27,232.77 179.39,232.77 177.52,232.77 175.64,232.77 173.76,232.77 171.88,232.77 170.00,232.77 168.12,232.77 166.24,232.77 164.36,232.77 162.48,232.77 160.61,232.77 158.73,232.77 156.85,232.77 154.97,232.77 153.09,232.77 151.21,232.77 149.33,232.77 147.45,232.77 145.58,232.77 143.70,232.77 141.82,232.77 139.94,232.77 138.06,232.77 136.18,232.77 134.30,232.77 132.42,232.77 130.55,232.77 128.67,232.77 126.79,232.77 124.91,232.77 123.03,232.77 121.15,232.77 119.27,232.77 117.39,232.77 115.52,232.77 113.64,232.77 111.76,232.77 109.88,232.77 108.00,232.77 106.12,232.77 104.24,232.77 102.36,232.77 100.48,232.77 98.61,232.77 96.73,232.77 94.85,232.77 92.97,232.77 91.09,232.77 89.21,232.77 87.33,232.77" fill="#e3d7f2" stroke="none"/>
+            <line x1="38.0" y1="232.8" x2="554.0" y2="232.8" stroke="#6d5a85" stroke-width="1.2"/>
+            <line x1="87.3" y1="8.0" x2="87.3" y2="264.0" stroke="#6d5a85" stroke-width="1.2"/>
+            <text x="546.0" y="247.8" font-size="13" font-style="italic" fill="#6d5a85">x</text>
+            <text x="73.3" y="12.0" font-size="13" font-style="italic" fill="#6d5a85">y</text>
+            <line x1="170.0" y1="229.3" x2="170.0" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="170.0" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.2</text>
+            <line x1="252.7" y1="229.3" x2="252.7" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="252.7" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.4</text>
+            <line x1="335.3" y1="229.3" x2="335.3" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="335.3" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.6</text>
+            <line x1="418.0" y1="229.3" x2="418.0" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="418.0" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.8</text>
+            <line x1="500.7" y1="229.3" x2="500.7" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="500.7" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">1</text>
+            <line x1="83.8" y1="194.1" x2="90.8" y2="194.1" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="197.6" font-size="10.5" text-anchor="end" fill="#6d5a85">0.2</text>
+            <line x1="83.8" y1="155.4" x2="90.8" y2="155.4" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="158.9" font-size="10.5" text-anchor="end" fill="#6d5a85">0.4</text>
+            <line x1="83.8" y1="116.6" x2="90.8" y2="116.6" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="120.1" font-size="10.5" text-anchor="end" fill="#6d5a85">0.6</text>
+            <line x1="83.8" y1="77.9" x2="90.8" y2="77.9" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="81.4" font-size="10.5" text-anchor="end" fill="#6d5a85">0.8</text>
+            <line x1="83.8" y1="39.2" x2="90.8" y2="39.2" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="42.7" font-size="10.5" text-anchor="end" fill="#6d5a85">1</text>
+            <polyline points="87.33,232.77 89.21,219.73 91.09,214.32 92.97,210.17 94.85,206.68 96.73,203.60 98.61,200.81 100.48,198.25 102.36,195.87 104.24,193.63 106.12,191.51 108.00,189.50 109.88,187.57 111.76,185.73 113.64,183.95 115.52,182.24 117.39,180.58 119.27,178.97 121.15,177.41 123.03,175.89 124.91,174.42 126.79,172.98 128.67,171.57 130.55,170.19 132.42,168.85 134.30,167.53 136.18,166.24 138.06,164.97 139.94,163.73 141.82,162.50 143.70,161.30 145.58,160.12 147.45,158.96 149.33,157.81 151.21,156.69 153.09,155.58 154.97,154.48 156.85,153.40 158.73,152.33 160.61,151.28 162.48,150.24 164.36,149.22 166.24,148.21 168.12,147.21 170.00,146.22 171.88,145.24 173.76,144.27 175.64,143.31 177.52,142.37 179.39,141.43 181.27,140.50 183.15,139.59 185.03,138.68 186.91,137.78 188.79,136.88 190.67,136.00 192.55,135.12 194.42,134.26 196.30,133.40 198.18,132.54 200.06,131.70 201.94,130.86 203.82,130.03 205.70,129.20 207.58,128.38 209.45,127.57 211.33,126.76 213.21,125.96 215.09,125.17 216.97,124.38 218.85,123.60 220.73,122.82 222.61,122.05 224.48,121.28 226.36,120.52 228.24,119.77 230.12,119.02 232.00,118.27 233.88,117.53 235.76,116.79 237.64,116.06 239.52,115.33 241.39,114.61 243.27,113.89 245.15,113.18 247.03,112.47 248.91,111.76 250.79,111.06 252.67,110.36 254.55,109.67 256.42,108.98 258.30,108.29 260.18,107.61 262.06,106.93 263.94,106.26 265.82,105.59 267.70,104.92 269.58,104.26 271.45,103.60 273.33,102.94 275.21,102.28 277.09,101.63 278.97,100.99 280.85,100.34 282.73,99.70 284.61,99.06 286.48,98.43 288.36,97.79 290.24,97.16 292.12,96.54 294.00,95.91 295.88,95.29 297.76,94.68 299.64,94.06 301.52,93.45 303.39,92.84 305.27,92.23 307.15,91.63 309.03,91.03 310.91,90.43 312.79,89.83 314.67,89.23 316.55,88.64 318.42,88.05 320.30,87.47 322.18,86.88 324.06,86.30 325.94,85.72 327.82,85.14 329.70,84.57 331.58,83.99 333.45,83.42 335.33,82.85 337.21,82.29 339.09,81.72 340.97,81.16 342.85,80.60 344.73,80.04 346.61,79.48 348.48,78.93 350.36,78.38 352.24,77.83 354.12,77.28 356.00,76.73 357.88,76.19 359.76,75.64 361.64,75.10 363.52,74.56 365.39,74.03 367.27,73.49 369.15,72.96 371.03,72.43 372.91,71.89 374.79,71.37 376.67,70.84 378.55,70.32 380.42,69.79 382.30,69.27 384.18,68.75 386.06,68.23 387.94,67.72 389.82,67.20 391.70,66.69 393.58,66.18 395.45,65.67 397.33,65.16 399.21,64.65 401.09,64.14 402.97,63.64 404.85,63.14 406.73,62.64 408.61,62.14 410.48,61.64 412.36,61.14 414.24,60.65 416.12,60.15 418.00,59.66 419.88,59.17 421.76,58.68 423.64,58.19 425.52,57.70 427.39,57.22 429.27,56.73 431.15,56.25 433.03,55.77 434.91,55.29 436.79,54.81 438.67,54.33 440.55,53.85 442.42,53.38 444.30,52.91 446.18,52.43 448.06,51.96 449.94,51.49 451.82,51.02 453.70,50.55 455.58,50.09 457.45,49.62 459.33,49.16 461.21,48.69 463.09,48.23 464.97,47.77 466.85,47.31 468.73,46.85 470.61,46.40 472.48,45.94 474.36,45.49 476.24,45.03 478.12,44.58 480.00,44.13 481.88,43.68 483.76,43.23 485.64,42.78 487.52,42.33 489.39,41.88 491.27,41.44 493.15,40.99 495.03,40.55 496.91,40.11 498.79,39.67 500.67,39.23" fill="none" stroke="#a4348c" stroke-width="3.0"/>
+            <circle cx="87.33" cy="232.77" r="4" fill="#5a2d8c"/>
+            <circle cx="87.33" cy="232.77" r="4" fill="none" stroke="#fff" stroke-width="1.2"/>
+            <text x="79.33" y="249.77" font-size="11" font-weight="600" text-anchor="end" fill="#5a2d8c">(0, 0)</text>
+            <circle cx="500.67" cy="39.23" r="4" fill="#5a2d8c"/>
+            <circle cx="500.67" cy="39.23" r="4" fill="none" stroke="#fff" stroke-width="1.2"/>
+            <text x="508.67" y="30.23" font-size="11" font-weight="600" text-anchor="start" fill="#5a2d8c">(1, 1)</text>
+            <text x="390.9" y="61.5" font-size="12" font-style="italic" fill="#a4348c">y = √x</text>
+            </svg>
+            <div class="figura-cap">Gira sobre el eje x. S = π(5√5 − 1)/6 ≈ 5.3304</div>
+            </div>
+
           </div>
         </details>
       </div>
@@ -264,46 +345,84 @@
       <div class="ejercicio">
         <div class="enunciado">
           <span class="eti">EJEMPLO RESUELTO 3</span>
-          <p>Demuestre que el área de una esfera de radio <span class="mat">r</span> es
-            <span class="mat">4πr²</span>, girando el semicírculo
-            <span class="mat">y = √(r² − x²)</span> alrededor del eje
-            <span class="mat">x</span>.</p>
+          <p>Demuestre que el área de una esfera de radio <span class="mat" data-tex="r">r</span> es
+            <span class="mat" data-tex="4\pi r^{2}">4πr²</span>, girando el semicírculo
+            <span class="mat" data-tex="y = \sqrt{r^{2} - x^{2}}">y = √(r² − x²)</span> alrededor del eje
+            <span class="mat" data-tex="x">x</span>.</p>
         </div>
         <details>
           <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
           <div class="solucion">
             <div class="pasos">
               <div class="paso"><b>Derive.</b>
-                <span class="formula lila"
+                <div class="formula lila"
                   data-tex="f'(x)=\frac{-x}{\sqrt{r^{2}-x^{2}}}\quad\Longrightarrow\quad\left[f'\right]^{2}=\frac{x^{2}}{r^{2}-x^{2}}">
-                  f′(x) = −x/√(r² − x²) ⟹ [f′]² = x²/(r² − x²)</span>
+                  f′(x) = −x/√(r² − x²) ⟹ [f′]² = x²/(r² − x²)</div>
               </div>
               <div class="paso"><b>Sume 1 con denominador común.</b>
-                <span class="formula lila"
+                <div class="formula lila"
                   data-tex="1+\frac{x^{2}}{r^{2}-x^{2}}=\frac{r^{2}-x^{2}+x^{2}}{r^{2}-x^{2}}=\frac{r^{2}}{r^{2}-x^{2}}">
-                  1 + x²/(r² − x²) = r²/(r² − x²)</span>
-                La cancelación de <span class="mat">x²</span> es el centro de la
+                  1 + x²/(r² − x²) = r²/(r² − x²)</div>
+                La cancelación de <span class="mat" data-tex="x^{2}">x²</span> es el centro de la
                 demostración.
               </div>
               <div class="paso"><b>Arme el integrando.</b>
-                <span class="formula lila"
+                <div class="formula lila"
                   data-tex="f(x)\sqrt{1+\left[f'\right]^{2}}=\sqrt{r^{2}-x^{2}}\cdot\frac{r}{\sqrt{r^{2}-x^{2}}}=r">
-                  √(r² − x²) · r/√(r² − x²) = r</span>
+                  √(r² − x²) · r/√(r² − x²) = r</div>
                 El integrando es <b>constante</b>.
               </div>
               <div class="paso"><b>Integre.</b>
-                <span class="formula lila"
+                <div class="formula lila"
                   data-tex="S=2\pi\int_{-r}^{r}r\,dx=2\pi r\left(2r\right)">
-                  S = 2π∫<sub>−r</sub><sup>r</sup>r dx = 2πr(2r)</span>
+                  S = 2π∫<sub>−r</sub><sup>r</sup>r dx = 2πr(2r)</div>
               </div>
             </div>
             <div class="resultado" data-tex="S=4\pi r^{2}">
               S = 4πr²
             </div>
+            <div class="figura-caja">
+            <svg class="figura-ej" viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfica del ejemplo">
+            <polygon points="100.45,232.77 102.21,206.74 103.97,196.03 105.73,187.88 107.49,181.05 109.25,175.08 111.01,169.73 112.77,164.83 114.53,160.31 116.29,156.10 118.05,152.14 119.81,148.41 121.57,144.87 123.33,141.50 125.09,138.28 126.84,135.20 128.60,132.25 130.36,129.41 132.12,126.68 133.88,124.04 135.64,121.49 137.40,119.03 139.16,116.65 140.92,114.34 142.68,112.10 144.44,109.92 146.20,107.81 147.96,105.76 149.72,103.76 151.48,101.82 153.24,99.93 155.00,98.09 156.76,96.30 158.52,94.55 160.28,92.85 162.04,91.19 163.79,89.57 165.55,87.99 167.31,86.45 169.07,84.94 170.83,83.47 172.59,82.04 174.35,80.64 176.11,79.27 177.87,77.94 179.63,76.63 181.39,75.36 183.15,74.11 184.91,72.90 186.67,71.71 188.43,70.55 190.19,69.42 191.95,68.32 193.71,67.24 195.47,66.18 197.23,65.16 198.99,64.15 200.74,63.17 202.50,62.22 204.26,61.29 206.02,60.38 207.78,59.49 209.54,58.63 211.30,57.78 213.06,56.96 214.82,56.16 216.58,55.38 218.34,54.63 220.10,53.89 221.86,53.17 223.62,52.48 225.38,51.80 227.14,51.14 228.90,50.50 230.66,49.88 232.42,49.28 234.18,48.70 235.94,48.14 237.70,47.60 239.45,47.07 241.21,46.56 242.97,46.07 244.73,45.60 246.49,45.15 248.25,44.71 250.01,44.29 251.77,43.89 253.53,43.50 255.29,43.14 257.05,42.79 258.81,42.45 260.57,42.13 262.33,41.83 264.09,41.55 265.85,41.28 267.61,41.03 269.37,40.80 271.13,40.58 272.89,40.38 274.65,40.20 276.40,40.03 278.16,39.87 279.92,39.74 281.68,39.62 283.44,39.51 285.20,39.43 286.96,39.35 288.72,39.30 290.48,39.26 292.24,39.23 294.00,39.23 295.76,39.23 297.52,39.26 299.28,39.30 301.04,39.35 302.80,39.43 304.56,39.51 306.32,39.62 308.08,39.74 309.84,39.87 311.60,40.03 313.35,40.20 315.11,40.38 316.87,40.58 318.63,40.80 320.39,41.03 322.15,41.28 323.91,41.55 325.67,41.83 327.43,42.13 329.19,42.45 330.95,42.79 332.71,43.14 334.47,43.50 336.23,43.89 337.99,44.29 339.75,44.71 341.51,45.15 343.27,45.60 345.03,46.07 346.79,46.56 348.55,47.07 350.30,47.60 352.06,48.14 353.82,48.70 355.58,49.28 357.34,49.88 359.10,50.50 360.86,51.14 362.62,51.80 364.38,52.48 366.14,53.17 367.90,53.89 369.66,54.63 371.42,55.38 373.18,56.16 374.94,56.96 376.70,57.78 378.46,58.63 380.22,59.49 381.98,60.38 383.74,61.29 385.50,62.22 387.26,63.17 389.01,64.15 390.77,65.16 392.53,66.18 394.29,67.24 396.05,68.32 397.81,69.42 399.57,70.55 401.33,71.71 403.09,72.90 404.85,74.11 406.61,75.36 408.37,76.63 410.13,77.94 411.89,79.27 413.65,80.64 415.41,82.04 417.17,83.47 418.93,84.94 420.69,86.45 422.45,87.99 424.21,89.57 425.96,91.19 427.72,92.85 429.48,94.55 431.24,96.30 433.00,98.09 434.76,99.93 436.52,101.82 438.28,103.76 440.04,105.76 441.80,107.81 443.56,109.92 445.32,112.10 447.08,114.34 448.84,116.65 450.60,119.03 452.36,121.49 454.12,124.04 455.88,126.68 457.64,129.41 459.40,132.25 461.16,135.20 462.91,138.28 464.67,141.50 466.43,144.87 468.19,148.41 469.95,152.14 471.71,156.10 473.47,160.31 475.23,164.83 476.99,169.73 478.75,175.08 480.51,181.05 482.27,187.88 484.03,196.03 485.79,206.74 487.55,232.77 487.55,232.77 485.79,232.77 484.03,232.77 482.27,232.77 480.51,232.77 478.75,232.77 476.99,232.77 475.23,232.77 473.47,232.77 471.71,232.77 469.95,232.77 468.19,232.77 466.43,232.77 464.67,232.77 462.91,232.77 461.16,232.77 459.40,232.77 457.64,232.77 455.88,232.77 454.12,232.77 452.36,232.77 450.60,232.77 448.84,232.77 447.08,232.77 445.32,232.77 443.56,232.77 441.80,232.77 440.04,232.77 438.28,232.77 436.52,232.77 434.76,232.77 433.00,232.77 431.24,232.77 429.48,232.77 427.72,232.77 425.96,232.77 424.21,232.77 422.45,232.77 420.69,232.77 418.93,232.77 417.17,232.77 415.41,232.77 413.65,232.77 411.89,232.77 410.13,232.77 408.37,232.77 406.61,232.77 404.85,232.77 403.09,232.77 401.33,232.77 399.57,232.77 397.81,232.77 396.05,232.77 394.29,232.77 392.53,232.77 390.77,232.77 389.01,232.77 387.26,232.77 385.50,232.77 383.74,232.77 381.98,232.77 380.22,232.77 378.46,232.77 376.70,232.77 374.94,232.77 373.18,232.77 371.42,232.77 369.66,232.77 367.90,232.77 366.14,232.77 364.38,232.77 362.62,232.77 360.86,232.77 359.10,232.77 357.34,232.77 355.58,232.77 353.82,232.77 352.06,232.77 350.30,232.77 348.55,232.77 346.79,232.77 345.03,232.77 343.27,232.77 341.51,232.77 339.75,232.77 337.99,232.77 336.23,232.77 334.47,232.77 332.71,232.77 330.95,232.77 329.19,232.77 327.43,232.77 325.67,232.77 323.91,232.77 322.15,232.77 320.39,232.77 318.63,232.77 316.87,232.77 315.11,232.77 313.35,232.77 311.60,232.77 309.84,232.77 308.08,232.77 306.32,232.77 304.56,232.77 302.80,232.77 301.04,232.77 299.28,232.77 297.52,232.77 295.76,232.77 294.00,232.77 292.24,232.77 290.48,232.77 288.72,232.77 286.96,232.77 285.20,232.77 283.44,232.77 281.68,232.77 279.92,232.77 278.16,232.77 276.40,232.77 274.65,232.77 272.89,232.77 271.13,232.77 269.37,232.77 267.61,232.77 265.85,232.77 264.09,232.77 262.33,232.77 260.57,232.77 258.81,232.77 257.05,232.77 255.29,232.77 253.53,232.77 251.77,232.77 250.01,232.77 248.25,232.77 246.49,232.77 244.73,232.77 242.97,232.77 241.21,232.77 239.45,232.77 237.70,232.77 235.94,232.77 234.18,232.77 232.42,232.77 230.66,232.77 228.90,232.77 227.14,232.77 225.38,232.77 223.62,232.77 221.86,232.77 220.10,232.77 218.34,232.77 216.58,232.77 214.82,232.77 213.06,232.77 211.30,232.77 209.54,232.77 207.78,232.77 206.02,232.77 204.26,232.77 202.50,232.77 200.74,232.77 198.99,232.77 197.23,232.77 195.47,232.77 193.71,232.77 191.95,232.77 190.19,232.77 188.43,232.77 186.67,232.77 184.91,232.77 183.15,232.77 181.39,232.77 179.63,232.77 177.87,232.77 176.11,232.77 174.35,232.77 172.59,232.77 170.83,232.77 169.07,232.77 167.31,232.77 165.55,232.77 163.79,232.77 162.04,232.77 160.28,232.77 158.52,232.77 156.76,232.77 155.00,232.77 153.24,232.77 151.48,232.77 149.72,232.77 147.96,232.77 146.20,232.77 144.44,232.77 142.68,232.77 140.92,232.77 139.16,232.77 137.40,232.77 135.64,232.77 133.88,232.77 132.12,232.77 130.36,232.77 128.60,232.77 126.84,232.77 125.09,232.77 123.33,232.77 121.57,232.77 119.81,232.77 118.05,232.77 116.29,232.77 114.53,232.77 112.77,232.77 111.01,232.77 109.25,232.77 107.49,232.77 105.73,232.77 103.97,232.77 102.21,232.77 100.45,232.77" fill="#e3d7f2" stroke="none"/>
+            <line x1="38.0" y1="232.8" x2="554.0" y2="232.8" stroke="#6d5a85" stroke-width="1.2"/>
+            <line x1="294.0" y1="8.0" x2="294.0" y2="264.0" stroke="#6d5a85" stroke-width="1.2"/>
+            <text x="546.0" y="247.8" font-size="13" font-style="italic" fill="#6d5a85">x</text>
+            <text x="280.0" y="12.0" font-size="13" font-style="italic" fill="#6d5a85">y</text>
+            <line x1="100.5" y1="229.3" x2="100.5" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="100.5" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">-2</text>
+            <line x1="197.2" y1="229.3" x2="197.2" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="197.2" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">-1</text>
+            <line x1="390.8" y1="229.3" x2="390.8" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="390.8" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">1</text>
+            <line x1="487.5" y1="229.3" x2="487.5" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="487.5" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">2</text>
+            <line x1="290.5" y1="184.4" x2="297.5" y2="184.4" stroke="#6d5a85" stroke-width="1"/>
+            <text x="287.0" y="187.9" font-size="10.5" text-anchor="end" fill="#6d5a85">0.5</text>
+            <line x1="290.5" y1="136.0" x2="297.5" y2="136.0" stroke="#6d5a85" stroke-width="1"/>
+            <text x="287.0" y="139.5" font-size="10.5" text-anchor="end" fill="#6d5a85">1</text>
+            <line x1="290.5" y1="87.6" x2="297.5" y2="87.6" stroke="#6d5a85" stroke-width="1"/>
+            <text x="287.0" y="91.1" font-size="10.5" text-anchor="end" fill="#6d5a85">1.5</text>
+            <line x1="290.5" y1="39.2" x2="297.5" y2="39.2" stroke="#6d5a85" stroke-width="1"/>
+            <text x="287.0" y="42.7" font-size="10.5" text-anchor="end" fill="#6d5a85">2</text>
+            <polyline points="100.45,232.77 102.21,206.74 103.97,196.03 105.73,187.88 107.49,181.05 109.25,175.08 111.01,169.73 112.77,164.83 114.53,160.31 116.29,156.10 118.05,152.14 119.81,148.41 121.57,144.87 123.33,141.50 125.09,138.28 126.84,135.20 128.60,132.25 130.36,129.41 132.12,126.68 133.88,124.04 135.64,121.49 137.40,119.03 139.16,116.65 140.92,114.34 142.68,112.10 144.44,109.92 146.20,107.81 147.96,105.76 149.72,103.76 151.48,101.82 153.24,99.93 155.00,98.09 156.76,96.30 158.52,94.55 160.28,92.85 162.04,91.19 163.79,89.57 165.55,87.99 167.31,86.45 169.07,84.94 170.83,83.47 172.59,82.04 174.35,80.64 176.11,79.27 177.87,77.94 179.63,76.63 181.39,75.36 183.15,74.11 184.91,72.90 186.67,71.71 188.43,70.55 190.19,69.42 191.95,68.32 193.71,67.24 195.47,66.18 197.23,65.16 198.99,64.15 200.74,63.17 202.50,62.22 204.26,61.29 206.02,60.38 207.78,59.49 209.54,58.63 211.30,57.78 213.06,56.96 214.82,56.16 216.58,55.38 218.34,54.63 220.10,53.89 221.86,53.17 223.62,52.48 225.38,51.80 227.14,51.14 228.90,50.50 230.66,49.88 232.42,49.28 234.18,48.70 235.94,48.14 237.70,47.60 239.45,47.07 241.21,46.56 242.97,46.07 244.73,45.60 246.49,45.15 248.25,44.71 250.01,44.29 251.77,43.89 253.53,43.50 255.29,43.14 257.05,42.79 258.81,42.45 260.57,42.13 262.33,41.83 264.09,41.55 265.85,41.28 267.61,41.03 269.37,40.80 271.13,40.58 272.89,40.38 274.65,40.20 276.40,40.03 278.16,39.87 279.92,39.74 281.68,39.62 283.44,39.51 285.20,39.43 286.96,39.35 288.72,39.30 290.48,39.26 292.24,39.23 294.00,39.23 295.76,39.23 297.52,39.26 299.28,39.30 301.04,39.35 302.80,39.43 304.56,39.51 306.32,39.62 308.08,39.74 309.84,39.87 311.60,40.03 313.35,40.20 315.11,40.38 316.87,40.58 318.63,40.80 320.39,41.03 322.15,41.28 323.91,41.55 325.67,41.83 327.43,42.13 329.19,42.45 330.95,42.79 332.71,43.14 334.47,43.50 336.23,43.89 337.99,44.29 339.75,44.71 341.51,45.15 343.27,45.60 345.03,46.07 346.79,46.56 348.55,47.07 350.30,47.60 352.06,48.14 353.82,48.70 355.58,49.28 357.34,49.88 359.10,50.50 360.86,51.14 362.62,51.80 364.38,52.48 366.14,53.17 367.90,53.89 369.66,54.63 371.42,55.38 373.18,56.16 374.94,56.96 376.70,57.78 378.46,58.63 380.22,59.49 381.98,60.38 383.74,61.29 385.50,62.22 387.26,63.17 389.01,64.15 390.77,65.16 392.53,66.18 394.29,67.24 396.05,68.32 397.81,69.42 399.57,70.55 401.33,71.71 403.09,72.90 404.85,74.11 406.61,75.36 408.37,76.63 410.13,77.94 411.89,79.27 413.65,80.64 415.41,82.04 417.17,83.47 418.93,84.94 420.69,86.45 422.45,87.99 424.21,89.57 425.96,91.19 427.72,92.85 429.48,94.55 431.24,96.30 433.00,98.09 434.76,99.93 436.52,101.82 438.28,103.76 440.04,105.76 441.80,107.81 443.56,109.92 445.32,112.10 447.08,114.34 448.84,116.65 450.60,119.03 452.36,121.49 454.12,124.04 455.88,126.68 457.64,129.41 459.40,132.25 461.16,135.20 462.91,138.28 464.67,141.50 466.43,144.87 468.19,148.41 469.95,152.14 471.71,156.10 473.47,160.31 475.23,164.83 476.99,169.73 478.75,175.08 480.51,181.05 482.27,187.88 484.03,196.03 485.79,206.74 487.55,232.77" fill="none" stroke="#a4348c" stroke-width="3.0"/>
+            <circle cx="100.45" cy="232.77" r="4" fill="#5a2d8c"/>
+            <circle cx="100.45" cy="232.77" r="4" fill="none" stroke="#fff" stroke-width="1.2"/>
+            <text x="92.45" y="249.77" font-size="11" font-weight="600" text-anchor="end" fill="#5a2d8c">(−r, 0)</text>
+            <circle cx="294.00" cy="39.23" r="4" fill="#5a2d8c"/>
+            <circle cx="294.00" cy="39.23" r="4" fill="none" stroke="#fff" stroke-width="1.2"/>
+            <text x="302.00" y="30.23" font-size="11" font-weight="600" text-anchor="start" fill="#5a2d8c">(0, r)</text>
+            <circle cx="487.55" cy="232.77" r="4" fill="#5a2d8c"/>
+            <circle cx="487.55" cy="232.77" r="4" fill="none" stroke="#fff" stroke-width="1.2"/>
+            <text x="495.55" y="249.77" font-size="11" font-weight="600" text-anchor="start" fill="#5a2d8c">(r, 0)</text>
+            <text x="385.2" y="52.0" font-size="12" font-style="italic" fill="#a4348c">y = √(r² − x²)</text>
+            </svg>
+            <div class="figura-cap">El semicírculo genera la esfera. S = 4πr²</div>
+            </div>
+
             <div class="porque" style="margin-top:12px">
               <b>El corolario de Arquímedes.</b> Como el integrando salió constante, el área
               de una franja esférica depende <b>solo del ancho de la franja en
-                <span class="mat">x</span></b>, no de dónde esté. Es decir: la franja del
+                <span class="mat" data-tex="x">x</span></b>, no de dónde esté. Es decir: la franja del
               ecuador y la franja del polo, si tienen el mismo espesor horizontal, tienen
               <em>exactamente</em> la misma área. En el polo el radio es pequeño pero la
               superficie está muy inclinada; en el ecuador el radio es grande pero la
@@ -319,49 +438,89 @@
       <div class="ejercicio">
         <div class="enunciado">
           <span class="eti">EJEMPLO RESUELTO 4</span>
-          <p>La curva <span class="mat">y = x²</span> desde
-            <span class="mat">x = 0</span> hasta <span class="mat">x = 1</span> gira
+          <p>La curva <span class="mat" data-tex="y = x^{2}">y = x²</span> desde
+            <span class="mat" data-tex="x = 0">x = 0</span> hasta <span class="mat" data-tex="x = 1">x = 1</span> gira
             alrededor del <b>eje y</b>. Halle el área de la superficie.</p>
         </div>
         <details>
           <summary><span class="flecha">▶</span> Ver el desarrollo</summary>
           <div class="solucion">
             <div class="pasos">
-              <div class="paso"><b>El radio es <span class="mat">x</span>.</b> Porque el
-                giro es sobre el eje <span class="mat">y</span>.</div>
-              <div class="paso"><b>El <span class="mat">ds</span> es el de la parábola.</b>
-                <span class="mat">f′ = 2x</span>, luego
-                <span class="mat">ds = √(1 + 4x²)dx</span>.</div>
+              <div class="paso"><b>El radio es <span class="mat" data-tex="x">x</span>.</b> Porque el
+                giro es sobre el eje <span class="mat" data-tex="y">y</span>.</div>
+              <div class="paso"><b>El <span class="mat" data-tex="ds">ds</span> es el de la parábola.</b>
+                <span class="mat" data-tex="f' = 2x">f′ = 2x</span>, luego
+                <span class="mat" data-tex="ds = \sqrt{1 + 4x^{2}}dx">ds = √(1 + 4x²)dx</span>.</div>
               <div class="paso"><b>Monte la integral.</b>
-                <span class="formula lila"
+                <div class="formula lila"
                   data-tex="S=2\pi\int_{0}^{1}x\sqrt{1+4x^{2}}\,dx">
-                  S = 2π∫<sub>0</sub><sup>1</sup>x√(1 + 4x²)dx</span>
+                  S = 2π∫<sub>0</sub><sup>1</sup>x√(1 + 4x²)dx</div>
               </div>
               <div class="paso"><b>Sustituya.</b> Con
-                <span class="mat">u = 1 + 4x²</span> se tiene
-                <span class="mat">du = 8x dx</span>, así que
-                <span class="mat">x dx = du/8</span>. Los límites pasan a
-                <span class="mat">u = 1</span> y <span class="mat">u = 5</span>:
-                <span class="formula lila"
+                <span class="mat" data-tex="u = 1 + 4x^{2}">u = 1 + 4x²</span> se tiene
+                <span class="mat" data-tex="du = 8x dx">du = 8x dx</span>, así que
+                <span class="mat" data-tex="x dx = du/8">x dx = du/8</span>. Los límites pasan a
+                <span class="mat" data-tex="u = 1">u = 1</span> y <span class="mat" data-tex="u = 5">u = 5</span>:
+                <div class="formula lila"
                   data-tex="S=2\pi\int_{1}^{5}\frac{\sqrt{u}}{8}\,du=\frac{\pi}{4}\left[\frac{2}{3}u^{3/2}\right]_{1}^{5}">
                   S = 2π∫<sub>1</sub><sup>5</sup>(√u/8)du =
-                  (π/4)[(2/3)u<sup>3/2</sup>]<sub>1</sub><sup>5</sup></span>
+                  (π/4)[(2/3)u<sup>3/2</sup>]<sub>1</sub><sup>5</sup></div>
               </div>
               <div class="paso"><b>Evalúe.</b>
-                <span class="mat">(π/6)(5<sup>3/2</sup> − 1) = (π/6)(5√5 − 1)</span>.</div>
+                <span class="mat" data-tex="(\pi /6)(5^{3/2} - 1) = (\pi /6)(5\sqrt{5} - 1)">(π/6)(5<sup>3/2</sup> − 1) = (π/6)(5√5 − 1)</span>.</div>
             </div>
             <div class="resultado"
               data-tex="S=\frac{\pi\left(5\sqrt{5}-1\right)}{6}\approx 5.3304\ \text{unidades cuadradas}">
               S = π(5√5 − 1)/6 ≈ 5.3304 unidades cuadradas
             </div>
+            <div class="figura-caja">
+            <svg class="figura-ej" viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfica del ejemplo">
+            <polygon points="87.33,232.77 89.21,232.77 91.09,232.76 92.97,232.74 94.85,232.71 96.73,232.67 98.61,232.63 100.48,232.58 102.36,232.52 104.24,232.45 106.12,232.37 108.00,232.29 109.88,232.20 111.76,232.10 113.64,231.99 115.52,231.87 117.39,231.75 119.27,231.62 121.15,231.48 123.03,231.33 124.91,231.17 126.79,231.01 128.67,230.84 130.55,230.66 132.42,230.47 134.30,230.27 136.18,230.07 138.06,229.86 139.94,229.64 141.82,229.41 143.70,229.18 145.58,228.93 147.45,228.68 149.33,228.42 151.21,228.15 153.09,227.88 154.97,227.59 156.85,227.30 158.73,227.00 160.61,226.69 162.48,226.38 164.36,226.05 166.24,225.72 168.12,225.38 170.00,225.03 171.88,224.68 173.76,224.31 175.64,223.94 177.52,223.56 179.39,223.17 181.27,222.78 183.15,222.37 185.03,221.96 186.91,221.54 188.79,221.11 190.67,220.68 192.55,220.23 194.42,219.78 196.30,219.32 198.18,218.85 200.06,218.38 201.94,217.89 203.82,217.40 205.70,216.90 207.58,216.39 209.45,215.88 211.33,215.35 213.21,214.82 215.09,214.28 216.97,213.74 218.85,213.18 220.73,212.62 222.61,212.04 224.48,211.46 226.36,210.88 228.24,210.28 230.12,209.68 232.00,209.06 233.88,208.44 235.76,207.82 237.64,207.18 239.52,206.54 241.39,205.89 243.27,205.23 245.15,204.56 247.03,203.88 248.91,203.20 250.79,202.51 252.67,201.81 254.55,201.10 256.42,200.38 258.30,199.66 260.18,198.93 262.06,198.19 263.94,197.44 265.82,196.68 267.70,195.92 269.58,195.15 271.45,194.37 273.33,193.58 275.21,192.78 277.09,191.98 278.97,191.17 280.85,190.35 282.73,189.52 284.61,188.69 286.48,187.84 288.36,186.99 290.24,186.13 292.12,185.26 294.00,184.39 295.88,183.50 297.76,182.61 299.64,181.71 301.52,180.80 303.39,179.89 305.27,178.96 307.15,178.03 309.03,177.09 310.91,176.15 312.79,175.19 314.67,174.23 316.55,173.25 318.42,172.27 320.30,171.29 322.18,170.29 324.06,169.29 325.94,168.28 327.82,167.26 329.70,166.23 331.58,165.19 333.45,164.15 335.33,163.10 337.21,162.04 339.09,160.97 340.97,159.89 342.85,158.81 344.73,157.72 346.61,156.62 348.48,155.51 350.36,154.40 352.24,153.27 354.12,152.14 356.00,151.00 357.88,149.85 359.76,148.70 361.64,147.53 363.52,146.36 365.39,145.18 367.27,143.99 369.15,142.80 371.03,141.59 372.91,140.38 374.79,139.16 376.67,137.94 378.55,136.70 380.42,135.46 382.30,134.20 384.18,132.94 386.06,131.68 387.94,130.40 389.82,129.12 391.70,127.83 393.58,126.53 395.45,125.22 397.33,123.90 399.21,122.58 401.09,121.25 402.97,119.91 404.85,118.56 406.73,117.21 408.61,115.84 410.48,114.47 412.36,113.09 414.24,111.70 416.12,110.31 418.00,108.90 419.88,107.49 421.76,106.07 423.64,104.64 425.52,103.21 427.39,101.77 429.27,100.31 431.15,98.85 433.03,97.39 434.91,95.91 436.79,94.43 438.67,92.94 440.55,91.44 442.42,89.93 444.30,88.41 446.18,86.89 448.06,85.36 449.94,83.82 451.82,82.27 453.70,80.71 455.58,79.15 457.45,77.58 459.33,76.00 461.21,74.41 463.09,72.82 464.97,71.21 466.85,69.60 468.73,67.98 470.61,66.35 472.48,64.72 474.36,63.08 476.24,61.42 478.12,59.76 480.00,58.10 481.88,56.42 483.76,54.74 485.64,53.05 487.52,51.35 489.39,49.64 491.27,47.92 493.15,46.20 495.03,44.47 496.91,42.73 498.79,40.98 500.67,39.23 500.67,232.77 498.79,232.77 496.91,232.77 495.03,232.77 493.15,232.77 491.27,232.77 489.39,232.77 487.52,232.77 485.64,232.77 483.76,232.77 481.88,232.77 480.00,232.77 478.12,232.77 476.24,232.77 474.36,232.77 472.48,232.77 470.61,232.77 468.73,232.77 466.85,232.77 464.97,232.77 463.09,232.77 461.21,232.77 459.33,232.77 457.45,232.77 455.58,232.77 453.70,232.77 451.82,232.77 449.94,232.77 448.06,232.77 446.18,232.77 444.30,232.77 442.42,232.77 440.55,232.77 438.67,232.77 436.79,232.77 434.91,232.77 433.03,232.77 431.15,232.77 429.27,232.77 427.39,232.77 425.52,232.77 423.64,232.77 421.76,232.77 419.88,232.77 418.00,232.77 416.12,232.77 414.24,232.77 412.36,232.77 410.48,232.77 408.61,232.77 406.73,232.77 404.85,232.77 402.97,232.77 401.09,232.77 399.21,232.77 397.33,232.77 395.45,232.77 393.58,232.77 391.70,232.77 389.82,232.77 387.94,232.77 386.06,232.77 384.18,232.77 382.30,232.77 380.42,232.77 378.55,232.77 376.67,232.77 374.79,232.77 372.91,232.77 371.03,232.77 369.15,232.77 367.27,232.77 365.39,232.77 363.52,232.77 361.64,232.77 359.76,232.77 357.88,232.77 356.00,232.77 354.12,232.77 352.24,232.77 350.36,232.77 348.48,232.77 346.61,232.77 344.73,232.77 342.85,232.77 340.97,232.77 339.09,232.77 337.21,232.77 335.33,232.77 333.45,232.77 331.58,232.77 329.70,232.77 327.82,232.77 325.94,232.77 324.06,232.77 322.18,232.77 320.30,232.77 318.42,232.77 316.55,232.77 314.67,232.77 312.79,232.77 310.91,232.77 309.03,232.77 307.15,232.77 305.27,232.77 303.39,232.77 301.52,232.77 299.64,232.77 297.76,232.77 295.88,232.77 294.00,232.77 292.12,232.77 290.24,232.77 288.36,232.77 286.48,232.77 284.61,232.77 282.73,232.77 280.85,232.77 278.97,232.77 277.09,232.77 275.21,232.77 273.33,232.77 271.45,232.77 269.58,232.77 267.70,232.77 265.82,232.77 263.94,232.77 262.06,232.77 260.18,232.77 258.30,232.77 256.42,232.77 254.55,232.77 252.67,232.77 250.79,232.77 248.91,232.77 247.03,232.77 245.15,232.77 243.27,232.77 241.39,232.77 239.52,232.77 237.64,232.77 235.76,232.77 233.88,232.77 232.00,232.77 230.12,232.77 228.24,232.77 226.36,232.77 224.48,232.77 222.61,232.77 220.73,232.77 218.85,232.77 216.97,232.77 215.09,232.77 213.21,232.77 211.33,232.77 209.45,232.77 207.58,232.77 205.70,232.77 203.82,232.77 201.94,232.77 200.06,232.77 198.18,232.77 196.30,232.77 194.42,232.77 192.55,232.77 190.67,232.77 188.79,232.77 186.91,232.77 185.03,232.77 183.15,232.77 181.27,232.77 179.39,232.77 177.52,232.77 175.64,232.77 173.76,232.77 171.88,232.77 170.00,232.77 168.12,232.77 166.24,232.77 164.36,232.77 162.48,232.77 160.61,232.77 158.73,232.77 156.85,232.77 154.97,232.77 153.09,232.77 151.21,232.77 149.33,232.77 147.45,232.77 145.58,232.77 143.70,232.77 141.82,232.77 139.94,232.77 138.06,232.77 136.18,232.77 134.30,232.77 132.42,232.77 130.55,232.77 128.67,232.77 126.79,232.77 124.91,232.77 123.03,232.77 121.15,232.77 119.27,232.77 117.39,232.77 115.52,232.77 113.64,232.77 111.76,232.77 109.88,232.77 108.00,232.77 106.12,232.77 104.24,232.77 102.36,232.77 100.48,232.77 98.61,232.77 96.73,232.77 94.85,232.77 92.97,232.77 91.09,232.77 89.21,232.77 87.33,232.77" fill="#e3d7f2" stroke="none"/>
+            <line x1="38.0" y1="232.8" x2="554.0" y2="232.8" stroke="#6d5a85" stroke-width="1.2"/>
+            <line x1="87.3" y1="8.0" x2="87.3" y2="264.0" stroke="#6d5a85" stroke-width="1.2"/>
+            <text x="546.0" y="247.8" font-size="13" font-style="italic" fill="#6d5a85">x</text>
+            <text x="73.3" y="12.0" font-size="13" font-style="italic" fill="#6d5a85">y</text>
+            <line x1="170.0" y1="229.3" x2="170.0" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="170.0" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.2</text>
+            <line x1="252.7" y1="229.3" x2="252.7" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="252.7" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.4</text>
+            <line x1="335.3" y1="229.3" x2="335.3" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="335.3" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.6</text>
+            <line x1="418.0" y1="229.3" x2="418.0" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="418.0" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.8</text>
+            <line x1="500.7" y1="229.3" x2="500.7" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="500.7" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">1</text>
+            <line x1="83.8" y1="194.1" x2="90.8" y2="194.1" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="197.6" font-size="10.5" text-anchor="end" fill="#6d5a85">0.2</text>
+            <line x1="83.8" y1="155.4" x2="90.8" y2="155.4" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="158.9" font-size="10.5" text-anchor="end" fill="#6d5a85">0.4</text>
+            <line x1="83.8" y1="116.6" x2="90.8" y2="116.6" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="120.1" font-size="10.5" text-anchor="end" fill="#6d5a85">0.6</text>
+            <line x1="83.8" y1="77.9" x2="90.8" y2="77.9" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="81.4" font-size="10.5" text-anchor="end" fill="#6d5a85">0.8</text>
+            <line x1="83.8" y1="39.2" x2="90.8" y2="39.2" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="42.7" font-size="10.5" text-anchor="end" fill="#6d5a85">1</text>
+            <line x1="87.3" y1="10.0" x2="87.3" y2="262.0" stroke="#a4348c" stroke-width="1.8" stroke-dasharray="6 4"/>
+            <polyline points="87.33,232.77 89.21,232.77 91.09,232.76 92.97,232.74 94.85,232.71 96.73,232.67 98.61,232.63 100.48,232.58 102.36,232.52 104.24,232.45 106.12,232.37 108.00,232.29 109.88,232.20 111.76,232.10 113.64,231.99 115.52,231.87 117.39,231.75 119.27,231.62 121.15,231.48 123.03,231.33 124.91,231.17 126.79,231.01 128.67,230.84 130.55,230.66 132.42,230.47 134.30,230.27 136.18,230.07 138.06,229.86 139.94,229.64 141.82,229.41 143.70,229.18 145.58,228.93 147.45,228.68 149.33,228.42 151.21,228.15 153.09,227.88 154.97,227.59 156.85,227.30 158.73,227.00 160.61,226.69 162.48,226.38 164.36,226.05 166.24,225.72 168.12,225.38 170.00,225.03 171.88,224.68 173.76,224.31 175.64,223.94 177.52,223.56 179.39,223.17 181.27,222.78 183.15,222.37 185.03,221.96 186.91,221.54 188.79,221.11 190.67,220.68 192.55,220.23 194.42,219.78 196.30,219.32 198.18,218.85 200.06,218.38 201.94,217.89 203.82,217.40 205.70,216.90 207.58,216.39 209.45,215.88 211.33,215.35 213.21,214.82 215.09,214.28 216.97,213.74 218.85,213.18 220.73,212.62 222.61,212.04 224.48,211.46 226.36,210.88 228.24,210.28 230.12,209.68 232.00,209.06 233.88,208.44 235.76,207.82 237.64,207.18 239.52,206.54 241.39,205.89 243.27,205.23 245.15,204.56 247.03,203.88 248.91,203.20 250.79,202.51 252.67,201.81 254.55,201.10 256.42,200.38 258.30,199.66 260.18,198.93 262.06,198.19 263.94,197.44 265.82,196.68 267.70,195.92 269.58,195.15 271.45,194.37 273.33,193.58 275.21,192.78 277.09,191.98 278.97,191.17 280.85,190.35 282.73,189.52 284.61,188.69 286.48,187.84 288.36,186.99 290.24,186.13 292.12,185.26 294.00,184.39 295.88,183.50 297.76,182.61 299.64,181.71 301.52,180.80 303.39,179.89 305.27,178.96 307.15,178.03 309.03,177.09 310.91,176.15 312.79,175.19 314.67,174.23 316.55,173.25 318.42,172.27 320.30,171.29 322.18,170.29 324.06,169.29 325.94,168.28 327.82,167.26 329.70,166.23 331.58,165.19 333.45,164.15 335.33,163.10 337.21,162.04 339.09,160.97 340.97,159.89 342.85,158.81 344.73,157.72 346.61,156.62 348.48,155.51 350.36,154.40 352.24,153.27 354.12,152.14 356.00,151.00 357.88,149.85 359.76,148.70 361.64,147.53 363.52,146.36 365.39,145.18 367.27,143.99 369.15,142.80 371.03,141.59 372.91,140.38 374.79,139.16 376.67,137.94 378.55,136.70 380.42,135.46 382.30,134.20 384.18,132.94 386.06,131.68 387.94,130.40 389.82,129.12 391.70,127.83 393.58,126.53 395.45,125.22 397.33,123.90 399.21,122.58 401.09,121.25 402.97,119.91 404.85,118.56 406.73,117.21 408.61,115.84 410.48,114.47 412.36,113.09 414.24,111.70 416.12,110.31 418.00,108.90 419.88,107.49 421.76,106.07 423.64,104.64 425.52,103.21 427.39,101.77 429.27,100.31 431.15,98.85 433.03,97.39 434.91,95.91 436.79,94.43 438.67,92.94 440.55,91.44 442.42,89.93 444.30,88.41 446.18,86.89 448.06,85.36 449.94,83.82 451.82,82.27 453.70,80.71 455.58,79.15 457.45,77.58 459.33,76.00 461.21,74.41 463.09,72.82 464.97,71.21 466.85,69.60 468.73,67.98 470.61,66.35 472.48,64.72 474.36,63.08 476.24,61.42 478.12,59.76 480.00,58.10 481.88,56.42 483.76,54.74 485.64,53.05 487.52,51.35 489.39,49.64 491.27,47.92 493.15,46.20 495.03,44.47 496.91,42.73 498.79,40.98 500.67,39.23" fill="none" stroke="#a4348c" stroke-width="3.0"/>
+            <circle cx="87.33" cy="232.77" r="4" fill="#5a2d8c"/>
+            <circle cx="87.33" cy="232.77" r="4" fill="none" stroke="#fff" stroke-width="1.2"/>
+            <text x="79.33" y="249.77" font-size="11" font-weight="600" text-anchor="end" fill="#5a2d8c">(0, 0)</text>
+            <circle cx="500.67" cy="39.23" r="4" fill="#5a2d8c"/>
+            <circle cx="500.67" cy="39.23" r="4" fill="none" stroke="#fff" stroke-width="1.2"/>
+            <text x="508.67" y="30.23" font-size="11" font-weight="600" text-anchor="start" fill="#5a2d8c">(1, 1)</text>
+            <text x="390.9" y="125.4" font-size="12" font-style="italic" fill="#a4348c">y = x²</text>
+            </svg>
+            <div class="figura-cap">Gira sobre el eje y (punteado). S = π(5√5 − 1)/6 ≈ 5.3304</div>
+            </div>
+
             <div class="porque" style="margin-top:12px">
               <b>¿Por qué dio lo mismo que el ejemplo 2?</b> No es casualidad.
-              <span class="mat">y = x²</span> en <span class="mat">[0,1]</span> girando
-              sobre el eje <span class="mat">y</span>, y
-              <span class="mat">y = √x</span> en <span class="mat">[0,1]</span> girando sobre
-              el eje <span class="mat">x</span>, generan <b>la misma superficie</b>: las dos
+              <span class="mat" data-tex="y = x^{2}">y = x²</span> en <span class="mat" data-tex="[0,1]">[0,1]</span> girando
+              sobre el eje <span class="mat" data-tex="y">y</span>, y
+              <span class="mat" data-tex="y = \sqrt{x}">y = √x</span> en <span class="mat" data-tex="[0,1]">[0,1]</span> girando sobre
+              el eje <span class="mat" data-tex="x">x</span>, generan <b>la misma superficie</b>: las dos
               curvas son inversas una de la otra, así que son la misma curva reflejada en la
-              recta <span class="mat">y = x</span>, y el giro se hace sobre el eje que
+              recta <span class="mat" data-tex="y = x">y = x</span>, y el giro se hace sobre el eje que
               también se refleja. Reconocer esta simetría puede ahorrarle una integral
               completa en un parcial.
             </div>
@@ -372,8 +531,8 @@
       <div class="ejercicio">
         <div class="enunciado">
           <span class="eti">EJEMPLO RESUELTO 5</span>
-          <p>La curva <span class="mat">y = x²</span> desde
-            <span class="mat">x = 0</span> hasta <span class="mat">x = 1</span> gira
+          <p>La curva <span class="mat" data-tex="y = x^{2}">y = x²</span> desde
+            <span class="mat" data-tex="x = 0">x = 0</span> hasta <span class="mat" data-tex="x = 1">x = 1</span> gira
             alrededor del <b>eje x</b>. Plantee y evalúe el área.</p>
         </div>
         <details>
@@ -381,40 +540,79 @@
           <div class="solucion">
             <div class="pasos">
               <div class="paso"><b>Monte la integral.</b> Ahora el radio es
-                <span class="mat">f(x) = x²</span>:
-                <span class="formula lila"
+                <span class="mat" data-tex="f(x) = x^{2}">f(x) = x²</span>:
+                <div class="formula lila"
                   data-tex="S=2\pi\int_{0}^{1}x^{2}\sqrt{1+4x^{2}}\,dx">
-                  S = 2π∫<sub>0</sub><sup>1</sup>x²√(1 + 4x²)dx</span>
+                  S = 2π∫<sub>0</sub><sup>1</sup>x²√(1 + 4x²)dx</div>
               </div>
               <div class="paso"><b>Observe la dificultad.</b> La sustitución
-                <span class="mat">u = 1 + 4x²</span> ya no funciona, porque
-                <span class="mat">x²</span> no es múltiplo de
-                <span class="mat">x dx</span>. Hay que usar sustitución hiperbólica
-                (<span class="mat">2x = senh θ</span>) o trigonométrica
-                (<span class="mat">2x = tan θ</span>), y después integrar
-                <span class="mat">sec³</span> o similares.</div>
+                <span class="mat" data-tex="u = 1 + 4x^{2}">u = 1 + 4x²</span> ya no funciona, porque
+                <span class="mat" data-tex="x^{2}">x²</span> no es múltiplo de
+                <span class="mat" data-tex="x dx">x dx</span>. Hay que usar sustitución hiperbólica
+                (<span class="mat" data-tex="2x = \operatorname{senh} \theta">2x = senh θ</span>) o trigonométrica
+                (<span class="mat" data-tex="2x = \operatorname{tan} \theta">2x = tan θ</span>), y después integrar
+                <span class="mat" data-tex="\operatorname{sec}^{3}">sec³</span> o similares.</div>
               <div class="paso"><b>El resultado exacto.</b>
-                <span class="formula lila"
+                <div class="formula lila"
                   data-tex="S=\frac{\pi}{32}\left(18\sqrt{5}-\operatorname{arcsenh}2\right)=\frac{\pi}{32}\left(18\sqrt{5}-\ln\!\left(2+\sqrt{5}\right)\right)">
-                  S = (π/32)(18√5 − arcsenh 2) = (π/32)(18√5 − ln(2 + √5))</span>
+                  S = (π/32)(18√5 − arcsenh 2) = (π/32)(18√5 − ln(2 + √5))</div>
               </div>
             </div>
             <div class="resultado"
               data-tex="S=\frac{\pi}{32}\left(18\sqrt{5}-\ln\!\left(2+\sqrt{5}\right)\right)\approx 3.8097\ \text{unidades cuadradas}">
               S = (π/32)(18√5 − ln(2 + √5)) ≈ 3.8097 unidades cuadradas
             </div>
+            <div class="figura-caja">
+            <svg class="figura-ej" viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfica del ejemplo">
+            <polygon points="87.33,232.77 89.21,232.77 91.09,232.76 92.97,232.74 94.85,232.71 96.73,232.67 98.61,232.63 100.48,232.58 102.36,232.52 104.24,232.45 106.12,232.37 108.00,232.29 109.88,232.20 111.76,232.10 113.64,231.99 115.52,231.87 117.39,231.75 119.27,231.62 121.15,231.48 123.03,231.33 124.91,231.17 126.79,231.01 128.67,230.84 130.55,230.66 132.42,230.47 134.30,230.27 136.18,230.07 138.06,229.86 139.94,229.64 141.82,229.41 143.70,229.18 145.58,228.93 147.45,228.68 149.33,228.42 151.21,228.15 153.09,227.88 154.97,227.59 156.85,227.30 158.73,227.00 160.61,226.69 162.48,226.38 164.36,226.05 166.24,225.72 168.12,225.38 170.00,225.03 171.88,224.68 173.76,224.31 175.64,223.94 177.52,223.56 179.39,223.17 181.27,222.78 183.15,222.37 185.03,221.96 186.91,221.54 188.79,221.11 190.67,220.68 192.55,220.23 194.42,219.78 196.30,219.32 198.18,218.85 200.06,218.38 201.94,217.89 203.82,217.40 205.70,216.90 207.58,216.39 209.45,215.88 211.33,215.35 213.21,214.82 215.09,214.28 216.97,213.74 218.85,213.18 220.73,212.62 222.61,212.04 224.48,211.46 226.36,210.88 228.24,210.28 230.12,209.68 232.00,209.06 233.88,208.44 235.76,207.82 237.64,207.18 239.52,206.54 241.39,205.89 243.27,205.23 245.15,204.56 247.03,203.88 248.91,203.20 250.79,202.51 252.67,201.81 254.55,201.10 256.42,200.38 258.30,199.66 260.18,198.93 262.06,198.19 263.94,197.44 265.82,196.68 267.70,195.92 269.58,195.15 271.45,194.37 273.33,193.58 275.21,192.78 277.09,191.98 278.97,191.17 280.85,190.35 282.73,189.52 284.61,188.69 286.48,187.84 288.36,186.99 290.24,186.13 292.12,185.26 294.00,184.39 295.88,183.50 297.76,182.61 299.64,181.71 301.52,180.80 303.39,179.89 305.27,178.96 307.15,178.03 309.03,177.09 310.91,176.15 312.79,175.19 314.67,174.23 316.55,173.25 318.42,172.27 320.30,171.29 322.18,170.29 324.06,169.29 325.94,168.28 327.82,167.26 329.70,166.23 331.58,165.19 333.45,164.15 335.33,163.10 337.21,162.04 339.09,160.97 340.97,159.89 342.85,158.81 344.73,157.72 346.61,156.62 348.48,155.51 350.36,154.40 352.24,153.27 354.12,152.14 356.00,151.00 357.88,149.85 359.76,148.70 361.64,147.53 363.52,146.36 365.39,145.18 367.27,143.99 369.15,142.80 371.03,141.59 372.91,140.38 374.79,139.16 376.67,137.94 378.55,136.70 380.42,135.46 382.30,134.20 384.18,132.94 386.06,131.68 387.94,130.40 389.82,129.12 391.70,127.83 393.58,126.53 395.45,125.22 397.33,123.90 399.21,122.58 401.09,121.25 402.97,119.91 404.85,118.56 406.73,117.21 408.61,115.84 410.48,114.47 412.36,113.09 414.24,111.70 416.12,110.31 418.00,108.90 419.88,107.49 421.76,106.07 423.64,104.64 425.52,103.21 427.39,101.77 429.27,100.31 431.15,98.85 433.03,97.39 434.91,95.91 436.79,94.43 438.67,92.94 440.55,91.44 442.42,89.93 444.30,88.41 446.18,86.89 448.06,85.36 449.94,83.82 451.82,82.27 453.70,80.71 455.58,79.15 457.45,77.58 459.33,76.00 461.21,74.41 463.09,72.82 464.97,71.21 466.85,69.60 468.73,67.98 470.61,66.35 472.48,64.72 474.36,63.08 476.24,61.42 478.12,59.76 480.00,58.10 481.88,56.42 483.76,54.74 485.64,53.05 487.52,51.35 489.39,49.64 491.27,47.92 493.15,46.20 495.03,44.47 496.91,42.73 498.79,40.98 500.67,39.23 500.67,232.77 498.79,232.77 496.91,232.77 495.03,232.77 493.15,232.77 491.27,232.77 489.39,232.77 487.52,232.77 485.64,232.77 483.76,232.77 481.88,232.77 480.00,232.77 478.12,232.77 476.24,232.77 474.36,232.77 472.48,232.77 470.61,232.77 468.73,232.77 466.85,232.77 464.97,232.77 463.09,232.77 461.21,232.77 459.33,232.77 457.45,232.77 455.58,232.77 453.70,232.77 451.82,232.77 449.94,232.77 448.06,232.77 446.18,232.77 444.30,232.77 442.42,232.77 440.55,232.77 438.67,232.77 436.79,232.77 434.91,232.77 433.03,232.77 431.15,232.77 429.27,232.77 427.39,232.77 425.52,232.77 423.64,232.77 421.76,232.77 419.88,232.77 418.00,232.77 416.12,232.77 414.24,232.77 412.36,232.77 410.48,232.77 408.61,232.77 406.73,232.77 404.85,232.77 402.97,232.77 401.09,232.77 399.21,232.77 397.33,232.77 395.45,232.77 393.58,232.77 391.70,232.77 389.82,232.77 387.94,232.77 386.06,232.77 384.18,232.77 382.30,232.77 380.42,232.77 378.55,232.77 376.67,232.77 374.79,232.77 372.91,232.77 371.03,232.77 369.15,232.77 367.27,232.77 365.39,232.77 363.52,232.77 361.64,232.77 359.76,232.77 357.88,232.77 356.00,232.77 354.12,232.77 352.24,232.77 350.36,232.77 348.48,232.77 346.61,232.77 344.73,232.77 342.85,232.77 340.97,232.77 339.09,232.77 337.21,232.77 335.33,232.77 333.45,232.77 331.58,232.77 329.70,232.77 327.82,232.77 325.94,232.77 324.06,232.77 322.18,232.77 320.30,232.77 318.42,232.77 316.55,232.77 314.67,232.77 312.79,232.77 310.91,232.77 309.03,232.77 307.15,232.77 305.27,232.77 303.39,232.77 301.52,232.77 299.64,232.77 297.76,232.77 295.88,232.77 294.00,232.77 292.12,232.77 290.24,232.77 288.36,232.77 286.48,232.77 284.61,232.77 282.73,232.77 280.85,232.77 278.97,232.77 277.09,232.77 275.21,232.77 273.33,232.77 271.45,232.77 269.58,232.77 267.70,232.77 265.82,232.77 263.94,232.77 262.06,232.77 260.18,232.77 258.30,232.77 256.42,232.77 254.55,232.77 252.67,232.77 250.79,232.77 248.91,232.77 247.03,232.77 245.15,232.77 243.27,232.77 241.39,232.77 239.52,232.77 237.64,232.77 235.76,232.77 233.88,232.77 232.00,232.77 230.12,232.77 228.24,232.77 226.36,232.77 224.48,232.77 222.61,232.77 220.73,232.77 218.85,232.77 216.97,232.77 215.09,232.77 213.21,232.77 211.33,232.77 209.45,232.77 207.58,232.77 205.70,232.77 203.82,232.77 201.94,232.77 200.06,232.77 198.18,232.77 196.30,232.77 194.42,232.77 192.55,232.77 190.67,232.77 188.79,232.77 186.91,232.77 185.03,232.77 183.15,232.77 181.27,232.77 179.39,232.77 177.52,232.77 175.64,232.77 173.76,232.77 171.88,232.77 170.00,232.77 168.12,232.77 166.24,232.77 164.36,232.77 162.48,232.77 160.61,232.77 158.73,232.77 156.85,232.77 154.97,232.77 153.09,232.77 151.21,232.77 149.33,232.77 147.45,232.77 145.58,232.77 143.70,232.77 141.82,232.77 139.94,232.77 138.06,232.77 136.18,232.77 134.30,232.77 132.42,232.77 130.55,232.77 128.67,232.77 126.79,232.77 124.91,232.77 123.03,232.77 121.15,232.77 119.27,232.77 117.39,232.77 115.52,232.77 113.64,232.77 111.76,232.77 109.88,232.77 108.00,232.77 106.12,232.77 104.24,232.77 102.36,232.77 100.48,232.77 98.61,232.77 96.73,232.77 94.85,232.77 92.97,232.77 91.09,232.77 89.21,232.77 87.33,232.77" fill="#e3d7f2" stroke="none"/>
+            <line x1="38.0" y1="232.8" x2="554.0" y2="232.8" stroke="#6d5a85" stroke-width="1.2"/>
+            <line x1="87.3" y1="8.0" x2="87.3" y2="264.0" stroke="#6d5a85" stroke-width="1.2"/>
+            <text x="546.0" y="247.8" font-size="13" font-style="italic" fill="#6d5a85">x</text>
+            <text x="73.3" y="12.0" font-size="13" font-style="italic" fill="#6d5a85">y</text>
+            <line x1="170.0" y1="229.3" x2="170.0" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="170.0" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.2</text>
+            <line x1="252.7" y1="229.3" x2="252.7" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="252.7" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.4</text>
+            <line x1="335.3" y1="229.3" x2="335.3" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="335.3" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.6</text>
+            <line x1="418.0" y1="229.3" x2="418.0" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="418.0" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.8</text>
+            <line x1="500.7" y1="229.3" x2="500.7" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="500.7" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">1</text>
+            <line x1="83.8" y1="194.1" x2="90.8" y2="194.1" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="197.6" font-size="10.5" text-anchor="end" fill="#6d5a85">0.2</text>
+            <line x1="83.8" y1="155.4" x2="90.8" y2="155.4" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="158.9" font-size="10.5" text-anchor="end" fill="#6d5a85">0.4</text>
+            <line x1="83.8" y1="116.6" x2="90.8" y2="116.6" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="120.1" font-size="10.5" text-anchor="end" fill="#6d5a85">0.6</text>
+            <line x1="83.8" y1="77.9" x2="90.8" y2="77.9" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="81.4" font-size="10.5" text-anchor="end" fill="#6d5a85">0.8</text>
+            <line x1="83.8" y1="39.2" x2="90.8" y2="39.2" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="42.7" font-size="10.5" text-anchor="end" fill="#6d5a85">1</text>
+            <polyline points="87.33,232.77 89.21,232.77 91.09,232.76 92.97,232.74 94.85,232.71 96.73,232.67 98.61,232.63 100.48,232.58 102.36,232.52 104.24,232.45 106.12,232.37 108.00,232.29 109.88,232.20 111.76,232.10 113.64,231.99 115.52,231.87 117.39,231.75 119.27,231.62 121.15,231.48 123.03,231.33 124.91,231.17 126.79,231.01 128.67,230.84 130.55,230.66 132.42,230.47 134.30,230.27 136.18,230.07 138.06,229.86 139.94,229.64 141.82,229.41 143.70,229.18 145.58,228.93 147.45,228.68 149.33,228.42 151.21,228.15 153.09,227.88 154.97,227.59 156.85,227.30 158.73,227.00 160.61,226.69 162.48,226.38 164.36,226.05 166.24,225.72 168.12,225.38 170.00,225.03 171.88,224.68 173.76,224.31 175.64,223.94 177.52,223.56 179.39,223.17 181.27,222.78 183.15,222.37 185.03,221.96 186.91,221.54 188.79,221.11 190.67,220.68 192.55,220.23 194.42,219.78 196.30,219.32 198.18,218.85 200.06,218.38 201.94,217.89 203.82,217.40 205.70,216.90 207.58,216.39 209.45,215.88 211.33,215.35 213.21,214.82 215.09,214.28 216.97,213.74 218.85,213.18 220.73,212.62 222.61,212.04 224.48,211.46 226.36,210.88 228.24,210.28 230.12,209.68 232.00,209.06 233.88,208.44 235.76,207.82 237.64,207.18 239.52,206.54 241.39,205.89 243.27,205.23 245.15,204.56 247.03,203.88 248.91,203.20 250.79,202.51 252.67,201.81 254.55,201.10 256.42,200.38 258.30,199.66 260.18,198.93 262.06,198.19 263.94,197.44 265.82,196.68 267.70,195.92 269.58,195.15 271.45,194.37 273.33,193.58 275.21,192.78 277.09,191.98 278.97,191.17 280.85,190.35 282.73,189.52 284.61,188.69 286.48,187.84 288.36,186.99 290.24,186.13 292.12,185.26 294.00,184.39 295.88,183.50 297.76,182.61 299.64,181.71 301.52,180.80 303.39,179.89 305.27,178.96 307.15,178.03 309.03,177.09 310.91,176.15 312.79,175.19 314.67,174.23 316.55,173.25 318.42,172.27 320.30,171.29 322.18,170.29 324.06,169.29 325.94,168.28 327.82,167.26 329.70,166.23 331.58,165.19 333.45,164.15 335.33,163.10 337.21,162.04 339.09,160.97 340.97,159.89 342.85,158.81 344.73,157.72 346.61,156.62 348.48,155.51 350.36,154.40 352.24,153.27 354.12,152.14 356.00,151.00 357.88,149.85 359.76,148.70 361.64,147.53 363.52,146.36 365.39,145.18 367.27,143.99 369.15,142.80 371.03,141.59 372.91,140.38 374.79,139.16 376.67,137.94 378.55,136.70 380.42,135.46 382.30,134.20 384.18,132.94 386.06,131.68 387.94,130.40 389.82,129.12 391.70,127.83 393.58,126.53 395.45,125.22 397.33,123.90 399.21,122.58 401.09,121.25 402.97,119.91 404.85,118.56 406.73,117.21 408.61,115.84 410.48,114.47 412.36,113.09 414.24,111.70 416.12,110.31 418.00,108.90 419.88,107.49 421.76,106.07 423.64,104.64 425.52,103.21 427.39,101.77 429.27,100.31 431.15,98.85 433.03,97.39 434.91,95.91 436.79,94.43 438.67,92.94 440.55,91.44 442.42,89.93 444.30,88.41 446.18,86.89 448.06,85.36 449.94,83.82 451.82,82.27 453.70,80.71 455.58,79.15 457.45,77.58 459.33,76.00 461.21,74.41 463.09,72.82 464.97,71.21 466.85,69.60 468.73,67.98 470.61,66.35 472.48,64.72 474.36,63.08 476.24,61.42 478.12,59.76 480.00,58.10 481.88,56.42 483.76,54.74 485.64,53.05 487.52,51.35 489.39,49.64 491.27,47.92 493.15,46.20 495.03,44.47 496.91,42.73 498.79,40.98 500.67,39.23" fill="none" stroke="#a4348c" stroke-width="3.0"/>
+            <circle cx="87.33" cy="232.77" r="4" fill="#5a2d8c"/>
+            <circle cx="87.33" cy="232.77" r="4" fill="none" stroke="#fff" stroke-width="1.2"/>
+            <text x="79.33" y="249.77" font-size="11" font-weight="600" text-anchor="end" fill="#5a2d8c">(0, 0)</text>
+            <circle cx="500.67" cy="39.23" r="4" fill="#5a2d8c"/>
+            <circle cx="500.67" cy="39.23" r="4" fill="none" stroke="#fff" stroke-width="1.2"/>
+            <text x="508.67" y="30.23" font-size="11" font-weight="600" text-anchor="start" fill="#5a2d8c">(1, 1)</text>
+            <text x="390.9" y="125.4" font-size="12" font-style="italic" fill="#a4348c">y = x²</text>
+            </svg>
+            <div class="figura-cap">La misma curva, pero sobre el eje x. S ≈ 3.8097</div>
+            </div>
+
             <div class="porque" style="margin-top:12px">
               <b>Un aviso que vale la pena leer.</b> Este ejercicio circula en varios
-              materiales con la respuesta <span class="mat">π/3 ≈ 1.047</span>, que es
+              materiales con la respuesta <span class="mat" data-tex="\pi /3 \approx 1.047">π/3 ≈ 1.047</span>, que es
               <b>incorrecta</b>: viene de simplificar
-              <span class="mat">√(1 + 4x²)</span> como si fuera
-              <span class="mat">1 + 2x</span>, lo cual no es válido. Se detecta de
+              <span class="mat" data-tex="\sqrt{1 + 4x^{2}}">√(1 + 4x²)</span> como si fuera
+              <span class="mat" data-tex="1 + 2x">1 + 2x</span>, lo cual no es válido. Se detecta de
               inmediato con una cota: el radio máximo de la superficie es
-              <span class="mat">f(1) = 1</span> y la longitud de la curva es
-              <span class="mat">≈ 1.479</span>, así que el área debe estar por debajo de
-              <span class="mat">2π(1)(1.479) ≈ 9.3</span> pero del orden de unas pocas
-              unidades: <span class="mat">3.81</span> es verosímil y
-              <span class="mat">1.047</span> es demasiado pequeño. <b>Acostúmbrese a acotar
+              <span class="mat" data-tex="f(1) = 1">f(1) = 1</span> y la longitud de la curva es
+              <span class="mat" data-tex="\approx 1.479">≈ 1.479</span>, así que el área debe estar por debajo de
+              <span class="mat" data-tex="2\pi(1)(1.479) \approx 9.3">2π(1)(1.479) ≈ 9.3</span> pero del orden de unas pocas
+              unidades: <span class="mat" data-tex="3.81">3.81</span> es verosímil y
+              <span class="mat" data-tex="1.047">1.047</span> es demasiado pequeño. <b>Acostúmbrese a acotar
                 antes de confiar en un resultado.</b>
             </div>
           </div>
@@ -428,10 +626,10 @@
 
       <div class="ambiental">
         <b>Situación.</b> Un sedimentador circular tiene paredes troncocónicas. En corte, la
-        pared sigue la recta <span class="mat">y = 1 + x/2</span> desde
-        <span class="mat">x = 0</span> hasta <span class="mat">x = 4</span>, con las medidas
+        pared sigue la recta <span class="mat" data-tex="y = 1 + x/2">y = 1 + x/2</span> desde
+        <span class="mat" data-tex="x = 0">x = 0</span> hasta <span class="mat" data-tex="x = 4">x = 4</span>, con las medidas
         en metros, y la superficie se genera girando esa recta alrededor del eje
-        <span class="mat">x</span> (el eje longitudinal del tanque).<br><br>
+        <span class="mat" data-tex="x">x</span> (el eje longitudinal del tanque).<br><br>
         <b>Pregunta.</b> Si la geomembrana cuesta 48 000 pesos el metro cuadrado y se
         considera un 8 % de desperdicio por traslapos, ¿cuánto cuesta impermeabilizar la
         pared?
@@ -447,44 +645,77 @@
           <div class="solucion">
             <div class="pasos">
               <div class="paso"><b>Derive.</b>
-                <span class="mat">f′ = 1/2</span>, luego
-                <span class="mat">√(1 + 1/4) = √5/2 ≈ 1.1180</span>. Este número es el
+                <span class="mat" data-tex="f' = 1/2">f′ = 1/2</span>, luego
+                <span class="mat" data-tex="\sqrt{1 + 1/4} = \sqrt{5}/2 \approx 1.1180">√(1 + 1/4) = √5/2 ≈ 1.1180</span>. Este número es el
                 <b>factor de estiramiento</b>: la lámina es 11.8 % más larga que la
                 proyección horizontal.</div>
               <div class="paso"><b>Monte la integral.</b>
-                <span class="formula lila"
+                <div class="formula lila"
                   data-tex="S=2\pi\int_{0}^{4}\left(1+\frac{x}{2}\right)\frac{\sqrt{5}}{2}\,dx=\pi\sqrt{5}\int_{0}^{4}\left(1+\frac{x}{2}\right)dx">
                   S = 2π∫<sub>0</sub><sup>4</sup>(1 + x/2)(√5/2)dx =
-                  π√5∫<sub>0</sub><sup>4</sup>(1 + x/2)dx</span>
+                  π√5∫<sub>0</sub><sup>4</sup>(1 + x/2)dx</div>
               </div>
               <div class="paso"><b>Integre.</b>
-                <span class="formula lila"
+                <div class="formula lila"
                   data-tex="S=\pi\sqrt{5}\left[x+\frac{x^{2}}{4}\right]_{0}^{4}=\pi\sqrt{5}\left(4+4\right)=8\sqrt{5}\,\pi">
-                  S = π√5[x + x²/4]<sub>0</sub><sup>4</sup> = π√5(8) = 8√5π</span>
+                  S = π√5[x + x²/4]<sub>0</sub><sup>4</sup> = π√5(8) = 8√5π</div>
               </div>
               <div class="paso"><b>Numéricamente.</b>
-                <span class="mat">8√5π ≈ 56.20</span> m².</div>
+                <span class="mat" data-tex="8\sqrt{5}\pi \approx 56.20">8√5π ≈ 56.20</span> m².</div>
               <div class="paso"><b>Agregue el desperdicio y multiplique.</b>
-                <span class="mat">56.20 × 1.08 ≈ 60.69</span> m², y
-                <span class="mat">60.69 × 48 000 ≈ 2 913 000</span> pesos.</div>
+                <span class="mat" data-tex="56.20 \times 1.08 \approx 60.69">56.20 × 1.08 ≈ 60.69</span> m², y
+                <span class="mat" data-tex="60.69 \times 48\,000 \approx 2\,913\,000">60.69 × 48 000 ≈ 2 913 000</span> pesos.</div>
             </div>
             <div class="resultado"
               data-tex="S=8\sqrt{5}\,\pi\approx 56.20\ \mathrm{m^{2}}\;\Longrightarrow\;\text{costo}\approx \$2\,913\,000">
               S = 8√5π ≈ 56.20 m² ⟹ costo ≈ $2 913 000
             </div>
+            <div class="figura-caja">
+            <svg class="figura-ej" viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfica del ejemplo">
+            <polygon points="87.33,168.26 89.21,167.67 91.09,167.09 92.97,166.50 94.85,165.91 96.73,165.33 98.61,164.74 100.48,164.15 102.36,163.57 104.24,162.98 106.12,162.39 108.00,161.81 109.88,161.22 111.76,160.63 113.64,160.05 115.52,159.46 117.39,158.87 119.27,158.29 121.15,157.70 123.03,157.11 124.91,156.53 126.79,155.94 128.67,155.35 130.55,154.77 132.42,154.18 134.30,153.60 136.18,153.01 138.06,152.42 139.94,151.84 141.82,151.25 143.70,150.66 145.58,150.08 147.45,149.49 149.33,148.90 151.21,148.32 153.09,147.73 154.97,147.14 156.85,146.56 158.73,145.97 160.61,145.38 162.48,144.80 164.36,144.21 166.24,143.62 168.12,143.04 170.00,142.45 171.88,141.87 173.76,141.28 175.64,140.69 177.52,140.11 179.39,139.52 181.27,138.93 183.15,138.35 185.03,137.76 186.91,137.17 188.79,136.59 190.67,136.00 192.55,135.41 194.42,134.83 196.30,134.24 198.18,133.65 200.06,133.07 201.94,132.48 203.82,131.89 205.70,131.31 207.58,130.72 209.45,130.13 211.33,129.55 213.21,128.96 215.09,128.38 216.97,127.79 218.85,127.20 220.73,126.62 222.61,126.03 224.48,125.44 226.36,124.86 228.24,124.27 230.12,123.68 232.00,123.10 233.88,122.51 235.76,121.92 237.64,121.34 239.52,120.75 241.39,120.16 243.27,119.58 245.15,118.99 247.03,118.40 248.91,117.82 250.79,117.23 252.67,116.65 254.55,116.06 256.42,115.47 258.30,114.89 260.18,114.30 262.06,113.71 263.94,113.13 265.82,112.54 267.70,111.95 269.58,111.37 271.45,110.78 273.33,110.19 275.21,109.61 277.09,109.02 278.97,108.43 280.85,107.85 282.73,107.26 284.61,106.67 286.48,106.09 288.36,105.50 290.24,104.91 292.12,104.33 294.00,103.74 295.88,103.16 297.76,102.57 299.64,101.98 301.52,101.40 303.39,100.81 305.27,100.22 307.15,99.64 309.03,99.05 310.91,98.46 312.79,97.88 314.67,97.29 316.55,96.70 318.42,96.12 320.30,95.53 322.18,94.94 324.06,94.36 325.94,93.77 327.82,93.18 329.70,92.60 331.58,92.01 333.45,91.43 335.33,90.84 337.21,90.25 339.09,89.67 340.97,89.08 342.85,88.49 344.73,87.91 346.61,87.32 348.48,86.73 350.36,86.15 352.24,85.56 354.12,84.97 356.00,84.39 357.88,83.80 359.76,83.21 361.64,82.63 363.52,82.04 365.39,81.45 367.27,80.87 369.15,80.28 371.03,79.70 372.91,79.11 374.79,78.52 376.67,77.94 378.55,77.35 380.42,76.76 382.30,76.18 384.18,75.59 386.06,75.00 387.94,74.42 389.82,73.83 391.70,73.24 393.58,72.66 395.45,72.07 397.33,71.48 399.21,70.90 401.09,70.31 402.97,69.72 404.85,69.14 406.73,68.55 408.61,67.96 410.48,67.38 412.36,66.79 414.24,66.21 416.12,65.62 418.00,65.03 419.88,64.45 421.76,63.86 423.64,63.27 425.52,62.69 427.39,62.10 429.27,61.51 431.15,60.93 433.03,60.34 434.91,59.75 436.79,59.17 438.67,58.58 440.55,57.99 442.42,57.41 444.30,56.82 446.18,56.23 448.06,55.65 449.94,55.06 451.82,54.48 453.70,53.89 455.58,53.30 457.45,52.72 459.33,52.13 461.21,51.54 463.09,50.96 464.97,50.37 466.85,49.78 468.73,49.20 470.61,48.61 472.48,48.02 474.36,47.44 476.24,46.85 478.12,46.26 480.00,45.68 481.88,45.09 483.76,44.50 485.64,43.92 487.52,43.33 489.39,42.74 491.27,42.16 493.15,41.57 495.03,40.99 496.91,40.40 498.79,39.81 500.67,39.23 500.67,232.77 498.79,232.77 496.91,232.77 495.03,232.77 493.15,232.77 491.27,232.77 489.39,232.77 487.52,232.77 485.64,232.77 483.76,232.77 481.88,232.77 480.00,232.77 478.12,232.77 476.24,232.77 474.36,232.77 472.48,232.77 470.61,232.77 468.73,232.77 466.85,232.77 464.97,232.77 463.09,232.77 461.21,232.77 459.33,232.77 457.45,232.77 455.58,232.77 453.70,232.77 451.82,232.77 449.94,232.77 448.06,232.77 446.18,232.77 444.30,232.77 442.42,232.77 440.55,232.77 438.67,232.77 436.79,232.77 434.91,232.77 433.03,232.77 431.15,232.77 429.27,232.77 427.39,232.77 425.52,232.77 423.64,232.77 421.76,232.77 419.88,232.77 418.00,232.77 416.12,232.77 414.24,232.77 412.36,232.77 410.48,232.77 408.61,232.77 406.73,232.77 404.85,232.77 402.97,232.77 401.09,232.77 399.21,232.77 397.33,232.77 395.45,232.77 393.58,232.77 391.70,232.77 389.82,232.77 387.94,232.77 386.06,232.77 384.18,232.77 382.30,232.77 380.42,232.77 378.55,232.77 376.67,232.77 374.79,232.77 372.91,232.77 371.03,232.77 369.15,232.77 367.27,232.77 365.39,232.77 363.52,232.77 361.64,232.77 359.76,232.77 357.88,232.77 356.00,232.77 354.12,232.77 352.24,232.77 350.36,232.77 348.48,232.77 346.61,232.77 344.73,232.77 342.85,232.77 340.97,232.77 339.09,232.77 337.21,232.77 335.33,232.77 333.45,232.77 331.58,232.77 329.70,232.77 327.82,232.77 325.94,232.77 324.06,232.77 322.18,232.77 320.30,232.77 318.42,232.77 316.55,232.77 314.67,232.77 312.79,232.77 310.91,232.77 309.03,232.77 307.15,232.77 305.27,232.77 303.39,232.77 301.52,232.77 299.64,232.77 297.76,232.77 295.88,232.77 294.00,232.77 292.12,232.77 290.24,232.77 288.36,232.77 286.48,232.77 284.61,232.77 282.73,232.77 280.85,232.77 278.97,232.77 277.09,232.77 275.21,232.77 273.33,232.77 271.45,232.77 269.58,232.77 267.70,232.77 265.82,232.77 263.94,232.77 262.06,232.77 260.18,232.77 258.30,232.77 256.42,232.77 254.55,232.77 252.67,232.77 250.79,232.77 248.91,232.77 247.03,232.77 245.15,232.77 243.27,232.77 241.39,232.77 239.52,232.77 237.64,232.77 235.76,232.77 233.88,232.77 232.00,232.77 230.12,232.77 228.24,232.77 226.36,232.77 224.48,232.77 222.61,232.77 220.73,232.77 218.85,232.77 216.97,232.77 215.09,232.77 213.21,232.77 211.33,232.77 209.45,232.77 207.58,232.77 205.70,232.77 203.82,232.77 201.94,232.77 200.06,232.77 198.18,232.77 196.30,232.77 194.42,232.77 192.55,232.77 190.67,232.77 188.79,232.77 186.91,232.77 185.03,232.77 183.15,232.77 181.27,232.77 179.39,232.77 177.52,232.77 175.64,232.77 173.76,232.77 171.88,232.77 170.00,232.77 168.12,232.77 166.24,232.77 164.36,232.77 162.48,232.77 160.61,232.77 158.73,232.77 156.85,232.77 154.97,232.77 153.09,232.77 151.21,232.77 149.33,232.77 147.45,232.77 145.58,232.77 143.70,232.77 141.82,232.77 139.94,232.77 138.06,232.77 136.18,232.77 134.30,232.77 132.42,232.77 130.55,232.77 128.67,232.77 126.79,232.77 124.91,232.77 123.03,232.77 121.15,232.77 119.27,232.77 117.39,232.77 115.52,232.77 113.64,232.77 111.76,232.77 109.88,232.77 108.00,232.77 106.12,232.77 104.24,232.77 102.36,232.77 100.48,232.77 98.61,232.77 96.73,232.77 94.85,232.77 92.97,232.77 91.09,232.77 89.21,232.77 87.33,232.77" fill="#e3d7f2" stroke="none"/>
+            <line x1="38.0" y1="232.8" x2="554.0" y2="232.8" stroke="#6d5a85" stroke-width="1.2"/>
+            <line x1="87.3" y1="8.0" x2="87.3" y2="264.0" stroke="#6d5a85" stroke-width="1.2"/>
+            <text x="546.0" y="247.8" font-size="13" font-style="italic" fill="#6d5a85">x</text>
+            <text x="73.3" y="12.0" font-size="13" font-style="italic" fill="#6d5a85">y</text>
+            <line x1="190.7" y1="229.3" x2="190.7" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="190.7" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">1</text>
+            <line x1="294.0" y1="229.3" x2="294.0" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="294.0" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">2</text>
+            <line x1="397.3" y1="229.3" x2="397.3" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="397.3" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">3</text>
+            <line x1="500.7" y1="229.3" x2="500.7" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="500.7" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">4</text>
+            <line x1="83.8" y1="168.3" x2="90.8" y2="168.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="171.8" font-size="10.5" text-anchor="end" fill="#6d5a85">1</text>
+            <line x1="83.8" y1="103.7" x2="90.8" y2="103.7" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="107.2" font-size="10.5" text-anchor="end" fill="#6d5a85">2</text>
+            <line x1="83.8" y1="39.2" x2="90.8" y2="39.2" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="42.7" font-size="10.5" text-anchor="end" fill="#6d5a85">3</text>
+            <polyline points="87.33,168.26 89.21,167.67 91.09,167.09 92.97,166.50 94.85,165.91 96.73,165.33 98.61,164.74 100.48,164.15 102.36,163.57 104.24,162.98 106.12,162.39 108.00,161.81 109.88,161.22 111.76,160.63 113.64,160.05 115.52,159.46 117.39,158.87 119.27,158.29 121.15,157.70 123.03,157.11 124.91,156.53 126.79,155.94 128.67,155.35 130.55,154.77 132.42,154.18 134.30,153.60 136.18,153.01 138.06,152.42 139.94,151.84 141.82,151.25 143.70,150.66 145.58,150.08 147.45,149.49 149.33,148.90 151.21,148.32 153.09,147.73 154.97,147.14 156.85,146.56 158.73,145.97 160.61,145.38 162.48,144.80 164.36,144.21 166.24,143.62 168.12,143.04 170.00,142.45 171.88,141.87 173.76,141.28 175.64,140.69 177.52,140.11 179.39,139.52 181.27,138.93 183.15,138.35 185.03,137.76 186.91,137.17 188.79,136.59 190.67,136.00 192.55,135.41 194.42,134.83 196.30,134.24 198.18,133.65 200.06,133.07 201.94,132.48 203.82,131.89 205.70,131.31 207.58,130.72 209.45,130.13 211.33,129.55 213.21,128.96 215.09,128.38 216.97,127.79 218.85,127.20 220.73,126.62 222.61,126.03 224.48,125.44 226.36,124.86 228.24,124.27 230.12,123.68 232.00,123.10 233.88,122.51 235.76,121.92 237.64,121.34 239.52,120.75 241.39,120.16 243.27,119.58 245.15,118.99 247.03,118.40 248.91,117.82 250.79,117.23 252.67,116.65 254.55,116.06 256.42,115.47 258.30,114.89 260.18,114.30 262.06,113.71 263.94,113.13 265.82,112.54 267.70,111.95 269.58,111.37 271.45,110.78 273.33,110.19 275.21,109.61 277.09,109.02 278.97,108.43 280.85,107.85 282.73,107.26 284.61,106.67 286.48,106.09 288.36,105.50 290.24,104.91 292.12,104.33 294.00,103.74 295.88,103.16 297.76,102.57 299.64,101.98 301.52,101.40 303.39,100.81 305.27,100.22 307.15,99.64 309.03,99.05 310.91,98.46 312.79,97.88 314.67,97.29 316.55,96.70 318.42,96.12 320.30,95.53 322.18,94.94 324.06,94.36 325.94,93.77 327.82,93.18 329.70,92.60 331.58,92.01 333.45,91.43 335.33,90.84 337.21,90.25 339.09,89.67 340.97,89.08 342.85,88.49 344.73,87.91 346.61,87.32 348.48,86.73 350.36,86.15 352.24,85.56 354.12,84.97 356.00,84.39 357.88,83.80 359.76,83.21 361.64,82.63 363.52,82.04 365.39,81.45 367.27,80.87 369.15,80.28 371.03,79.70 372.91,79.11 374.79,78.52 376.67,77.94 378.55,77.35 380.42,76.76 382.30,76.18 384.18,75.59 386.06,75.00 387.94,74.42 389.82,73.83 391.70,73.24 393.58,72.66 395.45,72.07 397.33,71.48 399.21,70.90 401.09,70.31 402.97,69.72 404.85,69.14 406.73,68.55 408.61,67.96 410.48,67.38 412.36,66.79 414.24,66.21 416.12,65.62 418.00,65.03 419.88,64.45 421.76,63.86 423.64,63.27 425.52,62.69 427.39,62.10 429.27,61.51 431.15,60.93 433.03,60.34 434.91,59.75 436.79,59.17 438.67,58.58 440.55,57.99 442.42,57.41 444.30,56.82 446.18,56.23 448.06,55.65 449.94,55.06 451.82,54.48 453.70,53.89 455.58,53.30 457.45,52.72 459.33,52.13 461.21,51.54 463.09,50.96 464.97,50.37 466.85,49.78 468.73,49.20 470.61,48.61 472.48,48.02 474.36,47.44 476.24,46.85 478.12,46.26 480.00,45.68 481.88,45.09 483.76,44.50 485.64,43.92 487.52,43.33 489.39,42.74 491.27,42.16 493.15,41.57 495.03,40.99 496.91,40.40 498.79,39.81 500.67,39.23" fill="none" stroke="#a4348c" stroke-width="3.0"/>
+            <circle cx="87.33" cy="168.26" r="4" fill="#5a2d8c"/>
+            <circle cx="87.33" cy="168.26" r="4" fill="none" stroke="#fff" stroke-width="1.2"/>
+            <text x="79.33" y="185.26" font-size="11" font-weight="600" text-anchor="end" fill="#5a2d8c">(0, 1)</text>
+            <circle cx="500.67" cy="39.23" r="4" fill="#5a2d8c"/>
+            <circle cx="500.67" cy="39.23" r="4" fill="none" stroke="#fff" stroke-width="1.2"/>
+            <text x="508.67" y="30.23" font-size="11" font-weight="600" text-anchor="start" fill="#5a2d8c">(4, 3)</text>
+            <text x="390.9" y="68.4" font-size="12" font-style="italic" fill="#a4348c">y = 1 + x/2</text>
+            </svg>
+            <div class="figura-cap">Pared troncocónica del sedimentador. S = 8√5π ≈ 56.20 m²</div>
+            </div>
+
             <div class="ambiental" style="margin-top:12px">
               <b>Lectura de ingeniería.</b> Verifique con la fórmula del tronco de cono:
-              área lateral <span class="mat">= π(R + r)g</span>, con
-              <span class="mat">r = 1</span>, <span class="mat">R = 3</span> y generatriz
-              <span class="mat">g = √(4² + 2²) = 2√5</span>. Eso da
-              <span class="mat">π(4)(2√5) = 8√5π</span>. Coincide.<br><br>
+              área lateral <span class="mat" data-tex="= \pi(R + r)g">= π(R + r)g</span>, con
+              <span class="mat" data-tex="r = 1">r = 1</span>, <span class="mat" data-tex="R = 3">R = 3</span> y generatriz
+              <span class="mat" data-tex="g = \sqrt{4^{2} + 2^{2}} = 2\sqrt{5}">g = √(4² + 2²) = 2√5</span>. Eso da
+              <span class="mat" data-tex="\pi(4)(2\sqrt{5}) = 8\sqrt{5}\pi">π(4)(2√5) = 8√5π</span>. Coincide.<br><br>
               Ahora el punto que importa: si alguien cotizara usando
-              <span class="mat">dx</span> en vez de
-              <span class="mat">ds</span>, obtendría
-              <span class="mat">2π∫(1 + x/2)dx = 16π ≈ 50.3</span> m², y faltarían unos
+              <span class="mat" data-tex="dx">dx</span> en vez de
+              <span class="mat" data-tex="ds">ds</span>, obtendría
+              <span class="mat" data-tex="2\pi \int(1 + x/2)dx = 16\pi \approx 50.3">2π∫(1 + x/2)dx = 16π ≈ 50.3</span> m², y faltarían unos
               6 m² de geomembrana —cerca de <b>300 000 pesos</b> y, peor, una obra
               detenida esperando material—. El factor
-              <span class="mat">√5/2</span> no es un detalle teórico.
+              <span class="mat" data-tex="\sqrt{5}/2">√5/2</span> no es un detalle teórico.
             </div>
           </div>
         </details>
@@ -493,9 +724,9 @@
       <div class="docente">
         Buena pregunta para cerrar el capítulo completo: <em>para este mismo tanque, ¿qué
           integral da el volumen y en qué se diferencia de la que acabamos de hacer?</em> La
-        respuesta es <span class="mat">π∫(1 + x/2)²dx</span> —cuadrado y
-        <span class="mat">dx</span>— frente a
-        <span class="mat">2π∫(1 + x/2)ds</span> —lineal y <span class="mat">ds</span>—. Que
+        respuesta es <span class="mat" data-tex="\pi \int(1 + x/2)^{2}dx">π∫(1 + x/2)²dx</span> —cuadrado y
+        <span class="mat" data-tex="dx">dx</span>— frente a
+        <span class="mat" data-tex="2\pi \int(1 + x/2)ds">2π∫(1 + x/2)ds</span> —lineal y <span class="mat" data-tex="ds">ds</span>—. Que
         el grupo pueda escribir las dos y explicar la diferencia es, en la práctica, el
         objetivo de aprendizaje del capítulo III.
       </div>
@@ -507,26 +738,26 @@
 
       <div class="errores">
         <ul>
-          <li><b>Usar <span class="mat">dx</span> en lugar de
-              <span class="mat">ds</span>.</b> Es el error estructural del tema. Siempre
+          <li><b>Usar <span class="mat" data-tex="dx">dx</span> en lugar de
+              <span class="mat" data-tex="ds">ds</span>.</b> Es el error estructural del tema. Siempre
             subestima el área, y en un cono de 45° la subestima en un 29 %.</li>
           <li><b>Elevar el radio al cuadrado.</b> La fórmula de superficie es
             <b>lineal</b> en el radio:
-            <span class="mat">2π∫f·ds</span>, no
-            <span class="mat">π∫f²·ds</span>. El cuadrado pertenece al volumen.</li>
+            <span class="mat" data-tex="2\pi \int f\cdot ds">2π∫f·ds</span>, no
+            <span class="mat" data-tex="\pi \int f^{2}\cdot ds">π∫f²·ds</span>. El cuadrado pertenece al volumen.</li>
           <li><b>Repartir la raíz.</b>
-            <span class="mat">√(1 + 4x²) ≠ 1 + 2x</span>. Este es el error que produce la
-            respuesta falsa <span class="mat">π/3</span> del ejemplo 5.</li>
+            <span class="mat" data-tex="\sqrt{1 + 4x^{2}} \ne 1 + 2x">√(1 + 4x²) ≠ 1 + 2x</span>. Este es el error que produce la
+            respuesta falsa <span class="mat" data-tex="\pi /3">π/3</span> del ejemplo 5.</li>
           <li><b>Confundir el radio al cambiar de eje.</b> Sobre el eje
-            <span class="mat">x</span> el radio es <span class="mat">f(x)</span>; sobre el
-            eje <span class="mat">y</span> es <span class="mat">x</span>. El
-            <span class="mat">ds</span> no cambia; el radio sí.</li>
-          <li><b>Olvidar que el <span class="mat">2π</span> va una sola vez.</b> Sale del
+            <span class="mat" data-tex="x">x</span> el radio es <span class="mat" data-tex="f(x)">f(x)</span>; sobre el
+            eje <span class="mat" data-tex="y">y</span> es <span class="mat" data-tex="x">x</span>. El
+            <span class="mat" data-tex="ds">ds</span> no cambia; el radio sí.</li>
+          <li><b>Olvidar que el <span class="mat" data-tex="2\pi">2π</span> va una sola vez.</b> Sale del
             perímetro del anillo y no se multiplica por nada más.</li>
           <li><b>No acotar el resultado.</b> El área está siempre entre
-            <span class="mat">2π·r<sub>mín</sub>·L</span> y
-            <span class="mat">2π·r<sub>máx</sub>·L</span>, con
-            <span class="mat">L</span> la longitud de la curva. Si su respuesta cae fuera de
+            <span class="mat" data-tex="2\pi \cdot r_{\text{mín}}\cdot L">2π·r<sub>mín</sub>·L</span> y
+            <span class="mat" data-tex="2\pi \cdot r_{\text{máx}}\cdot L">2π·r<sub>máx</sub>·L</span>, con
+            <span class="mat" data-tex="L">L</span> la longitud de la curva. Si su respuesta cae fuera de
             esa horquilla, hay un error.</li>
         </ul>
       </div>
@@ -539,9 +770,9 @@
       <div class="ejercicio">
         <div class="enunciado">
           <span class="eti">EJERCICIO 1</span>
-          <p>La recta <span class="mat">y = x</span> desde
-            <span class="mat">x = 0</span> hasta <span class="mat">x = 2</span> gira
-            alrededor del eje <span class="mat">x</span>. Halle el área y verifique con la
+          <p>La recta <span class="mat" data-tex="y = x">y = x</span> desde
+            <span class="mat" data-tex="x = 0">x = 0</span> hasta <span class="mat" data-tex="x = 2">x = 2</span> gira
+            alrededor del eje <span class="mat" data-tex="x">x</span>. Halle el área y verifique con la
             fórmula del cono.</p>
         </div>
         <details>
@@ -551,9 +782,44 @@
               data-tex="S=2\pi\sqrt{2}\int_{0}^{2}x\,dx=2\pi\sqrt{2}\left[\frac{x^{2}}{2}\right]_{0}^{2}=4\sqrt{2}\,\pi\approx 17.77">
               S = 2π∫<sub>0</sub><sup>2</sup>x√2 dx = 4√2π ≈ 17.77
             </div>
+            <div class="figura-caja">
+            <svg class="figura-ej" viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfica del ejemplo">
+            <polygon points="87.33,232.77 89.21,231.89 91.09,231.01 92.97,230.13 94.85,229.26 96.73,228.38 98.61,227.50 100.48,226.62 102.36,225.74 104.24,224.86 106.12,223.98 108.00,223.10 109.88,222.22 111.76,221.34 113.64,220.46 115.52,219.58 117.39,218.70 119.27,217.82 121.15,216.94 123.03,216.06 124.91,215.18 126.79,214.30 128.67,213.42 130.55,212.54 132.42,211.66 134.30,210.78 136.18,209.90 138.06,209.02 139.94,208.14 141.82,207.26 143.70,206.38 145.58,205.50 147.45,204.62 149.33,203.74 151.21,202.86 153.09,201.98 154.97,201.10 156.85,200.22 158.73,199.34 160.61,198.46 162.48,197.58 164.36,196.70 166.24,195.82 168.12,194.94 170.00,194.06 171.88,193.18 173.76,192.30 175.64,191.43 177.52,190.55 179.39,189.67 181.27,188.79 183.15,187.91 185.03,187.03 186.91,186.15 188.79,185.27 190.67,184.39 192.55,183.51 194.42,182.63 196.30,181.75 198.18,180.87 200.06,179.99 201.94,179.11 203.82,178.23 205.70,177.35 207.58,176.47 209.45,175.59 211.33,174.71 213.21,173.83 215.09,172.95 216.97,172.07 218.85,171.19 220.73,170.31 222.61,169.43 224.48,168.55 226.36,167.67 228.24,166.79 230.12,165.91 232.00,165.03 233.88,164.15 235.76,163.27 237.64,162.39 239.52,161.51 241.39,160.63 243.27,159.75 245.15,158.87 247.03,157.99 248.91,157.11 250.79,156.23 252.67,155.35 254.55,154.48 256.42,153.60 258.30,152.72 260.18,151.84 262.06,150.96 263.94,150.08 265.82,149.20 267.70,148.32 269.58,147.44 271.45,146.56 273.33,145.68 275.21,144.80 277.09,143.92 278.97,143.04 280.85,142.16 282.73,141.28 284.61,140.40 286.48,139.52 288.36,138.64 290.24,137.76 292.12,136.88 294.00,136.00 295.88,135.12 297.76,134.24 299.64,133.36 301.52,132.48 303.39,131.60 305.27,130.72 307.15,129.84 309.03,128.96 310.91,128.08 312.79,127.20 314.67,126.32 316.55,125.44 318.42,124.56 320.30,123.68 322.18,122.80 324.06,121.92 325.94,121.04 327.82,120.16 329.70,119.28 331.58,118.40 333.45,117.52 335.33,116.65 337.21,115.77 339.09,114.89 340.97,114.01 342.85,113.13 344.73,112.25 346.61,111.37 348.48,110.49 350.36,109.61 352.24,108.73 354.12,107.85 356.00,106.97 357.88,106.09 359.76,105.21 361.64,104.33 363.52,103.45 365.39,102.57 367.27,101.69 369.15,100.81 371.03,99.93 372.91,99.05 374.79,98.17 376.67,97.29 378.55,96.41 380.42,95.53 382.30,94.65 384.18,93.77 386.06,92.89 387.94,92.01 389.82,91.13 391.70,90.25 393.58,89.37 395.45,88.49 397.33,87.61 399.21,86.73 401.09,85.85 402.97,84.97 404.85,84.09 406.73,83.21 408.61,82.33 410.48,81.45 412.36,80.57 414.24,79.70 416.12,78.82 418.00,77.94 419.88,77.06 421.76,76.18 423.64,75.30 425.52,74.42 427.39,73.54 429.27,72.66 431.15,71.78 433.03,70.90 434.91,70.02 436.79,69.14 438.67,68.26 440.55,67.38 442.42,66.50 444.30,65.62 446.18,64.74 448.06,63.86 449.94,62.98 451.82,62.10 453.70,61.22 455.58,60.34 457.45,59.46 459.33,58.58 461.21,57.70 463.09,56.82 464.97,55.94 466.85,55.06 468.73,54.18 470.61,53.30 472.48,52.42 474.36,51.54 476.24,50.66 478.12,49.78 480.00,48.90 481.88,48.02 483.76,47.14 485.64,46.26 487.52,45.38 489.39,44.50 491.27,43.62 493.15,42.74 495.03,41.87 496.91,40.99 498.79,40.11 500.67,39.23 500.67,232.77 498.79,232.77 496.91,232.77 495.03,232.77 493.15,232.77 491.27,232.77 489.39,232.77 487.52,232.77 485.64,232.77 483.76,232.77 481.88,232.77 480.00,232.77 478.12,232.77 476.24,232.77 474.36,232.77 472.48,232.77 470.61,232.77 468.73,232.77 466.85,232.77 464.97,232.77 463.09,232.77 461.21,232.77 459.33,232.77 457.45,232.77 455.58,232.77 453.70,232.77 451.82,232.77 449.94,232.77 448.06,232.77 446.18,232.77 444.30,232.77 442.42,232.77 440.55,232.77 438.67,232.77 436.79,232.77 434.91,232.77 433.03,232.77 431.15,232.77 429.27,232.77 427.39,232.77 425.52,232.77 423.64,232.77 421.76,232.77 419.88,232.77 418.00,232.77 416.12,232.77 414.24,232.77 412.36,232.77 410.48,232.77 408.61,232.77 406.73,232.77 404.85,232.77 402.97,232.77 401.09,232.77 399.21,232.77 397.33,232.77 395.45,232.77 393.58,232.77 391.70,232.77 389.82,232.77 387.94,232.77 386.06,232.77 384.18,232.77 382.30,232.77 380.42,232.77 378.55,232.77 376.67,232.77 374.79,232.77 372.91,232.77 371.03,232.77 369.15,232.77 367.27,232.77 365.39,232.77 363.52,232.77 361.64,232.77 359.76,232.77 357.88,232.77 356.00,232.77 354.12,232.77 352.24,232.77 350.36,232.77 348.48,232.77 346.61,232.77 344.73,232.77 342.85,232.77 340.97,232.77 339.09,232.77 337.21,232.77 335.33,232.77 333.45,232.77 331.58,232.77 329.70,232.77 327.82,232.77 325.94,232.77 324.06,232.77 322.18,232.77 320.30,232.77 318.42,232.77 316.55,232.77 314.67,232.77 312.79,232.77 310.91,232.77 309.03,232.77 307.15,232.77 305.27,232.77 303.39,232.77 301.52,232.77 299.64,232.77 297.76,232.77 295.88,232.77 294.00,232.77 292.12,232.77 290.24,232.77 288.36,232.77 286.48,232.77 284.61,232.77 282.73,232.77 280.85,232.77 278.97,232.77 277.09,232.77 275.21,232.77 273.33,232.77 271.45,232.77 269.58,232.77 267.70,232.77 265.82,232.77 263.94,232.77 262.06,232.77 260.18,232.77 258.30,232.77 256.42,232.77 254.55,232.77 252.67,232.77 250.79,232.77 248.91,232.77 247.03,232.77 245.15,232.77 243.27,232.77 241.39,232.77 239.52,232.77 237.64,232.77 235.76,232.77 233.88,232.77 232.00,232.77 230.12,232.77 228.24,232.77 226.36,232.77 224.48,232.77 222.61,232.77 220.73,232.77 218.85,232.77 216.97,232.77 215.09,232.77 213.21,232.77 211.33,232.77 209.45,232.77 207.58,232.77 205.70,232.77 203.82,232.77 201.94,232.77 200.06,232.77 198.18,232.77 196.30,232.77 194.42,232.77 192.55,232.77 190.67,232.77 188.79,232.77 186.91,232.77 185.03,232.77 183.15,232.77 181.27,232.77 179.39,232.77 177.52,232.77 175.64,232.77 173.76,232.77 171.88,232.77 170.00,232.77 168.12,232.77 166.24,232.77 164.36,232.77 162.48,232.77 160.61,232.77 158.73,232.77 156.85,232.77 154.97,232.77 153.09,232.77 151.21,232.77 149.33,232.77 147.45,232.77 145.58,232.77 143.70,232.77 141.82,232.77 139.94,232.77 138.06,232.77 136.18,232.77 134.30,232.77 132.42,232.77 130.55,232.77 128.67,232.77 126.79,232.77 124.91,232.77 123.03,232.77 121.15,232.77 119.27,232.77 117.39,232.77 115.52,232.77 113.64,232.77 111.76,232.77 109.88,232.77 108.00,232.77 106.12,232.77 104.24,232.77 102.36,232.77 100.48,232.77 98.61,232.77 96.73,232.77 94.85,232.77 92.97,232.77 91.09,232.77 89.21,232.77 87.33,232.77" fill="#e3d7f2" stroke="none"/>
+            <line x1="38.0" y1="232.8" x2="554.0" y2="232.8" stroke="#6d5a85" stroke-width="1.2"/>
+            <line x1="87.3" y1="8.0" x2="87.3" y2="264.0" stroke="#6d5a85" stroke-width="1.2"/>
+            <text x="546.0" y="247.8" font-size="13" font-style="italic" fill="#6d5a85">x</text>
+            <text x="73.3" y="12.0" font-size="13" font-style="italic" fill="#6d5a85">y</text>
+            <line x1="190.7" y1="229.3" x2="190.7" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="190.7" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.5</text>
+            <line x1="294.0" y1="229.3" x2="294.0" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="294.0" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">1</text>
+            <line x1="397.3" y1="229.3" x2="397.3" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="397.3" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">1.5</text>
+            <line x1="500.7" y1="229.3" x2="500.7" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="500.7" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">2</text>
+            <line x1="83.8" y1="184.4" x2="90.8" y2="184.4" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="187.9" font-size="10.5" text-anchor="end" fill="#6d5a85">0.5</text>
+            <line x1="83.8" y1="136.0" x2="90.8" y2="136.0" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="139.5" font-size="10.5" text-anchor="end" fill="#6d5a85">1</text>
+            <line x1="83.8" y1="87.6" x2="90.8" y2="87.6" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="91.1" font-size="10.5" text-anchor="end" fill="#6d5a85">1.5</text>
+            <line x1="83.8" y1="39.2" x2="90.8" y2="39.2" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="42.7" font-size="10.5" text-anchor="end" fill="#6d5a85">2</text>
+            <polyline points="87.33,232.77 89.21,231.89 91.09,231.01 92.97,230.13 94.85,229.26 96.73,228.38 98.61,227.50 100.48,226.62 102.36,225.74 104.24,224.86 106.12,223.98 108.00,223.10 109.88,222.22 111.76,221.34 113.64,220.46 115.52,219.58 117.39,218.70 119.27,217.82 121.15,216.94 123.03,216.06 124.91,215.18 126.79,214.30 128.67,213.42 130.55,212.54 132.42,211.66 134.30,210.78 136.18,209.90 138.06,209.02 139.94,208.14 141.82,207.26 143.70,206.38 145.58,205.50 147.45,204.62 149.33,203.74 151.21,202.86 153.09,201.98 154.97,201.10 156.85,200.22 158.73,199.34 160.61,198.46 162.48,197.58 164.36,196.70 166.24,195.82 168.12,194.94 170.00,194.06 171.88,193.18 173.76,192.30 175.64,191.43 177.52,190.55 179.39,189.67 181.27,188.79 183.15,187.91 185.03,187.03 186.91,186.15 188.79,185.27 190.67,184.39 192.55,183.51 194.42,182.63 196.30,181.75 198.18,180.87 200.06,179.99 201.94,179.11 203.82,178.23 205.70,177.35 207.58,176.47 209.45,175.59 211.33,174.71 213.21,173.83 215.09,172.95 216.97,172.07 218.85,171.19 220.73,170.31 222.61,169.43 224.48,168.55 226.36,167.67 228.24,166.79 230.12,165.91 232.00,165.03 233.88,164.15 235.76,163.27 237.64,162.39 239.52,161.51 241.39,160.63 243.27,159.75 245.15,158.87 247.03,157.99 248.91,157.11 250.79,156.23 252.67,155.35 254.55,154.48 256.42,153.60 258.30,152.72 260.18,151.84 262.06,150.96 263.94,150.08 265.82,149.20 267.70,148.32 269.58,147.44 271.45,146.56 273.33,145.68 275.21,144.80 277.09,143.92 278.97,143.04 280.85,142.16 282.73,141.28 284.61,140.40 286.48,139.52 288.36,138.64 290.24,137.76 292.12,136.88 294.00,136.00 295.88,135.12 297.76,134.24 299.64,133.36 301.52,132.48 303.39,131.60 305.27,130.72 307.15,129.84 309.03,128.96 310.91,128.08 312.79,127.20 314.67,126.32 316.55,125.44 318.42,124.56 320.30,123.68 322.18,122.80 324.06,121.92 325.94,121.04 327.82,120.16 329.70,119.28 331.58,118.40 333.45,117.52 335.33,116.65 337.21,115.77 339.09,114.89 340.97,114.01 342.85,113.13 344.73,112.25 346.61,111.37 348.48,110.49 350.36,109.61 352.24,108.73 354.12,107.85 356.00,106.97 357.88,106.09 359.76,105.21 361.64,104.33 363.52,103.45 365.39,102.57 367.27,101.69 369.15,100.81 371.03,99.93 372.91,99.05 374.79,98.17 376.67,97.29 378.55,96.41 380.42,95.53 382.30,94.65 384.18,93.77 386.06,92.89 387.94,92.01 389.82,91.13 391.70,90.25 393.58,89.37 395.45,88.49 397.33,87.61 399.21,86.73 401.09,85.85 402.97,84.97 404.85,84.09 406.73,83.21 408.61,82.33 410.48,81.45 412.36,80.57 414.24,79.70 416.12,78.82 418.00,77.94 419.88,77.06 421.76,76.18 423.64,75.30 425.52,74.42 427.39,73.54 429.27,72.66 431.15,71.78 433.03,70.90 434.91,70.02 436.79,69.14 438.67,68.26 440.55,67.38 442.42,66.50 444.30,65.62 446.18,64.74 448.06,63.86 449.94,62.98 451.82,62.10 453.70,61.22 455.58,60.34 457.45,59.46 459.33,58.58 461.21,57.70 463.09,56.82 464.97,55.94 466.85,55.06 468.73,54.18 470.61,53.30 472.48,52.42 474.36,51.54 476.24,50.66 478.12,49.78 480.00,48.90 481.88,48.02 483.76,47.14 485.64,46.26 487.52,45.38 489.39,44.50 491.27,43.62 493.15,42.74 495.03,41.87 496.91,40.99 498.79,40.11 500.67,39.23" fill="none" stroke="#a4348c" stroke-width="3.0"/>
+            <circle cx="87.33" cy="232.77" r="4" fill="#5a2d8c"/>
+            <circle cx="87.33" cy="232.77" r="4" fill="none" stroke="#fff" stroke-width="1.2"/>
+            <text x="79.33" y="249.77" font-size="11" font-weight="600" text-anchor="end" fill="#5a2d8c">(0, 0)</text>
+            <circle cx="500.67" cy="39.23" r="4" fill="#5a2d8c"/>
+            <circle cx="500.67" cy="39.23" r="4" fill="none" stroke="#fff" stroke-width="1.2"/>
+            <text x="508.67" y="30.23" font-size="11" font-weight="600" text-anchor="start" fill="#5a2d8c">(2, 2)</text>
+            <text x="390.9" y="86.4" font-size="12" font-style="italic" fill="#a4348c">y = x</text>
+            </svg>
+            <div class="figura-cap">Cono de radio 2 y altura 2. S = 4√2π ≈ 17.77</div>
+            </div>
+
             <p>Cono de radio 2 y altura 2: generatriz
-              <span class="mat">g = 2√2</span>, y
-              <span class="mat">πrg = π(2)(2√2) = 4√2π</span>. Coincide.</p>
+              <span class="mat" data-tex="g = 2\sqrt{2}">g = 2√2</span>, y
+              <span class="mat" data-tex="\pi rg = \pi(2)(2\sqrt{2}) = 4\sqrt{2}\pi">πrg = π(2)(2√2) = 4√2π</span>. Coincide.</p>
           </div>
         </details>
       </div>
@@ -561,27 +827,67 @@
       <div class="ejercicio">
         <div class="enunciado">
           <span class="eti">EJERCICIO 2</span>
-          <p>La curva <span class="mat">y = x³</span> desde
-            <span class="mat">x = 0</span> hasta <span class="mat">x = 1</span> gira
+          <p>La curva <span class="mat" data-tex="y = x^{3}">y = x³</span> desde
+            <span class="mat" data-tex="x = 0">x = 0</span> hasta <span class="mat" data-tex="x = 1">x = 1</span> gira
             alrededor del <b>eje y</b>.</p>
         </div>
         <details>
           <summary><span class="flecha">▶</span> Ver la respuesta</summary>
           <div class="solucion">
-            <p>Radio <span class="mat">x</span> y
-              <span class="mat">ds = √(1 + 9x⁴)dx</span>. La sustitución
-              <span class="mat">u = 1 + 9x⁴</span> <b>no</b> sirve, porque faltaría
-              <span class="mat">x³</span>; pero <span class="mat">u = 3x²</span> sí:
-              entonces <span class="mat">du = 6x dx</span> y la integral se vuelve
-              <span class="mat">(π/3)∫<sub>0</sub><sup>3</sup>√(1 + u²)du</span>, que es la
+            <p>Radio <span class="mat" data-tex="x">x</span> y
+              <span class="mat" data-tex="ds = \sqrt{1 + 9x^{4}}dx">ds = √(1 + 9x⁴)dx</span>. La sustitución
+              <span class="mat" data-tex="u = 1 + 9x^{4}">u = 1 + 9x⁴</span> <b>no</b> sirve, porque faltaría
+              <span class="mat" data-tex="x^{3}">x³</span>; pero <span class="mat" data-tex="u = 3x^{2}">u = 3x²</span> sí:
+              entonces <span class="mat" data-tex="du = 6x dx">du = 6x dx</span> y la integral se vuelve
+              <span class="mat" data-tex="(\pi /3)\int_{0}^{3}\sqrt{1 + u^{2}}du">(π/3)∫<sub>0</sub><sup>3</sup>√(1 + u²)du</span>, que es la
               integral estándar de sustitución hiperbólica.</p>
             <div class="resultado"
               data-tex="S=2\pi\int_{0}^{1}x\sqrt{1+9x^{4}}\,dx=\frac{\pi}{6}\left(3\sqrt{10}+\operatorname{arcsenh}3\right)\approx 5.9194">
               S = 2π∫<sub>0</sub><sup>1</sup>x√(1 + 9x⁴)dx =
               (π/6)(3√10 + arcsenh 3) ≈ 5.9194
             </div>
+            <div class="figura-caja">
+            <svg class="figura-ej" viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfica del ejemplo">
+            <polygon points="87.33,232.77 89.21,232.77 91.09,232.77 92.97,232.77 94.85,232.77 96.73,232.77 98.61,232.77 100.48,232.77 102.36,232.76 104.24,232.76 106.12,232.76 108.00,232.75 109.88,232.74 111.76,232.73 113.64,232.72 115.52,232.71 117.39,232.70 119.27,232.68 121.15,232.67 123.03,232.65 124.91,232.63 126.79,232.61 128.67,232.58 130.55,232.55 132.42,232.52 134.30,232.49 136.18,232.45 138.06,232.42 139.94,232.38 141.82,232.33 143.70,232.28 145.58,232.23 147.45,232.18 149.33,232.12 151.21,232.06 153.09,231.99 154.97,231.93 156.85,231.85 158.73,231.78 160.61,231.70 162.48,231.61 164.36,231.52 166.24,231.43 168.12,231.33 170.00,231.23 171.88,231.12 173.76,231.00 175.64,230.89 177.52,230.76 179.39,230.64 181.27,230.50 183.15,230.36 185.03,230.22 186.91,230.07 188.79,229.91 190.67,229.75 192.55,229.58 194.42,229.41 196.30,229.23 198.18,229.04 200.06,228.85 201.94,228.65 203.82,228.44 205.70,228.23 207.58,228.01 209.45,227.78 211.33,227.55 213.21,227.31 215.09,227.06 216.97,226.80 218.85,226.54 220.73,226.27 222.61,225.99 224.48,225.70 226.36,225.41 228.24,225.11 230.12,224.79 232.00,224.48 233.88,224.15 235.76,223.81 237.64,223.47 239.52,223.11 241.39,222.75 243.27,222.38 245.15,222.00 247.03,221.61 248.91,221.21 250.79,220.80 252.67,220.39 254.55,219.96 256.42,219.52 258.30,219.08 260.18,218.62 262.06,218.15 263.94,217.68 265.82,217.19 267.70,216.69 269.58,216.18 271.45,215.67 273.33,215.14 275.21,214.60 277.09,214.05 278.97,213.48 280.85,212.91 282.73,212.33 284.61,211.73 286.48,211.13 288.36,210.51 290.24,209.88 292.12,209.23 294.00,208.58 295.88,207.91 297.76,207.24 299.64,206.55 301.52,205.84 303.39,205.13 305.27,204.40 307.15,203.66 309.03,202.91 310.91,202.14 312.79,201.36 314.67,200.57 316.55,199.77 318.42,198.95 320.30,198.12 322.18,197.27 324.06,196.41 325.94,195.54 327.82,194.65 329.70,193.75 331.58,192.84 333.45,191.91 335.33,190.97 337.21,190.01 339.09,189.04 340.97,188.05 342.85,187.05 344.73,186.03 346.61,185.00 348.48,183.96 350.36,182.90 352.24,181.82 354.12,180.73 356.00,179.62 357.88,178.50 359.76,177.36 361.64,176.20 363.52,175.03 365.39,173.85 367.27,172.65 369.15,171.43 371.03,170.19 372.91,168.94 374.79,167.67 376.67,166.39 378.55,165.09 380.42,163.77 382.30,162.43 384.18,161.08 386.06,159.71 387.94,158.32 389.82,156.92 391.70,155.49 393.58,154.05 395.45,152.60 397.33,151.12 399.21,149.63 401.09,148.12 402.97,146.59 404.85,145.04 406.73,143.47 408.61,141.89 410.48,140.28 412.36,138.66 414.24,137.02 416.12,135.36 418.00,133.68 419.88,131.98 421.76,130.26 423.64,128.52 425.52,126.77 427.39,124.99 429.27,123.19 431.15,121.38 433.03,119.54 434.91,117.68 436.79,115.81 438.67,113.91 440.55,111.99 442.42,110.06 444.30,108.10 446.18,106.12 448.06,104.12 449.94,102.10 451.82,100.06 453.70,97.99 455.58,95.91 457.45,93.80 459.33,91.68 461.21,89.53 463.09,87.36 464.97,85.17 466.85,82.95 468.73,80.72 470.61,78.46 472.48,76.18 474.36,73.87 476.24,71.55 478.12,69.20 480.00,66.83 481.88,64.44 483.76,62.02 485.64,59.58 487.52,57.12 489.39,54.63 491.27,52.12 493.15,49.59 495.03,47.04 496.91,44.46 498.79,41.85 500.67,39.23 500.67,232.77 498.79,232.77 496.91,232.77 495.03,232.77 493.15,232.77 491.27,232.77 489.39,232.77 487.52,232.77 485.64,232.77 483.76,232.77 481.88,232.77 480.00,232.77 478.12,232.77 476.24,232.77 474.36,232.77 472.48,232.77 470.61,232.77 468.73,232.77 466.85,232.77 464.97,232.77 463.09,232.77 461.21,232.77 459.33,232.77 457.45,232.77 455.58,232.77 453.70,232.77 451.82,232.77 449.94,232.77 448.06,232.77 446.18,232.77 444.30,232.77 442.42,232.77 440.55,232.77 438.67,232.77 436.79,232.77 434.91,232.77 433.03,232.77 431.15,232.77 429.27,232.77 427.39,232.77 425.52,232.77 423.64,232.77 421.76,232.77 419.88,232.77 418.00,232.77 416.12,232.77 414.24,232.77 412.36,232.77 410.48,232.77 408.61,232.77 406.73,232.77 404.85,232.77 402.97,232.77 401.09,232.77 399.21,232.77 397.33,232.77 395.45,232.77 393.58,232.77 391.70,232.77 389.82,232.77 387.94,232.77 386.06,232.77 384.18,232.77 382.30,232.77 380.42,232.77 378.55,232.77 376.67,232.77 374.79,232.77 372.91,232.77 371.03,232.77 369.15,232.77 367.27,232.77 365.39,232.77 363.52,232.77 361.64,232.77 359.76,232.77 357.88,232.77 356.00,232.77 354.12,232.77 352.24,232.77 350.36,232.77 348.48,232.77 346.61,232.77 344.73,232.77 342.85,232.77 340.97,232.77 339.09,232.77 337.21,232.77 335.33,232.77 333.45,232.77 331.58,232.77 329.70,232.77 327.82,232.77 325.94,232.77 324.06,232.77 322.18,232.77 320.30,232.77 318.42,232.77 316.55,232.77 314.67,232.77 312.79,232.77 310.91,232.77 309.03,232.77 307.15,232.77 305.27,232.77 303.39,232.77 301.52,232.77 299.64,232.77 297.76,232.77 295.88,232.77 294.00,232.77 292.12,232.77 290.24,232.77 288.36,232.77 286.48,232.77 284.61,232.77 282.73,232.77 280.85,232.77 278.97,232.77 277.09,232.77 275.21,232.77 273.33,232.77 271.45,232.77 269.58,232.77 267.70,232.77 265.82,232.77 263.94,232.77 262.06,232.77 260.18,232.77 258.30,232.77 256.42,232.77 254.55,232.77 252.67,232.77 250.79,232.77 248.91,232.77 247.03,232.77 245.15,232.77 243.27,232.77 241.39,232.77 239.52,232.77 237.64,232.77 235.76,232.77 233.88,232.77 232.00,232.77 230.12,232.77 228.24,232.77 226.36,232.77 224.48,232.77 222.61,232.77 220.73,232.77 218.85,232.77 216.97,232.77 215.09,232.77 213.21,232.77 211.33,232.77 209.45,232.77 207.58,232.77 205.70,232.77 203.82,232.77 201.94,232.77 200.06,232.77 198.18,232.77 196.30,232.77 194.42,232.77 192.55,232.77 190.67,232.77 188.79,232.77 186.91,232.77 185.03,232.77 183.15,232.77 181.27,232.77 179.39,232.77 177.52,232.77 175.64,232.77 173.76,232.77 171.88,232.77 170.00,232.77 168.12,232.77 166.24,232.77 164.36,232.77 162.48,232.77 160.61,232.77 158.73,232.77 156.85,232.77 154.97,232.77 153.09,232.77 151.21,232.77 149.33,232.77 147.45,232.77 145.58,232.77 143.70,232.77 141.82,232.77 139.94,232.77 138.06,232.77 136.18,232.77 134.30,232.77 132.42,232.77 130.55,232.77 128.67,232.77 126.79,232.77 124.91,232.77 123.03,232.77 121.15,232.77 119.27,232.77 117.39,232.77 115.52,232.77 113.64,232.77 111.76,232.77 109.88,232.77 108.00,232.77 106.12,232.77 104.24,232.77 102.36,232.77 100.48,232.77 98.61,232.77 96.73,232.77 94.85,232.77 92.97,232.77 91.09,232.77 89.21,232.77 87.33,232.77" fill="#e3d7f2" stroke="none"/>
+            <line x1="38.0" y1="232.8" x2="554.0" y2="232.8" stroke="#6d5a85" stroke-width="1.2"/>
+            <line x1="87.3" y1="8.0" x2="87.3" y2="264.0" stroke="#6d5a85" stroke-width="1.2"/>
+            <text x="546.0" y="247.8" font-size="13" font-style="italic" fill="#6d5a85">x</text>
+            <text x="73.3" y="12.0" font-size="13" font-style="italic" fill="#6d5a85">y</text>
+            <line x1="170.0" y1="229.3" x2="170.0" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="170.0" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.2</text>
+            <line x1="252.7" y1="229.3" x2="252.7" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="252.7" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.4</text>
+            <line x1="335.3" y1="229.3" x2="335.3" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="335.3" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.6</text>
+            <line x1="418.0" y1="229.3" x2="418.0" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="418.0" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.8</text>
+            <line x1="500.7" y1="229.3" x2="500.7" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="500.7" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">1</text>
+            <line x1="83.8" y1="194.1" x2="90.8" y2="194.1" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="197.6" font-size="10.5" text-anchor="end" fill="#6d5a85">0.2</text>
+            <line x1="83.8" y1="155.4" x2="90.8" y2="155.4" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="158.9" font-size="10.5" text-anchor="end" fill="#6d5a85">0.4</text>
+            <line x1="83.8" y1="116.6" x2="90.8" y2="116.6" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="120.1" font-size="10.5" text-anchor="end" fill="#6d5a85">0.6</text>
+            <line x1="83.8" y1="77.9" x2="90.8" y2="77.9" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="81.4" font-size="10.5" text-anchor="end" fill="#6d5a85">0.8</text>
+            <line x1="83.8" y1="39.2" x2="90.8" y2="39.2" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="42.7" font-size="10.5" text-anchor="end" fill="#6d5a85">1</text>
+            <line x1="87.3" y1="10.0" x2="87.3" y2="262.0" stroke="#a4348c" stroke-width="1.8" stroke-dasharray="6 4"/>
+            <polyline points="87.33,232.77 89.21,232.77 91.09,232.77 92.97,232.77 94.85,232.77 96.73,232.77 98.61,232.77 100.48,232.77 102.36,232.76 104.24,232.76 106.12,232.76 108.00,232.75 109.88,232.74 111.76,232.73 113.64,232.72 115.52,232.71 117.39,232.70 119.27,232.68 121.15,232.67 123.03,232.65 124.91,232.63 126.79,232.61 128.67,232.58 130.55,232.55 132.42,232.52 134.30,232.49 136.18,232.45 138.06,232.42 139.94,232.38 141.82,232.33 143.70,232.28 145.58,232.23 147.45,232.18 149.33,232.12 151.21,232.06 153.09,231.99 154.97,231.93 156.85,231.85 158.73,231.78 160.61,231.70 162.48,231.61 164.36,231.52 166.24,231.43 168.12,231.33 170.00,231.23 171.88,231.12 173.76,231.00 175.64,230.89 177.52,230.76 179.39,230.64 181.27,230.50 183.15,230.36 185.03,230.22 186.91,230.07 188.79,229.91 190.67,229.75 192.55,229.58 194.42,229.41 196.30,229.23 198.18,229.04 200.06,228.85 201.94,228.65 203.82,228.44 205.70,228.23 207.58,228.01 209.45,227.78 211.33,227.55 213.21,227.31 215.09,227.06 216.97,226.80 218.85,226.54 220.73,226.27 222.61,225.99 224.48,225.70 226.36,225.41 228.24,225.11 230.12,224.79 232.00,224.48 233.88,224.15 235.76,223.81 237.64,223.47 239.52,223.11 241.39,222.75 243.27,222.38 245.15,222.00 247.03,221.61 248.91,221.21 250.79,220.80 252.67,220.39 254.55,219.96 256.42,219.52 258.30,219.08 260.18,218.62 262.06,218.15 263.94,217.68 265.82,217.19 267.70,216.69 269.58,216.18 271.45,215.67 273.33,215.14 275.21,214.60 277.09,214.05 278.97,213.48 280.85,212.91 282.73,212.33 284.61,211.73 286.48,211.13 288.36,210.51 290.24,209.88 292.12,209.23 294.00,208.58 295.88,207.91 297.76,207.24 299.64,206.55 301.52,205.84 303.39,205.13 305.27,204.40 307.15,203.66 309.03,202.91 310.91,202.14 312.79,201.36 314.67,200.57 316.55,199.77 318.42,198.95 320.30,198.12 322.18,197.27 324.06,196.41 325.94,195.54 327.82,194.65 329.70,193.75 331.58,192.84 333.45,191.91 335.33,190.97 337.21,190.01 339.09,189.04 340.97,188.05 342.85,187.05 344.73,186.03 346.61,185.00 348.48,183.96 350.36,182.90 352.24,181.82 354.12,180.73 356.00,179.62 357.88,178.50 359.76,177.36 361.64,176.20 363.52,175.03 365.39,173.85 367.27,172.65 369.15,171.43 371.03,170.19 372.91,168.94 374.79,167.67 376.67,166.39 378.55,165.09 380.42,163.77 382.30,162.43 384.18,161.08 386.06,159.71 387.94,158.32 389.82,156.92 391.70,155.49 393.58,154.05 395.45,152.60 397.33,151.12 399.21,149.63 401.09,148.12 402.97,146.59 404.85,145.04 406.73,143.47 408.61,141.89 410.48,140.28 412.36,138.66 414.24,137.02 416.12,135.36 418.00,133.68 419.88,131.98 421.76,130.26 423.64,128.52 425.52,126.77 427.39,124.99 429.27,123.19 431.15,121.38 433.03,119.54 434.91,117.68 436.79,115.81 438.67,113.91 440.55,111.99 442.42,110.06 444.30,108.10 446.18,106.12 448.06,104.12 449.94,102.10 451.82,100.06 453.70,97.99 455.58,95.91 457.45,93.80 459.33,91.68 461.21,89.53 463.09,87.36 464.97,85.17 466.85,82.95 468.73,80.72 470.61,78.46 472.48,76.18 474.36,73.87 476.24,71.55 478.12,69.20 480.00,66.83 481.88,64.44 483.76,62.02 485.64,59.58 487.52,57.12 489.39,54.63 491.27,52.12 493.15,49.59 495.03,47.04 496.91,44.46 498.79,41.85 500.67,39.23" fill="none" stroke="#a4348c" stroke-width="3.0"/>
+            <circle cx="87.33" cy="232.77" r="4" fill="#5a2d8c"/>
+            <circle cx="87.33" cy="232.77" r="4" fill="none" stroke="#fff" stroke-width="1.2"/>
+            <text x="79.33" y="249.77" font-size="11" font-weight="600" text-anchor="end" fill="#5a2d8c">(0, 0)</text>
+            <circle cx="500.67" cy="39.23" r="4" fill="#5a2d8c"/>
+            <circle cx="500.67" cy="39.23" r="4" fill="none" stroke="#fff" stroke-width="1.2"/>
+            <text x="508.67" y="30.23" font-size="11" font-weight="600" text-anchor="start" fill="#5a2d8c">(1, 1)</text>
+            <text x="390.9" y="153.5" font-size="12" font-style="italic" fill="#a4348c">y = x³</text>
+            </svg>
+            <div class="figura-cap">Gira sobre el eje y. S = π(3√10 + arcsenh 3)/6 ≈ 5.9194</div>
+            </div>
+
             <p>La lección es que la sustitución correcta no siempre es la obvia: hay que
-              mirar qué potencia de <span class="mat">x</span> acompaña al diferencial.</p>
+              mirar qué potencia de <span class="mat" data-tex="x">x</span> acompaña al diferencial.</p>
           </div>
         </details>
       </div>
@@ -589,25 +895,64 @@
       <div class="ejercicio">
         <div class="enunciado">
           <span class="eti">EJERCICIO 3</span>
-          <p>La curva <span class="mat">y = x³</span> desde
-            <span class="mat">x = 0</span> hasta <span class="mat">x = 1</span> gira
+          <p>La curva <span class="mat" data-tex="y = x^{3}">y = x³</span> desde
+            <span class="mat" data-tex="x = 0">x = 0</span> hasta <span class="mat" data-tex="x = 1">x = 1</span> gira
             alrededor del <b>eje x</b>.</p>
         </div>
         <details>
           <summary><span class="flecha">▶</span> Ver la respuesta</summary>
           <div class="solucion">
-            <p>Radio <span class="mat">x³</span>. Con
-              <span class="mat">u = 1 + 9x⁴</span>,
-              <span class="mat">du = 36x³dx</span>: esta vez sí encaja.</p>
+            <p>Radio <span class="mat" data-tex="x^{3}">x³</span>. Con
+              <span class="mat" data-tex="u = 1 + 9x^{4}">u = 1 + 9x⁴</span>,
+              <span class="mat" data-tex="du = 36x^{3}dx">du = 36x³dx</span>: esta vez sí encaja.</p>
             <div class="resultado"
               data-tex="S=2\pi\int_{0}^{1}x^{3}\sqrt{1+9x^{4}}\,dx=\frac{\pi}{18}\left[\frac{2}{3}u^{3/2}\right]_{1}^{10}=\frac{\pi\left(10\sqrt{10}-1\right)}{27}\approx 3.5631">
               S = 2π∫<sub>0</sub><sup>1</sup>x³√(1 + 9x⁴)dx = π(10√10 − 1)/27 ≈ 3.5631
             </div>
+            <div class="figura-caja">
+            <svg class="figura-ej" viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfica del ejemplo">
+            <polygon points="87.33,232.77 89.21,232.77 91.09,232.77 92.97,232.77 94.85,232.77 96.73,232.77 98.61,232.77 100.48,232.77 102.36,232.76 104.24,232.76 106.12,232.76 108.00,232.75 109.88,232.74 111.76,232.73 113.64,232.72 115.52,232.71 117.39,232.70 119.27,232.68 121.15,232.67 123.03,232.65 124.91,232.63 126.79,232.61 128.67,232.58 130.55,232.55 132.42,232.52 134.30,232.49 136.18,232.45 138.06,232.42 139.94,232.38 141.82,232.33 143.70,232.28 145.58,232.23 147.45,232.18 149.33,232.12 151.21,232.06 153.09,231.99 154.97,231.93 156.85,231.85 158.73,231.78 160.61,231.70 162.48,231.61 164.36,231.52 166.24,231.43 168.12,231.33 170.00,231.23 171.88,231.12 173.76,231.00 175.64,230.89 177.52,230.76 179.39,230.64 181.27,230.50 183.15,230.36 185.03,230.22 186.91,230.07 188.79,229.91 190.67,229.75 192.55,229.58 194.42,229.41 196.30,229.23 198.18,229.04 200.06,228.85 201.94,228.65 203.82,228.44 205.70,228.23 207.58,228.01 209.45,227.78 211.33,227.55 213.21,227.31 215.09,227.06 216.97,226.80 218.85,226.54 220.73,226.27 222.61,225.99 224.48,225.70 226.36,225.41 228.24,225.11 230.12,224.79 232.00,224.48 233.88,224.15 235.76,223.81 237.64,223.47 239.52,223.11 241.39,222.75 243.27,222.38 245.15,222.00 247.03,221.61 248.91,221.21 250.79,220.80 252.67,220.39 254.55,219.96 256.42,219.52 258.30,219.08 260.18,218.62 262.06,218.15 263.94,217.68 265.82,217.19 267.70,216.69 269.58,216.18 271.45,215.67 273.33,215.14 275.21,214.60 277.09,214.05 278.97,213.48 280.85,212.91 282.73,212.33 284.61,211.73 286.48,211.13 288.36,210.51 290.24,209.88 292.12,209.23 294.00,208.58 295.88,207.91 297.76,207.24 299.64,206.55 301.52,205.84 303.39,205.13 305.27,204.40 307.15,203.66 309.03,202.91 310.91,202.14 312.79,201.36 314.67,200.57 316.55,199.77 318.42,198.95 320.30,198.12 322.18,197.27 324.06,196.41 325.94,195.54 327.82,194.65 329.70,193.75 331.58,192.84 333.45,191.91 335.33,190.97 337.21,190.01 339.09,189.04 340.97,188.05 342.85,187.05 344.73,186.03 346.61,185.00 348.48,183.96 350.36,182.90 352.24,181.82 354.12,180.73 356.00,179.62 357.88,178.50 359.76,177.36 361.64,176.20 363.52,175.03 365.39,173.85 367.27,172.65 369.15,171.43 371.03,170.19 372.91,168.94 374.79,167.67 376.67,166.39 378.55,165.09 380.42,163.77 382.30,162.43 384.18,161.08 386.06,159.71 387.94,158.32 389.82,156.92 391.70,155.49 393.58,154.05 395.45,152.60 397.33,151.12 399.21,149.63 401.09,148.12 402.97,146.59 404.85,145.04 406.73,143.47 408.61,141.89 410.48,140.28 412.36,138.66 414.24,137.02 416.12,135.36 418.00,133.68 419.88,131.98 421.76,130.26 423.64,128.52 425.52,126.77 427.39,124.99 429.27,123.19 431.15,121.38 433.03,119.54 434.91,117.68 436.79,115.81 438.67,113.91 440.55,111.99 442.42,110.06 444.30,108.10 446.18,106.12 448.06,104.12 449.94,102.10 451.82,100.06 453.70,97.99 455.58,95.91 457.45,93.80 459.33,91.68 461.21,89.53 463.09,87.36 464.97,85.17 466.85,82.95 468.73,80.72 470.61,78.46 472.48,76.18 474.36,73.87 476.24,71.55 478.12,69.20 480.00,66.83 481.88,64.44 483.76,62.02 485.64,59.58 487.52,57.12 489.39,54.63 491.27,52.12 493.15,49.59 495.03,47.04 496.91,44.46 498.79,41.85 500.67,39.23 500.67,232.77 498.79,232.77 496.91,232.77 495.03,232.77 493.15,232.77 491.27,232.77 489.39,232.77 487.52,232.77 485.64,232.77 483.76,232.77 481.88,232.77 480.00,232.77 478.12,232.77 476.24,232.77 474.36,232.77 472.48,232.77 470.61,232.77 468.73,232.77 466.85,232.77 464.97,232.77 463.09,232.77 461.21,232.77 459.33,232.77 457.45,232.77 455.58,232.77 453.70,232.77 451.82,232.77 449.94,232.77 448.06,232.77 446.18,232.77 444.30,232.77 442.42,232.77 440.55,232.77 438.67,232.77 436.79,232.77 434.91,232.77 433.03,232.77 431.15,232.77 429.27,232.77 427.39,232.77 425.52,232.77 423.64,232.77 421.76,232.77 419.88,232.77 418.00,232.77 416.12,232.77 414.24,232.77 412.36,232.77 410.48,232.77 408.61,232.77 406.73,232.77 404.85,232.77 402.97,232.77 401.09,232.77 399.21,232.77 397.33,232.77 395.45,232.77 393.58,232.77 391.70,232.77 389.82,232.77 387.94,232.77 386.06,232.77 384.18,232.77 382.30,232.77 380.42,232.77 378.55,232.77 376.67,232.77 374.79,232.77 372.91,232.77 371.03,232.77 369.15,232.77 367.27,232.77 365.39,232.77 363.52,232.77 361.64,232.77 359.76,232.77 357.88,232.77 356.00,232.77 354.12,232.77 352.24,232.77 350.36,232.77 348.48,232.77 346.61,232.77 344.73,232.77 342.85,232.77 340.97,232.77 339.09,232.77 337.21,232.77 335.33,232.77 333.45,232.77 331.58,232.77 329.70,232.77 327.82,232.77 325.94,232.77 324.06,232.77 322.18,232.77 320.30,232.77 318.42,232.77 316.55,232.77 314.67,232.77 312.79,232.77 310.91,232.77 309.03,232.77 307.15,232.77 305.27,232.77 303.39,232.77 301.52,232.77 299.64,232.77 297.76,232.77 295.88,232.77 294.00,232.77 292.12,232.77 290.24,232.77 288.36,232.77 286.48,232.77 284.61,232.77 282.73,232.77 280.85,232.77 278.97,232.77 277.09,232.77 275.21,232.77 273.33,232.77 271.45,232.77 269.58,232.77 267.70,232.77 265.82,232.77 263.94,232.77 262.06,232.77 260.18,232.77 258.30,232.77 256.42,232.77 254.55,232.77 252.67,232.77 250.79,232.77 248.91,232.77 247.03,232.77 245.15,232.77 243.27,232.77 241.39,232.77 239.52,232.77 237.64,232.77 235.76,232.77 233.88,232.77 232.00,232.77 230.12,232.77 228.24,232.77 226.36,232.77 224.48,232.77 222.61,232.77 220.73,232.77 218.85,232.77 216.97,232.77 215.09,232.77 213.21,232.77 211.33,232.77 209.45,232.77 207.58,232.77 205.70,232.77 203.82,232.77 201.94,232.77 200.06,232.77 198.18,232.77 196.30,232.77 194.42,232.77 192.55,232.77 190.67,232.77 188.79,232.77 186.91,232.77 185.03,232.77 183.15,232.77 181.27,232.77 179.39,232.77 177.52,232.77 175.64,232.77 173.76,232.77 171.88,232.77 170.00,232.77 168.12,232.77 166.24,232.77 164.36,232.77 162.48,232.77 160.61,232.77 158.73,232.77 156.85,232.77 154.97,232.77 153.09,232.77 151.21,232.77 149.33,232.77 147.45,232.77 145.58,232.77 143.70,232.77 141.82,232.77 139.94,232.77 138.06,232.77 136.18,232.77 134.30,232.77 132.42,232.77 130.55,232.77 128.67,232.77 126.79,232.77 124.91,232.77 123.03,232.77 121.15,232.77 119.27,232.77 117.39,232.77 115.52,232.77 113.64,232.77 111.76,232.77 109.88,232.77 108.00,232.77 106.12,232.77 104.24,232.77 102.36,232.77 100.48,232.77 98.61,232.77 96.73,232.77 94.85,232.77 92.97,232.77 91.09,232.77 89.21,232.77 87.33,232.77" fill="#e3d7f2" stroke="none"/>
+            <line x1="38.0" y1="232.8" x2="554.0" y2="232.8" stroke="#6d5a85" stroke-width="1.2"/>
+            <line x1="87.3" y1="8.0" x2="87.3" y2="264.0" stroke="#6d5a85" stroke-width="1.2"/>
+            <text x="546.0" y="247.8" font-size="13" font-style="italic" fill="#6d5a85">x</text>
+            <text x="73.3" y="12.0" font-size="13" font-style="italic" fill="#6d5a85">y</text>
+            <line x1="170.0" y1="229.3" x2="170.0" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="170.0" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.2</text>
+            <line x1="252.7" y1="229.3" x2="252.7" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="252.7" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.4</text>
+            <line x1="335.3" y1="229.3" x2="335.3" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="335.3" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.6</text>
+            <line x1="418.0" y1="229.3" x2="418.0" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="418.0" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.8</text>
+            <line x1="500.7" y1="229.3" x2="500.7" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="500.7" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">1</text>
+            <line x1="83.8" y1="194.1" x2="90.8" y2="194.1" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="197.6" font-size="10.5" text-anchor="end" fill="#6d5a85">0.2</text>
+            <line x1="83.8" y1="155.4" x2="90.8" y2="155.4" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="158.9" font-size="10.5" text-anchor="end" fill="#6d5a85">0.4</text>
+            <line x1="83.8" y1="116.6" x2="90.8" y2="116.6" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="120.1" font-size="10.5" text-anchor="end" fill="#6d5a85">0.6</text>
+            <line x1="83.8" y1="77.9" x2="90.8" y2="77.9" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="81.4" font-size="10.5" text-anchor="end" fill="#6d5a85">0.8</text>
+            <line x1="83.8" y1="39.2" x2="90.8" y2="39.2" stroke="#6d5a85" stroke-width="1"/>
+            <text x="80.3" y="42.7" font-size="10.5" text-anchor="end" fill="#6d5a85">1</text>
+            <polyline points="87.33,232.77 89.21,232.77 91.09,232.77 92.97,232.77 94.85,232.77 96.73,232.77 98.61,232.77 100.48,232.77 102.36,232.76 104.24,232.76 106.12,232.76 108.00,232.75 109.88,232.74 111.76,232.73 113.64,232.72 115.52,232.71 117.39,232.70 119.27,232.68 121.15,232.67 123.03,232.65 124.91,232.63 126.79,232.61 128.67,232.58 130.55,232.55 132.42,232.52 134.30,232.49 136.18,232.45 138.06,232.42 139.94,232.38 141.82,232.33 143.70,232.28 145.58,232.23 147.45,232.18 149.33,232.12 151.21,232.06 153.09,231.99 154.97,231.93 156.85,231.85 158.73,231.78 160.61,231.70 162.48,231.61 164.36,231.52 166.24,231.43 168.12,231.33 170.00,231.23 171.88,231.12 173.76,231.00 175.64,230.89 177.52,230.76 179.39,230.64 181.27,230.50 183.15,230.36 185.03,230.22 186.91,230.07 188.79,229.91 190.67,229.75 192.55,229.58 194.42,229.41 196.30,229.23 198.18,229.04 200.06,228.85 201.94,228.65 203.82,228.44 205.70,228.23 207.58,228.01 209.45,227.78 211.33,227.55 213.21,227.31 215.09,227.06 216.97,226.80 218.85,226.54 220.73,226.27 222.61,225.99 224.48,225.70 226.36,225.41 228.24,225.11 230.12,224.79 232.00,224.48 233.88,224.15 235.76,223.81 237.64,223.47 239.52,223.11 241.39,222.75 243.27,222.38 245.15,222.00 247.03,221.61 248.91,221.21 250.79,220.80 252.67,220.39 254.55,219.96 256.42,219.52 258.30,219.08 260.18,218.62 262.06,218.15 263.94,217.68 265.82,217.19 267.70,216.69 269.58,216.18 271.45,215.67 273.33,215.14 275.21,214.60 277.09,214.05 278.97,213.48 280.85,212.91 282.73,212.33 284.61,211.73 286.48,211.13 288.36,210.51 290.24,209.88 292.12,209.23 294.00,208.58 295.88,207.91 297.76,207.24 299.64,206.55 301.52,205.84 303.39,205.13 305.27,204.40 307.15,203.66 309.03,202.91 310.91,202.14 312.79,201.36 314.67,200.57 316.55,199.77 318.42,198.95 320.30,198.12 322.18,197.27 324.06,196.41 325.94,195.54 327.82,194.65 329.70,193.75 331.58,192.84 333.45,191.91 335.33,190.97 337.21,190.01 339.09,189.04 340.97,188.05 342.85,187.05 344.73,186.03 346.61,185.00 348.48,183.96 350.36,182.90 352.24,181.82 354.12,180.73 356.00,179.62 357.88,178.50 359.76,177.36 361.64,176.20 363.52,175.03 365.39,173.85 367.27,172.65 369.15,171.43 371.03,170.19 372.91,168.94 374.79,167.67 376.67,166.39 378.55,165.09 380.42,163.77 382.30,162.43 384.18,161.08 386.06,159.71 387.94,158.32 389.82,156.92 391.70,155.49 393.58,154.05 395.45,152.60 397.33,151.12 399.21,149.63 401.09,148.12 402.97,146.59 404.85,145.04 406.73,143.47 408.61,141.89 410.48,140.28 412.36,138.66 414.24,137.02 416.12,135.36 418.00,133.68 419.88,131.98 421.76,130.26 423.64,128.52 425.52,126.77 427.39,124.99 429.27,123.19 431.15,121.38 433.03,119.54 434.91,117.68 436.79,115.81 438.67,113.91 440.55,111.99 442.42,110.06 444.30,108.10 446.18,106.12 448.06,104.12 449.94,102.10 451.82,100.06 453.70,97.99 455.58,95.91 457.45,93.80 459.33,91.68 461.21,89.53 463.09,87.36 464.97,85.17 466.85,82.95 468.73,80.72 470.61,78.46 472.48,76.18 474.36,73.87 476.24,71.55 478.12,69.20 480.00,66.83 481.88,64.44 483.76,62.02 485.64,59.58 487.52,57.12 489.39,54.63 491.27,52.12 493.15,49.59 495.03,47.04 496.91,44.46 498.79,41.85 500.67,39.23" fill="none" stroke="#a4348c" stroke-width="3.0"/>
+            <circle cx="87.33" cy="232.77" r="4" fill="#5a2d8c"/>
+            <circle cx="87.33" cy="232.77" r="4" fill="none" stroke="#fff" stroke-width="1.2"/>
+            <text x="79.33" y="249.77" font-size="11" font-weight="600" text-anchor="end" fill="#5a2d8c">(0, 0)</text>
+            <circle cx="500.67" cy="39.23" r="4" fill="#5a2d8c"/>
+            <circle cx="500.67" cy="39.23" r="4" fill="none" stroke="#fff" stroke-width="1.2"/>
+            <text x="508.67" y="30.23" font-size="11" font-weight="600" text-anchor="start" fill="#5a2d8c">(1, 1)</text>
+            <text x="390.9" y="153.5" font-size="12" font-style="italic" fill="#a4348c">y = x³</text>
+            </svg>
+            <div class="figura-cap">La misma curva sobre el eje x. S = π(10√10 − 1)/27 ≈ 3.5631</div>
+            </div>
+
             <p>Compare con el ejercicio 2: la misma curva y el mismo
-              <span class="mat">ds</span>, pero distinto eje, y por tanto distinto radio y
+              <span class="mat" data-tex="ds">ds</span>, pero distinto eje, y por tanto distinto radio y
               distinta sustitución. Las áreas son diferentes
-              (<span class="mat">5.92</span> contra <span class="mat">3.56</span>), lo cual
-              tiene sentido: girando sobre el eje <span class="mat">y</span> la curva barre
+              (<span class="mat" data-tex="5.92">5.92</span> contra <span class="mat" data-tex="3.56">3.56</span>), lo cual
+              tiene sentido: girando sobre el eje <span class="mat" data-tex="y">y</span> la curva barre
               radios más grandes.</p>
           </div>
         </details>
@@ -617,21 +962,58 @@
         <div class="enunciado">
           <span class="eti">EJERCICIO 4</span>
           <p>Halle el área de la franja esférica de una esfera de radio 2 comprendida entre
-            <span class="mat">x = 0</span> y <span class="mat">x = 1</span>. Interprete el
+            <span class="mat" data-tex="x = 0">x = 0</span> y <span class="mat" data-tex="x = 1">x = 1</span>. Interprete el
             resultado.</p>
         </div>
         <details>
           <summary><span class="flecha">▶</span> Ver la respuesta</summary>
           <div class="solucion">
             <p>Por el ejemplo 3, el integrando es la constante
-              <span class="mat">r = 2</span>.</p>
+              <span class="mat" data-tex="r = 2">r = 2</span>.</p>
             <div class="resultado"
               data-tex="S=2\pi\int_{0}^{1}2\,dx=4\pi\approx 12.57">
               S = 2π∫<sub>0</sub><sup>1</sup>2 dx = 4π ≈ 12.57
             </div>
+            <div class="figura-caja">
+            <svg class="figura-ej" viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfica del ejemplo">
+            <polygon points="245.61,39.23 246.05,39.23 246.49,39.23 246.93,39.23 247.37,39.23 247.81,39.24 248.25,39.24 248.69,39.25 249.13,39.26 249.57,39.27 250.01,39.28 250.45,39.29 250.89,39.30 251.33,39.31 251.77,39.32 252.21,39.34 252.65,39.35 253.09,39.37 253.53,39.39 253.97,39.41 254.41,39.43 254.85,39.45 255.29,39.47 255.73,39.49 256.17,39.51 256.61,39.54 257.05,39.56 257.49,39.59 257.93,39.62 258.37,39.65 258.81,39.68 259.25,39.71 259.69,39.74 260.13,39.77 260.57,39.80 261.01,39.84 261.45,39.87 261.89,39.91 262.33,39.95 262.77,39.99 263.21,40.03 263.65,40.07 264.09,40.11 264.53,40.15 264.97,40.20 265.41,40.24 265.85,40.29 266.29,40.33 266.73,40.38 267.17,40.43 267.61,40.48 268.05,40.53 268.49,40.58 268.93,40.64 269.37,40.69 269.81,40.74 270.25,40.80 270.69,40.86 271.13,40.91 271.57,40.97 272.01,41.03 272.45,41.09 272.89,41.16 273.33,41.22 273.77,41.28 274.21,41.35 274.65,41.42 275.09,41.48 275.52,41.55 275.96,41.62 276.40,41.69 276.84,41.76 277.28,41.83 277.72,41.91 278.16,41.98 278.60,42.06 279.04,42.13 279.48,42.21 279.92,42.29 280.36,42.37 280.80,42.45 281.24,42.53 281.68,42.62 282.12,42.70 282.56,42.79 283.00,42.87 283.44,42.96 283.88,43.05 284.32,43.14 284.76,43.23 285.20,43.32 285.64,43.41 286.08,43.50 286.52,43.60 286.96,43.69 287.40,43.79 287.84,43.89 288.28,43.99 288.72,44.09 289.16,44.19 289.60,44.29 290.04,44.39 290.48,44.50 290.92,44.60 291.36,44.71 291.80,44.82 292.24,44.93 292.68,45.04 293.12,45.15 293.56,45.26 294.00,45.37 294.44,45.49 294.88,45.60 295.32,45.72 295.76,45.83 296.20,45.95 296.64,46.07 297.08,46.19 297.52,46.32 297.96,46.44 298.40,46.56 298.84,46.69 299.28,46.81 299.72,46.94 300.16,47.07 300.60,47.20 301.04,47.33 301.48,47.46 301.92,47.60 302.36,47.73 302.80,47.87 303.24,48.00 303.68,48.14 304.12,48.28 304.56,48.42 305.00,48.56 305.44,48.70 305.88,48.85 306.32,48.99 306.76,49.14 307.20,49.28 307.64,49.43 308.08,49.58 308.52,49.73 308.96,49.88 309.40,50.04 309.84,50.19 310.28,50.35 310.72,50.50 311.16,50.66 311.60,50.82 312.04,50.98 312.48,51.14 312.91,51.30 313.35,51.47 313.79,51.63 314.23,51.80 314.67,51.97 315.11,52.13 315.55,52.30 315.99,52.48 316.43,52.65 316.87,52.82 317.31,53.00 317.75,53.17 318.19,53.35 318.63,53.53 319.07,53.71 319.51,53.89 319.95,54.07 320.39,54.26 320.83,54.44 321.27,54.63 321.71,54.81 322.15,55.00 322.59,55.19 323.03,55.38 323.47,55.58 323.91,55.77 324.35,55.97 324.79,56.16 325.23,56.36 325.67,56.56 326.11,56.76 326.55,56.96 326.99,57.17 327.43,57.37 327.87,57.58 328.31,57.78 328.75,57.99 329.19,58.20 329.63,58.41 330.07,58.63 330.51,58.84 330.95,59.05 331.39,59.27 331.83,59.49 332.27,59.71 332.71,59.93 333.15,60.15 333.59,60.38 334.03,60.60 334.47,60.83 334.91,61.06 335.35,61.29 335.79,61.52 336.23,61.75 336.67,61.98 337.11,62.22 337.55,62.45 337.99,62.69 338.43,62.93 338.87,63.17 339.31,63.42 339.75,63.66 340.19,63.91 340.63,64.15 341.07,64.40 341.51,64.65 341.95,64.90 342.39,65.16 342.39,232.77 341.95,232.77 341.51,232.77 341.07,232.77 340.63,232.77 340.19,232.77 339.75,232.77 339.31,232.77 338.87,232.77 338.43,232.77 337.99,232.77 337.55,232.77 337.11,232.77 336.67,232.77 336.23,232.77 335.79,232.77 335.35,232.77 334.91,232.77 334.47,232.77 334.03,232.77 333.59,232.77 333.15,232.77 332.71,232.77 332.27,232.77 331.83,232.77 331.39,232.77 330.95,232.77 330.51,232.77 330.07,232.77 329.63,232.77 329.19,232.77 328.75,232.77 328.31,232.77 327.87,232.77 327.43,232.77 326.99,232.77 326.55,232.77 326.11,232.77 325.67,232.77 325.23,232.77 324.79,232.77 324.35,232.77 323.91,232.77 323.47,232.77 323.03,232.77 322.59,232.77 322.15,232.77 321.71,232.77 321.27,232.77 320.83,232.77 320.39,232.77 319.95,232.77 319.51,232.77 319.07,232.77 318.63,232.77 318.19,232.77 317.75,232.77 317.31,232.77 316.87,232.77 316.43,232.77 315.99,232.77 315.55,232.77 315.11,232.77 314.67,232.77 314.23,232.77 313.79,232.77 313.35,232.77 312.91,232.77 312.48,232.77 312.04,232.77 311.60,232.77 311.16,232.77 310.72,232.77 310.28,232.77 309.84,232.77 309.40,232.77 308.96,232.77 308.52,232.77 308.08,232.77 307.64,232.77 307.20,232.77 306.76,232.77 306.32,232.77 305.88,232.77 305.44,232.77 305.00,232.77 304.56,232.77 304.12,232.77 303.68,232.77 303.24,232.77 302.80,232.77 302.36,232.77 301.92,232.77 301.48,232.77 301.04,232.77 300.60,232.77 300.16,232.77 299.72,232.77 299.28,232.77 298.84,232.77 298.40,232.77 297.96,232.77 297.52,232.77 297.08,232.77 296.64,232.77 296.20,232.77 295.76,232.77 295.32,232.77 294.88,232.77 294.44,232.77 294.00,232.77 293.56,232.77 293.12,232.77 292.68,232.77 292.24,232.77 291.80,232.77 291.36,232.77 290.92,232.77 290.48,232.77 290.04,232.77 289.60,232.77 289.16,232.77 288.72,232.77 288.28,232.77 287.84,232.77 287.40,232.77 286.96,232.77 286.52,232.77 286.08,232.77 285.64,232.77 285.20,232.77 284.76,232.77 284.32,232.77 283.88,232.77 283.44,232.77 283.00,232.77 282.56,232.77 282.12,232.77 281.68,232.77 281.24,232.77 280.80,232.77 280.36,232.77 279.92,232.77 279.48,232.77 279.04,232.77 278.60,232.77 278.16,232.77 277.72,232.77 277.28,232.77 276.84,232.77 276.40,232.77 275.96,232.77 275.52,232.77 275.09,232.77 274.65,232.77 274.21,232.77 273.77,232.77 273.33,232.77 272.89,232.77 272.45,232.77 272.01,232.77 271.57,232.77 271.13,232.77 270.69,232.77 270.25,232.77 269.81,232.77 269.37,232.77 268.93,232.77 268.49,232.77 268.05,232.77 267.61,232.77 267.17,232.77 266.73,232.77 266.29,232.77 265.85,232.77 265.41,232.77 264.97,232.77 264.53,232.77 264.09,232.77 263.65,232.77 263.21,232.77 262.77,232.77 262.33,232.77 261.89,232.77 261.45,232.77 261.01,232.77 260.57,232.77 260.13,232.77 259.69,232.77 259.25,232.77 258.81,232.77 258.37,232.77 257.93,232.77 257.49,232.77 257.05,232.77 256.61,232.77 256.17,232.77 255.73,232.77 255.29,232.77 254.85,232.77 254.41,232.77 253.97,232.77 253.53,232.77 253.09,232.77 252.65,232.77 252.21,232.77 251.77,232.77 251.33,232.77 250.89,232.77 250.45,232.77 250.01,232.77 249.57,232.77 249.13,232.77 248.69,232.77 248.25,232.77 247.81,232.77 247.37,232.77 246.93,232.77 246.49,232.77 246.05,232.77 245.61,232.77" fill="#e3d7f2" stroke="none"/>
+            <line x1="38.0" y1="232.8" x2="554.0" y2="232.8" stroke="#6d5a85" stroke-width="1.2"/>
+            <line x1="245.6" y1="8.0" x2="245.6" y2="264.0" stroke="#6d5a85" stroke-width="1.2"/>
+            <text x="546.0" y="247.8" font-size="13" font-style="italic" fill="#6d5a85">x</text>
+            <text x="231.6" y="12.0" font-size="13" font-style="italic" fill="#6d5a85">y</text>
+            <line x1="265.0" y1="229.3" x2="265.0" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="265.0" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.2</text>
+            <line x1="284.3" y1="229.3" x2="284.3" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="284.3" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.4</text>
+            <line x1="303.7" y1="229.3" x2="303.7" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="303.7" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.6</text>
+            <line x1="323.0" y1="229.3" x2="323.0" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="323.0" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">0.8</text>
+            <line x1="342.4" y1="229.3" x2="342.4" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="342.4" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">1</text>
+            <line x1="242.1" y1="184.4" x2="249.1" y2="184.4" stroke="#6d5a85" stroke-width="1"/>
+            <text x="238.6" y="187.9" font-size="10.5" text-anchor="end" fill="#6d5a85">0.5</text>
+            <line x1="242.1" y1="136.0" x2="249.1" y2="136.0" stroke="#6d5a85" stroke-width="1"/>
+            <text x="238.6" y="139.5" font-size="10.5" text-anchor="end" fill="#6d5a85">1</text>
+            <line x1="242.1" y1="87.6" x2="249.1" y2="87.6" stroke="#6d5a85" stroke-width="1"/>
+            <text x="238.6" y="91.1" font-size="10.5" text-anchor="end" fill="#6d5a85">1.5</text>
+            <line x1="242.1" y1="39.2" x2="249.1" y2="39.2" stroke="#6d5a85" stroke-width="1"/>
+            <text x="238.6" y="42.7" font-size="10.5" text-anchor="end" fill="#6d5a85">2</text>
+            <polyline points="245.61,39.23 246.05,39.23 246.49,39.23 246.93,39.23 247.37,39.23 247.81,39.24 248.25,39.24 248.69,39.25 249.13,39.26 249.57,39.27 250.01,39.28 250.45,39.29 250.89,39.30 251.33,39.31 251.77,39.32 252.21,39.34 252.65,39.35 253.09,39.37 253.53,39.39 253.97,39.41 254.41,39.43 254.85,39.45 255.29,39.47 255.73,39.49 256.17,39.51 256.61,39.54 257.05,39.56 257.49,39.59 257.93,39.62 258.37,39.65 258.81,39.68 259.25,39.71 259.69,39.74 260.13,39.77 260.57,39.80 261.01,39.84 261.45,39.87 261.89,39.91 262.33,39.95 262.77,39.99 263.21,40.03 263.65,40.07 264.09,40.11 264.53,40.15 264.97,40.20 265.41,40.24 265.85,40.29 266.29,40.33 266.73,40.38 267.17,40.43 267.61,40.48 268.05,40.53 268.49,40.58 268.93,40.64 269.37,40.69 269.81,40.74 270.25,40.80 270.69,40.86 271.13,40.91 271.57,40.97 272.01,41.03 272.45,41.09 272.89,41.16 273.33,41.22 273.77,41.28 274.21,41.35 274.65,41.42 275.09,41.48 275.52,41.55 275.96,41.62 276.40,41.69 276.84,41.76 277.28,41.83 277.72,41.91 278.16,41.98 278.60,42.06 279.04,42.13 279.48,42.21 279.92,42.29 280.36,42.37 280.80,42.45 281.24,42.53 281.68,42.62 282.12,42.70 282.56,42.79 283.00,42.87 283.44,42.96 283.88,43.05 284.32,43.14 284.76,43.23 285.20,43.32 285.64,43.41 286.08,43.50 286.52,43.60 286.96,43.69 287.40,43.79 287.84,43.89 288.28,43.99 288.72,44.09 289.16,44.19 289.60,44.29 290.04,44.39 290.48,44.50 290.92,44.60 291.36,44.71 291.80,44.82 292.24,44.93 292.68,45.04 293.12,45.15 293.56,45.26 294.00,45.37 294.44,45.49 294.88,45.60 295.32,45.72 295.76,45.83 296.20,45.95 296.64,46.07 297.08,46.19 297.52,46.32 297.96,46.44 298.40,46.56 298.84,46.69 299.28,46.81 299.72,46.94 300.16,47.07 300.60,47.20 301.04,47.33 301.48,47.46 301.92,47.60 302.36,47.73 302.80,47.87 303.24,48.00 303.68,48.14 304.12,48.28 304.56,48.42 305.00,48.56 305.44,48.70 305.88,48.85 306.32,48.99 306.76,49.14 307.20,49.28 307.64,49.43 308.08,49.58 308.52,49.73 308.96,49.88 309.40,50.04 309.84,50.19 310.28,50.35 310.72,50.50 311.16,50.66 311.60,50.82 312.04,50.98 312.48,51.14 312.91,51.30 313.35,51.47 313.79,51.63 314.23,51.80 314.67,51.97 315.11,52.13 315.55,52.30 315.99,52.48 316.43,52.65 316.87,52.82 317.31,53.00 317.75,53.17 318.19,53.35 318.63,53.53 319.07,53.71 319.51,53.89 319.95,54.07 320.39,54.26 320.83,54.44 321.27,54.63 321.71,54.81 322.15,55.00 322.59,55.19 323.03,55.38 323.47,55.58 323.91,55.77 324.35,55.97 324.79,56.16 325.23,56.36 325.67,56.56 326.11,56.76 326.55,56.96 326.99,57.17 327.43,57.37 327.87,57.58 328.31,57.78 328.75,57.99 329.19,58.20 329.63,58.41 330.07,58.63 330.51,58.84 330.95,59.05 331.39,59.27 331.83,59.49 332.27,59.71 332.71,59.93 333.15,60.15 333.59,60.38 334.03,60.60 334.47,60.83 334.91,61.06 335.35,61.29 335.79,61.52 336.23,61.75 336.67,61.98 337.11,62.22 337.55,62.45 337.99,62.69 338.43,62.93 338.87,63.17 339.31,63.42 339.75,63.66 340.19,63.91 340.63,64.15 341.07,64.40 341.51,64.65 341.95,64.90 342.39,65.16" fill="none" stroke="#a4348c" stroke-width="3.0"/>
+            <circle cx="245.61" cy="39.23" r="4" fill="#5a2d8c"/>
+            <circle cx="245.61" cy="39.23" r="4" fill="none" stroke="#fff" stroke-width="1.2"/>
+            <text x="237.61" y="30.23" font-size="11" font-weight="600" text-anchor="end" fill="#5a2d8c">(0, 2)</text>
+            <circle cx="342.39" cy="65.16" r="4" fill="#5a2d8c"/>
+            <circle cx="342.39" cy="65.16" r="4" fill="none" stroke="#fff" stroke-width="1.2"/>
+            <text x="350.39" y="56.16" font-size="11" font-weight="600" text-anchor="start" fill="#5a2d8c">(1, 1.73)</text>
+            <text x="321.3" y="45.2" font-size="12" font-style="italic" fill="#a4348c">y = √(4 − x²)</text>
+            </svg>
+            <div class="figura-cap">Franja esférica entre x = 0 y x = 1. S = 4π ≈ 12.57</div>
+            </div>
+
             <p>El área total de la esfera es
-              <span class="mat">4π(2²) = 16π</span>, y esta franja de 1 unidad de ancho mide
-              <span class="mat">4π</span>: exactamente <b>un cuarto</b> del total, igual que
+              <span class="mat" data-tex="4\pi(2^{2}) = 16\pi">4π(2²) = 16π</span>, y esta franja de 1 unidad de ancho mide
+              <span class="mat" data-tex="4\pi">4π</span>: exactamente <b>un cuarto</b> del total, igual que
               la razón entre 1 y el diámetro 4. Eso es el corolario de Arquímedes en
               acción.</p>
           </div>
@@ -648,17 +1030,48 @@
         <details>
           <summary><span class="flecha">▶</span> Ver la respuesta</summary>
           <div class="solucion">
-            <p>Media esfera: <span class="mat">S = (1/2)(4πr²) = 2π(9) = 18π ≈ 56.55</span>
+            <p>Media esfera: <span class="mat" data-tex="S = (1/2)(4\pi r^{2}) = 2\pi(9) = 18\pi \approx 56.55">S = (1/2)(4πr²) = 2π(9) = 18π ≈ 56.55</span>
               m².</p>
             <div class="resultado"
               data-tex="\text{galones}=\frac{2\times 56.55}{6}\approx 18.85\;\Longrightarrow\;19\ \text{galones}">
               galones = 2(56.55)/6 ≈ 18.85 ⟹ 19 galones
             </div>
+            <div class="figura-caja">
+            <svg class="figura-ej" viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfica del ejemplo">
+            <polygon points="197.23,39.23 198.11,39.23 198.99,39.23 199.87,39.24 200.74,39.26 201.62,39.28 202.50,39.30 203.38,39.32 204.26,39.35 205.14,39.39 206.02,39.43 206.90,39.47 207.78,39.51 208.66,39.56 209.54,39.62 210.42,39.68 211.30,39.74 212.18,39.80 213.06,39.87 213.94,39.95 214.82,40.03 215.70,40.11 216.58,40.20 217.46,40.29 218.34,40.38 219.22,40.48 220.10,40.58 220.98,40.69 221.86,40.80 222.74,40.91 223.62,41.03 224.50,41.16 225.38,41.28 226.26,41.42 227.14,41.55 228.02,41.69 228.90,41.83 229.78,41.98 230.66,42.13 231.54,42.29 232.42,42.45 233.30,42.62 234.18,42.79 235.06,42.96 235.94,43.14 236.82,43.32 237.70,43.50 238.57,43.69 239.45,43.89 240.33,44.09 241.21,44.29 242.09,44.50 242.97,44.71 243.85,44.93 244.73,45.15 245.61,45.37 246.49,45.60 247.37,45.83 248.25,46.07 249.13,46.32 250.01,46.56 250.89,46.81 251.77,47.07 252.65,47.33 253.53,47.60 254.41,47.87 255.29,48.14 256.17,48.42 257.05,48.70 257.93,48.99 258.81,49.28 259.69,49.58 260.57,49.88 261.45,50.19 262.33,50.50 263.21,50.82 264.09,51.14 264.97,51.47 265.85,51.80 266.73,52.13 267.61,52.48 268.49,52.82 269.37,53.17 270.25,53.53 271.13,53.89 272.01,54.26 272.89,54.63 273.77,55.00 274.65,55.38 275.52,55.77 276.40,56.16 277.28,56.56 278.16,56.96 279.04,57.37 279.92,57.78 280.80,58.20 281.68,58.63 282.56,59.05 283.44,59.49 284.32,59.93 285.20,60.38 286.08,60.83 286.96,61.29 287.84,61.75 288.72,62.22 289.60,62.69 290.48,63.17 291.36,63.66 292.24,64.15 293.12,64.65 294.00,65.16 294.88,65.67 295.76,66.18 296.64,66.71 297.52,67.24 298.40,67.77 299.28,68.32 300.16,68.87 301.04,69.42 301.92,69.98 302.80,70.55 303.68,71.13 304.56,71.71 305.44,72.30 306.32,72.90 307.20,73.50 308.08,74.11 308.96,74.73 309.84,75.36 310.72,75.99 311.60,76.63 312.48,77.28 313.35,77.94 314.23,78.60 315.11,79.27 315.99,79.95 316.87,80.64 317.75,81.33 318.63,82.04 319.51,82.75 320.39,83.47 321.27,84.20 322.15,84.94 323.03,85.69 323.91,86.45 324.79,87.21 325.67,87.99 326.55,88.77 327.43,89.57 328.31,90.37 329.19,91.19 330.07,92.01 330.95,92.85 331.83,93.70 332.71,94.55 333.59,95.42 334.47,96.30 335.35,97.19 336.23,98.09 337.11,99.01 337.99,99.93 338.87,100.87 339.75,101.82 340.63,102.79 341.51,103.76 342.39,104.75 343.27,105.76 344.15,106.78 345.03,107.81 345.91,108.86 346.79,109.92 347.67,111.00 348.55,112.10 349.43,113.21 350.30,114.34 351.18,115.48 352.06,116.65 352.94,117.83 353.82,119.03 354.70,120.25 355.58,121.49 356.46,122.75 357.34,124.04 358.22,125.35 359.10,126.68 359.98,128.03 360.86,129.41 361.74,130.82 362.62,132.25 363.50,133.71 364.38,135.20 365.26,136.73 366.14,138.28 367.02,139.87 367.90,141.50 368.78,143.16 369.66,144.87 370.54,146.62 371.42,148.41 372.30,150.25 373.18,152.14 374.06,154.09 374.94,156.10 375.82,158.17 376.70,160.31 377.58,162.53 378.46,164.83 379.34,167.23 380.22,169.73 381.10,172.34 381.98,175.08 382.86,177.98 383.74,181.05 384.62,184.34 385.50,187.88 386.38,191.74 387.26,196.03 388.13,200.92 389.01,206.74 389.89,214.34 390.77,232.77 390.77,232.77 389.89,232.77 389.01,232.77 388.13,232.77 387.26,232.77 386.38,232.77 385.50,232.77 384.62,232.77 383.74,232.77 382.86,232.77 381.98,232.77 381.10,232.77 380.22,232.77 379.34,232.77 378.46,232.77 377.58,232.77 376.70,232.77 375.82,232.77 374.94,232.77 374.06,232.77 373.18,232.77 372.30,232.77 371.42,232.77 370.54,232.77 369.66,232.77 368.78,232.77 367.90,232.77 367.02,232.77 366.14,232.77 365.26,232.77 364.38,232.77 363.50,232.77 362.62,232.77 361.74,232.77 360.86,232.77 359.98,232.77 359.10,232.77 358.22,232.77 357.34,232.77 356.46,232.77 355.58,232.77 354.70,232.77 353.82,232.77 352.94,232.77 352.06,232.77 351.18,232.77 350.30,232.77 349.43,232.77 348.55,232.77 347.67,232.77 346.79,232.77 345.91,232.77 345.03,232.77 344.15,232.77 343.27,232.77 342.39,232.77 341.51,232.77 340.63,232.77 339.75,232.77 338.87,232.77 337.99,232.77 337.11,232.77 336.23,232.77 335.35,232.77 334.47,232.77 333.59,232.77 332.71,232.77 331.83,232.77 330.95,232.77 330.07,232.77 329.19,232.77 328.31,232.77 327.43,232.77 326.55,232.77 325.67,232.77 324.79,232.77 323.91,232.77 323.03,232.77 322.15,232.77 321.27,232.77 320.39,232.77 319.51,232.77 318.63,232.77 317.75,232.77 316.87,232.77 315.99,232.77 315.11,232.77 314.23,232.77 313.35,232.77 312.48,232.77 311.60,232.77 310.72,232.77 309.84,232.77 308.96,232.77 308.08,232.77 307.20,232.77 306.32,232.77 305.44,232.77 304.56,232.77 303.68,232.77 302.80,232.77 301.92,232.77 301.04,232.77 300.16,232.77 299.28,232.77 298.40,232.77 297.52,232.77 296.64,232.77 295.76,232.77 294.88,232.77 294.00,232.77 293.12,232.77 292.24,232.77 291.36,232.77 290.48,232.77 289.60,232.77 288.72,232.77 287.84,232.77 286.96,232.77 286.08,232.77 285.20,232.77 284.32,232.77 283.44,232.77 282.56,232.77 281.68,232.77 280.80,232.77 279.92,232.77 279.04,232.77 278.16,232.77 277.28,232.77 276.40,232.77 275.52,232.77 274.65,232.77 273.77,232.77 272.89,232.77 272.01,232.77 271.13,232.77 270.25,232.77 269.37,232.77 268.49,232.77 267.61,232.77 266.73,232.77 265.85,232.77 264.97,232.77 264.09,232.77 263.21,232.77 262.33,232.77 261.45,232.77 260.57,232.77 259.69,232.77 258.81,232.77 257.93,232.77 257.05,232.77 256.17,232.77 255.29,232.77 254.41,232.77 253.53,232.77 252.65,232.77 251.77,232.77 250.89,232.77 250.01,232.77 249.13,232.77 248.25,232.77 247.37,232.77 246.49,232.77 245.61,232.77 244.73,232.77 243.85,232.77 242.97,232.77 242.09,232.77 241.21,232.77 240.33,232.77 239.45,232.77 238.57,232.77 237.70,232.77 236.82,232.77 235.94,232.77 235.06,232.77 234.18,232.77 233.30,232.77 232.42,232.77 231.54,232.77 230.66,232.77 229.78,232.77 228.90,232.77 228.02,232.77 227.14,232.77 226.26,232.77 225.38,232.77 224.50,232.77 223.62,232.77 222.74,232.77 221.86,232.77 220.98,232.77 220.10,232.77 219.22,232.77 218.34,232.77 217.46,232.77 216.58,232.77 215.70,232.77 214.82,232.77 213.94,232.77 213.06,232.77 212.18,232.77 211.30,232.77 210.42,232.77 209.54,232.77 208.66,232.77 207.78,232.77 206.90,232.77 206.02,232.77 205.14,232.77 204.26,232.77 203.38,232.77 202.50,232.77 201.62,232.77 200.74,232.77 199.87,232.77 198.99,232.77 198.11,232.77 197.23,232.77" fill="#e3d7f2" stroke="none"/>
+            <line x1="38.0" y1="232.8" x2="554.0" y2="232.8" stroke="#6d5a85" stroke-width="1.2"/>
+            <line x1="197.2" y1="8.0" x2="197.2" y2="264.0" stroke="#6d5a85" stroke-width="1.2"/>
+            <text x="546.0" y="247.8" font-size="13" font-style="italic" fill="#6d5a85">x</text>
+            <text x="183.2" y="12.0" font-size="13" font-style="italic" fill="#6d5a85">y</text>
+            <line x1="261.7" y1="229.3" x2="261.7" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="261.7" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">1</text>
+            <line x1="326.3" y1="229.3" x2="326.3" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="326.3" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">2</text>
+            <line x1="390.8" y1="229.3" x2="390.8" y2="236.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="390.8" y="248.8" font-size="10.5" text-anchor="middle" fill="#6d5a85">3</text>
+            <line x1="193.7" y1="168.3" x2="200.7" y2="168.3" stroke="#6d5a85" stroke-width="1"/>
+            <text x="190.2" y="171.8" font-size="10.5" text-anchor="end" fill="#6d5a85">1</text>
+            <line x1="193.7" y1="103.7" x2="200.7" y2="103.7" stroke="#6d5a85" stroke-width="1"/>
+            <text x="190.2" y="107.2" font-size="10.5" text-anchor="end" fill="#6d5a85">2</text>
+            <line x1="193.7" y1="39.2" x2="200.7" y2="39.2" stroke="#6d5a85" stroke-width="1"/>
+            <text x="190.2" y="42.7" font-size="10.5" text-anchor="end" fill="#6d5a85">3</text>
+            <polyline points="197.23,39.23 198.11,39.23 198.99,39.23 199.87,39.24 200.74,39.26 201.62,39.28 202.50,39.30 203.38,39.32 204.26,39.35 205.14,39.39 206.02,39.43 206.90,39.47 207.78,39.51 208.66,39.56 209.54,39.62 210.42,39.68 211.30,39.74 212.18,39.80 213.06,39.87 213.94,39.95 214.82,40.03 215.70,40.11 216.58,40.20 217.46,40.29 218.34,40.38 219.22,40.48 220.10,40.58 220.98,40.69 221.86,40.80 222.74,40.91 223.62,41.03 224.50,41.16 225.38,41.28 226.26,41.42 227.14,41.55 228.02,41.69 228.90,41.83 229.78,41.98 230.66,42.13 231.54,42.29 232.42,42.45 233.30,42.62 234.18,42.79 235.06,42.96 235.94,43.14 236.82,43.32 237.70,43.50 238.57,43.69 239.45,43.89 240.33,44.09 241.21,44.29 242.09,44.50 242.97,44.71 243.85,44.93 244.73,45.15 245.61,45.37 246.49,45.60 247.37,45.83 248.25,46.07 249.13,46.32 250.01,46.56 250.89,46.81 251.77,47.07 252.65,47.33 253.53,47.60 254.41,47.87 255.29,48.14 256.17,48.42 257.05,48.70 257.93,48.99 258.81,49.28 259.69,49.58 260.57,49.88 261.45,50.19 262.33,50.50 263.21,50.82 264.09,51.14 264.97,51.47 265.85,51.80 266.73,52.13 267.61,52.48 268.49,52.82 269.37,53.17 270.25,53.53 271.13,53.89 272.01,54.26 272.89,54.63 273.77,55.00 274.65,55.38 275.52,55.77 276.40,56.16 277.28,56.56 278.16,56.96 279.04,57.37 279.92,57.78 280.80,58.20 281.68,58.63 282.56,59.05 283.44,59.49 284.32,59.93 285.20,60.38 286.08,60.83 286.96,61.29 287.84,61.75 288.72,62.22 289.60,62.69 290.48,63.17 291.36,63.66 292.24,64.15 293.12,64.65 294.00,65.16 294.88,65.67 295.76,66.18 296.64,66.71 297.52,67.24 298.40,67.77 299.28,68.32 300.16,68.87 301.04,69.42 301.92,69.98 302.80,70.55 303.68,71.13 304.56,71.71 305.44,72.30 306.32,72.90 307.20,73.50 308.08,74.11 308.96,74.73 309.84,75.36 310.72,75.99 311.60,76.63 312.48,77.28 313.35,77.94 314.23,78.60 315.11,79.27 315.99,79.95 316.87,80.64 317.75,81.33 318.63,82.04 319.51,82.75 320.39,83.47 321.27,84.20 322.15,84.94 323.03,85.69 323.91,86.45 324.79,87.21 325.67,87.99 326.55,88.77 327.43,89.57 328.31,90.37 329.19,91.19 330.07,92.01 330.95,92.85 331.83,93.70 332.71,94.55 333.59,95.42 334.47,96.30 335.35,97.19 336.23,98.09 337.11,99.01 337.99,99.93 338.87,100.87 339.75,101.82 340.63,102.79 341.51,103.76 342.39,104.75 343.27,105.76 344.15,106.78 345.03,107.81 345.91,108.86 346.79,109.92 347.67,111.00 348.55,112.10 349.43,113.21 350.30,114.34 351.18,115.48 352.06,116.65 352.94,117.83 353.82,119.03 354.70,120.25 355.58,121.49 356.46,122.75 357.34,124.04 358.22,125.35 359.10,126.68 359.98,128.03 360.86,129.41 361.74,130.82 362.62,132.25 363.50,133.71 364.38,135.20 365.26,136.73 366.14,138.28 367.02,139.87 367.90,141.50 368.78,143.16 369.66,144.87 370.54,146.62 371.42,148.41 372.30,150.25 373.18,152.14 374.06,154.09 374.94,156.10 375.82,158.17 376.70,160.31 377.58,162.53 378.46,164.83 379.34,167.23 380.22,169.73 381.10,172.34 381.98,175.08 382.86,177.98 383.74,181.05 384.62,184.34 385.50,187.88 386.38,191.74 387.26,196.03 388.13,200.92 389.01,206.74 389.89,214.34 390.77,232.77" fill="none" stroke="#a4348c" stroke-width="3.0"/>
+            <circle cx="197.23" cy="39.23" r="4" fill="#5a2d8c"/>
+            <circle cx="197.23" cy="39.23" r="4" fill="none" stroke="#fff" stroke-width="1.2"/>
+            <text x="189.23" y="30.23" font-size="11" font-weight="600" text-anchor="end" fill="#5a2d8c">(0, 3)</text>
+            <circle cx="390.77" cy="232.77" r="4" fill="#5a2d8c"/>
+            <circle cx="390.77" cy="232.77" r="4" fill="none" stroke="#fff" stroke-width="1.2"/>
+            <text x="398.77" y="249.77" font-size="11" font-weight="600" text-anchor="start" fill="#5a2d8c">(3, 0)</text>
+            <text x="342.6" y="91.5" font-size="12" font-style="italic" fill="#a4348c">y = √(9 − x²)</text>
+            </svg>
+            <div class="figura-cap">Cúpula semiesférica de radio 3. S = 18π ≈ 56.55 m²</div>
+            </div>
+
             <div class="ambiental" style="margin-top:12px">
               En la práctica se compran 20 galones, porque la pintura viene en unidades
               enteras y conviene margen. Pero el cálculo tiene que partir del área
               <em>real</em> de la superficie curva, no del área del círculo de la base
-              (<span class="mat">9π ≈ 28.3</span> m²), que es la mitad.
+              (<span class="mat" data-tex="9\pi \approx 28.3">9π ≈ 28.3</span> m²), que es la mitad.
             </div>
           </div>
         </details>
@@ -669,10 +1082,10 @@
       <h2>7. Cierre del capítulo</h2>
       <div class="caja">
         <p>Con esto queda cerrado el capítulo III. Los seis temas eran
-          <b>un solo método</b> aplicado a seis pedazos distintos. Si al enfrentar un
-          problema nuevo usted logra contestar «¿cómo es el pedazo y cuánto mide?», la
+          <b>un solo método</b> aplicado a seis elementos representativos distintos. Si al enfrentar un
+          problema nuevo usted logra contestar «¿cómo es el elemento representativo y cuánto mide?», la
           integral se escribe sola.</p>
-        <p>La tabla de los seis pedazos está en el
+        <p>La tabla de los seis elementos está en el
           <a href="index.html" style="color:var(--morado);font-weight:600">índice del
             capítulo</a>, y vale la pena revisarla antes del parcial.</p>
       </div>
@@ -685,7 +1098,7 @@
     </div>
 
     <div class="pie">
-      Universidad del Cauca · Facultad de Ingeniería Civil · Ingeniería Ambiental<br>
+      Universidad del Cauca · Departamento de Matemáticas<br>
       Cálculo II · Capítulo III · Material de clase elaborado por Diana Méndez Astudillo
     </div>
 

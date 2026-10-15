@@ -996,6 +996,150 @@ function labLibre(id, cfg) {
 }
 
 /* ===========================================================
+   labSimpson — trapecio contra Simpson
+   Compara las dos reglas de integración numérica del capítulo II:
+   el trapecio une los puntos con rectas y Simpson con parábolas.
+   cfg.ejemplos[i] = {nombre, f, a, b, exacta, tf, ymax}
+   =========================================================== */
+function labSimpson(id, cfg) {
+  const host = document.getElementById(id);
+  host.innerHTML =
+    '<div class="lienzos">' +
+    '<div class="lienzo-caja"><canvas width="640" height="420"></canvas>' +
+    '<div class="cap">Regla del trapecio: rectas</div></div>' +
+    '<div class="lienzo-caja"><canvas width="640" height="420"></canvas>' +
+    '<div class="cap">Regla de Simpson: parábolas</div></div></div>';
+  const [cvT, cvS] = host.querySelectorAll('canvas');
+  const gT = cvT.getContext('2d'), gS = cvS.getContext('2d');
+
+  montarControles(host, {
+    ejemplos: cfg.ejemplos,
+    etiquetaEjemplos: 'Función',
+    sliders: [{ id: 'n', et: 'Número de subintervalos n (par)', min: 2, max: 20, val: 4, step: 2 }]
+  });
+  const lec = document.createElement('div');
+  lec.className = 'lectura'; host.appendChild(lec);
+  const tab = document.createElement('div');
+  tab.className = 'lectura'; host.appendChild(tab);
+
+  let sel = 0;
+  const S = k => +host.querySelector('[data-s=' + k + ']').value;
+  const V = k => host.querySelector('[data-v=' + k + ']');
+  host.querySelectorAll('[data-chips] .chip').forEach(ch => {
+    ch.addEventListener('click', () => {
+      host.querySelectorAll('[data-chips] .chip').forEach(c => c.classList.remove('sel'));
+      ch.classList.add('sel'); sel = +ch.dataset.i; pintar();
+    });
+  });
+  host.querySelectorAll('[data-s]').forEach(s => s.addEventListener('input', pintar));
+
+  /* parábola por tres puntos, evaluada en xv */
+  function parab(x0, y0, x1, y1, x2, y2, xv) {
+    const L0 = ((xv - x1) * (xv - x2)) / ((x0 - x1) * (x0 - x2));
+    const L1 = ((xv - x0) * (xv - x2)) / ((x1 - x0) * (x1 - x2));
+    const L2 = ((xv - x0) * (xv - x1)) / ((x2 - x0) * (x2 - x1));
+    return y0 * L0 + y1 * L1 + y2 * L2;
+  }
+
+  function pintar() {
+    const E = cfg.ejemplos[sel];
+    const n = S('n'), h = (E.b - E.a) / n;
+    V('n').textContent = 'n = ' + n + '  (h = ' + h.toFixed(4) + ')';
+
+    const xs = [], ys = [];
+    for (let i = 0; i <= n; i++) { xs.push(E.a + i * h); ys.push(E.f(xs[i])); }
+
+    /* --- las dos reglas --- */
+    let T = ys[0] + ys[n];
+    for (let i = 1; i < n; i++) T += 2 * ys[i];
+    T *= h / 2;
+    let Su = ys[0] + ys[n];
+    for (let i = 1; i < n; i++) Su += (i % 2 ? 4 : 2) * ys[i];
+    Su *= h / 3;
+
+    /* --- dibujo --- */
+    const M = { l: 46, r: 20, t: 22, b: 40 };
+    [[gT, cvT, 'trapecio'], [gS, cvS, 'simpson']].forEach(([g, cv, modo]) => {
+      limpiar(g, cv);
+      const W = cv.width - M.l - M.r, H = cv.height - M.t - M.b;
+      const ymax = E.ymax, y0v = 0;
+      const X = v => M.l + (v - E.a) / (E.b - E.a) * W;
+      const Y = v => M.t + H - (v - y0v) / (ymax - y0v) * H;
+
+      /* relleno de la aproximación */
+      g.beginPath(); g.moveTo(X(E.a), Y(0));
+      if (modo === 'trapecio') {
+        for (let i = 0; i <= n; i++) g.lineTo(X(xs[i]), Y(ys[i]));
+      } else {
+        for (let i = 0; i < n; i += 2) {
+          for (let k = 0; k <= 24; k++) {
+            const xv = xs[i] + (xs[i + 2] - xs[i]) * k / 24;
+            g.lineTo(X(xv), Y(parab(xs[i], ys[i], xs[i + 1], ys[i + 1], xs[i + 2], ys[i + 2], xv)));
+          }
+        }
+      }
+      g.lineTo(X(E.b), Y(0)); g.closePath();
+      g.fillStyle = modo === 'trapecio' ? 'rgba(139,95,191,.20)' : 'rgba(20,100,70,.18)';
+      g.fill();
+      g.strokeStyle = modo === 'trapecio' ? COL.lila : '#146446';
+      g.lineWidth = 2; g.stroke();
+
+      /* verticales de la partición */
+      g.strokeStyle = 'rgba(109,90,133,.35)'; g.lineWidth = 1;
+      g.setLineDash([3, 3]);
+      for (let i = 0; i <= n; i++) {
+        g.beginPath(); g.moveTo(X(xs[i]), Y(0)); g.lineTo(X(xs[i]), Y(ys[i])); g.stroke();
+      }
+      g.setLineDash([]);
+
+      /* ejes y curva real encima */
+      const marcas = [];
+      for (let v = Math.ceil(E.a); v <= E.b + 1e-9; v++) marcas.push(v);
+      ejes(g, cv, M, X, Y, marcas);
+      trazar(g, E.f, E.a, E.b, X, Y, COL.fucsia, 2.8);
+
+      g.fillStyle = COL.fucsia; g.font = 'italic 14px Georgia';
+      g.fillText('y = ' + E.tf, M.l + 10, M.t + 4);
+      g.fillStyle = COL.morado; g.font = 'bold 12px system-ui';
+      g.fillText(modo === 'trapecio' ? 'T = ' + T.toFixed(6) : 'S = ' + Su.toFixed(6),
+        M.l + 10, M.t + 22);
+
+      /* puntos de la partición */
+      for (let i = 0; i <= n; i++) {
+        g.beginPath(); g.arc(X(xs[i]), Y(ys[i]), 3, 0, 2 * Math.PI);
+        g.fillStyle = COL.moradoOsc; g.fill();
+      }
+    });
+
+    /* --- lecturas --- */
+    const ex = E.exacta;
+    const eT = Math.abs(T - ex), eS = Math.abs(Su - ex);
+    lec.innerHTML =
+      '<b>Valor exacto:</b> ' + ex.toFixed(6) +
+      ' &nbsp;·&nbsp; <b>Trapecio:</b> ' + T.toFixed(6) +
+      ' (error ' + eT.toExponential(2) + ')' +
+      ' &nbsp;·&nbsp; <b>Simpson:</b> ' + Su.toFixed(6) +
+      ' (error ' + eS.toExponential(2) + ')' +
+      '<br><b>Simpson es ' + (eS > 0 ? (eT / eS).toFixed(0) : '∞') +
+      ' veces más preciso</b> con los mismos ' + (n + 1) + ' datos.';
+
+    /* tabla de coeficientes */
+    let c = '<b>Coeficientes de Simpson:</b> &nbsp;';
+    for (let i = 0; i <= n; i++) {
+      const v = (i === 0 || i === n) ? 1 : (i % 2 ? 4 : 2);
+      const col = v === 4 ? '#a4348c' : (v === 2 ? '#146446' : '#5a2d8c');
+      c += '<span style="display:inline-block;min-width:1.5em;text-align:center;' +
+        'font-weight:700;color:' + col + '">' + v + '</span>';
+    }
+    c += '<br><span style="font-size:.85em;color:#6d5a85">Los extremos llevan 1, ' +
+      'los índices impares llevan 4 y los pares interiores llevan 2. ' +
+      'La suma de los coeficientes es siempre 3n.</span>';
+    tab.innerHTML = c;
+  }
+  pintar();
+}
+
+/* ===========================================================
    KaTeX: si hay internet, las fórmulas se ven como en LaTeX.
    Si no carga, queda el HTML de respaldo.
    =========================================================== */

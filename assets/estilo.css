@@ -51,12 +51,13 @@ header .curso { font-size: .8rem; opacity: .82; margin-top: 8px }
 
 .titulos { display: flex; align-items: center; gap: 16px }
 
-.logo {
-  width: 58px; flex-shrink: 0; background: #fff;
-  border-radius: 8px; padding: 5px 6px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, .18);
-}
-.logo img { width: 100%; display: block }
+/* El logo es la espiral áurea, dibujada en SVG dentro del propio HTML.
+   No lleva fondo: se dibuja en blanco directamente sobre el degradado.
+   stroke="currentColor" hace que tome el color del texto, así que para
+   cambiarle el color basta con cambiar  .logo { color: ... }            */
+.logo { width: 68px; flex-shrink: 0; color: #fff }
+.logo .espiral { width: 100%; display: block }
+.logo img { width: 100%; display: block }   /* por si vuelve a usar una imagen */
 
 /* migas de pan */
 .migas { font-size: .8rem; margin-bottom: 14px; color: #6d5a85 }
@@ -126,6 +127,16 @@ p { margin-bottom: 9px }
 }
 body.modo-docente .docente { display: block }
 
+/* ----------------------------------------------------------------------
+   MODO DOCENTE DESACTIVADO
+   El botón del encabezado está oculto y las notas no se muestran, aunque
+   siguen escritas en el HTML.
+   Para volver a activarlo: borre las tres reglas de este bloque.
+   ---------------------------------------------------------------------- */
+#btnDocente { display: none }
+.docente,
+body.modo-docente .docente { display: none }
+
 /* ---------------- ejercicio desplegable ---------------- */
 .ejercicio {
   background: #fff; border: 1.5px solid var(--morado); border-radius: 10px;
@@ -150,6 +161,22 @@ details > summary .flecha { display: inline-block; transition: transform .2s; fo
 details[open] > summary .flecha { transform: rotate(90deg) }
 details[open] > summary { background: var(--morado-sua) }
 .solucion { padding: 14px 18px 18px }
+
+/* ----------------------------------------------------------------------
+   FIGURA DE CADA EJEMPLO
+   Dibujo fijo (no interactivo) que acompaña al resultado: región
+   sombreada, curvas y puntos de corte. El SVG va escrito dentro del
+   propio HTML, así que no depende de internet ni de JavaScript.
+   ---------------------------------------------------------------------- */
+.figura-caja {
+  background: #fff; border: 1px solid var(--borde); border-radius: 9px;
+  padding: 10px 12px 8px; margin: 14px 0 4px;
+}
+.figura-ej { width: 100%; height: auto; display: block }
+.figura-cap {
+  font-size: .82rem; color: #5c4b70; text-align: center;
+  margin-top: 6px; line-height: 1.35;
+}
 
 /* ---------------- pasos numerados ---------------- */
 .pasos { counter-reset: p }
